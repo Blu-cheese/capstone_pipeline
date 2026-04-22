@@ -1,0 +1,200 @@
+[
+  {
+    "subject": "SPEAKER_04",
+    "subject_type": "PERSON",
+    "relation": "assigned_to",
+    "object": "Extension for Phase 1 reports",
+    "object_type": "DEADLINE",
+    "confidence": 1.0,
+    "source_meeting": "meeting_002",
+    "timestamp": 133.0,
+    "source_utterance": "[SPEAKER_04] (133.0s): The revised guidelines have been circulated. Most students are on track, but five teams haven't submitted their Phase 1 reports yet. The deadline was December fifteenth. I've gi"
+  },
+  {
+    "subject": "Phase 1 reports",
+    "subject_type": "TOPIC",
+    "relation": "deadline_for",
+    "object": "December fifteenth",
+    "object_type": "DEADLINE",
+    "confidence": 1.0,
+    "source_meeting": "meeting_002",
+    "timestamp": 133.0,
+    "source_utterance": "[SPEAKER_04] (133.0s): The revised guidelines have been circulated. Most students are on track, but five teams haven't submitted their Phase 1 reports yet. The deadline was December fifteenth. I've gi"
+  },
+  {
+    "subject": "Phase 1 reports",
+    "subject_type": "TOPIC",
+    "relation": "deadline_for",
+    "object": "January twentieth",
+    "object_type": "DEADLINE",
+    "confidence": 1.0,
+    "source_meeting": "meeting_002",
+    "timestamp": 133.0,
+    "source_utterance": "[SPEAKER_04] (133.0s): The revised guidelines have been circulated. Most students are on track, but five teams haven't submitted their Phase 1 reports yet. The deadline was December fifteenth. I've gi"
+  },
+  {
+    "subject": "SPEAKER_04",
+    "subject_type": "PERSON",
+    "relation": "proposed",
+    "object": "January fifteenth deadline for Phase 1 reports",
+    "object_type": "DEADLINE",
+    "confidence": 0.8,
+    "source_meeting": "meeting_002",
+    "timestamp": 133.0,
+    "source_utterance": "[SPEAKER_04] (133.0s): The revised guidelines have been circulated. Most students are on track, but five teams haven't submitted their Phase 1 reports yet. The deadline was December fifteenth. I've gi"
+  },
+  {
+    "subject": "Phase 2 kickoff",
+    "subject_type": "EVENT",
+    "relation": "depends_on",
+    "object": "Phase 1 reports submission",
+    "object_type": "TOPIC",
+    "confidence": 0.7,
+    "source_meeting": "meeting_002",
+    "timestamp": 133.0,
+    "source_utterance": "[SPEAKER_04] (133.0s): The revised guidelines have been circulated. Most students are on track, but five teams haven't submitted their Phase 1 reports yet. The deadline was December fifteenth. I've gi"
+  },
+  {
+    "subject": "SPEAKER_04",
+    "subject_type": "PERSON",
+    "relation": "scheduled_for",
+    "object": "peer review sessions",
+    "object_type": "EVENT",
+    "confidence": 1.0,
+    "source_meeting": "meeting_002",
+    "timestamp": 133.0,
+    "source_utterance": "[SPEAKER_04] (133.0s): The revised guidelines have been circulated. Most students are on track, but five teams haven't submitted their Phase 1 reports yet. The deadline was December fifteenth. I've gi"
+  },
+  {
+    "subject": "TCS drive",
+    "subject_type": "EVENT",
+    "relation": "discussed",
+    "object": "Pavan Kumar",
+    "object_type": "PERSON",
+    "confidence": 0.7,
+    "source_meeting": "meeting_002",
+    "timestamp": 133.0,
+    "source_utterance": "[SPEAKER_04] (133.0s): The revised guidelines have been circulated. Most students are on track, but five teams haven't submitted their Phase 1 reports yet. The deadline was December fifteenth. I've gi"
+  },
+  {
+    "subject": "TCS campus visit",
+    "subject_type": "EVENT",
+    "relation": "scheduled_for",
+    "object": "January eighth",
+    "object_type": "DEADLINE",
+    "confidence": 1.0,
+    "source_meeting": "meeting_002",
+    "timestamp": 133.0,
+    "source_utterance": "[SPEAKER_04] (133.0s): The revised guidelines have been circulated. Most students are on track, but five teams haven't submitted their Phase 1 reports yet. The deadline was December fifteenth. I've gi"
+  },
+  {
+    "subject": "Infosys visit",
+    "subject_type": "EVENT",
+    "relation": "scheduled_for",
+    "object": "January fifteenth",
+    "object_type": "DEADLINE",
+    "confidence": 1.0,
+    "source_meeting": "meeting_002",
+    "timestamp": 133.0,
+    "source_utterance": "[SPEAKER_04] (133.0s): The revised guidelines have been circulated. Most students are on track, but five teams haven't submitted their Phase 1 reports yet. The deadline was December fifteenth. I've gi"
+  },
+  {
+    "subject": "mock interview sessions",
+    "subject_type": "EVENT",
+    "relation": "scheduled_for",
+    "object": "December",
+    "object_type": "DEADLINE",
+    "confidence": 1.0,
+    "source_meeting": "meeting_002",
+    "timestamp": 133.0,
+    "source_utterance": "[SPEAKER_04] (133.0s): The revised guidelines have been circulated. Most students are on track, but five teams haven't submitted their Phase 1 reports yet. The deadline was December fifteenth. I've gi"
+  },
+  {
+    "subject": "SPEAKER_04",
+    "subject_type": "PERSON",
+    "relation": "recommended",
+    "object": "Mandatory mock sessions for future batches",
+    "object_type": "POLICY",
+    "confidence": 1.0,
+    "source_meeting": "meeting_002",
+    "timestamp": 133.0,
+    "source_utterance": "[SPEAKER_04] (133.0s): The revised guidelines have been circulated. Most students are on track, but five teams haven't submitted their Phase 1 reports yet. The deadline was December fifteenth. I've gi"
+  },
+  {
+    "subject": "SPEAKER_04",
+    "subject_type": "PERSON",
+    "relation": "proposed",
+    "object": "Discuss making mock sessions mandatory",
+    "object_type": "TOPIC",
+    "confidence": 1.0,
+    "source_meeting": "meeting_002",
+    "timestamp": 133.0,
+    "source_utterance": "[SPEAKER_04] (133.0s): The revised guidelines have been circulated. Most students are on track, but five teams haven't submitted their Phase 1 reports yet. The deadline was December fifteenth. I've gi"
+  },
+  {
+    "subject": "Department website",
+    "subject_type": "RESOURCE",
+    "relation": "needs_updating",
+    "object": "SPEAKER_04",
+    "object_type": "PERSON",
+    "confidence": 0.7,
+    "source_meeting": "meeting_002",
+    "timestamp": 133.0,
+    "source_utterance": "[SPEAKER_04] (133.0s): The revised guidelines have been circulated. Most students are on track, but five teams haven't submitted their Phase 1 reports yet. The deadline was December fifteenth. I've gi"
+  },
+  {
+    "subject": "Dr. Ramesh",
+    "subject_type": "PERSON",
+    "relation": "assigned_to",
+    "object": "Department website update",
+    "object_type": "PROJECT",
+    "confidence": 1.0,
+    "source_meeting": "meeting_002",
+    "timestamp": 133.0,
+    "source_utterance": "[SPEAKER_04] (133.0s): The revised guidelines have been circulated. Most students are on track, but five teams haven't submitted their Phase 1 reports yet. The deadline was December fifteenth. I've gi"
+  },
+  {
+    "subject": "Department website update",
+    "subject_type": "PROJECT",
+    "relation": "deadline_for",
+    "object": "March",
+    "object_type": "DEADLINE",
+    "confidence": 1.0,
+    "source_meeting": "meeting_002",
+    "timestamp": 133.0,
+    "source_utterance": "[SPEAKER_04] (133.0s): The revised guidelines have been circulated. Most students are on track, but five teams haven't submitted their Phase 1 reports yet. The deadline was December fifteenth. I've gi"
+  },
+  {
+    "subject": "SPEAKER_04",
+    "subject_type": "PERSON",
+    "relation": "assigned_to",
+    "object": "Two student assistants for website update",
+    "object_type": "PERSON",
+    "confidence": 1.0,
+    "source_meeting": "meeting_002",
+    "timestamp": 133.0,
+    "source_utterance": "[SPEAKER_04] (133.0s): The revised guidelines have been circulated. Most students are on track, but five teams haven't submitted their Phase 1 reports yet. The deadline was December fifteenth. I've gi"
+  },
+  {
+    "subject": "Department website update",
+    "subject_type": "PROJECT",
+    "relation": "deadline_for",
+    "object": "Three weeks",
+    "object_type": "DEADLINE",
+    "confidence": 1.0,
+    "source_meeting": "meeting_002",
+    "timestamp": 133.0,
+    "source_utterance": "[SPEAKER_04] (133.0s): The revised guidelines have been circulated. Most students are on track, but five teams haven't submitted their Phase 1 reports yet. The deadline was December fifteenth. I've gi"
+  },
+  {
+    "subject": "next meeting",
+    "subject_type": "EVENT",
+    "relation": "scheduled_for",
+    "object": "February second",
+    "object_type": "DEADLINE",
+    "confidence": 1.0,
+    "source_meeting": "meeting_002",
+    "timestamp": 133.0,
+    "source_utterance": "[SPEAKER_04] (133.0s): The revised guidelines have been circulated. Most students are on track, but five teams haven't submitted their Phase 1 reports yet. The deadline was December fifteenth. I've gi"
+  }
+]

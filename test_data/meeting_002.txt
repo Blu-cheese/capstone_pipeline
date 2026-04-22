@@ -1,0 +1,21 @@
+SPEAKER_00 (0:00:01 - 0:00:08): Welcome back everyone. This is our follow-up meeting from January fifth. Let's review the action items from last month.
+SPEAKER_01 (0:00:09 - 0:00:22): Starting with the AI elective. Dr. Ramesh met with Dr. Meera and they've agreed on the syllabus split. Vision transformers stay in Applied Deep Learning, and language models go to the NLP course.
+SPEAKER_02 (0:00:23 - 0:00:38): That's correct. I've finalized the syllabus and submitted it to the Board of Studies for approval. The BOS meeting last Friday reviewed it and raised one concern about the assessment pattern. They want at least one hands-on project instead of a written exam.
+SPEAKER_00 (0:00:39 - 0:00:50): That's a fair point. Dr. Ramesh, can you revise the assessment to include a mini project worth thirty percent?
+SPEAKER_02 (0:00:51 - 0:01:02): Yes, I'll restructure it. The mini project can be a deployment exercise where students build and deploy a deep learning model on a cloud platform.
+SPEAKER_00 (0:01:03 - 0:01:15): Good. Now, Pavan Kumar, what's the status on the GPU procurement for the AI lab?
+SPEAKER_03 (0:01:16 - 0:01:35): We have a problem. The purchase committee reviewed the quotes and the costs have increased. The original estimate was three lakhs but current quotes are coming in at four point five lakhs due to GPU price increases. We need revised budget approval.
+SPEAKER_00 (0:01:36 - 0:01:48): That's a significant increase. Can we phase the procurement? Buy two machines now and two more next quarter?
+SPEAKER_03 (0:01:49 - 0:02:00): That's feasible. I'll submit a revised proposal for two point two lakhs for the first phase. The remaining can come from the next financial year's budget.
+SPEAKER_00 (0:02:01 - 0:02:12): Approved. Submit the revised proposal to the administration by this Friday. Now, Dr. Chetana, the capstone guidelines update?
+SPEAKER_04 (0:02:13 - 0:02:28): The revised guidelines have been circulated. Most students are on track, but five teams haven't submitted their Phase 1 reports yet. The deadline was December fifteenth. I've given them an extension until January twentieth.
+SPEAKER_00 (0:02:29 - 0:02:40): That's too lenient. January fifteenth should be the hard deadline. No further extensions. We can't delay the Phase 2 kickoff.
+SPEAKER_04 (0:02:41 - 0:02:52): Understood. I'll notify the teams immediately. Also, the peer review sessions are scheduled for February first week. Six teams have volunteered to present.
+SPEAKER_00 (0:02:53 - 0:03:05): Good. Now the placement update. Pavan Kumar, how did the TCS drive go?
+SPEAKER_03 (0:03:06 - 0:03:22): The TCS campus visit on January eighth went well. Forty-two students appeared for the assessment and eighteen cleared the technical round. Final results are expected by month end. The Infosys visit is confirmed for January fifteenth as planned.
+SPEAKER_02 (0:03:23 - 0:03:38): The mock interview sessions in December were useful. Students who attended the sessions had a noticeably higher clearance rate in the TCS drive. I'd recommend making mock sessions mandatory for future batches.
+SPEAKER_00 (0:03:39 - 0:03:50): Noted. Let's discuss making it mandatory at the next faculty meeting. Any other updates?
+SPEAKER_01 (0:03:51 - 0:04:05): One more thing. The department website needs updating. The faculty profiles are outdated and several course pages still show last year's syllabus. Can we assign someone to handle this?
+SPEAKER_00 (0:04:06 - 0:04:18): Good point. Dr. Ramesh, can your team of student assistants take this up? We need it done before the admission season in March.
+SPEAKER_02 (0:04:19 - 0:04:28): I'll assign two student assistants to this. We should have it updated within three weeks.
+SPEAKER_00 (0:04:29 - 0:04:38): Perfect. Next meeting is February second. Thank you everyone.

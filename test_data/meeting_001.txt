@@ -1,0 +1,22 @@
+SPEAKER_00 (0:00:01 - 0:00:05): Good morning everyone, let's begin the department meeting.
+SPEAKER_01 (0:00:06 - 0:00:14): Thank you Dr. Jayashree. Before we start, I want to confirm that the Board of Studies meeting is scheduled for next Friday.
+SPEAKER_00 (0:00:15 - 0:00:28): Yes that's confirmed. Now, the first agenda item is the new AI elective for the sixth semester. Dr. Ramesh, could you present the syllabus proposal?
+SPEAKER_02 (0:00:29 - 0:00:45): Sure. The course is titled Applied Deep Learning, course code UE24AM350A. It covers CNNs, transformers, and deployment. I've aligned it with the existing machine learning prerequisite UE23AM220B.
+SPEAKER_00 (0:00:46 - 0:00:58): Good. The prerequisite dependency makes sense. Does anyone have concerns about lab infrastructure? We'd need GPU workstations for the practical sessions.
+SPEAKER_03 (0:00:59 - 0:01:15): The AI lab currently has eight workstations but only four have GPUs. We'd need to upgrade at least four more machines. I've prepared a budget estimate of three lakhs for the procurement.
+SPEAKER_00 (0:01:16 - 0:01:25): That's reasonable. Pavan Kumar, can you handle the procurement process with the administration?
+SPEAKER_03 (0:01:26 - 0:01:32): Yes, I'll coordinate with the purchase committee and get the quotes by end of this month.
+SPEAKER_01 (0:01:33 - 0:01:48): One concern about the syllabus. The transformer section overlaps significantly with the NLP course taught by Dr. Meera in the seventh semester. We should coordinate to avoid redundancy.
+SPEAKER_02 (0:01:49 - 0:02:05): Good point. I'll meet with Dr. Meera this week to delineate the coverage. We can focus on vision transformers in our course and leave language transformers to the NLP course.
+SPEAKER_00 (0:02:06 - 0:02:18): Agreed. Now moving to the second item. The capstone project guidelines for the next batch need revision. Dr. Chetana, any updates?
+SPEAKER_04 (0:02:19 - 0:02:38): Yes. Based on feedback from the current batch, I'm proposing three changes. First, extending the Phase 1 duration from twelve weeks to fourteen weeks. Second, requiring a mandatory literature survey of at least four papers. Third, introducing peer review sessions between teams.
+SPEAKER_00 (0:02:39 - 0:02:50): The extension to fourteen weeks sounds reasonable given the workload complaints we received. What about assessment weightage?
+SPEAKER_04 (0:02:51 - 0:03:08): I suggest keeping Phase 1 at thirty percent and Phase 2 at seventy percent, but within Phase 1, allocating ten percent specifically for the literature survey quality. This incentivizes deeper research.
+SPEAKER_01 (0:03:09 - 0:03:20): I support the peer review idea. It worked well in the software engineering course. Students learn a lot from critiquing each other's approaches.
+SPEAKER_00 (0:03:21 - 0:03:35): Let's put this to a vote. All in favor of the revised capstone guidelines? Good, it's approved unanimously. Dr. Chetana, please circulate the updated guidelines by December fifteenth.
+SPEAKER_04 (0:03:36 - 0:03:42): Will do. I'll also update the course portal and notify the students.
+SPEAKER_00 (0:03:43 - 0:03:55): Last item. The placement committee reports that three companies have confirmed campus visits for January. TCS on January eighth, Infosys on January fifteenth, and Wipro on January twentieth.
+SPEAKER_03 (0:03:56 - 0:04:10): I'll coordinate the logistics for the placement drives. We need to book the seminar hall and arrange the computer lab for online assessments. Also, students should be notified at least two weeks in advance.
+SPEAKER_00 (0:04:11 - 0:04:25): Good. Dr. Ramesh, since you handle the training and placement cell, please ensure the mock interview sessions are completed before the first company visit.
+SPEAKER_02 (0:04:26 - 0:04:38): I've already scheduled mock interviews for December twentieth and twenty-seventh. We'll cover aptitude, technical rounds, and HR rounds across both sessions.
+SPEAKER_00 (0:04:39 - 0:04:48): Excellent. Any other business? No? Then the meeting is adjourned. Next meeting is scheduled for January fifth. Thank you all.
