@@ -69,7 +69,10 @@ def parse_script(path: str):
 
     speaker_pattern = re.compile(r'^([A-Z][A-Z0-9_]*)\s*:\s*(.*)$')
 
-    with open(path) as f:
+    # The scripts contain em-dashes and curly quotes; on Windows a bare
+    # open() would decode them with the ANSI codepage and mangle the text
+    # that gets sent to TTS.
+    with open(path, encoding="utf-8") as f:
         for raw_line in f:
             line = raw_line.rstrip()
 
