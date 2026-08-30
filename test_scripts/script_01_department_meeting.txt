@@ -1,0 +1,97 @@
+SCRIPT 1: CSE Department Weekly Meeting
+=========================================
+Duration target: ~5 minutes spoken
+Speakers: 4
+  - JAYASHREE (female, department chairperson)
+  - RAMESH (male, senior professor)
+  - MEERA (female, NLP professor)
+  - PAVAN (male, lab coordinator)
+
+Setup: Weekly CSE department meeting. Topics: new elective, lab upgrade, 
+student complaints, upcoming placement drive.
+
+---
+
+JAYASHREE: Good morning everyone. Thanks for making it on short notice. 
+We have four items on the agenda today. Let's get started with the new 
+elective proposal from Ramesh.
+
+RAMESH: Thank you, ma'am. So, I've drafted the syllabus for Applied Deep 
+Learning. The course code will be UE24AM350A. I'm proposing it as a 
+sixth semester elective with Machine Learning as the prerequisite.
+
+MEERA: Ramesh, quick question. How does this overlap with my NLP course? 
+We both cover transformers.
+
+RAMESH: That's a fair concern. I was thinking we could split it. I'll 
+focus on vision transformers and image generation. You keep the language 
+modeling side. Would that work?
+
+MEERA: Yes, that works. I'll update my syllabus to remove the vision 
+parts and expand on attention mechanisms instead.
+
+JAYASHREE: Good. That's settled. Ramesh, when can you submit the final 
+syllabus to the Board of Studies?
+
+RAMESH: I can have it ready by next Friday.
+
+JAYASHREE: Perfect. Next item. Pavan, the lab situation.
+
+PAVAN: So we have eight workstations in AI Lab 2. Only four have GPUs. 
+For the new elective, we'll need at least four more GPU-enabled machines. 
+I got quotes from three vendors. The best one is Dell at 75,000 per 
+workstation. So about 3 lakhs total for the upgrade.
+
+JAYASHREE: 3 lakhs. Can we get this approved in this financial year?
+
+PAVAN: If we submit by month end, yes. The administration needs two 
+weeks for processing.
+
+JAYASHREE: Okay. Pavan, you coordinate with purchase. Get the PO raised 
+by the twenty fifth. Ramesh, since this is for your course, work with 
+Pavan on the specifications.
+
+RAMESH: Will do.
+
+JAYASHREE: Third item. Student complaints about the capstone workload. 
+I've received emails from four teams saying the Phase 1 deadline is too 
+tight. Thoughts?
+
+MEERA: I've heard similar concerns. The twelve week timeline assumes 
+teams already have their topics finalized, which isn't always the case.
+
+RAMESH: What if we extended it to fourteen weeks? That gives them two 
+more weeks for the literature survey phase.
+
+JAYASHREE: That's reasonable. Any objections? No? Then it's decided. 
+Phase 1 is now fourteen weeks. I'll notify Dr. Chetana, who handles 
+the capstone coordination, and she can update the handbook.
+
+PAVAN: What about teams already in progress? Does this apply to them 
+retroactively?
+
+JAYASHREE: Good point. Yes, current teams get the extension. Their new 
+deadline is December twenty second instead of December eighth.
+
+MEERA: I'll announce this in my Phase 1 class tomorrow.
+
+JAYASHREE: Thank you. Last item. The TCS campus recruitment is confirmed 
+for January eighth. Pavan, you're handling logistics?
+
+PAVAN: Yes. Booking the seminar hall is done. Online assessment will 
+use the new computer lab. We need about two hundred seats. I'm 
+coordinating with the placement cell.
+
+RAMESH: Are we running mock interviews beforehand?
+
+PAVAN: Planning two sessions. One on December twentieth for aptitude 
+and technical. Another on December twenty seventh for HR rounds. 
+Both sessions are mandatory for students who registered.
+
+JAYASHREE: Good. Make sure the mentor assignments are finalized by 
+next week. Ramesh, you're mentoring batch A?
+
+RAMESH: Yes. Twelve students. I've already met them once.
+
+JAYASHREE: Excellent. Any other business? No? Then we're done. 
+Same time next week. Thank you everyone.

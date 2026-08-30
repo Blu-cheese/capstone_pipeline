@@ -1,0 +1,48 @@
+{
+  "seed": 1234,
+  "encoder": "sentence-transformers/all-MiniLM-L6-v2",
+  "n_classes": 17,
+  "label_source": "gold (both tracks)",
+  "multi_label_policy": "dropped, not collapsed to first",
+  "relations": [
+    "org:employees_or_members",
+    "per:age",
+    "per:alternate_names",
+    "per:children",
+    "per:employee_or_member_of",
+    "per:friends",
+    "per:girl/boyfriend",
+    "per:negative_impression",
+    "per:other_family",
+    "per:parents",
+    "per:pet",
+    "per:positive_impression",
+    "per:roommate",
+    "per:spouse",
+    "per:title",
+    "per:visited_place",
+    "per:works"
+  ],
+  "splits": {
+    "dev": {
+      "n_examples": 1231,
+      "per_task": {
+        "0": 420,
+        "1": 443,
+        "2": 368
+      },
+      "dropped_multilabel": 75,
+      "dropped_not_in_kept_classes": 622
+    },
+    "test": {
+      "n_examples": 1144,
+      "per_task": {
+        "0": 363,
+        "1": 449,
+        "2": 332
+      },
+      "dropped_multilabel": 49,
+      "dropped_not_in_kept_classes": 665
+    }
+  }
+}

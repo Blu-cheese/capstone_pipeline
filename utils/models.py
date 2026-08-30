@@ -35,7 +35,11 @@ class Triple:
     confidence: float = 1.0
     source_meeting: str = ""
     timestamp: float = 0.0  # from utterance start_time
-    source_utterance: str = ""
+    source_utterance: str = ""  # truncated preview (200 chars) for inspection
+    # Full text of the window this triple came from. Kept separate because
+    # source_utterance is a truncated preview, and Method A's feature
+    # extraction needs the complete window to embed.
+    window_text: str = ""
 
     def to_dict(self):
         return asdict(self)
@@ -88,12 +92,12 @@ class MeetingTranscript:
         }
 
     def save(self, path: str):
-        with open(path, "w") as f:
+        with open(path, "w", encoding="utf-8") as f:
             json.dump(self.to_dict(), f, indent=2)
 
     @classmethod
     def load(cls, path: str) -> "MeetingTranscript":
-        with open(path) as f:
+        with open(path, encoding="utf-8") as f:
             data = json.load(f)
         utterances = [Utterance(**u) for u in data["utterances"]]
         return cls(

@@ -1,0 +1,167 @@
+SCRIPT 4: CSE Department Weekly Meeting — Phase Two Procurement
+================================================================
+Duration target: ~6 minutes spoken
+Speakers: 4 (same as Scripts 1 and 2)
+  - JAYASHREE (female, department chairperson)
+  - RAMESH (male, senior professor)
+  - MEERA (female, NLP professor)
+  - PAVAN (male, lab coordinator)
+
+Setup: Department meeting held after the Board of Studies review in
+Script 3. Closes out the phase one GPU purchase, opens phase two, and
+starts the Infosys collaboration. Continues the budget and deadline
+threads from Scripts 1 through 3 so the graph shows evolution.
+
+---
+
+JAYASHREE: Good morning. Three things today. The lab phase two, the
+Infosys agreement, and the elective rollout. Pavan, start with the lab.
+
+PAVAN: Ma'am, phase one is complete. Two workstations delivered on the
+fourteenth, installed and running. Total spend was two point two lakhs,
+exactly the approved figure.
+
+JAYASHREE: Any issues with installation?
+
+PAVAN: One. The lab's existing power circuit could not handle both
+machines at full load. We had to add a dedicated line. That cost
+eighteen thousand rupees, which I paid from the maintenance head.
+
+RAMESH: Was that approved?
+
+PAVAN: I informed the chairperson before spending. It was an emergency.
+
+JAYASHREE: I approved it verbally. Pavan, put it in writing so the
+audit trail is clean. Now, phase two.
+
+PAVAN: Good news here. GPU prices have come down. The same machine that
+quoted one point one two lakhs in December is now ninety five thousand.
+Two machines come to one point nine lakhs.
+
+MEERA: That's below what we budgeted for phase two.
+
+PAVAN: Yes ma'am. We had planned two point two lakhs again. So we are
+thirty thousand under.
+
+JAYASHREE: Then let's use the difference. Meera, you mentioned needing
+API credits for the language model module.
+
+MEERA: I did. The new NLP syllabus has students fine-tuning and calling
+hosted models. Forty thousand rupees would cover a full semester for
+sixty students.
+
+JAYASHREE: We have thirty thousand spare. Can you manage with that?
+
+MEERA: If students share team accounts, yes. I'll restructure the
+assignment to be team based rather than individual.
+
+JAYASHREE: Do that. Pavan, raise the phase two purchase order for one
+point nine lakhs. What's the delivery timeline?
+
+PAVAN: Vendor says three weeks from purchase order. If I raise it this
+week, machines arrive by March fifteenth.
+
+JAYASHREE: March fifteenth is the deadline then. The elective starts in
+April, so that gives us buffer. Ramesh, the syllabus.
+
+RAMESH: The Board approved the Applied Deep Learning syllabus with the
+revised assessment. Thirty percent mini project, thirty percent
+continuous evaluation, forty percent end semester. The mini project is
+the production deployment task we discussed.
+
+JAYASHREE: Good. Enrollment?
+
+RAMESH: Forty seven students registered. We capped it at fifty.
+
+MEERA: That's strong for a first offering.
+
+RAMESH: There's one complication. Of those forty seven, nineteen have
+not taken Machine Learning. The Board made ML a prerequisite, but that
+applies to next year's batch only.
+
+JAYASHREE: So this batch is grandfathered in.
+
+RAMESH: Correct. But nineteen students without ML background in a deep
+learning course is a real problem. I'd like to run a bridge module.
+
+JAYASHREE: What would that involve?
+
+RAMESH: Four extra sessions before the semester starts. Linear algebra
+refresher, gradient descent, basic classification. Voluntary but
+strongly recommended.
+
+MEERA: Who teaches it?
+
+RAMESH: I'll take two sessions. I was hoping Meera takes the other two.
+
+MEERA: I can do that. Schedule them in the last week of March.
+
+JAYASHREE: Approved. Ramesh, you own the bridge module. Now the Infosys
+collaboration. The Board prioritised it first among the three proposals.
+
+RAMESH: I spoke to their university relations head last Thursday. They
+want a joint research lab focused on applied machine learning. Their
+contribution is two engineers on site one day a week, plus compute
+credits.
+
+JAYASHREE: And what do they want from us?
+
+RAMESH: Space, and two faculty members committed at least six hours a
+week. They also want first look at student projects for hiring.
+
+MEERA: First look at hiring is fine. First rights on intellectual
+property would not be.
+
+RAMESH: They have not asked for intellectual property. I raised it
+specifically. The draft says jointly owned.
+
+JAYASHREE: Jointly owned is acceptable. Who drafts the memorandum of
+understanding from our side?
+
+RAMESH: Legal will draft it. I'll coordinate. They want it signed
+before the Board meets on February twenty eighth.
+
+JAYASHREE: That's tight. Ramesh, target March tenth for the draft, and
+if it slips we present the status rather than the signature. Do not
+rush legal review to hit a date.
+
+RAMESH: Understood.
+
+JAYASHREE: Pavan, one more thing. The capstone peer review is week
+twelve this year, not week fourteen. The Board changed phase one to
+fourteen weeks. Make sure the lab is bookable that week.
+
+PAVAN: I'll block the lab for the whole of week twelve.
+
+MEERA: On capstone, I have a concern. Phase one is now fourteen weeks,
+but the literature survey requirement is still four papers minimum.
+Students have more time and the same requirement.
+
+JAYASHREE: What do you propose?
+
+MEERA: Raise it to six papers, or add a comparison matrix. Something
+that uses the extra two weeks.
+
+RAMESH: Six papers is a lot for undergraduates.
+
+MEERA: Then the comparison matrix. Same four papers, but they must
+compare methods across them on common criteria.
+
+JAYASHREE: I prefer that. Meera, write it into the rubric and send it
+to Priya. She's reviewing the rubric for fairness.
+
+MEERA: I'll send it by Friday.
+
+JAYASHREE: Last item. The TCS placement drive results came in. Thirty
+one students placed out of eighty who sat. That's a better conversion
+than last year's twenty two.
+
+RAMESH: Any feedback from their panel?
+
+JAYASHREE: Yes, and it's useful. They said our students are strong on
+theory and weak on system design. Ramesh, that's worth feeding into the
+curriculum discussion at the next Board meeting.
+
+RAMESH: I'll prepare a note.
+
+JAYASHREE: Good. Next meeting same time next week. Thank you.

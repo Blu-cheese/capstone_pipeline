@@ -307,9 +307,9 @@ class FlatFileGraph:
 
     def _save(self):
         import os
-        with open(os.path.join(self.output_dir, "entities.json"), "w") as f:
+        with open(os.path.join(self.output_dir, "entities.json"), "w", encoding="utf-8") as f:
             json.dump(self.entities, f, indent=2)
-        with open(os.path.join(self.output_dir, "relations.json"), "w") as f:
+        with open(os.path.join(self.output_dir, "relations.json"), "w", encoding="utf-8") as f:
             json.dump(self.relations, f, indent=2)
 
     def clear_all(self):

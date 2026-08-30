@@ -1,0 +1,262 @@
+{
+  "candidates_within_tolerance": 1,
+  "dropped_classes": [
+    {
+      "gold": 0,
+      "reason": "under 15 (teacher=1, gold=0)",
+      "relation": "gpe:births_in_place",
+      "teacher": 1
+    },
+    {
+      "gold": 14,
+      "reason": "under 15 (gold=14)",
+      "relation": "gpe:residents_of_place",
+      "teacher": 19
+    },
+    {
+      "gold": 24,
+      "reason": "under 15 (teacher=14)",
+      "relation": "gpe:visitors_of_place",
+      "teacher": 14
+    },
+    {
+      "gold": 3,
+      "reason": "under 15 (teacher=3, gold=3)",
+      "relation": "org:students",
+      "teacher": 3
+    },
+    {
+      "gold": 9,
+      "reason": "under 15 (gold=9)",
+      "relation": "per:acquaintance",
+      "teacher": 442
+    },
+    {
+      "gold": 19,
+      "reason": "under 15 (teacher=0)",
+      "relation": "per:alumni",
+      "teacher": 0
+    },
+    {
+      "gold": 10,
+      "reason": "under 15 (teacher=4, gold=10)",
+      "relation": "per:boss",
+      "teacher": 4
+    },
+    {
+      "gold": 15,
+      "reason": "under 15 (teacher=2)",
+      "relation": "per:client",
+      "teacher": 2
+    },
+    {
+      "gold": 0,
+      "reason": "absent from both tracks",
+      "relation": "per:date_of_birth",
+      "teacher": 0
+    },
+    {
+      "gold": 7,
+      "reason": "under 15 (teacher=10, gold=7)",
+      "relation": "per:dates",
+      "teacher": 10
+    },
+    {
+      "gold": 1,
+      "reason": "under 15 (teacher=0, gold=1)",
+      "relation": "per:major",
+      "teacher": 0
+    },
+    {
+      "gold": 14,
+      "reason": "under 15 (teacher=5, gold=14)",
+      "relation": "per:neighbor",
+      "teacher": 5
+    },
+    {
+      "gold": 8,
+      "reason": "under 15 (teacher=14, gold=8)",
+      "relation": "per:origin",
+      "teacher": 14
+    },
+    {
+      "gold": 0,
+      "reason": "absent from both tracks",
+      "relation": "per:place_of_birth",
+      "teacher": 0
+    },
+    {
+      "gold": 14,
+      "reason": "under 15 (teacher=2, gold=14)",
+      "relation": "per:place_of_residence",
+      "teacher": 2
+    },
+    {
+      "gold": 8,
+      "reason": "under 15 (teacher=5, gold=8)",
+      "relation": "per:place_of_work",
+      "teacher": 5
+    },
+    {
+      "gold": 3,
+      "reason": "under 15 (teacher=1, gold=3)",
+      "relation": "per:schools_attended",
+      "teacher": 1
+    },
+    {
+      "gold": 62,
+      "reason": "under 15 (teacher=10)",
+      "relation": "per:siblings",
+      "teacher": 10
+    },
+    {
+      "gold": 9,
+      "reason": "under 15 (teacher=1, gold=9)",
+      "relation": "per:subordinate",
+      "teacher": 1
+    },
+    {
+      "gold": 471,
+      "reason": "null/reject class, excluded per V2 3.1 (Zhao et al. remove no_relation before splitting)",
+      "relation": "unanswerable",
+      "teacher": 606
+    }
+  ],
+  "imbalance_score": 0.0389,
+  "k": 3,
+  "kept_class_indices": [
+    3,
+    6,
+    7,
+    10,
+    14,
+    15,
+    16,
+    18,
+    21,
+    22,
+    23,
+    27,
+    28,
+    31,
+    33,
+    34,
+    35
+  ],
+  "label_space": [
+    "gpe:births_in_place",
+    "gpe:residents_of_place",
+    "gpe:visitors_of_place",
+    "org:employees_or_members",
+    "org:students",
+    "per:acquaintance",
+    "per:age",
+    "per:alternate_names",
+    "per:alumni",
+    "per:boss",
+    "per:children",
+    "per:client",
+    "per:date_of_birth",
+    "per:dates",
+    "per:employee_or_member_of",
+    "per:friends",
+    "per:girl/boyfriend",
+    "per:major",
+    "per:negative_impression",
+    "per:neighbor",
+    "per:origin",
+    "per:other_family",
+    "per:parents",
+    "per:pet",
+    "per:place_of_birth",
+    "per:place_of_residence",
+    "per:place_of_work",
+    "per:positive_impression",
+    "per:roommate",
+    "per:schools_attended",
+    "per:siblings",
+    "per:spouse",
+    "per:subordinate",
+    "per:title",
+    "per:visited_place",
+    "per:works",
+    "unanswerable"
+  ],
+  "min_examples_per_class": 15,
+  "min_task_share": 0.15,
+  "relation_to_task": {
+    "org:employees_or_members": 0,
+    "per:age": 1,
+    "per:alternate_names": 2,
+    "per:children": 0,
+    "per:employee_or_member_of": 2,
+    "per:friends": 1,
+    "per:girl/boyfriend": 0,
+    "per:negative_impression": 0,
+    "per:other_family": 1,
+    "per:parents": 1,
+    "per:pet": 2,
+    "per:positive_impression": 1,
+    "per:roommate": 0,
+    "per:spouse": 1,
+    "per:title": 0,
+    "per:visited_place": 0,
+    "per:works": 2
+  },
+  "seed": 2,
+  "tasks": [
+    {
+      "gold_examples": 440,
+      "gold_share": 0.3316,
+      "n_classes": 7,
+      "relations": [
+        "org:employees_or_members",
+        "per:children",
+        "per:girl/boyfriend",
+        "per:negative_impression",
+        "per:roommate",
+        "per:title",
+        "per:visited_place"
+      ],
+      "task": 0,
+      "teacher_examples": 311,
+      "teacher_share": 0.3538
+    },
+    {
+      "gold_examples": 393,
+      "gold_share": 0.2962,
+      "n_classes": 6,
+      "relations": [
+        "per:age",
+        "per:friends",
+        "per:other_family",
+        "per:parents",
+        "per:positive_impression",
+        "per:spouse"
+      ],
+      "task": 1,
+      "teacher_examples": 307,
+      "teacher_share": 0.3493
+    },
+    {
+      "gold_examples": 494,
+      "gold_share": 0.3723,
+      "n_classes": 4,
+      "relations": [
+        "per:alternate_names",
+        "per:employee_or_member_of",
+        "per:pet",
+        "per:works"
+      ],
+      "task": 2,
+      "teacher_examples": 261,
+      "teacher_share": 0.2969
+    }
+  ],
+  "totals": {
+    "gold_examples_dropped": 691,
+    "gold_examples_kept": 1327,
+    "teacher_examples_dropped": 1139,
+    "teacher_examples_kept": 879
+  }
+}

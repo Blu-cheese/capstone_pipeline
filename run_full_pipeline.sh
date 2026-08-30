@@ -76,6 +76,10 @@ fi
 if [ -z "$OPENAI_API_KEY" ] && [[ "$OPENAI_BASE_URL" != *"localhost"* ]]; then
     echo "ERROR: OPENAI_API_KEY not set."
     echo "Export it or set OPENAI_BASE_URL to a local Ollama instance."
+    echo ""
+    echo "For Gemini (the default model), OPENAI_API_KEY is your Google AI"
+    echo "Studio key; the base URL is selected automatically from the model"
+    echo "name, so OPENAI_BASE_URL does not need to be set."
     exit 1
 fi
 
@@ -106,7 +110,10 @@ for audio in "$@"; do
     audio_abs="$(cd "$(dirname "$audio")" && pwd)/$(basename "$audio")"
     audio_dir="$(dirname "$audio_abs")"
     audio_base="$(basename "${audio%.*}")"
-    transcript_path="$audio_dir/${audio_base}.txt"
+    # diarize.py writes BOTH .txt and .srt. Only the .srt retains real
+    # timestamps in the current output format, so that is what we feed
+    # the pipeline.
+    transcript_path="$audio_dir/${audio_base}.srt"
 
     echo ""
     echo "Processing: $audio"
@@ -117,9 +124,11 @@ for audio in "$@"; do
     else
         (
             cd "$WHISPER_DIARIZATION_DIR"
+            # MUST stay cpu. diarize.py has mtypes = {"cpu":..., "cuda":...}
+            # with no "mps" key, so --device mps dies with a KeyError.
             python diarize.py \
                 -a "$audio_abs" \
-                --device mps \
+                --device cpu \
                 --whisper-model "$WHISPER_MODEL" \
                 --batch-size 8
         )

@@ -1,0 +1,38 @@
+{
+  "batch_size": 32,
+  "dropout": 0.2,
+  "early_stopping_metric": "macro_f1",
+  "early_stopping_patience": 5,
+  "eval": {
+    "dev": 1231,
+    "label_source": "gold (both tracks)",
+    "test": 1144
+  },
+  "feature_dim": 1152,
+  "fkd": {
+    "gamma": 2.0,
+    "lambda": 0.7,
+    "source": "Zhao et al. ACL 2023 Appendix B, TACRED row",
+    "tau2": 0.5
+  },
+  "fresh_optimizer_per_task": true,
+  "git_hash": "9b41b2e-dirty",
+  "hidden_dim": 256,
+  "k": 3,
+  "learning_rate": 0.001,
+  "max_epochs_per_task": 60,
+  "n_classes": 17,
+  "regime": "naive",
+  "replay": {
+    "memory_per_relation": 10,
+    "new_to_buffer_ratio": 0.5,
+    "selection": "kmeans"
+  },
+  "run_id": "teacher_naive_2_20260829-152709",
+  "seed": 2,
+  "task_classes_override": false,
+  "track": "teacher",
+  "train_examples": 879,
+  "wall_seconds": 0.6,
+  "weight_decay": 0.0
+}

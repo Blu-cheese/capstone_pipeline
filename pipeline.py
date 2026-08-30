@@ -32,11 +32,17 @@ import sys
 from pathlib import Path
 from typing import List
 
+from utils.env import load_env
+load_env()  # populate os.environ from .env before defaults are computed
+
 from utils.models import Triple, MeetingTranscript
 from preprocessing.transcript_parser import parse_transcript
 from preprocessing.chunking import chunk_transcript
 from preprocessing.entity_resolution import EntityResolver
-from extractors.llm_extractor import LLMExtractor, MockLLMExtractor
+from preprocessing.speaker_naming import (
+    resolve_speakers, drop_placeholder_triples, load_rosters,
+)
+from extractors.llm_extractor import LLMExtractor, MockLLMExtractor, DEFAULT_MODEL
 from graph.neo4j_graph import KnowledgeGraph, FlatFileGraph
 
 
@@ -47,6 +53,7 @@ def process_meeting(
     graph,
     window_size: int = 15,
     overlap: int = 5,
+    drop_placeholders: bool = True,
 ) -> List[Triple]:
     """
     Process a single meeting through the full pipeline.
@@ -69,6 +76,11 @@ def process_meeting(
     print(f"\n[2/4] Extracting triples...")
     raw_triples = extractor.extract_meeting(windows)
     print(f"  Raw triples extracted: {len(raw_triples)}")
+
+    # Any speaker the naming step could not identify is still a bare
+    # diarization label, which is not a real entity.
+    if drop_placeholders:
+        raw_triples = drop_placeholder_triples(raw_triples)
 
     if not raw_triples:
         print("  No triples found. Skipping this meeting.")
@@ -95,7 +107,7 @@ def process_meeting(
 def save_triples_json(triples: List[Triple], output_path: str):
     """Save extracted triples to JSON for inspection/evaluation."""
     data = [t.to_dict() for t in triples]
-    with open(output_path, "w") as f:
+    with open(output_path, "w", encoding="utf-8") as f:
         json.dump(data, f, indent=2)
     print(f"  Triples saved to {output_path}")
 
@@ -108,10 +120,14 @@ def build_extractor(args):
 
     elif args.extractor == "llm":
         print(f"[Extractor] Using LLM: {args.llm_model}")
+        print(f"[Extractor] Mode: {'constrained (schema enums)' if args.constrained else 'freeform'}")
+        print(f"[Extractor] Pacing: {args.request_delay}s between windows")
         return LLMExtractor(
             model=args.llm_model,
             api_key=args.api_key or os.getenv("OPENAI_API_KEY"),
             base_url=args.api_base or os.getenv("OPENAI_BASE_URL"),
+            constrained=args.constrained,
+            request_delay=args.request_delay,
         )
 
     elif args.extractor == "dhgat":
@@ -171,9 +187,26 @@ def main():
         "--extractor", choices=["llm", "dhgat", "mock"], default="llm",
         help="Which triple extractor to use (default: llm)"
     )
-    parser.add_argument("--llm-model", default="gpt-4o-mini")
+    parser.add_argument("--llm-model", default=os.getenv("LLM_MODEL", DEFAULT_MODEL),
+                        help=f"LLM for extraction (default: {DEFAULT_MODEL}). "
+                             f"The API endpoint is derived from the model name.")
     parser.add_argument("--api-key", default=None)
     parser.add_argument("--api-base", default=None)
+    parser.add_argument("--request-delay", type=float,
+                        default=float(os.getenv("LLM_REQUEST_DELAY", "5.0")),
+                        help="Seconds between extraction calls. Default 5.0 suits "
+                             "a free tier (~12 RPM). On a paid tier use 0.1-0.5; "
+                             "429s are retried with backoff regardless.")
+
+    # Taxonomy constraint. Constrained is the default: freeform extraction
+    # produced 4% taxonomy adherence on meeting_001, which is unusable as
+    # training labels. --freeform keeps the original path for comparison.
+    constraint = parser.add_mutually_exclusive_group()
+    constraint.add_argument("--constrained", dest="constrained", action="store_true",
+                            default=True,
+                            help="Force relations/types to the taxonomy via JSON-schema enums (default)")
+    constraint.add_argument("--freeform", dest="constrained", action="store_false",
+                            help="Original unconstrained prompt; the model may invent relations")
     parser.add_argument("--dhgat-repo", default="./capstone_dialouge-re")
     parser.add_argument("--dhgat-ckpt", default=None)
 
@@ -183,6 +216,20 @@ def main():
     parser.add_argument("--neo4j-uri", default="bolt://localhost:7687")
     parser.add_argument("--neo4j-user", default="neo4j")
     parser.add_argument("--neo4j-password", default="password")
+
+    # Speaker naming. Diarization emits anonymous SPEAKER_n labels, which
+    # the extractor otherwise turns into PERSON entities — 43% of triples
+    # in the first five-meeting run. Resolving them is the default.
+    parser.add_argument("--no-resolve-speakers", dest="resolve_speakers",
+                        action="store_false", default=True,
+                        help="Skip mapping SPEAKER_n to the names spoken in the dialogue")
+    parser.add_argument("--keep-placeholders", dest="drop_placeholders",
+                        action="store_false", default=True,
+                        help="Keep triples anchored to unresolved speaker labels")
+    parser.add_argument("--roster", default="data/rosters.json",
+                        help="JSON of {meeting_id: [attendee names]}. Constrains "
+                             "speaker naming to a closed set, the way a calendar "
+                             "invite would. Pass '' to disable.")
 
     # Chunking
     parser.add_argument("--window-size", type=int, default=15)
@@ -197,9 +244,17 @@ def main():
     args = parser.parse_args()
     os.makedirs(args.output_dir, exist_ok=True)
 
+    # Rosters feed two things: the closed set for speaker naming, and the
+    # canonical spellings the resolver collapses ASR name variants onto.
+    rosters = load_rosters(args.roster) if args.resolve_speakers else {}
+    if rosters:
+        print(f"[Rosters] Loaded attendee lists for {len(rosters)} meetings "
+              f"from {args.roster}")
+    all_attendees = sorted({n for names in rosters.values() for n in names})
+
     # Build components
     extractor = build_extractor(args)
-    resolver = EntityResolver()
+    resolver = EntityResolver(roster_names=all_attendees)
     graph = build_graph(args)
 
     if args.clear_graph:
@@ -219,6 +274,18 @@ def main():
             print(f"[WARN] No utterances found in {filepath}. Skipping.")
             continue
 
+        # Name the speakers before chunking, so the extractor prompt
+        # carries real names rather than diarization labels.
+        if args.resolve_speakers:
+            print(f"\n[0/4] Resolving speaker names for {transcript.meeting_id}...")
+            resolve_speakers(
+                transcript,
+                model=args.llm_model,
+                api_key=args.api_key or os.getenv("OPENAI_API_KEY", ""),
+                base_url=args.api_base or os.getenv("OPENAI_BASE_URL", ""),
+                roster=rosters.get(transcript.meeting_id),
+            )
+
         # Process through pipeline
         triples = process_meeting(
             transcript=transcript,
@@ -227,6 +294,7 @@ def main():
             graph=graph,
             window_size=args.window_size,
             overlap=args.overlap,
+            drop_placeholders=args.drop_placeholders,
         )
 
         # Save triples for this meeting
@@ -246,6 +314,37 @@ def main():
     print(f"Total triples extracted: {total}")
     print(f"Graph stats: {graph.get_graph_stats()}")
     print(f"Entity resolver stats: {resolver.get_stats()}")
+
+    # Extraction coverage. Reported separately from adherence because they
+    # answer different questions: adherence is "are the labels legal",
+    # coverage is "did we actually look at the whole meeting".
+    if hasattr(extractor, "coverage_report"):
+        cov = extractor.coverage_report()
+        print(f"\nExtraction coverage: {cov['windows_extracted']}/{cov['windows_total']} "
+              f"windows ({cov['coverage_pct']}%), "
+              f"{cov['windows_failed']} failed, {cov['windows_empty']} yielded no triples")
+        if cov["windows_failed"]:
+            print(f"  *** {cov['windows_failed']} window(s) were never extracted. "
+                  f"That content is missing from the graph. Re-run to recover it.")
+        cov_path = os.path.join(args.output_dir, "coverage.json")
+        with open(cov_path, "w", encoding="utf-8") as f:
+            json.dump(cov, f, indent=2)
+
+    # Taxonomy adherence — the gating metric for using these triples as
+    # training labels downstream.
+    if hasattr(extractor, "adherence_report"):
+        report = extractor.adherence_report()
+        print(f"\nTaxonomy adherence [{report['mode']}]: "
+              f"{report['adherence_pct']}% "
+              f"({report['triples_seen'] - report['off_taxonomy_count']}"
+              f"/{report['triples_seen']} relations in taxonomy)")
+        if report["off_taxonomy_labels"]:
+            print(f"  Off-taxonomy labels: {report['off_taxonomy_labels']}")
+        report_path = os.path.join(args.output_dir, f"adherence_{report['mode']}.json")
+        with open(report_path, "w", encoding="utf-8") as f:
+            json.dump(report, f, indent=2)
+        print(f"  Adherence report saved to {report_path}")
+
     print(f"Output directory: {args.output_dir}")
 
     graph.close()
