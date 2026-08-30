@@ -99,7 +99,8 @@ RULES:
    silently returns nothing.
 4. Use OPTIONAL MATCH if some results might not have certain properties.
 5. Always RETURN readable aliases (AS keyword) so the results make sense.
-6. Limit results to 25 rows max.
+6. End the query with LIMIT 200. Returning extra rows is harmless — the
+   answering step filters. Returning too few silently loses facts.
 7. For temporal queries, ORDER BY r.source_meeting, r.utterance_time — in
    that order. NEVER order by r.timestamp: it records when the pipeline ran,
    not when anything was said.
@@ -114,16 +115,16 @@ RULES:
 
 EXAMPLES:
 Question: What decisions were made?
-Query: MATCH (s:Entity)-[r:RELATION]->(o:Entity) WHERE r.type IN ['approved', 'rejected', 'decided_on', 'postponed', 'proposed'] RETURN s.name AS subject, r.type AS decision, o.name AS object, r.source_meeting AS meeting ORDER BY r.source_meeting, r.utterance_time LIMIT 25
+Query: MATCH (s:Entity)-[r:RELATION]->(o:Entity) WHERE r.type IN ['approved', 'rejected', 'decided_on', 'postponed', 'proposed'] RETURN s.name AS subject, r.type AS decision, o.name AS object, r.source_meeting AS meeting ORDER BY r.source_meeting, r.utterance_time LIMIT 200
 
 Question: Who is assigned to what?
-Query: MATCH (p:Entity)-[r:RELATION]->(t:Entity) WHERE r.type = 'assigned_to' RETURN p.name AS person, t.name AS task, r.source_meeting AS meeting, r.confidence AS confidence ORDER BY r.source_meeting, r.utterance_time LIMIT 25
+Query: MATCH (p:Entity)-[r:RELATION]->(t:Entity) WHERE r.type = 'assigned_to' RETURN p.name AS person, t.name AS task, r.source_meeting AS meeting, r.confidence AS confidence ORDER BY r.source_meeting, r.utterance_time LIMIT 200
 
 Question: How did the budget change?
-Query: MATCH (e:Entity)-[r:RELATION]-(other:Entity) WHERE toLower(e.name) CONTAINS 'budget' OR toLower(other.name) CONTAINS 'budget' OR r.type = 'budget_for' RETURN e.name AS entity, r.type AS relation, other.name AS related_to, r.source_meeting AS meeting ORDER BY r.source_meeting, r.utterance_time LIMIT 25
+Query: MATCH (e:Entity)-[r:RELATION]-(other:Entity) WHERE toLower(e.name) CONTAINS 'budget' OR toLower(other.name) CONTAINS 'budget' OR r.type = 'budget_for' RETURN e.name AS entity, r.type AS relation, other.name AS related_to, r.source_meeting AS meeting ORDER BY r.source_meeting, r.utterance_time LIMIT 200
 
 Question: What happened to the Data Mining course?
-Query: MATCH (x:Entity)-[r:RELATION]-(other:Entity) WHERE toLower(x.name) CONTAINS 'data mining' RETURN x.name AS entity, r.type AS relation, other.name AS related_to, r.source_meeting AS meeting ORDER BY r.source_meeting, r.utterance_time LIMIT 25"""
+Query: MATCH (x:Entity)-[r:RELATION]-(other:Entity) WHERE toLower(x.name) CONTAINS 'data mining' RETURN x.name AS entity, r.type AS relation, other.name AS related_to, r.source_meeting AS meeting ORDER BY r.source_meeting, r.utterance_time LIMIT 200"""
 
 
 ANSWER_SYSTEM_PROMPT = """You are a helpful assistant that answers questions about college staff meetings based on knowledge graph query results.
@@ -217,6 +218,20 @@ def generate_cypher(question: str, **llm_kwargs) -> str:
 
 MAX_CYPHER_ATTEMPTS = 3
 
+# Row cap for generated queries.
+#
+# Not proportional to graph size: how many rows a question needs is a property
+# of the question, not the database. It is a bound on what gets serialised into
+# the answering prompt, so that one malformed query (a missing WHERE producing
+# a near-cartesian join) cannot blow up a request.
+#
+# 200 is generous against this graph — the broadest single-topic question
+# ("infosys") matches 40 rows of 490 total. The old cap of 25 silently
+# truncated that to 25, and since results are ordered chronologically the rows
+# dropped were the most recent meetings: exactly the temporal evolution the
+# question was asking about.
+MAX_ROWS = 200
+
 
 REPAIR_SYSTEM_PROMPT = """You fix broken Cypher queries for a Neo4j knowledge graph.
 
@@ -234,7 +249,7 @@ RULES:
    fine, failing to parse is not.
 4. Relations are (:Entity)-[:RELATION {{type: '...'}}]->(:Entity). Filter on
    the 'type' property, never on the relationship type itself.
-5. Limit results to 25 rows."""
+5. End the query with LIMIT 200."""
 
 
 def repair_cypher(question: str, broken_query: str, error: str, **llm_kwargs) -> str:
@@ -264,8 +279,16 @@ def run_cypher(graph: KnowledgeGraph, query: str) -> List[Dict]:
         return [{"error": str(e)}]
 
 
-def generate_answer(question: str, results: List[Dict], **llm_kwargs) -> str:
-    """Generate a natural language answer from query results."""
+def generate_answer(question: str, results: List[Dict], truncated: bool = False,
+                    **llm_kwargs) -> str:
+    """
+    Generate a natural language answer from query results.
+
+    `truncated` means the query hit the row cap, so these results are a
+    prefix of the real answer. Results are ordered chronologically, so the
+    rows lost are the most recent ones — the answer must not imply it is
+    complete.
+    """
     if not results:
         results_text = "No results found."
     elif "error" in results[0]:
@@ -273,11 +296,21 @@ def generate_answer(question: str, results: List[Dict], **llm_kwargs) -> str:
     else:
         results_text = json.dumps(results, indent=2, default=str)
 
+    truncation_note = ""
+    if truncated:
+        truncation_note = (
+            f"\nNOTE: these are the first {MAX_ROWS} matching facts and there "
+            f"are more. They are ordered oldest-first, so the most recent "
+            f"developments are the ones missing. Answer from what is here, but "
+            f"say plainly that this is a partial picture and more recent items "
+            f"may not be reflected.\n"
+        )
+
     user_prompt = f"""Question: {question}
 
 Query results:
 {results_text}
-
+{truncation_note}
 Provide a clear answer based on these results."""
 
     return call_llm(ANSWER_SYSTEM_PROMPT, user_prompt, **llm_kwargs)
@@ -375,7 +408,14 @@ def ask(question: str, graph=None, output_dir: str = "./output", verbose: bool =
         if verbose:
             print(f"[Results] {json.dumps(results, indent=2, default=str)}\n")
 
-        answer = generate_answer(question, results, **llm_kwargs)
+        truncated = bool(results) and "error" not in results[0] \
+            and len(results) >= MAX_ROWS
+        if truncated:
+            print(f"[WARN] Result hit the {MAX_ROWS}-row cap — the answer is "
+                  f"built from a partial, oldest-first subset.")
+
+        answer = generate_answer(question, results, truncated=truncated,
+                                 **llm_kwargs)
         return answer
     else:
         # Flat file path: question + all data → LLM answers directly
