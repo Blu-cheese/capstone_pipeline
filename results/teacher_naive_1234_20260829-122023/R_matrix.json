@@ -1,0 +1,48 @@
+{
+  "ACC_acc": 0.422203,
+  "ACC_f1": 0.311875,
+  "BWT_acc": null,
+  "BWT_f1": null,
+  "R_acc": [
+    [
+      0.422203
+    ]
+  ],
+  "R_f1": [
+    [
+      0.311875
+    ]
+  ],
+  "diagonal_warnings": [],
+  "joint_baseline_ref": {
+    "epoch_cap": 60,
+    "test_accuracy": 0.4222027972027972,
+    "test_macro_f1": 0.31187480000651846,
+    "track": "teacher"
+  },
+  "regime": "naive",
+  "run_id": "teacher_naive_1234_20260829-122023",
+  "seed": 1234,
+  "task_classes": [
+    [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16
+    ]
+  ],
+  "track": "teacher"
+}

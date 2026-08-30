@@ -1,0 +1,189 @@
+SCRIPT 3: Board of Studies Meeting — Curriculum Review
+========================================================
+Duration target: ~7 minutes spoken
+Speakers: 4
+  - KESHAVAN (male, Dean of Faculty, chairing)
+  - JAYASHREE (female, CSE chairperson)
+  - KUMAR (male, senior academic council member)
+  - PRIYA (female, external academic reviewer)
+
+Setup: Board of Studies meeting reviewing curriculum changes. More 
+realistic dialogue with interruptions, disagreements, and unresolved 
+items. Tests the pipeline's ability to handle messier conversation.
+
+---
+
+KESHAVAN: Alright, let's begin. We have twelve items on the agenda. 
+I want to finish in ninety minutes. First item, the curriculum revision 
+for the AI and ML program. Jayashree, please present.
+
+JAYASHREE: Thank you sir. So, the department has proposed three major 
+changes. First, replacing the Data Mining elective with a new course 
+called Applied Deep Learning. Second, updating the NLP course syllabus 
+to include large language models. Third, making Machine Learning a 
+prerequisite for three advanced electives.
+
+KUMAR: Jayashree, hold on. Why are we removing Data Mining? It's a 
+foundational course.
+
+JAYASHREE: Sir, the enrollment has dropped significantly. Last two 
+years, only eleven and fourteen students respectively opted for it.
+
+KUMAR: That doesn't mean we remove it. It means we improve it.
+
+PRIYA: Actually, if I may. At our institution, we had the same issue 
+with Data Mining. We merged it with the statistical learning course. 
+That approach worked well.
+
+JAYASHREE: We considered that. But we already have an advanced ML 
+course covering similar ground. Adding another would be redundant.
+
+KUMAR: I'm not convinced. Data Mining covers things like association 
+rules, frequent pattern mining. Things not in standard ML courses.
+
+KESHAVAN: Let's table this specific point. Kumar, can you prepare a 
+brief justification for keeping Data Mining by next meeting?
+
+KUMAR: Yes, I'll have it ready.
+
+KESHAVAN: Jayashree, continue with the other changes.
+
+JAYASHREE: The NLP update. We want to include a module on transformer 
+architectures, fine-tuning, and practical deployment of language models. 
+The current syllabus stops at word embeddings and basic sequence models.
+
+PRIYA: That's a reasonable update. Industry is moving fast here. 
+What's the assessment like?
+
+JAYASHREE: Sixty percent continuous evaluation, forty percent end 
+semester. We have a mandatory group project where students build and 
+evaluate an NLP application.
+
+PRIYA: Good. What about the computational requirements? Training 
+transformers needs significant resources.
+
+JAYASHREE: We're using pre-trained models and fine-tuning. Not training 
+from scratch. The lab has enough GPUs for fine-tuning experiments.
+
+KUMAR: How many GPUs exactly?
+
+JAYASHREE: Currently four. We're procuring four more.
+
+KUMAR: With what budget?
+
+JAYASHREE: Two point two lakhs approved for phase one. Phase two 
+will be requested next quarter.
+
+KESHAVAN: Moving on. The third change, prerequisites.
+
+JAYASHREE: We want Machine Learning to be a mandatory prerequisite 
+for Deep Learning, Computer Vision, and Reinforcement Learning. 
+Currently these are open to any student.
+
+PRIYA: I strongly support this. We've seen too many students struggling 
+in advanced electives because they lack ML fundamentals.
+
+KUMAR: Agreed on Deep Learning. But Computer Vision? That's more 
+linear algebra and image processing. ML prerequisite might be overkill.
+
+JAYASHREE: The modern computer vision curriculum is basically deep 
+learning applied to images. CNNs, vision transformers, generative 
+models. Without ML background, students can't follow.
+
+KUMAR: Fine, I'll concede on that.
+
+PRIYA: One question on implementation. What happens to students 
+currently enrolled without the prerequisite?
+
+JAYASHREE: Grandfathered in. The prerequisite applies to batches 
+starting next academic year.
+
+KESHAVAN: Alright, voting on the package. Three changes. First, 
+Data Mining replacement, deferred pending Kumar's review. Second, 
+NLP syllabus update. Third, prerequisite changes for advanced electives. 
+All in favor of items two and three?
+
+KUMAR: In favor.
+
+PRIYA: In favor.
+
+JAYASHREE: In favor.
+
+KESHAVAN: Approved. Jayashree, please update the curriculum document 
+and circulate by Friday. Kumar, Data Mining decision goes to next 
+meeting. Moving to item two. The capstone project framework.
+
+JAYASHREE: We've revised the capstone timeline. Phase one is now 
+fourteen weeks instead of twelve. Based on student feedback about 
+workload. Assessment split remains thirty seventy between phase one 
+and phase two.
+
+KUMAR: Fourteen weeks for phase one? That's more than the phase two 
+timeline of sixteen weeks. Doesn't seem balanced.
+
+JAYASHREE: Phase two is primarily implementation. Phase one is 
+literature review, problem formulation, and prototype design. It 
+genuinely takes longer when done properly.
+
+PRIYA: What's the literature survey requirement?
+
+JAYASHREE: Minimum four papers. Students must critically analyze, 
+not just summarize.
+
+KUMAR: How do you grade critical analysis? That's subjective.
+
+JAYASHREE: We have a rubric. Ten points for summary. Fifteen points 
+for critical analysis, which includes identifying gaps, limitations, 
+comparison across papers. Specific criteria for each.
+
+PRIYA: Send me the rubric. I can review it for fairness across 
+teams and graders.
+
+JAYASHREE: I'll email it this evening.
+
+KESHAVAN: The extension to fourteen weeks, I approve. What about the 
+mandatory peer review Chetana mentioned in her note?
+
+JAYASHREE: Yes. Each team presents their Phase 1 to two other teams. 
+Teams give structured feedback using a rubric. This happens in week 
+twelve, two weeks before submission.
+
+KUMAR: Is this graded?
+
+JAYASHREE: Yes. Five percent of the phase one grade is based on 
+the quality of feedback given to other teams, not just received.
+
+PRIYA: I like this. It incentivizes engagement with peers' work.
+
+KESHAVAN: Approved. Anything else on capstone?
+
+JAYASHREE: Not for now.
+
+KESHAVAN: Item three. External industry collaborations. We received 
+three proposals. One from Infosys for a joint research lab. One 
+from Bosch for an embedded systems elective. One from NVIDIA for 
+GPU computing workshops.
+
+KUMAR: Infosys is the most committed. They've done good work with 
+other institutions.
+
+PRIYA: I know the Bosch proposal well. It's genuinely good for 
+students interested in automotive software. Hands-on with real 
+embedded hardware.
+
+JAYASHREE: NVIDIA workshops would complement our AI program well.
+
+KESHAVAN: We're running low on time. Let me propose we approve 
+exploring all three, but prioritize based on resources. Infosys 
+first given scope. Then NVIDIA workshops since they're shorter 
+duration. Bosch third since embedded isn't our primary focus area.
+
+KUMAR: Fine with me.
+
+PRIYA: Agreed.
+
+JAYASHREE: Agreed.
+
+KESHAVAN: Okay, that's approved. We'll cover items four through 
+twelve next meeting. Scheduled for February twenty eighth. Thank 
+you all.

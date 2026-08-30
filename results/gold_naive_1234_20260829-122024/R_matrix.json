@@ -1,0 +1,48 @@
+{
+  "ACC_acc": 0.58042,
+  "ACC_f1": 0.451009,
+  "BWT_acc": null,
+  "BWT_f1": null,
+  "R_acc": [
+    [
+      0.58042
+    ]
+  ],
+  "R_f1": [
+    [
+      0.451009
+    ]
+  ],
+  "diagonal_warnings": [],
+  "joint_baseline_ref": {
+    "epoch_cap": 60,
+    "test_accuracy": 0.5804195804195804,
+    "test_macro_f1": 0.4510093501703296,
+    "track": "gold"
+  },
+  "regime": "naive",
+  "run_id": "gold_naive_1234_20260829-122024",
+  "seed": 1234,
+  "task_classes": [
+    [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16
+    ]
+  ],
+  "track": "gold"
+}

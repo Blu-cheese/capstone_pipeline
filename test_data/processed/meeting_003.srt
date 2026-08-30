@@ -1,0 +1,572 @@
+﻿1
+00:00:00,140 --> 00:00:01,400
+Speaker 1: All right, let's begin.
+
+2
+00:00:02,480 --> 00:00:04,180
+Speaker 1: We have 12 items on the agenda.
+
+3
+00:00:05,340 --> 00:00:06,900
+Speaker 1: I want to finish in 90 minutes.
+
+4
+00:00:08,020 --> 00:00:11,820
+Speaker 1: First item, the curriculum revision for the AI and ML program.
+
+5
+00:00:12,880 --> 00:00:14,380
+Speaker 1: Jaishree, please present.
+
+6
+00:00:16,120 --> 00:00:16,760
+Speaker 0: Thank you, sir.
+
+7
+00:00:17,960 --> 00:00:21,280
+Speaker 0: So, the department has proposed three major changes.
+
+8
+00:00:22,400 --> 00:00:27,440
+Speaker 0: First, replacing the data mining elective with a new course called Applied Deep Learning.
+
+9
+00:00:28,640 --> 00:00:33,540
+Speaker 0: Second, Updating the NLP course syllabus to include large language models.
+
+10
+00:00:34,620 --> 00:00:39,080
+Speaker 0: Third, making machine learning a prerequisite for three advanced electives.
+
+11
+00:00:40,780 --> 00:00:42,000
+Speaker 3: Jaishree, hold on.
+
+12
+00:00:43,120 --> 00:00:44,840
+Speaker 3: Why are we removing data mining?
+
+13
+00:00:45,920 --> 00:00:47,320
+Speaker 3: It's a foundational course.
+
+14
+00:00:49,080 --> 00:00:51,860
+Speaker 0: Sir, the enrollment has dropped significantly.
+
+15
+00:00:53,120 --> 00:00:57,900
+Speaker 0: Last two years, only 11 and 14 students respectively opted for it.
+
+16
+00:00:59,580 --> 00:01:00,960
+Speaker 3: That doesn't mean we remove it.
+
+17
+00:01:02,040 --> 00:01:03,240
+Speaker 3: It means we improve it.
+
+18
+00:01:04,940 --> 00:01:06,120
+Speaker 2: Actually, if I may.
+
+19
+00:01:07,240 --> 00:01:10,360
+Speaker 2: At our institution, we had the same issue with data mining.
+
+20
+00:01:11,440 --> 00:01:13,740
+Speaker 2: We merged it with the statistical learning course.
+
+21
+00:01:14,840 --> 00:01:15,980
+Speaker 2: That approach worked well.
+
+22
+00:01:17,720 --> 00:01:18,760
+Speaker 0: We considered that.
+
+23
+00:01:19,900 --> 00:01:23,800
+Speaker 0: But we already have an advanced ML course covering similar ground.
+
+24
+00:01:24,920 --> 00:01:26,560
+Speaker 0: Adding another would be redundant.
+
+25
+00:01:28,280 --> 00:01:29,140
+Speaker 3: I'm not convinced.
+
+26
+00:01:30,180 --> 00:01:34,180
+Speaker 3: Data mining covers things like association rules, frequent pattern mining.
+
+27
+00:01:35,260 --> 00:01:37,200
+Speaker 3: Things not in standard ML courses.
+
+28
+00:01:38,860 --> 00:01:40,560
+Speaker 1: Let's table this specific point.
+
+29
+00:01:41,580 --> 00:01:46,140
+Speaker 1: Kumar, can you prepare a brief justification for keeping data mining by next meeting?
+
+30
+00:01:47,800 --> 00:01:48,980
+Speaker 3: Yes, I'll have it ready.
+
+31
+00:01:50,620 --> 00:01:52,920
+Speaker 1: Jaishree, continue with the other changes.
+
+32
+00:01:54,680 --> 00:01:55,960
+Speaker 0: The NLP update.
+
+33
+00:01:57,060 --> 00:02:04,160
+Speaker 0: We want to include a module on transformer architectures, fine-tuning, and practical deployment of language models.
+
+34
+00:02:05,260 --> 00:02:09,620
+Speaker 0: The current syllabus stops at word embeddings and basic sequence models.
+
+35
+00:02:11,300 --> 00:02:12,640
+Speaker 2: That's a reasonable update.
+
+36
+00:02:13,700 --> 00:02:15,240
+Speaker 2: Industry is moving fast here.
+
+37
+00:02:16,340 --> 00:02:17,480
+Speaker 2: What's the assessment like?
+
+38
+00:02:17,500 --> 00:02:21,400
+Speaker 0: 60% continuous evaluation.
+
+39
+00:02:21,420 --> 00:02:23,460
+Speaker 0: 40% end semester.
+
+40
+00:02:24,620 --> 00:02:29,880
+Speaker 0: We have a mandatory group project where students build and evaluate an NLP application.
+
+41
+00:02:31,580 --> 00:02:35,020
+Speaker 2: Good What about the computational requirements?
+
+42
+00:02:36,080 --> 00:02:38,820
+Speaker 2: Training transformers need significant resources.
+
+43
+00:02:40,560 --> 00:02:43,080
+Speaker 0: We're using pre-trained models and fine-tuning.
+
+44
+00:02:44,260 --> 00:02:45,680
+Speaker 0: Not training from scratch.
+
+45
+00:02:46,780 --> 00:02:50,040
+Speaker 0: The lab has enough GPUs for fine-tuning experiments.
+
+46
+00:02:51,740 --> 00:02:53,280
+Speaker 3: How many GPUs exactly?
+
+47
+00:02:54,900 --> 00:02:55,620
+Speaker 0: Currently four.
+
+48
+00:02:56,760 --> 00:02:58,140
+Speaker 0: We are procuring four more.
+
+49
+00:02:59,880 --> 00:03:00,660
+Speaker 3: With what budget?
+
+50
+00:03:00,680 --> 00:03:05,000
+Speaker 0: 2.2 lakhs approved for Phase 1.
+
+51
+00:03:05,880 --> 00:03:08,120
+Speaker 0: Phase 2 will be requested next quarter.
+
+52
+00:03:09,820 --> 00:03:10,380
+Speaker 1: Moving on.
+
+53
+00:03:11,460 --> 00:03:13,440
+Speaker 1: The third change, prerequisites.
+
+54
+00:03:15,200 --> 00:03:21,800
+Speaker 0: We want machine learning to be a mandatory prerequisite for deep learning, computer vision and reinforcement learning.
+
+55
+00:03:22,900 --> 00:03:25,320
+Speaker 0: Currently these are open to any student.
+
+56
+00:03:27,060 --> 00:03:28,280
+Speaker 2: I strongly support this.
+
+57
+00:03:29,400 --> 00:03:34,120
+Speaker 2: We've seen too many students struggling in advanced electives because they lack ML fundamentals.
+
+58
+00:03:35,860 --> 00:03:37,000
+Speaker 3: Agreed on deep learning.
+
+59
+00:03:38,040 --> 00:03:38,880
+Speaker 3: But computer vision?
+
+60
+00:03:39,960 --> 00:03:42,300
+Speaker 3: That's more linear algebra and image processing.
+
+61
+00:03:43,440 --> 00:03:45,200
+Speaker 3: ML prerequisite might be overkill.
+
+62
+00:03:46,920 --> 00:03:51,660
+Speaker 0: The modern computer vision curriculum is basically deep learning applied to images.
+
+63
+00:03:53,080 --> 00:03:56,280
+Speaker 0: CNNs, vision transformers, generative models.
+
+64
+00:03:57,400 --> 00:04:00,440
+Speaker 0: Without ML background, students can't follow.
+
+65
+00:04:02,140 --> 00:04:03,660
+Speaker 3: Fine, I'll concede on that.
+
+66
+00:04:05,420 --> 00:04:07,080
+Speaker 2: One question on implementation.
+
+67
+00:04:08,200 --> 00:04:11,440
+Speaker 2: What happens to students currently enrolled without the prerequisite?
+
+68
+00:04:13,120 --> 00:04:14,060
+Speaker 0: Grandfathered in.
+
+69
+00:04:15,220 --> 00:04:18,839
+Speaker 0: The prerequisite applies to batches starting next academic year.
+
+70
+00:04:20,579 --> 00:04:22,300
+Speaker 1: All right, voting on the package.
+
+71
+00:04:23,380 --> 00:04:24,240
+Speaker 1: Three changes.
+
+72
+00:04:25,380 --> 00:04:29,200
+Speaker 1: First, data mining replacement, deferred pending Qumars review.
+
+73
+00:04:30,420 --> 00:04:32,540
+Speaker 1: Second, NLP syllabus update.
+
+74
+00:04:33,580 --> 00:04:36,580
+Speaker 1: Third, prerequisite changes for advanced electives.
+
+75
+00:04:37,700 --> 00:04:39,460
+Speaker 1: All in favor of items 2 and 3.
+
+76
+00:04:41,320 --> 00:04:41,840
+Speaker 3: In favor.
+
+77
+00:04:43,580 --> 00:04:44,120
+Speaker 2: In favor.
+
+78
+00:04:45,900 --> 00:04:46,420
+Speaker 0: In favor.
+
+79
+00:04:48,100 --> 00:04:48,680
+Speaker 1: Approved.
+
+80
+00:04:49,700 --> 00:04:53,560
+Speaker 1: Jaishree, please update the curriculum document and circulate by Friday.
+
+81
+00:04:54,620 --> 00:04:57,400
+Speaker 1: Kumar, data mining decision goes to next meeting.
+
+82
+00:04:58,460 --> 00:05:02,280
+Speaker 1: Moving to item 2, the capstone project framework.
+
+83
+00:05:04,060 --> 00:05:06,140
+Speaker 0: We've revised the capstone timeline.
+
+84
+00:05:07,260 --> 00:05:09,740
+Speaker 0: Phase 1 is now 14 weeks instead of 12.
+
+85
+00:05:11,160 --> 00:05:13,640
+Speaker 0: Based on student feedback about workload.
+
+86
+00:05:14,760 --> 00:05:18,980
+Speaker 0: Assessment split remains 30-70 between phase 1 and phase 2.
+
+87
+00:05:18,980 --> 00:05:22,160
+Speaker 3: 14 weeks for phase 1?
+
+88
+00:05:23,000 --> 00:05:25,640
+Speaker 3: That's more than the phase 2 timeline of 16 weeks.
+
+89
+00:05:26,720 --> 00:05:27,780
+Speaker 3: Doesn't seem balanced.
+
+90
+00:05:29,500 --> 00:05:31,720
+Speaker 0: Phase 2 is primarily implementation.
+
+91
+00:05:32,860 --> 00:05:37,340
+Speaker 0: Phase 1 is literature review, problem formulation, and prototype design.
+
+92
+00:05:38,440 --> 00:05:41,060
+Speaker 0: It genuinely takes longer when done properly.
+
+93
+00:05:42,820 --> 00:05:44,760
+Speaker 2: What's the literature survey requirement?
+
+94
+00:05:46,480 --> 00:05:47,700
+Speaker 0: Minimum 4 papers.
+
+95
+00:05:48,860 --> 00:05:52,460
+Speaker 0: Students must critically analyze, not just summarize.
+
+96
+00:05:54,180 --> 00:05:55,920
+Speaker 3: How do you grade critical analysis?
+
+97
+00:05:57,000 --> 00:05:57,860
+Speaker 3: That's objective.
+
+98
+00:05:59,600 --> 00:06:00,440
+Speaker 0: We have a rubric.
+
+99
+00:06:00,460 --> 00:06:02,840
+Speaker 0: 10 points for summary.
+
+100
+00:06:02,860 --> 00:06:11,600
+Speaker 0: 15 points for critical analysis, which includes identifying gaps, limitations, comparison across papers.
+
+101
+00:06:12,740 --> 00:06:14,500
+Speaker 0: Specific criteria for each.
+
+102
+00:06:16,240 --> 00:06:17,140
+Speaker 2: Send me the rubric.
+
+103
+00:06:18,360 --> 00:06:21,040
+Speaker 2: I can review it for fairness across teams and graders.
+
+104
+00:06:22,800 --> 00:06:24,100
+Speaker 0: I'll email it this evening.
+
+105
+00:06:25,720 --> 00:06:28,300
+Speaker 1: The extension to 14 weeks, I approve.
+
+106
+00:06:29,360 --> 00:06:32,380
+Speaker 1: What about the mandatory peer review Chetna mentioned in her note?
+
+107
+00:06:34,080 --> 00:06:34,400
+Speaker 0: Yes.
+
+108
+00:06:35,580 --> 00:06:38,560
+Speaker 0: Each team presents their phase 1 to two other teams.
+
+109
+00:06:39,620 --> 00:06:42,340
+Speaker 0: Teams give structured feedback using a rubric.
+
+110
+00:06:43,540 --> 00:06:46,880
+Speaker 0: This happens in week 12 to weeks before submission.
+
+111
+00:06:48,600 --> 00:06:49,340
+Speaker 3: Is this graded?
+
+112
+00:06:51,100 --> 00:06:51,280
+Speaker 0: Yes.
+
+113
+00:06:51,300 --> 00:06:57,800
+Speaker 0: 5% of the phase 1 grade is based on the quality of feedback given to other teams.
+
+114
+00:06:58,160 --> 00:06:59,180
+Speaker 0: Not just received.
+
+115
+00:07:00,860 --> 00:07:01,420
+Speaker 2: I like this.
+
+116
+00:07:02,540 --> 00:07:04,920
+Speaker 2: It incentivizes engagement with peers' work.
+
+117
+00:07:06,620 --> 00:07:07,200
+Speaker 1: Approved.
+
+118
+00:07:08,240 --> 00:07:09,600
+Speaker 1: Anything else on Capstone?
+
+119
+00:07:11,360 --> 00:07:12,060
+Speaker 0: Not for now.
+
+120
+00:07:13,780 --> 00:07:14,200
+Speaker 1: Item 3.
+
+121
+00:07:15,460 --> 00:07:17,360
+Speaker 1: External industry collaborations.
+
+122
+00:07:18,420 --> 00:07:20,020
+Speaker 1: We received three proposals.
+
+123
+00:07:21,160 --> 00:07:23,460
+Speaker 1: One from Infosys for a joint research lab.
+
+124
+00:07:24,600 --> 00:07:26,920
+Speaker 1: One from Bosch for an embedded systems elective.
+
+125
+00:07:28,080 --> 00:07:30,860
+Speaker 1: One from NVIDIA for GPU computing workshops.
+
+126
+00:07:32,620 --> 00:07:34,160
+Speaker 3: Infosys is the most committed.
+
+127
+00:07:35,220 --> 00:07:37,200
+Speaker 3: They've done good work with other institutions.
+
+128
+00:07:38,980 --> 00:07:40,420
+Speaker 2: I know the Bosch proposal well.
+
+129
+00:07:41,500 --> 00:07:45,020
+Speaker 2: It's genuinely good for students interested in automotive software.
+
+130
+00:07:46,100 --> 00:07:47,960
+Speaker 2: Hands-on with real embedded hardware.
+
+131
+00:07:49,780 --> 00:07:53,320
+Speaker 0: NVIDIA workshops would complement our AI program well.
+
+132
+00:07:54,980 --> 00:07:56,300
+Speaker 1: We're running low on time.
+
+133
+00:07:57,360 --> 00:08:02,140
+Speaker 1: Let me propose we approve exploring all three, but prioritize based on resources.
+
+134
+00:08:03,240 --> 00:08:04,860
+Speaker 1: Infosys first given scope.
+
+135
+00:08:05,900 --> 00:08:08,500
+Speaker 1: Then Nvidia Workshops since their shorter duration.
+
+136
+00:08:09,580 --> 00:08:12,560
+Speaker 1: Bosch 3rd since embedded isn't our primary focus area.
+
+137
+00:08:14,340 --> 00:08:14,860
+Speaker 3: Fine with me.
+
+138
+00:08:16,560 --> 00:08:17,040
+Speaker 2: Agreed.
+
+139
+00:08:18,880 --> 00:08:19,300
+Speaker 0: Agreed.
+
+140
+00:08:21,100 --> 00:08:22,420
+Speaker 1: Okay, that's approved.
+
+141
+00:08:23,460 --> 00:08:25,940
+Speaker 1: We'll cover items 4 through 12 next meeting.
+
+142
+00:08:27,060 --> 00:08:28,780
+Speaker 1: Scheduled for February 28th.
+
+143
+00:08:29,860 --> 00:08:31,920
+Speaker 1: Thank you all.
+

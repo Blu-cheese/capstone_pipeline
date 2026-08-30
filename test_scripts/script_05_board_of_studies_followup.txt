@@ -1,0 +1,186 @@
+SCRIPT 5: Board of Studies — February Follow-up
+================================================
+Duration target: ~7 minutes spoken
+Speakers: 4 (same as Script 3)
+  - KESHAVAN (male, Dean of Faculty, chairing)
+  - JAYASHREE (female, CSE chairperson)
+  - KUMAR (male, senior academic council member)
+  - PRIYA (female, external academic reviewer)
+
+Setup: The February twenty eighth meeting that Script 3 scheduled.
+Resolves the deferred Data Mining item, closes the industry
+collaboration thread, and reverses one earlier decision. Designed so
+the graph shows a decision changing state across meetings.
+
+---
+
+KESHAVAN: Good morning. This is the follow-up to our January meeting.
+We deferred one item and approved three. Let's start with the deferred
+item. Kumar, you were preparing a justification for retaining Data
+Mining.
+
+KUMAR: I was, and I've circulated it. My position has changed somewhat.
+
+PRIYA: Changed how?
+
+KUMAR: I pulled the enrollment data for the last five years, not two.
+Eleven and fourteen were the last two years, but before that it was
+thirty one, twenty eight, and twenty six. The decline is recent and it
+correlates exactly with when we introduced the advanced machine
+learning elective.
+
+JAYASHREE: So students are substituting, not losing interest.
+
+KUMAR: That's my reading. Which means removing Data Mining entirely
+loses content that nothing else covers. Association rules, frequent
+pattern mining, anomaly detection on transactional data.
+
+PRIYA: This is what I suggested in January. Merge rather than remove.
+
+KUMAR: Yes, and I now agree with Priya. I propose we merge Data Mining
+with Statistical Learning into a single four credit course. Call it
+Data Mining and Statistical Learning.
+
+JAYASHREE: I can work with that. It solves my redundancy concern and
+Kumar's coverage concern.
+
+KESHAVAN: Who would teach it?
+
+JAYASHREE: Meera has taught Statistical Learning for three years. She
+would be the natural choice, but she's already taking the revised NLP
+course and two bridge sessions for the deep learning elective.
+
+KUMAR: I can co-teach. I've taught Data Mining since it was introduced.
+
+KESHAVAN: Then let's do that. Meera and Kumar co-teach Data Mining and
+Statistical Learning, four credits, from the next academic year. Kumar,
+that reverses our January decision to replace the course. I want the
+minutes to show that explicitly.
+
+KUMAR: Agreed.
+
+PRIYA: I support it.
+
+JAYASHREE: In favour.
+
+KESHAVAN: Approved. Item two. Industry collaborations. In January we
+prioritised Infosys first, NVIDIA second, Bosch third. Jayashree,
+status.
+
+JAYASHREE: Infosys. The memorandum of understanding is drafted. Legal
+has reviewed it. It is not signed yet.
+
+KESHAVAN: Why not?
+
+JAYASHREE: One clause. They want first look at student projects for
+recruitment. Legal says that as written, it could be read as an
+exclusivity arrangement, which would conflict with our placement
+policy.
+
+KUMAR: That's a serious conflict. We cannot give one company
+exclusivity over student work.
+
+JAYASHREE: Ramesh has gone back to them. They've indicated they'll
+accept non exclusive language. We expect the revised draft in ten days.
+
+KESHAVAN: So we are not signing today. Jayashree, present the signature
+at the April meeting. Do not let the department sign anything before
+legal clears the revised clause.
+
+JAYASHREE: Understood.
+
+KESHAVAN: NVIDIA.
+
+JAYASHREE: Simpler. They've offered a three day GPU computing workshop
+for final year and postgraduate students. No cost to us. They provide
+instructors and cloud credits. We provide the room and the students.
+
+PRIYA: What's the capacity?
+
+JAYASHREE: Sixty. They've asked for a date in April.
+
+KESHAVAN: Fix it as April twelfth to fourteenth. That's after the
+semester examinations begin, so attendance may suffer.
+
+JAYASHREE: Examinations start on the eighteenth. The twelfth to
+fourteenth is clear.
+
+KESHAVAN: Then April twelfth. Approved. Bosch.
+
+JAYASHREE: No movement. We deprioritised it in January and I have not
+contacted them since.
+
+KUMAR: We should at least respond. Leaving a proposal unanswered for
+two months is poor practice.
+
+KESHAVAN: Fair. Jayashree, send a holding response this week. Say we're
+interested but cannot commit resources this academic year. Postpone it
+formally rather than let it lapse.
+
+JAYASHREE: I'll send it.
+
+KESHAVAN: Item three. The capstone framework. We extended phase one to
+fourteen weeks in January. Any consequences?
+
+JAYASHREE: One, raised by Meera. The literature survey requirement was
+set for a twelve week phase. With fourteen weeks the requirement is now
+too light. We propose adding a comparison matrix. Same minimum of four
+papers, but students must compare methods across those papers on common
+criteria.
+
+PRIYA: I've seen the draft rubric. Meera sent it last week. It's
+reasonable and it's gradeable, which was my concern in January.
+
+KUMAR: How many marks?
+
+JAYASHREE: The fifteen points already allocated to critical analysis
+get redistributed. Eight for the matrix, seven for written analysis. No
+change to the total.
+
+KESHAVAN: Approved. Priya, are you satisfied the rubric is fair across
+graders?
+
+PRIYA: Mostly. I have one reservation. The peer review component gives
+five percent for the quality of feedback a team gives to other teams.
+Grading the quality of feedback is inherently subjective, and we have
+no calibration between graders.
+
+KESHAVAN: What would fix it?
+
+PRIYA: Either drop it to two percent, or have the receiving team rate
+the usefulness of the feedback and use that as an input. I'd prefer the
+second.
+
+JAYASHREE: Teams rating each other creates its own problems. Friendly
+teams rate each other well.
+
+PRIYA: Then anonymise it. Teams don't know who reviewed them.
+
+KUMAR: In a cohort of forty seven students, anonymity is theoretical.
+
+KESHAVAN: Let's not over engineer this. Reduce it to two percent for
+this year, collect data, and revisit in a year with actual numbers.
+Priya, does that satisfy you?
+
+PRIYA: For one year, yes.
+
+KESHAVAN: Approved at two percent. Item four. Jayashree, you had a note
+from the placement panel.
+
+JAYASHREE: Yes. Thirty one of eighty students placed in the TCS drive.
+The panel's feedback was that students are strong on theory and weak on
+system design. Ramesh has prepared a note proposing a system design
+component in the third year curriculum.
+
+KUMAR: That's a real gap. I've heard the same from two other companies.
+
+PRIYA: It's a gap everywhere, not just here.
+
+KESHAVAN: Circulate Ramesh's note before the April meeting. We'll take
+it as a full agenda item rather than squeeze it in now. Anything else?
+
+JAYASHREE: Nothing from the department.
+
+KESHAVAN: Then we're done. Next meeting April eighteenth. Jayashree,
+you owe us the Infosys signature and the Bosch response. Kumar, the
+merged course syllabus. Thank you all.

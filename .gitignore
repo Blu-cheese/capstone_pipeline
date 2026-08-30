@@ -1,0 +1,30 @@
+# Secrets — never commit. The pipeline reads .env via utils/env.py.
+.env
+.env.*
+!.env.example
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+venv/
+.venv/
+
+# Corpora and derived data. AMI is 22MB+ of CC BY 4.0 XML; re-downloadable,
+# and the labelled/feature caches are reproducible from it.
+data/raw/
+data/labeled/
+data/features/
+data/cache/
+
+# Model / run artefacts
+runs/
+output/*/
+*.npz
+*.pt
+
+# macOS / editors
+.DS_Store
+.vscode/
+.idea/
+*.swp

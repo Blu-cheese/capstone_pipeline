@@ -1,0 +1,130 @@
+SCRIPT 2: CSE Department Weekly Meeting (Follow-up)
+=====================================================
+Duration target: ~6 minutes spoken
+Speakers: 4 (same as Script 1)
+  - JAYASHREE (female, department chairperson)
+  - RAMESH (male, senior professor)
+  - MEERA (female, NLP professor)
+  - PAVAN (male, lab coordinator)
+
+Setup: Follow-up meeting two weeks later. Reviewing action items from 
+the previous meeting. This demonstrates temporal knowledge evolution 
+across meetings for the capstone demo.
+
+---
+
+JAYASHREE: Morning everyone. Let's review our action items from the 
+last meeting. Ramesh, start with the syllabus submission.
+
+RAMESH: Submitted to the Board of Studies on time. They reviewed it 
+yesterday. Generally positive feedback. One concern though. They want 
+the assessment to include a hands-on project component, not just a 
+written exam.
+
+JAYASHREE: That's a fair point. What are you thinking?
+
+RAMESH: A mini project worth thirty percent. Students deploy a deep 
+learning model to production. Maybe on AWS free tier or Google Cloud. 
+It tests practical skills better than an exam.
+
+MEERA: That's a good idea. My students keep complaining that exams 
+don't reflect real work.
+
+JAYASHREE: Approved. Revise the assessment breakdown and resubmit. 
+When's the next BOS meeting?
+
+RAMESH: Two weeks from now. I'll have the revision ready.
+
+JAYASHREE: Good. Pavan, the lab upgrade.
+
+PAVAN: Ma'am, there's a problem. The GPU prices have gone up 
+significantly in the last two weeks. The Dell quote I had was valid 
+for seven days only. New quotes are coming in at about one point 
+one two lakhs per machine.
+
+JAYASHREE: That's a thirty five percent increase. Total cost?
+
+PAVAN: For four machines, it comes to four point five lakhs. About 
+one and a half lakh over our approved budget.
+
+RAMESH: Can we delay the elective launch by a semester?
+
+JAYASHREE: No, we've already advertised it to students. Pavan, what 
+are our options?
+
+PAVAN: I see two. One, reduce the quantity. Buy two now at two point 
+two lakhs, two more next quarter. Two, look at refurbished or academic 
+edition workstations. Some vendors offer academic pricing at twenty 
+percent off.
+
+JAYASHREE: I prefer option one. Splitting the purchase. Students can 
+share machines in the first run. Submit the revised proposal today. 
+Approved for two point two lakhs for phase one procurement.
+
+PAVAN: Will do. I'll also ask about academic pricing for phase two.
+
+JAYASHREE: Good thinking. Now, Meera, the capstone extension.
+
+MEERA: The extension has helped most teams. But five teams still 
+haven't submitted Phase 1. The new deadline is December twenty second. 
+Three of them told me they're still finalizing the problem statement.
+
+JAYASHREE: That's not acceptable. The extension was two weeks, not 
+unlimited. Who are these teams?
+
+MEERA: Teams seven, twelve, fifteen, eighteen, and twenty three.
+
+JAYASHREE: Send them a warning email today. If they don't submit by 
+December twenty second, they fail Phase 1 and redo it next semester. 
+No more extensions.
+
+MEERA: Agreed. I'll send the notice this afternoon.
+
+RAMESH: What about teams that have submitted already? Are they getting 
+feedback?
+
+MEERA: Yes. I'm reviewing eight submissions this week. Feedback goes 
+out by Friday.
+
+JAYASHREE: Pavan, the TCS drive update.
+
+PAVAN: The TCS drive is done. Happened on the eighth as planned. 
+Forty two students appeared. Eighteen cleared the technical round. 
+Final results announced last Monday. Twelve offers extended.
+
+RAMESH: Twelve offers out of forty two. That's a twenty eight percent 
+conversion. Better than last year's twenty percent.
+
+PAVAN: Correct. The mock interview sessions helped. Students who 
+attended both sessions had a sixty percent pass rate in the technical 
+round, compared to thirty five percent for those who didn't attend.
+
+MEERA: We should make the mock sessions mandatory for all students 
+then, not just TCS candidates.
+
+JAYASHREE: Good proposal. Let me discuss with the placement committee. 
+What's next on the recruitment calendar?
+
+PAVAN: Infosys is confirmed for January fifteenth. Wipro for January 
+twentieth. Accenture is still pending. They promised a date by next week.
+
+JAYASHREE: Follow up with Accenture by Wednesday. If they don't 
+confirm, we schedule someone else. Can't keep that slot open.
+
+PAVAN: I'll call them tomorrow.
+
+JAYASHREE: One more item. The department website hasn't been updated 
+since last year. Faculty profiles are outdated. Course pages show 
+old syllabi. This looks bad during admission season.
+
+RAMESH: I can assign two of my student assistants to update the 
+content. They're good at web stuff. Should take three weeks.
+
+JAYASHREE: Please do. We need it ready before February when admission 
+queries pick up. Meera, can you coordinate with them on the NLP and 
+AI course pages?
+
+MEERA: Yes. I'll give them the updated content by end of this week.
+
+JAYASHREE: Great. Anything else? No? Let's wrap up. Next meeting 
+February second. Thank you everyone.

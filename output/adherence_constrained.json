@@ -1,0 +1,8 @@
+{
+  "mode": "constrained",
+  "model": "gemini-2.5-flash-lite",
+  "triples_seen": 536,
+  "off_taxonomy_count": 0,
+  "adherence_pct": 100.0,
+  "off_taxonomy_labels": []
+}

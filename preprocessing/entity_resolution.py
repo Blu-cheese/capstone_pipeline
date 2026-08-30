@@ -51,6 +51,39 @@ def normalize_entity(name: str, entity_type: str = "") -> str:
     return name
 
 
+def soundex(name: str) -> str:
+    """
+    Classic Soundex code for a single word.
+
+    ASR errors on names are phonetic, not orthographic: whisper hears
+    "Jaishree" for "Jayashree" and "Mira" for "Meera". Those sit at 0.78
+    and 0.60 Levenshtein — below any threshold that is safe for general
+    entity matching — but they are the same sound. Used only to match
+    PERSON mentions against a known roster, where the candidate set is
+    four names and a false merge is therefore very unlikely.
+    """
+    name = re.sub(r'[^a-z]', '', name.lower())
+    if not name:
+        return ""
+
+    codes = {**dict.fromkeys("bfpv", "1"), **dict.fromkeys("cgjkqsxz", "2"),
+             **dict.fromkeys("dt", "3"), **dict.fromkeys("l", "4"),
+             **dict.fromkeys("mn", "5"), **dict.fromkeys("r", "6")}
+
+    first = name[0].upper()
+    encoded = []
+    prev = codes.get(name[0], "")
+    for ch in name[1:]:
+        code = codes.get(ch, "")
+        if code and code != prev:
+            encoded.append(code)
+        # h and w are transparent: they do not reset the previous code
+        if ch not in "hw":
+            prev = code
+
+    return (first + "".join(encoded) + "000")[:4]
+
+
 def levenshtein_ratio(s1: str, s2: str) -> float:
     """
     Compute Levenshtein similarity ratio between two strings.
@@ -101,11 +134,21 @@ class EntityResolver:
         self,
         aliases: Optional[Dict[str, str]] = None,
         fuzzy_threshold: float = 0.85,
+        roster_names: Optional[List[str]] = None,
     ):
         self.aliases: Dict[str, str] = {}  # lowercase -> canonical
         self.canonical_entities: Dict[str, str] = {}  # normalized -> canonical
         self.entity_types: Dict[str, str] = {}  # canonical -> type
         self.fuzzy_threshold = fuzzy_threshold
+
+        # Known attendees across all meetings, indexed by sound. Lets an ASR
+        # variant of a name collapse onto the roster spelling so one person
+        # is one node.
+        self.roster_by_sound: Dict[str, str] = {}
+        for n in (roster_names or []):
+            code = soundex(n)
+            if code:
+                self.roster_by_sound.setdefault(code, n)
 
         # Load default aliases
         for alias, canonical in DEFAULT_ALIASES.items():
@@ -134,6 +177,16 @@ class EntityResolver:
             canonical = self.aliases[normalized]
             self.entity_types[canonical] = entity_type or self.entity_types.get(canonical, "")
             return canonical
+
+        # 1b. A PERSON who sounds like someone on the roster IS that person.
+        # Single-token names only: "Ramesh" should collapse onto the roster,
+        # but "Ramesh Kumar Committee" should not.
+        if entity_type == "PERSON" and self.roster_by_sound and " " not in normalized:
+            canonical = self.roster_by_sound.get(soundex(normalized))
+            if canonical and canonical.lower() != normalized:
+                self.aliases[normalized] = canonical
+                self.entity_types[canonical] = "PERSON"
+                return canonical
 
         # 2. Check exact match against known canonical entities
         if normalized in self.canonical_entities:

@@ -1,0 +1,440 @@
+﻿1
+00:00:00,220 --> 00:00:01,280
+Speaker 0: Morning everyone!
+
+2
+00:00:02,440 --> 00:00:05,340
+Speaker 0: Let's review our action items from the last meeting.
+
+3
+00:00:06,440 --> 00:00:08,940
+Speaker 0: Ramesh, start with the syllabus submission.
+
+4
+00:00:10,620 --> 00:00:13,300
+Speaker 2: Submitted to the Board of Studies on time.
+
+5
+00:00:14,300 --> 00:00:15,780
+Speaker 2: They reviewed it yesterday.
+
+6
+00:00:16,780 --> 00:00:18,340
+Speaker 2: Generally positive feedback.
+
+7
+00:00:19,460 --> 00:00:20,480
+Speaker 2: One concern though.
+
+8
+00:00:21,480 --> 00:00:27,440
+Speaker 2: They want the assessment to include a hands-on project component, not just a written exam.
+
+9
+00:00:29,180 --> 00:00:30,240
+Speaker 0: That's a fair point.
+
+10
+00:00:31,400 --> 00:00:32,299
+Speaker 0: What are you thinking?
+
+11
+00:00:33,960 --> 00:00:36,820
+Speaker 2: A mini project worth 30%.
+
+12
+00:00:37,200 --> 00:00:40,400
+Speaker 2: Students deploy a deep learning model to production.
+
+13
+00:00:41,400 --> 00:00:44,640
+Speaker 2: Maybe on AWS free tier or Google Cloud.
+
+14
+00:00:45,620 --> 00:00:48,800
+Speaker 2: It tests practical skills better than an exam.
+
+15
+00:00:50,420 --> 00:00:51,480
+Speaker 3: That's a good idea.
+
+16
+00:00:52,620 --> 00:00:56,200
+Speaker 3: My students keep complaining that exams don't reflect real work.
+
+17
+00:00:57,920 --> 00:00:58,400
+Speaker 0: Approved.
+
+18
+00:00:59,540 --> 00:01:02,240
+Speaker 0: Revise the assessment breakdown and resubmit.
+
+19
+00:01:03,400 --> 00:01:05,019
+Speaker 0: When's the next BOS meeting?
+
+20
+00:01:06,620 --> 00:01:07,660
+Speaker 2: Two weeks from now.
+
+21
+00:01:08,740 --> 00:01:10,020
+Speaker 2: I'll have the revision ready.
+
+22
+00:01:11,780 --> 00:01:12,000
+Speaker 0: Good.
+
+23
+00:01:13,100 --> 00:01:14,600
+Speaker 0: Avan, the lab upgrade.
+
+24
+00:01:16,220 --> 00:01:17,480
+Speaker 1: Ma'am, there's a problem.
+
+25
+00:01:18,500 --> 00:01:21,880
+Speaker 1: The GPU prices have gone up significantly in the last two weeks.
+
+26
+00:01:22,920 --> 00:01:25,540
+Speaker 1: The Dell quote I had was valid for seven days only.
+
+27
+00:01:26,680 --> 00:01:30,060
+Speaker 1: New quotes are coming in at about 1.12 Lakhs per machine.
+
+28
+00:01:31,760 --> 00:01:33,920
+Speaker 0: That's a 35% increase.
+
+29
+00:01:34,940 --> 00:01:35,680
+Speaker 0: Total cost?
+
+30
+00:01:37,320 --> 00:01:40,020
+Speaker 1: For four machines, it comes to 4.5 lakhs.
+
+31
+00:01:41,120 --> 00:01:43,500
+Speaker 1: About one and a half lakh over our approved budget.
+
+32
+00:01:45,120 --> 00:01:47,800
+Speaker 2: Can we delay the elective launch by a semester?
+
+33
+00:01:49,540 --> 00:01:52,320
+Speaker 0: No, we've already advertised it to students.
+
+34
+00:01:53,380 --> 00:01:55,280
+Speaker 0: Bhavan, what are our options?
+
+35
+00:01:57,040 --> 00:01:57,660
+Speaker 1: I see two.
+
+36
+00:01:58,860 --> 00:02:00,220
+Speaker 1: One, reduce the quantity.
+
+37
+00:02:01,300 --> 00:02:04,160
+Speaker 1: Buy two now at 2.2 lakhs, two more next quarter.
+
+38
+00:02:05,240 --> 00:02:08,500
+Speaker 1: Two, look at refurbished or academic edition workstations.
+
+39
+00:02:09,600 --> 00:02:12,560
+Speaker 1: Some vendors offer academic pricing at 20% off.
+
+40
+00:02:14,400 --> 00:02:16,280
+Speaker 0: I prefer option 1.
+
+41
+00:02:16,760 --> 00:02:17,920
+Speaker 0: Splitting the purchase.
+
+42
+00:02:19,020 --> 00:02:21,580
+Speaker 0: Students can share machines in the first run.
+
+43
+00:02:22,780 --> 00:02:24,720
+Speaker 0: Submit the revised proposal today.
+
+44
+00:02:25,840 --> 00:02:29,140
+Speaker 0: Approved for 2.2 lakhs for phase 1 procurement.
+
+45
+00:02:30,900 --> 00:02:31,260
+Speaker 1: Will do.
+
+46
+00:02:32,560 --> 00:02:35,080
+Speaker 1: I'll also ask about academic pricing for phase 2.
+
+47
+00:02:36,920 --> 00:02:37,540
+Speaker 0: Good thinking.
+
+48
+00:02:38,720 --> 00:02:41,360
+Speaker 0: Now, Meera, the capstone extension.
+
+49
+00:02:43,000 --> 00:02:45,120
+Speaker 3: The extension has helped most teams.
+
+50
+00:02:46,180 --> 00:02:48,860
+Speaker 3: But five teams still haven't submitted phase one.
+
+51
+00:02:49,900 --> 00:02:52,240
+Speaker 3: The new deadline is December 22nd.
+
+52
+00:02:53,320 --> 00:02:56,800
+Speaker 3: Three of them told me they are still finalizing the problem statement.
+
+53
+00:02:58,560 --> 00:02:59,760
+Speaker 0: That's not acceptable.
+
+54
+00:03:00,840 --> 00:03:03,460
+Speaker 0: The extension was two weeks, not unlimited.
+
+55
+00:03:04,520 --> 00:03:05,620
+Speaker 0: Who are these teams?
+
+56
+00:03:07,240 --> 00:03:11,340
+Speaker 3: Team 7, 12, 15, 18, and 23.
+
+57
+00:03:12,820 --> 00:03:14,540
+Speaker 0: Send them a warning email today.
+
+58
+00:03:15,640 --> 00:03:21,260
+Speaker 0: If they don't submit by December 22nd, they fail Phase 1 and redo it next semester.
+
+59
+00:03:22,400 --> 00:03:23,620
+Speaker 0: No more extensions.
+
+60
+00:03:25,240 --> 00:03:25,680
+Speaker 3: Agreed.
+
+61
+00:03:26,760 --> 00:03:28,460
+Speaker 3: I'll send the notice this afternoon.
+
+62
+00:03:30,160 --> 00:03:32,760
+Speaker 2: What about teams that have submitted already?
+
+63
+00:03:33,800 --> 00:03:35,140
+Speaker 2: Are they getting feedback?
+
+64
+00:03:36,820 --> 00:03:37,080
+Speaker 3: Yes.
+
+65
+00:03:38,200 --> 00:03:40,100
+Speaker 3: I'm reviewing 8 submissions this week.
+
+66
+00:03:41,240 --> 00:03:42,960
+Speaker 3: Feedback goes out by Friday.
+
+67
+00:03:44,700 --> 00:03:46,900
+Speaker 0: Bhavan, the TCS Drive update.
+
+68
+00:03:48,480 --> 00:03:49,980
+Speaker 1: The TCS drive is done.
+
+69
+00:03:51,020 --> 00:03:52,460
+Speaker 1: Happened on the 8th as planned.
+
+70
+00:03:52,480 --> 00:03:55,020
+Speaker 1: 42 students appeared.
+
+71
+00:03:55,040 --> 00:03:57,840
+Speaker 1: 18 cleared the technical round.
+
+72
+00:03:58,980 --> 00:04:00,880
+Speaker 1: Final results announced last Monday.
+
+73
+00:04:00,900 --> 00:04:03,240
+Speaker 1: 12 offers extended.
+
+74
+00:04:03,260 --> 00:04:07,060
+Speaker 2: 12 offers out of 42.
+
+75
+00:04:07,840 --> 00:04:10,180
+Speaker 2: That's a 28% conversion.
+
+76
+00:04:11,220 --> 00:04:13,940
+Speaker 2: Better than last year's 20%.
+
+77
+00:04:15,140 --> 00:04:15,660
+Speaker 1: Correct.
+
+78
+00:04:16,720 --> 00:04:18,360
+Speaker 1: The mock interview sessions helped.
+
+79
+00:04:19,480 --> 00:04:26,720
+Speaker 1: Students who attended both sessions had a 60% pass rate in the technical round, compared to 35% for those who didn't attend.
+
+80
+00:04:28,400 --> 00:04:33,740
+Speaker 3: We should make the mock sessions mandatory for all students then, not just TCS candidates.
+
+81
+00:04:35,480 --> 00:04:36,200
+Speaker 0: Good proposal.
+
+82
+00:04:37,340 --> 00:04:39,580
+Speaker 0: Let me discuss with the placement committee.
+
+83
+00:04:40,700 --> 00:04:42,740
+Speaker 0: What's next on the recruitment calendar?
+
+84
+00:04:44,440 --> 00:04:46,900
+Speaker 1: Enthosis is confirmed for January 15th.
+
+85
+00:04:48,000 --> 00:04:49,700
+Speaker 1: Wipro for January 20th.
+
+86
+00:04:50,800 --> 00:04:52,180
+Speaker 1: Accenture is still pending.
+
+87
+00:04:53,220 --> 00:04:54,820
+Speaker 1: They promised a date by next week.
+
+88
+00:04:56,560 --> 00:04:58,780
+Speaker 0: Follow up with Accenture by Wednesday.
+
+89
+00:04:59,920 --> 00:05:02,900
+Speaker 0: If they don't confirm, we schedule someone else.
+
+90
+00:05:03,920 --> 00:05:05,540
+Speaker 0: Can't keep that slot open.
+
+91
+00:05:07,320 --> 00:05:08,280
+Speaker 1: I'll call them tomorrow.
+
+92
+00:05:10,160 --> 00:05:10,980
+Speaker 0: One more item.
+
+93
+00:05:12,100 --> 00:05:15,460
+Speaker 0: The department website hasn't been updated since last year.
+
+94
+00:05:16,580 --> 00:05:18,480
+Speaker 0: Faculty profiles are outdated.
+
+95
+00:05:19,520 --> 00:05:21,360
+Speaker 0: Course pages show old syllabi.
+
+96
+00:05:22,600 --> 00:05:24,800
+Speaker 0: This looks bad during admission season.
+
+97
+00:05:26,580 --> 00:05:30,460
+Speaker 2: I can assign two of my student assistants to update the content.
+
+98
+00:05:31,460 --> 00:05:32,940
+Speaker 2: They're good at web stuff.
+
+99
+00:05:33,980 --> 00:05:35,340
+Speaker 2: Should take three weeks.
+
+100
+00:05:36,980 --> 00:05:37,420
+Speaker 0: Please do.
+
+101
+00:05:38,620 --> 00:05:42,180
+Speaker 0: We need it ready before February when admission queries pick up.
+
+102
+00:05:43,280 --> 00:05:47,740
+Speaker 0: Meera, can you coordinate with them on the NLP and AI course pages?
+
+103
+00:05:49,420 --> 00:05:49,660
+Speaker 3: Yes.
+
+104
+00:05:50,760 --> 00:05:53,640
+Speaker 3: I'll give them the updated content by end of this week.
+
+105
+00:05:55,420 --> 00:05:55,760
+Speaker 0: Great!
+
+106
+00:05:56,880 --> 00:05:57,640
+Speaker 0: Anything else?
+
+107
+00:05:58,760 --> 00:05:58,840
+Speaker 0: No?
+
+108
+00:06:00,100 --> 00:06:00,820
+Speaker 0: Let's wrap up.
+
+109
+00:06:01,960 --> 00:06:03,680
+Speaker 0: Next meeting, February 2nd.
+
+110
+00:06:04,780 --> 00:06:07,280
+Speaker 0: Thank you, everyone.
+

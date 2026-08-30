@@ -25,7 +25,7 @@ def load_all_triples(output_dir: str):
     for fname in sorted(os.listdir(output_dir)):
         if fname.startswith("triples_") and fname.endswith(".json"):
             meeting_id = fname[len("triples_"):-len(".json")]
-            with open(os.path.join(output_dir, fname)) as f:
+            with open(os.path.join(output_dir, fname), encoding="utf-8") as f:
                 triples_by_meeting[meeting_id] = json.load(f)
     return triples_by_meeting
 
@@ -39,10 +39,10 @@ def load_graph(output_dir: str):
     r_path = os.path.join(output_dir, "relations.json")
 
     if os.path.exists(e_path):
-        with open(e_path) as f:
+        with open(e_path, encoding="utf-8") as f:
             entities = json.load(f)
     if os.path.exists(r_path):
-        with open(r_path) as f:
+        with open(r_path, encoding="utf-8") as f:
             relations = json.load(f)
 
     return entities, relations

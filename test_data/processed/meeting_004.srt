@@ -1,0 +1,492 @@
+﻿1
+00:00:00,220 --> 00:00:00,920
+Speaker 1: Good morning.
+
+2
+00:00:02,040 --> 00:00:02,960
+Speaker 1: Three things today.
+
+3
+00:00:04,080 --> 00:00:08,340
+Speaker 1: The lab phase two, the enforces agreement and the elective rollout.
+
+4
+00:00:09,380 --> 00:00:11,080
+Speaker 1: Pavan, start with the lab.
+
+5
+00:00:12,720 --> 00:00:14,380
+Speaker 3: Ma'am, phase one is complete.
+
+6
+00:00:15,380 --> 00:00:18,580
+Speaker 3: Two workstations delivered on the 14th, installed and running.
+
+7
+00:00:19,620 --> 00:00:23,060
+Speaker 3: Total spend was 2.2 lakhs, exactly the approved figure.
+
+8
+00:00:24,800 --> 00:00:26,500
+Speaker 1: Any issues with installation?
+
+9
+00:00:28,280 --> 00:00:28,480
+Speaker 3: One.
+
+10
+00:00:29,500 --> 00:00:33,420
+Speaker 3: The lab's existing power circuit could not handle both machines at full load.
+
+11
+00:00:34,480 --> 00:00:36,200
+Speaker 3: We had to add a dedicated line.
+
+12
+00:00:37,200 --> 00:00:40,760
+Speaker 3: That cost 18,000 rupees, which I paid from the maintenance head.
+
+13
+00:00:42,400 --> 00:00:43,440
+Speaker 0: Was that approved?
+
+14
+00:00:45,120 --> 00:00:47,180
+Speaker 3: I informed the chairperson before spending.
+
+15
+00:00:48,240 --> 00:00:49,320
+Speaker 3: It was an emergency.
+
+16
+00:00:51,220 --> 00:00:52,400
+Speaker 1: I approved it verbally.
+
+17
+00:00:53,540 --> 00:00:55,040
+Speaker 1: Pawan, put it in writing.
+
+18
+00:00:55,140 --> 00:00:56,640
+Speaker 1: so the audit trail is clean.
+
+19
+00:00:57,820 --> 00:00:59,920
+Speaker 1: Now, phase 2.
+
+20
+00:01:00,560 --> 00:01:01,260
+Speaker 3: Good news here.
+
+21
+00:01:02,400 --> 00:01:04,080
+Speaker 3: GPU prices have come down.
+
+22
+00:01:05,120 --> 00:01:10,060
+Speaker 3: The same machine that quoted 1.12 locks in December is now 95,000.
+
+23
+00:01:10,480 --> 00:01:12,600
+Speaker 3: Two machines come to 1.9 locks.
+
+24
+00:01:14,260 --> 00:01:17,740
+Speaker 2: That's below what we budgeted for phase 2.
+
+25
+00:01:18,280 --> 00:01:18,860
+Speaker 3: Yes ma'am.
+
+26
+00:01:19,900 --> 00:01:21,720
+Speaker 3: We had planned 2.2 locks again.
+
+27
+00:01:22,780 --> 00:01:24,340
+Speaker 3: So we are 30,000 under.
+
+28
+00:01:26,160 --> 00:01:27,760
+Speaker 1: Then let's use the difference.
+
+29
+00:01:28,860 --> 00:01:33,360
+Speaker 1: Meera, you mentioned needing API credits for the language model module.
+
+30
+00:01:35,060 --> 00:01:35,360
+Speaker 2: I did.
+
+31
+00:01:36,420 --> 00:01:41,020
+Speaker 2: The new NLP syllabus has students fine-tuning and calling hosted models.
+
+32
+00:01:41,040 --> 00:01:45,980
+Speaker 2: 40,000 rupees would cover a full semester for 60 students.
+
+33
+00:01:47,760 --> 00:01:49,260
+Speaker 1: We have 30,000 spare.
+
+34
+00:01:50,360 --> 00:01:51,580
+Speaker 1: Can you manage with that?
+
+35
+00:01:53,240 --> 00:01:55,420
+Speaker 2: If students share team accounts, yes.
+
+36
+00:01:56,620 --> 00:02:00,100
+Speaker 2: I'll restructure the assignment to be team-based rather than individual.
+
+37
+00:02:01,840 --> 00:02:02,320
+Speaker 1: Do that!
+
+38
+00:02:03,380 --> 00:02:03,700
+Speaker 1: Bhavan?
+
+39
+00:02:04,060 --> 00:02:07,460
+Speaker 1: Raise the phase to purchase order for 1.9 lakhs.
+
+40
+00:02:08,600 --> 00:02:10,120
+Speaker 1: What's the delivery timeline?
+
+41
+00:02:11,780 --> 00:02:13,940
+Speaker 3: Vendor says 3 weeks from purchase order.
+
+42
+00:02:15,060 --> 00:02:18,280
+Speaker 3: If I raise it this week, machines arrive by March 15.
+
+43
+00:02:19,760 --> 00:02:21,720
+Speaker 1: March 15 is the deadline then.
+
+44
+00:02:22,860 --> 00:02:26,220
+Speaker 1: The elective starts in April, so that gives us buffer.
+
+45
+00:02:27,380 --> 00:02:28,900
+Speaker 1: Ramesh, the syllabus.
+
+46
+00:02:30,560 --> 00:02:35,480
+Speaker 0: The board approved the applied deep learning syllabus with the revised assessment.
+
+47
+00:02:35,500 --> 00:02:43,040
+Speaker 0: 30% mini project, 30% continuous evaluation, 40% end semester.
+
+48
+00:02:44,040 --> 00:02:47,640
+Speaker 0: The mini project is the production deployment task we discussed.
+
+49
+00:02:49,300 --> 00:02:49,520
+Speaker 1: Good.
+
+50
+00:02:50,600 --> 00:02:51,280
+Speaker 1: Enrollment?
+
+51
+00:02:51,300 --> 00:02:54,900
+Speaker 0: 47 students registered.
+
+52
+00:02:55,920 --> 00:02:57,600
+Speaker 0: We capped it at 50.
+
+53
+00:02:58,960 --> 00:03:00,720
+Speaker 2: That's strong for a first offering.
+
+54
+00:03:02,340 --> 00:03:03,820
+Speaker 0: There's one complication.
+
+55
+00:03:04,820 --> 00:03:09,180
+Speaker 0: Of those 47, 19 have not taken machine learning.
+
+56
+00:03:10,180 --> 00:03:15,580
+Speaker 0: The board made ML a prerequisite, but that applies to next year's batch only.
+
+57
+00:03:17,340 --> 00:03:19,300
+Speaker 1: So this batch is grandfathered in.
+
+58
+00:03:20,940 --> 00:03:21,260
+Speaker 0: Correct.
+
+59
+00:03:22,240 --> 00:03:27,700
+Speaker 0: But 19 students without ML background in a deep learning course is a real problem.
+
+60
+00:03:28,780 --> 00:03:30,700
+Speaker 0: I'd like to run a bridge module.
+
+61
+00:03:32,380 --> 00:03:33,520
+Speaker 1: What would that involve?
+
+62
+00:03:35,140 --> 00:03:38,200
+Speaker 0: Four extra sessions before the semester starts.
+
+63
+00:03:39,220 --> 00:03:43,540
+Speaker 0: Linear algebra refresher Gradient descent, basic classification.
+
+64
+00:03:44,580 --> 00:03:46,560
+Speaker 0: Voluntary but strongly recommended.
+
+65
+00:03:48,160 --> 00:03:48,860
+Speaker 2: Who teaches it?
+
+66
+00:03:50,600 --> 00:03:51,740
+Speaker 0: I'll take two sessions.
+
+67
+00:03:52,820 --> 00:03:55,120
+Speaker 0: I was hoping Meera takes the other two.
+
+68
+00:03:56,840 --> 00:03:57,520
+Speaker 2: I can do that.
+
+69
+00:03:58,580 --> 00:04:00,560
+Speaker 2: Schedule them in the last week of March.
+
+70
+00:04:02,360 --> 00:04:02,840
+Speaker 1: Approved.
+
+71
+00:04:03,960 --> 00:04:06,080
+Speaker 1: Ramesh, you own the bridge module.
+
+72
+00:04:07,220 --> 00:04:08,960
+Speaker 1: Now the Infosys collaboration.
+
+73
+00:04:10,080 --> 00:04:13,500
+Speaker 1: The board prioritized it first among the three proposals.
+
+74
+00:04:15,200 --> 00:04:18,899
+Speaker 0: I spoke to their university relations head last Thursday.
+
+75
+00:04:19,880 --> 00:04:24,180
+Speaker 0: They want a joint research lab focused on applied machine learning.
+
+76
+00:04:25,180 --> 00:04:30,740
+Speaker 0: Their contribution is to engineers on site one day a week plus compute credits.
+
+77
+00:04:32,400 --> 00:04:33,780
+Speaker 1: And what do they want from us?
+
+78
+00:04:35,400 --> 00:04:39,960
+Speaker 0: Space and to faculty members committed at least six hours a week.
+
+79
+00:04:40,980 --> 00:04:44,640
+Speaker 0: They also want first look at student projects for hiring.
+
+80
+00:04:46,340 --> 00:04:48,020
+Speaker 2: First look at hiring is fine.
+
+81
+00:04:49,100 --> 00:04:51,600
+Speaker 2: First rights on intellectual property would not be.
+
+82
+00:04:53,300 --> 00:04:56,040
+Speaker 0: They have not asked for intellectual property.
+
+83
+00:04:57,180 --> 00:04:58,480
+Speaker 0: I raised it specifically.
+
+84
+00:04:59,460 --> 00:05:01,320
+Speaker 0: The draft says jointly owned.
+
+85
+00:05:03,020 --> 00:05:04,760
+Speaker 1: Jointly owned is acceptable.
+
+86
+00:05:05,820 --> 00:05:08,940
+Speaker 1: Who drafts the memorandum of understanding from our side?
+
+87
+00:05:10,560 --> 00:05:11,780
+Speaker 0: Legal will draft it.
+
+88
+00:05:12,840 --> 00:05:13,620
+Speaker 0: I'll coordinate.
+
+89
+00:05:14,580 --> 00:05:19,000
+Speaker 0: They want it signed before the board meets on February 28th.
+
+90
+00:05:20,680 --> 00:05:21,320
+Speaker 1: That's tight.
+
+91
+00:05:22,440 --> 00:05:28,900
+Speaker 1: Ramesh, target March 10 for the draft, and if it slips we present the status rather than the signature.
+
+92
+00:05:30,000 --> 00:05:32,340
+Speaker 1: Do not rush legal review to hit a date.
+
+93
+00:05:33,920 --> 00:05:34,460
+Speaker 0: Understood.
+
+94
+00:05:36,260 --> 00:05:37,660
+Speaker 1: Pavan, one more thing.
+
+95
+00:05:38,760 --> 00:05:43,120
+Speaker 1: The capstone peer review is week 12 this year, not week 14.
+
+96
+00:05:44,040 --> 00:05:46,560
+Speaker 1: The board changed phase 1 to 14 weeks.
+
+97
+00:05:47,680 --> 00:05:49,980
+Speaker 1: Make sure the lab is bookable that week.
+
+98
+00:05:51,680 --> 00:05:54,120
+Speaker 3: I'll block the lab for the whole of week 12.
+
+99
+00:05:55,460 --> 00:05:57,460
+Speaker 2: On Capstone, I have a concern.
+
+100
+00:05:58,520 --> 00:06:03,960
+Speaker 2: Phase 1 is now 14 weeks, but the literature survey requirement is still 4 papers minimum.
+
+101
+00:06:05,040 --> 00:06:07,600
+Speaker 2: Students have more time and the same requirement.
+
+102
+00:06:09,380 --> 00:06:10,340
+Speaker 1: What do you propose?
+
+103
+00:06:12,000 --> 00:06:15,160
+Speaker 2: Raise it to 6 papers, or add a comparison matrix.
+
+104
+00:06:16,420 --> 00:06:18,580
+Speaker 2: Something that uses the extra 2 weeks.
+
+105
+00:06:18,600 --> 00:06:23,020
+Speaker 0: 6 papers is a lot for undergraduates.
+
+106
+00:06:24,660 --> 00:06:26,120
+Speaker 2: Then the comparison matrix.
+
+107
+00:06:27,380 --> 00:06:31,780
+Speaker 2: Same four papers, but they must compare methods across them on common criteria.
+
+108
+00:06:33,620 --> 00:06:34,380
+Speaker 1: I prefer that.
+
+109
+00:06:35,520 --> 00:06:38,440
+Speaker 1: Meera, write it into the rubric and send it to Priya.
+
+110
+00:06:39,640 --> 00:06:41,680
+Speaker 1: She is reviewing the rubric for fairness.
+
+111
+00:06:43,380 --> 00:06:44,540
+Speaker 2: I'll send it by Friday.
+
+112
+00:06:46,380 --> 00:06:47,040
+Speaker 1: Last item.
+
+113
+00:06:48,180 --> 00:06:50,800
+Speaker 1: The TCS placement drive results came in.
+
+114
+00:06:50,820 --> 00:06:54,720
+Speaker 1: 31 students placed out of 80 who sat.
+
+115
+00:06:55,840 --> 00:06:59,360
+Speaker 1: That's a better conversion than last year's 22.
+
+116
+00:07:00,360 --> 00:07:02,120
+Speaker 0: Any feedback from their panel?
+
+117
+00:07:03,840 --> 00:07:05,320
+Speaker 1: Yes, and it's useful.
+
+118
+00:07:06,440 --> 00:07:10,400
+Speaker 1: They said our students are strong on theory and weak on system design.
+
+119
+00:07:11,520 --> 00:07:16,320
+Speaker 1: Ramesh, that's worth feeding into the curriculum discussion at the next board meeting.
+
+120
+00:07:18,020 --> 00:07:19,180
+Speaker 0: I'll prepare a note.
+
+121
+00:07:20,820 --> 00:07:21,060
+Speaker 1: Good.
+
+122
+00:07:22,180 --> 00:07:24,220
+Speaker 1: Next meeting same time next week.
+
+123
+00:07:25,340 --> 00:07:27,260
+Speaker 1: Thank you.
+
