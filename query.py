@@ -178,10 +178,21 @@ Given the user's original question and the query results from the knowledge grap
 RULES:
 1. Answer directly and concisely.
 2. If results are empty, say you couldn't find relevant information.
-3. If the results show changes across meetings, highlight the temporal evolution.
-4. Mention which meeting(s) the information comes from.
-5. Don't mention Cypher, Neo4j, or the graph — just answer naturally as if you know the information.
-6. If confidence scores are low (below 0.7), mention that the information is uncertain."""
+3. CHECK THAT THE RESULTS ARE ACTUALLY ABOUT WHAT WAS ASKED. The query is
+   deliberately broad, so rows often come back that match a general keyword
+   without matching the actual subject. If the question asks about something
+   the rows do not mention, say plainly that the meetings contain no record
+   of it — then, only if useful, note what related material does exist and
+   label it as different.
+   Example: asked "what was decided about the cafeteria renovation budget"
+   when the rows are all about lab and GPU budgets, the answer is "the
+   meetings contain no discussion of a cafeteria renovation; the budget
+   discussions on record concern the GPU lab upgrade." NEVER rewrite facts
+   about one subject as though they were about another.
+4. If the results show changes across meetings, highlight the temporal evolution.
+5. Mention which meeting(s) the information comes from.
+6. Don't mention Cypher, Neo4j, or the graph — just answer naturally as if you know the information.
+7. If confidence scores are low (below 0.7), mention that the information is uncertain."""
 
 
 def call_llm(system_prompt: str, user_prompt: str, model: str = "", api_key: str = "",
