@@ -113,6 +113,29 @@ RULES:
    parse — the answering step can filter. When a question has several
    parts, match the union of what it needs and return all of it.
 
+UNDER-CONSTRAIN. The commonest failure is a query that is too specific and
+returns nothing. Entity names are short fragments produced by an extractor
+("2.2 lakhs", "lab phase two", "14 weeks"), NOT descriptive sentences. So:
+
+10. Match ONE distinctive keyword, never a multi-word phrase. Use 'gpu', not
+    'gpu purchase'. Use 'capstone', not 'capstone project phase one'.
+11. NEVER AND two CONTAINS on the same variable. This:
+        WHERE toLower(o.name) CONTAINS 'gpu' AND toLower(o.name) CONTAINS 'phase one'
+    requires a single node containing both, which essentially never exists.
+    Match one keyword on either endpoint instead:
+        WHERE toLower(a.name) CONTAINS 'gpu' OR toLower(b.name) CONTAINS 'gpu'
+12. Do NOT filter on r.type unless the question explicitly names the relation
+    ("what was approved", "who is assigned"). A fact is often stored under a
+    different relation than the question implies — asking about a duration
+    with r.type='deadline_for' misses it when it is stored as 'approved'.
+    Return r.type as a column and let the answering step interpret it.
+13. Numbers appear in both word and numeral form. If the question says
+    "phase one", match 'phase' alone rather than 'phase one', because the
+    node may be named "phase 1".
+14. Return BOTH endpoint names and r.type on every query. The answering step
+    needs to see who did what to what; a single column rarely answers a
+    question.
+
 EXAMPLES:
 Question: What decisions were made?
 Query: MATCH (s:Entity)-[r:RELATION]->(o:Entity) WHERE r.type IN ['approved', 'rejected', 'decided_on', 'postponed', 'proposed'] RETURN s.name AS subject, r.type AS decision, o.name AS object, r.source_meeting AS meeting ORDER BY r.source_meeting, r.utterance_time LIMIT 200
@@ -124,7 +147,16 @@ Question: How did the budget change?
 Query: MATCH (e:Entity)-[r:RELATION]-(other:Entity) WHERE toLower(e.name) CONTAINS 'budget' OR toLower(other.name) CONTAINS 'budget' OR r.type = 'budget_for' RETURN e.name AS entity, r.type AS relation, other.name AS related_to, r.source_meeting AS meeting ORDER BY r.source_meeting, r.utterance_time LIMIT 200
 
 Question: What happened to the Data Mining course?
-Query: MATCH (x:Entity)-[r:RELATION]-(other:Entity) WHERE toLower(x.name) CONTAINS 'data mining' RETURN x.name AS entity, r.type AS relation, other.name AS related_to, r.source_meeting AS meeting ORDER BY r.source_meeting, r.utterance_time LIMIT 200"""
+Query: MATCH (x:Entity)-[r:RELATION]-(other:Entity) WHERE toLower(x.name) CONTAINS 'data mining' RETURN x.name AS entity, r.type AS relation, other.name AS related_to, r.source_meeting AS meeting ORDER BY r.source_meeting, r.utterance_time LIMIT 200
+
+Question: How much was approved for phase one of the GPU purchase?
+Note: 'gpu purchase' and 'phase one' are NOT one node. Match the single most
+distinctive token on either endpoint and let the answer step read the rows.
+Query: MATCH (a:Entity)-[r:RELATION]-(b:Entity) WHERE toLower(a.name) CONTAINS 'lakh' OR toLower(b.name) CONTAINS 'lakh' RETURN a.name AS entity, r.type AS relation, b.name AS related_to, r.source_meeting AS meeting ORDER BY r.source_meeting, r.utterance_time LIMIT 200
+
+Question: How long is phase one of the capstone project now?
+Note: do NOT pin r.type — the duration may be stored under any relation.
+Query: MATCH (a:Entity)-[r:RELATION]-(b:Entity) WHERE toLower(a.name) CONTAINS 'capstone' OR toLower(b.name) CONTAINS 'capstone' OR toLower(a.name) CONTAINS 'week' OR toLower(b.name) CONTAINS 'week' RETURN a.name AS entity, r.type AS relation, b.name AS related_to, r.source_meeting AS meeting ORDER BY r.source_meeting, r.utterance_time LIMIT 200"""
 
 
 ANSWER_SYSTEM_PROMPT = """You are a helpful assistant that answers questions about college staff meetings based on knowledge graph query results.
@@ -250,6 +282,48 @@ RULES:
 4. Relations are (:Entity)-[:RELATION {{type: '...'}}]->(:Entity). Filter on
    the 'type' property, never on the relationship type itself.
 5. End the query with LIMIT 200."""
+
+
+BROADEN_SYSTEM_PROMPT = """You widen Cypher queries that returned no rows.
+
+{schema}
+
+You are given a question and a syntactically valid Cypher query that matched
+nothing. The facts are usually present but stored under different wording, so
+the query was too specific. Return a WIDER query.
+
+How queries in this graph end up too narrow, in order of frequency:
+1. Multi-word CONTAINS. 'gpu purchase' matches no node; 'gpu' does.
+2. Two CONTAINS ANDed on the same variable. Almost no node satisfies both.
+3. Filtering r.type when the fact is stored under a different relation.
+4. Searching for a CATEGORY word rather than the thing itself. The graph has
+   no node called "vendor", "cost", "duration" or "component" — it has "Dell",
+   "3 lakhs", "14 weeks", "Mini project". Search for the subject the category
+   refers to: for "which vendor supplied the workstations", search
+   'workstation'.
+5. Word vs numeral: "phase one" against a node named "phase 1".
+
+RULES:
+1. Return ONLY the corrected Cypher query. No explanation, no fences.
+2. Drop every r.type filter unless the question names the relation outright.
+3. Reduce to ONE short keyword, matched on BOTH endpoints with OR.
+4. Return a.name, r.type, b.name, r.source_meeting so the answer step can
+   interpret whatever comes back.
+5. End with LIMIT 200. Extra rows are harmless; zero rows are not."""
+
+
+def broaden_cypher(question: str, narrow_query: str, **llm_kwargs) -> str:
+    """Ask for a wider query when a valid one matched nothing."""
+    system = BROADEN_SYSTEM_PROMPT.format(schema=GRAPH_SCHEMA)
+    user = (f"Question: {question}\n\n"
+            f"This query is valid but returned zero rows:\n{narrow_query}\n\n"
+            f"Return a broader Cypher query.")
+    response = call_llm(system, user, **llm_kwargs).strip()
+    if response.startswith("```"):
+        response = "\n".join(
+            l for l in response.split("\n") if not l.strip().startswith("```")
+        ).strip()
+    return response
 
 
 def repair_cypher(question: str, broken_query: str, error: str, **llm_kwargs) -> str:
@@ -396,14 +470,25 @@ def ask(question: str, graph=None, output_dir: str = "./output", verbose: bool =
                 print(f"\n[Cypher] {cypher}\n")
 
             results = run_cypher(graph, cypher)
-            if not (results and "error" in results[0]):
-                break
 
-            error = results[0]["error"]
-            if attempt < MAX_CYPHER_ATTEMPTS - 1:
+            if results and "error" in results[0]:
+                error = results[0]["error"]
+                if attempt < MAX_CYPHER_ATTEMPTS - 1:
+                    if verbose:
+                        print(f"[Retry {attempt + 1}] Query failed: {error[:160]}\n")
+                    cypher = repair_cypher(question, cypher, error, **llm_kwargs)
+                continue
+
+            # A valid query that matched nothing usually means it was too
+            # specific, not that the graph lacks the fact. Widening recovers
+            # most of these; previously this path just gave up.
+            if not results and attempt < MAX_CYPHER_ATTEMPTS - 1:
                 if verbose:
-                    print(f"[Retry {attempt + 1}] Query failed: {error[:160]}\n")
-                cypher = repair_cypher(question, cypher, error, **llm_kwargs)
+                    print(f"[Retry {attempt + 1}] Zero rows — broadening\n")
+                cypher = broaden_cypher(question, cypher, **llm_kwargs)
+                continue
+
+            break
 
         if verbose:
             print(f"[Results] {json.dumps(results, indent=2, default=str)}\n")
