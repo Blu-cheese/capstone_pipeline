@@ -9,6 +9,7 @@ Supports any OpenAI-compatible API (OpenAI, Groq, local vLLM, etc).
 """
 
 import json
+import re
 import os
 from typing import List, Optional
 
@@ -85,6 +86,14 @@ RULES:
 7. Subjects and objects must be concrete named entities, not sentence
    fragments. Reject things like "three changes" or "twelve weeks to
    fourteen weeks" - if there is no nameable entity, omit the triple.
+8. `utterance_time` is the (Ns) start time of the utterance where the fact
+   is stated, copied from the transcript. Use the utterance that asserts the
+   fact, not one that merely mentions the entity.
+9. `deadline_date` is "" unless the object is a DEADLINE whose calendar date
+   is determinable. When the meeting date is given, resolve relative phrases
+   against it: "next Friday", "month-end", "the 25th" all resolve. Format
+   YYYY-MM-DD. Never guess a date the dialogue does not support - "" is
+   always acceptable.
 
 Respond with ONLY a JSON object of the form {{"triples": [...]}}. No other text.
 Example:
@@ -136,7 +145,7 @@ If no meaningful triples can be extracted, return an empty array: []"""
 
 USER_PROMPT_TEMPLATE = """Extract knowledge triples from this meeting segment:
 
-Meeting: {meeting_id}
+Meeting: {meeting_id}{meeting_date_line}
 ---
 {transcript_text}
 ---
@@ -144,15 +153,19 @@ Meeting: {meeting_id}
 Extract all entities and relationships. Return JSON only."""
 
 
-def build_prompt(window: ConversationWindow, constrained: bool = False) -> tuple:
+def build_prompt(window: ConversationWindow, constrained: bool = False,
+                 meeting_date: str = "") -> tuple:
     """Build system + user prompts for the LLM."""
     template = CONSTRAINED_SYSTEM_PROMPT if constrained else SYSTEM_PROMPT
     system = template.format(
         entity_types=", ".join(ENTITY_TYPES),
         relation_types=", ".join(RELATION_TYPES),
     )
+    # The date is what makes "next Friday" resolvable to a calendar day.
+    date_line = f"\nMeeting date: {meeting_date}" if meeting_date else ""
     user = USER_PROMPT_TEMPLATE.format(
         meeting_id=window.meeting_id,
+        meeting_date_line=date_line,
         transcript_text=window.text,
     )
     return system, user
@@ -176,10 +189,21 @@ TRIPLE_SCHEMA = {
                     "object": {"type": "string"},
                     "object_type": {"type": "string", "enum": ENTITY_TYPES},
                     "confidence": {"type": "number"},
+                    # Start time (seconds) of the utterance that states the
+                    # fact — the (Ns) values are right there in the window
+                    # text. Without this every triple inherited the window's
+                    # first timestamp, collapsing time to ~40s buckets.
+                    "utterance_time": {"type": "number"},
+                    # YYYY-MM-DD when the object is a DEADLINE and the
+                    # dialogue pins it down ("next Friday" + meeting date),
+                    # else "". Deadlines otherwise exist only as strings the
+                    # graph cannot order.
+                    "deadline_date": {"type": "string"},
                 },
                 "required": [
                     "subject", "subject_type", "relation",
                     "object", "object_type", "confidence",
+                    "utterance_time", "deadline_date",
                 ],
                 "additionalProperties": False,
             },
@@ -237,12 +261,28 @@ def parse_llm_response(
 
     triples = []
     first_time = window.utterances[0].start_time if window.utterances else 0.0
+    last_time = window.utterances[-1].end_time if window.utterances else 0.0
 
     for item in data:
         if not isinstance(item, dict):
             continue
         try:
             relation = normalize_relation(str(item.get("relation", "")))
+
+            # Per-utterance attribution, trusted only within window bounds.
+            # A cited time outside the window is a hallucinated citation, so
+            # it falls back to the window start (the old behaviour).
+            try:
+                cited = float(item.get("utterance_time", first_time))
+            except (TypeError, ValueError):
+                cited = first_time
+            if not (first_time <= cited <= last_time + 1.0):
+                cited = first_time
+
+            # Deadline resolution: accept only a well-formed ISO date.
+            deadline_date = str(item.get("deadline_date", "") or "").strip()
+            if not re.fullmatch(r"\d{4}-\d{2}-\d{2}", deadline_date):
+                deadline_date = ""
 
             if stats is not None:
                 stats["seen"] = stats.get("seen", 0) + 1
@@ -263,7 +303,8 @@ def parse_llm_response(
                 object_type=str(item.get("object_type", "UNKNOWN")).strip().upper(),
                 confidence=float(item.get("confidence", 0.8)),
                 source_meeting=window.meeting_id,
-                timestamp=first_time,
+                timestamp=cited,
+                deadline_date=deadline_date,
                 source_utterance=window.text[:200],
                 window_text=window.text,
             ))
@@ -339,7 +380,10 @@ class LLMExtractor:
 
     def extract(self, window: ConversationWindow) -> List[Triple]:
         """Extract triples from a single conversation window."""
-        system_prompt, user_prompt = build_prompt(window, constrained=self.constrained)
+        system_prompt, user_prompt = build_prompt(
+            window, constrained=self.constrained,
+            meeting_date=getattr(self, "meeting_date", ""),
+        )
 
         try:
             response_text = self._call_api(system_prompt, user_prompt)
@@ -366,9 +410,11 @@ class LLMExtractor:
             "off_taxonomy_labels": sorted(set(off)),
         }
 
-    def extract_meeting(self, windows: List[ConversationWindow]) -> List[Triple]:
+    def extract_meeting(self, windows: List[ConversationWindow],
+                        meeting_date: str = "") -> List[Triple]:
         """Extract triples from all windows of a meeting."""
         import time
+        self.meeting_date = meeting_date
         all_triples = []
         for i, window in enumerate(windows):
             print(f"  Extracting window {i+1}/{len(windows)}...")
@@ -458,27 +504,28 @@ class LLMExtractor:
                     data = json.loads(resp.read().decode("utf-8"))
                 return data["choices"][0]["message"]["content"]
             except urllib.error.HTTPError as e:
-                if e.code == 429:
-                    # Rate limit — back off and retry
+                # 429 = rate limit, 5xx = transient server trouble. Both are
+                # worth retrying: a 503 burst once cost meeting_002 five of
+                # its eleven windows because only 429 retried here (the
+                # query layer already retried 5xx — the two transports had
+                # drifted). 4xx other than 429 will never succeed; raise.
+                if e.code == 429 or e.code >= 500:
                     wait = base_wait * (2 ** attempt)  # 5, 10, 20, 40, 80 seconds
                     if attempt < max_retries - 1:
-                        print(f"    [Rate limited] Waiting {wait}s before retry {attempt + 2}/{max_retries}...")
+                        print(f"    [HTTP {e.code}] Waiting {wait}s before retry {attempt + 2}/{max_retries}...")
                         time.sleep(wait)
                         continue
-                    else:
-                        raise RuntimeError(
-                            f"Rate limited after {max_retries} retries. "
-                            f"Free tier Gemini allows ~10-15 RPM. "
-                            f"Wait 1 minute and try again, or switch model."
-                        )
-                else:
-                    # Other HTTP error — don't retry
-                    error_body = ""
-                    try:
-                        error_body = e.read().decode("utf-8")[:500]
-                    except Exception:
-                        pass
-                    raise RuntimeError(f"HTTP {e.code}: {e.reason}. {error_body}")
+                    raise RuntimeError(
+                        f"HTTP {e.code} after {max_retries} retries. "
+                        f"Server or quota trouble that outlasted the backoff."
+                    )
+                # Client error — retrying cannot help
+                error_body = ""
+                try:
+                    error_body = e.read().decode("utf-8")[:500]
+                except Exception:
+                    pass
+                raise RuntimeError(f"HTTP {e.code}: {e.reason}. {error_body}")
             except urllib.error.URLError as e:
                 # Network error — retry once
                 if attempt < max_retries - 1:
@@ -515,7 +562,8 @@ class MockLLMExtractor:
             ))
         return triples
 
-    def extract_meeting(self, windows: List[ConversationWindow]) -> List[Triple]:
+    def extract_meeting(self, windows: List[ConversationWindow],
+                        meeting_date: str = "") -> List[Triple]:
         all_triples = []
         for window in windows:
             all_triples.extend(self.extract(window))

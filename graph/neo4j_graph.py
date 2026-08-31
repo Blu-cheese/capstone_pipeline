@@ -15,8 +15,9 @@ Alternatively, use Neo4j Desktop or Docker:
 """
 
 import json
+import re
 from typing import List, Dict, Optional
-from datetime import datetime
+from datetime import datetime, timedelta
 
 from utils.models import Triple
 
@@ -72,47 +73,89 @@ class KnowledgeGraph:
                     print(f"  [WARN] Constraint skipped: {e}")
         print("[Neo4j] Constraints set up")
 
-    def insert_triples(self, triples: List[Triple], meeting_id: str = ""):
+    # Node labels are interpolated (Cypher cannot parameterize them), so
+    # only strings matching this ever reach the query text.
+    _LABEL_RE = re.compile(r"^[A-Z][A-Z_]{0,30}$")
+
+    def _stated_at(self, meeting_date: str, utterance_time: float) -> Optional[str]:
         """
-        Insert a batch of triples into the graph.
-        Uses MERGE to avoid duplicates.
+        Absolute time a fact was stated: meeting date + seconds into the
+        meeting. Meetings carry no time-of-day, so the base is midnight —
+        the value is for ordering and differences, not clock reading.
+        """
+        if not meeting_date:
+            return None
+        try:
+            base = datetime.fromisoformat(meeting_date)
+            return (base + timedelta(seconds=float(utterance_time or 0.0))).isoformat()
+        except (ValueError, TypeError):
+            return None
+
+    def insert_triples(self, triples: List[Triple], meeting_id: str = "",
+                       meeting_date: str = ""):
+        """
+        Insert a batch of triples into the graph. Uses MERGE to avoid
+        duplicate nodes.
+
+        Temporal fields, deliberately:
+          ingested_at   when the pipeline wrote the row. Provenance only —
+                        this was previously named `timestamp`, and ordering
+                        by it silently gave insertion order, not meeting
+                        chronology.
+          meeting_date  date of the meeting (from data/meeting_dates.json).
+          stated_at     meeting_date + utterance_time: the one sortable,
+                        metric field for "what happened when".
+          first_seen /  meeting DATES on entities, not wall-clock. Correct
+          last_seen     as long as meetings are processed in order, which
+                        the pipeline already assumes.
         """
         if not self.driver:
             print("[Neo4j] Not connected")
             return
 
-        timestamp = datetime.now().isoformat()
+        ingested_at = datetime.now().isoformat()
         inserted = 0
 
         with self.driver.session() as session:
             for t in triples:
+                # Second label per node (e.g. :PERSON) so Browser can colour
+                # by type without a manual post-step after --clear-graph.
+                s_label = f":{t.subject_type}" if self._LABEL_RE.match(t.subject_type or "") else ""
+                o_label = f":{t.object_type}" if self._LABEL_RE.match(t.object_type or "") else ""
+
+                cypher = f"""
+                    MERGE (s:Entity {{name: $subject}})
+                    ON CREATE SET
+                        s.type = $subject_type,
+                        s.first_seen = $meeting_date,
+                        s.first_meeting = $meeting_id
+                    SET s.last_seen = $meeting_date,
+                        s.last_meeting = $meeting_id
+                        {f', s{s_label}' if s_label else ''}
+
+                    MERGE (o:Entity {{name: $object}})
+                    ON CREATE SET
+                        o.type = $object_type,
+                        o.first_seen = $meeting_date,
+                        o.first_meeting = $meeting_id
+                    SET o.last_seen = $meeting_date,
+                        o.last_meeting = $meeting_id
+                        {f', o{o_label}' if o_label else ''}
+                        {', o.resolved_date = $deadline_date' if t.deadline_date else ''}
+
+                    CREATE (s)-[r:RELATION {{
+                        type: $relation,
+                        confidence: $confidence,
+                        source_meeting: $meeting_id,
+                        meeting_date: $meeting_date,
+                        stated_at: $stated_at,
+                        utterance_time: $utterance_time,
+                        ingested_at: $ingested_at
+                    }}]->(o)
+                """
                 try:
                     session.run(
-                        """
-                        MERGE (s:Entity {name: $subject})
-                        ON CREATE SET 
-                            s.type = $subject_type,
-                            s.first_seen = $timestamp,
-                            s.first_meeting = $meeting_id
-                        SET s.last_seen = $timestamp,
-                            s.last_meeting = $meeting_id
-
-                        MERGE (o:Entity {name: $object})
-                        ON CREATE SET 
-                            o.type = $object_type,
-                            o.first_seen = $timestamp,
-                            o.first_meeting = $meeting_id
-                        SET o.last_seen = $timestamp,
-                            o.last_meeting = $meeting_id
-
-                        CREATE (s)-[r:RELATION {
-                            type: $relation,
-                            confidence: $confidence,
-                            source_meeting: $meeting_id,
-                            timestamp: $timestamp,
-                            utterance_time: $utterance_time
-                        }]->(o)
-                        """,
+                        cypher,
                         subject=t.subject,
                         subject_type=t.subject_type,
                         object=t.object,
@@ -120,14 +163,18 @@ class KnowledgeGraph:
                         relation=t.relation,
                         confidence=t.confidence,
                         meeting_id=meeting_id or t.source_meeting,
-                        timestamp=timestamp,
+                        meeting_date=meeting_date or None,
+                        stated_at=self._stated_at(meeting_date, t.timestamp),
                         utterance_time=t.timestamp,
+                        ingested_at=ingested_at,
+                        deadline_date=t.deadline_date or None,
                     )
                     inserted += 1
                 except Exception as e:
                     print(f"  [WARN] Failed to insert triple: {t.subject} -[{t.relation}]-> {t.object}: {e}")
 
-        print(f"[Neo4j] Inserted {inserted}/{len(triples)} triples from meeting '{meeting_id}'")
+        print(f"[Neo4j] Inserted {inserted}/{len(triples)} triples from meeting '{meeting_id}'"
+              + (f" ({meeting_date})" if meeting_date else ""))
 
     def get_graph_stats(self) -> Dict:
         """Return counts of nodes and relationships."""
@@ -270,22 +317,27 @@ class FlatFileGraph:
     def setup_constraints(self):
         pass
 
-    def insert_triples(self, triples: List[Triple], meeting_id: str = ""):
-        timestamp = datetime.now().isoformat()
+    def insert_triples(self, triples: List[Triple], meeting_id: str = "",
+                       meeting_date: str = ""):
+        ingested_at = datetime.now().isoformat()
         for t in triples:
-            # Upsert entities
+            # Upsert entities. last_seen carries the meeting date (real
+            # chronology), matching the Neo4j backend.
             self.entities[t.subject.lower()] = {
                 "name": t.subject,
                 "type": t.subject_type,
-                "last_seen": timestamp,
+                "last_seen": meeting_date or None,
                 "last_meeting": meeting_id,
             }
-            self.entities[t.object.lower()] = {
+            obj = {
                 "name": t.object,
                 "type": t.object_type,
-                "last_seen": timestamp,
+                "last_seen": meeting_date or None,
                 "last_meeting": meeting_id,
             }
+            if t.deadline_date:
+                obj["resolved_date"] = t.deadline_date
+            self.entities[t.object.lower()] = obj
             # Add relation
             self.relations.append({
                 "subject": t.subject,
@@ -293,7 +345,9 @@ class FlatFileGraph:
                 "object": t.object,
                 "confidence": t.confidence,
                 "meeting": meeting_id,
-                "timestamp": timestamp,
+                "meeting_date": meeting_date or None,
+                "utterance_time": t.timestamp,
+                "ingested_at": ingested_at,
             })
 
         self._save()

@@ -39,24 +39,32 @@ The Neo4j knowledge graph has the following structure:
 
 NODE:
   (:Entity)
-    Properties: name (string), type (string), first_seen (datetime), 
-                last_seen (datetime), first_meeting (string), last_meeting (string)
+    Properties: name (string), type (string),
+                first_seen / last_seen (DATE of the first/last meeting that
+                mentioned this entity, e.g. "2026-01-05"),
+                first_meeting / last_meeting (meeting ids),
+                resolved_date (DEADLINE nodes only, when the dialogue pinned
+                the deadline to a calendar date: "YYYY-MM-DD". Lets deadlines
+                be ordered and compared — a DEADLINE without it is just a
+                phrase like "next Friday")
     Entity types (the ONLY legal values of e.type): {", ".join(ENTITY_TYPES)}
 
 RELATIONSHIP:
   (:Entity)-[:RELATION]->(:Entity)
     Properties: type (string), confidence (float), source_meeting (string),
-                timestamp (datetime), utterance_time (float)
+                meeting_date (date string), stated_at (ISO datetime),
+                utterance_time (float), ingested_at (datetime)
 
     IMPORTANT — which property means what:
-      source_meeting  which meeting this fact came from (meeting_001 ...
-                      meeting_005, in chronological order). This is the
-                      real chronology across meetings.
-      utterance_time  seconds from the start of that meeting. This is the
-                      chronology within a meeting.
-      timestamp       when the pipeline WROTE the row, not when anything was
-                      said. Never order by this to establish what happened
-                      first — use source_meeting, then utterance_time.
+      stated_at       WHEN THE FACT WAS STATED: meeting date + seconds into
+                      the meeting. The one field to ORDER BY for chronology,
+                      and to subtract for "how long between X and Y".
+      meeting_date    date of the meeting the fact came from.
+      source_meeting  which meeting (meeting_001 ... meeting_005).
+      utterance_time  seconds from the start of that meeting.
+      ingested_at     when the pipeline WROTE the row. Provenance only —
+                      NEVER order by ingested_at to establish what happened
+                      first; it records processing order, not history.
     Relation types — r.type is ALWAYS exactly one of these {len(RELATION_TYPES)}
     values, and never anything else. A query filtering on any other value
     returns nothing:
@@ -79,8 +87,11 @@ IMPORTANT QUERY PATTERNS:
       MATCH (x:Entity)-[r:RELATION]-(other:Entity)
       WHERE toLower(x.name) CONTAINS 'applied deep learning'
   and return both endpoints so the answering step can see who did what.
-- source_meeting tracks which meeting a fact came from. Order by
-  r.source_meeting, then r.utterance_time, to see temporal evolution.
+- Order by r.stated_at to see temporal evolution. For date arithmetic
+  ("how many days between"), compare date(r.meeting_date) values or
+  datetime(r.stated_at) values.
+- "Which deadline comes first / is due soonest" questions: match DEADLINE
+  entities WHERE d.resolved_date IS NOT NULL and ORDER BY d.resolved_date.
 """
 
 CYPHER_SYSTEM_PROMPT = """You are a Cypher query generator for a Neo4j knowledge graph built from college staff meeting transcripts.
@@ -101,9 +112,10 @@ RULES:
 5. Always RETURN readable aliases (AS keyword) so the results make sense.
 6. End the query with LIMIT 200. Returning extra rows is harmless — the
    answering step filters. Returning too few silently loses facts.
-7. For temporal queries, ORDER BY r.source_meeting, r.utterance_time — in
-   that order. NEVER order by r.timestamp: it records when the pipeline ran,
-   not when anything was said.
+7. For temporal queries, ORDER BY r.stated_at — it is meeting date plus
+   seconds into the meeting, so it is the true chronology in one field.
+   NEVER order by r.ingested_at: it records when the pipeline ran, not when
+   anything was said.
 8. This is Cypher, NOT SQL. Never use SELECT, FROM, JOIN, GROUP BY,
    STRING_AGG, or subqueries in parentheses. To aggregate, use Cypher's
    collect() and WITH. To combine results, use multiple MATCH clauses or
@@ -138,25 +150,25 @@ returns nothing. Entity names are short fragments produced by an extractor
 
 EXAMPLES:
 Question: What decisions were made?
-Query: MATCH (s:Entity)-[r:RELATION]->(o:Entity) WHERE r.type IN ['approved', 'rejected', 'decided_on', 'postponed', 'proposed'] RETURN s.name AS subject, r.type AS decision, o.name AS object, r.source_meeting AS meeting ORDER BY r.source_meeting, r.utterance_time LIMIT 200
+Query: MATCH (s:Entity)-[r:RELATION]->(o:Entity) WHERE r.type IN ['approved', 'rejected', 'decided_on', 'postponed', 'proposed'] RETURN s.name AS subject, r.type AS decision, o.name AS object, r.source_meeting AS meeting ORDER BY r.stated_at LIMIT 200
 
 Question: Who is assigned to what?
-Query: MATCH (p:Entity)-[r:RELATION]->(t:Entity) WHERE r.type = 'assigned_to' RETURN p.name AS person, t.name AS task, r.source_meeting AS meeting, r.confidence AS confidence ORDER BY r.source_meeting, r.utterance_time LIMIT 200
+Query: MATCH (p:Entity)-[r:RELATION]->(t:Entity) WHERE r.type = 'assigned_to' RETURN p.name AS person, t.name AS task, r.source_meeting AS meeting, r.confidence AS confidence ORDER BY r.stated_at LIMIT 200
 
 Question: How did the budget change?
-Query: MATCH (e:Entity)-[r:RELATION]-(other:Entity) WHERE toLower(e.name) CONTAINS 'budget' OR toLower(other.name) CONTAINS 'budget' OR r.type = 'budget_for' RETURN e.name AS entity, r.type AS relation, other.name AS related_to, r.source_meeting AS meeting ORDER BY r.source_meeting, r.utterance_time LIMIT 200
+Query: MATCH (e:Entity)-[r:RELATION]-(other:Entity) WHERE toLower(e.name) CONTAINS 'budget' OR toLower(other.name) CONTAINS 'budget' OR r.type = 'budget_for' RETURN e.name AS entity, r.type AS relation, other.name AS related_to, r.source_meeting AS meeting ORDER BY r.stated_at LIMIT 200
 
 Question: What happened to the Data Mining course?
-Query: MATCH (x:Entity)-[r:RELATION]-(other:Entity) WHERE toLower(x.name) CONTAINS 'data mining' RETURN x.name AS entity, r.type AS relation, other.name AS related_to, r.source_meeting AS meeting ORDER BY r.source_meeting, r.utterance_time LIMIT 200
+Query: MATCH (x:Entity)-[r:RELATION]-(other:Entity) WHERE toLower(x.name) CONTAINS 'data mining' RETURN x.name AS entity, r.type AS relation, other.name AS related_to, r.source_meeting AS meeting ORDER BY r.stated_at LIMIT 200
 
 Question: How much was approved for phase one of the GPU purchase?
 Note: 'gpu purchase' and 'phase one' are NOT one node. Match the single most
 distinctive token on either endpoint and let the answer step read the rows.
-Query: MATCH (a:Entity)-[r:RELATION]-(b:Entity) WHERE toLower(a.name) CONTAINS 'lakh' OR toLower(b.name) CONTAINS 'lakh' RETURN a.name AS entity, r.type AS relation, b.name AS related_to, r.source_meeting AS meeting ORDER BY r.source_meeting, r.utterance_time LIMIT 200
+Query: MATCH (a:Entity)-[r:RELATION]-(b:Entity) WHERE toLower(a.name) CONTAINS 'lakh' OR toLower(b.name) CONTAINS 'lakh' RETURN a.name AS entity, r.type AS relation, b.name AS related_to, r.source_meeting AS meeting ORDER BY r.stated_at LIMIT 200
 
 Question: How long is phase one of the capstone project now?
 Note: do NOT pin r.type — the duration may be stored under any relation.
-Query: MATCH (a:Entity)-[r:RELATION]-(b:Entity) WHERE toLower(a.name) CONTAINS 'capstone' OR toLower(b.name) CONTAINS 'capstone' OR toLower(a.name) CONTAINS 'week' OR toLower(b.name) CONTAINS 'week' RETURN a.name AS entity, r.type AS relation, b.name AS related_to, r.source_meeting AS meeting ORDER BY r.source_meeting, r.utterance_time LIMIT 200"""
+Query: MATCH (a:Entity)-[r:RELATION]-(b:Entity) WHERE toLower(a.name) CONTAINS 'capstone' OR toLower(b.name) CONTAINS 'capstone' OR toLower(a.name) CONTAINS 'week' OR toLower(b.name) CONTAINS 'week' RETURN a.name AS entity, r.type AS relation, b.name AS related_to, r.source_meeting AS meeting ORDER BY r.stated_at LIMIT 200"""
 
 
 ANSWER_SYSTEM_PROMPT = """You are a helpful assistant that answers questions about college staff meetings based on knowledge graph query results.

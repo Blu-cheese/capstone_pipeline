@@ -54,6 +54,7 @@ def process_meeting(
     window_size: int = 15,
     overlap: int = 5,
     drop_placeholders: bool = True,
+    meeting_date: str = "",
 ) -> List[Triple]:
     """
     Process a single meeting through the full pipeline.
@@ -62,7 +63,8 @@ def process_meeting(
     """
     meeting_id = transcript.meeting_id
     print(f"\n{'='*60}")
-    print(f"Processing meeting: {meeting_id}")
+    print(f"Processing meeting: {meeting_id}"
+          + (f" ({meeting_date})" if meeting_date else ""))
     print(f"  Utterances: {len(transcript.utterances)}")
     print(f"  Duration: {transcript.duration:.1f}s")
     print(f"{'='*60}")
@@ -74,7 +76,7 @@ def process_meeting(
 
     # Step 2: Extract triples
     print(f"\n[2/4] Extracting triples...")
-    raw_triples = extractor.extract_meeting(windows)
+    raw_triples = extractor.extract_meeting(windows, meeting_date=meeting_date)
     print(f"  Raw triples extracted: {len(raw_triples)}")
 
     # Any speaker the naming step could not identify is still a bare
@@ -94,7 +96,8 @@ def process_meeting(
 
     # Step 4: Insert into graph
     print(f"\n[4/4] Inserting into knowledge graph...")
-    graph.insert_triples(resolved_triples, meeting_id=meeting_id)
+    graph.insert_triples(resolved_triples, meeting_id=meeting_id,
+                         meeting_date=meeting_date)
 
     # Print summary
     stats = graph.get_graph_stats()
@@ -230,6 +233,10 @@ def main():
                         help="JSON of {meeting_id: [attendee names]}. Constrains "
                              "speaker naming to a closed set, the way a calendar "
                              "invite would. Pass '' to disable.")
+    parser.add_argument("--meeting-dates", default="data/meeting_dates.json",
+                        help="JSON of {meeting_id: {date: YYYY-MM-DD}}. Gives the "
+                             "graph metric time (stated_at) and lets the extractor "
+                             "resolve relative deadlines. Pass '' to disable.")
 
     # Chunking
     parser.add_argument("--window-size", type=int, default=15)
@@ -251,6 +258,22 @@ def main():
         print(f"[Rosters] Loaded attendee lists for {len(rosters)} meetings "
               f"from {args.roster}")
     all_attendees = sorted({n for names in rosters.values() for n in names})
+
+    # Meeting dates: {meeting_id: "YYYY-MM-DD"}. Missing file or entry is
+    # never fatal — the graph just stays ordinal for that meeting.
+    meeting_dates = {}
+    if args.meeting_dates and os.path.exists(args.meeting_dates):
+        try:
+            with open(args.meeting_dates, encoding="utf-8") as f:
+                raw_dates = json.load(f)
+            meeting_dates = {
+                k: v["date"] for k, v in raw_dates.items()
+                if isinstance(v, dict) and v.get("date")
+            }
+            print(f"[Dates] Loaded meeting dates for {len(meeting_dates)} meetings "
+                  f"from {args.meeting_dates}")
+        except (json.JSONDecodeError, OSError, KeyError) as e:
+            print(f"[WARN] Could not read meeting dates: {e}")
 
     # Build components
     extractor = build_extractor(args)
@@ -295,6 +318,7 @@ def main():
             window_size=args.window_size,
             overlap=args.overlap,
             drop_placeholders=args.drop_placeholders,
+            meeting_date=meeting_dates.get(transcript.meeting_id, ""),
         )
 
         # Save triples for this meeting

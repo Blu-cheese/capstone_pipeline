@@ -1,0 +1,23 @@
+{
+  "_comment": "Meeting dates derived from the scripts themselves. Only meeting_005 is stated outright; the rest follow from anchors quoted in 'basis'. These convert the graph's ordering (source_meeting) into metric time (stated_at), which is what lets 'how long between X and Y' and 'which deadline is first' be answered at all.",
+  "meeting_001": {
+    "date": "2026-01-05",
+    "basis": "baseline CSE weekly meeting; start of the arc"
+  },
+  "meeting_002": {
+    "date": "2026-01-19",
+    "basis": "script_02 setup: 'Follow-up meeting two weeks later'"
+  },
+  "meeting_003": {
+    "date": "2026-01-27",
+    "basis": "script_05 opens 'This is the follow-up to our January meeting', and script_03 schedules the follow-up for February twenty eighth"
+  },
+  "meeting_004": {
+    "date": "2026-02-16",
+    "basis": "script_04 discusses the Board approval from meeting_003 and targets 'before the Board meets on February twenty eighth'"
+  },
+  "meeting_005": {
+    "date": "2026-02-28",
+    "basis": "stated in scripts 3 and 5: 'Scheduled for February twenty eighth'"
+  }
+}

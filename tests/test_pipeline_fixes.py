@@ -277,9 +277,125 @@ def test_query_prompt_forbids_the_known_failures():
     check("prompt: forbids SQL constructs", "NOT SQL" in p and "STRING_AGG" in p)
     check("prompt: requires case-insensitive matching", "toLower" in p)
     check("prompt: forbids ordering by write time",
-          "NEVER order by r.timestamp" in p or "Never order by this" in query_mod.GRAPH_SCHEMA)
+          "NEVER order by r.ingested_at" in p)
     check("prompt: row cap is the raised one",
           "LIMIT 200" in p and "LIMIT 25" not in p)
+
+
+def test_temporal_model_is_documented():
+    """
+    The graph's original `timestamp` was pipeline write time batched per
+    meeting — 5 distinct values across 490 relations — so ordering by it
+    reproduced insertion order and called it chronology. The schema must
+    now advertise stated_at (metric chronology) and resolved_date
+    (orderable deadlines), and the write-time field must carry a name
+    nothing reaches for by accident.
+    """
+    s = query_mod.GRAPH_SCHEMA
+    check("schema: stated_at documented", "stated_at" in s)
+    check("schema: ingested_at marked provenance-only",
+          "ingested_at" in s and "NEVER order by ingested_at" in s)
+    check("schema: resolved_date on DEADLINE documented", "resolved_date" in s)
+    check("schema: the old field name is gone",
+          "timestamp (datetime)" not in s)
+    check("prompt: examples order by stated_at",
+          "ORDER BY r.stated_at" in query_mod.CYPHER_SYSTEM_PROMPT)
+
+
+def test_stated_at_arithmetic():
+    """stated_at = meeting date + seconds into the meeting, midnight base."""
+    from graph.neo4j_graph import KnowledgeGraph
+    g = KnowledgeGraph.__new__(KnowledgeGraph)   # no driver needed
+    check("stated_at: date + offset",
+          g._stated_at("2026-01-05", 150.0) == "2026-01-05T00:02:30")
+    check("stated_at: zero offset is midnight",
+          g._stated_at("2026-01-05", 0.0) == "2026-01-05T00:00:00")
+    check("stated_at: no date -> None", g._stated_at("", 99.0) is None)
+    check("stated_at: junk date -> None", g._stated_at("soonish", 1.0) is None)
+
+
+def test_graph_label_sanitization():
+    """Labels are interpolated into Cypher, so only clean type names may pass."""
+    from graph.neo4j_graph import KnowledgeGraph
+    ok = ["PERSON", "COURSE", "DEADLINE", "A_B"]
+    bad = ["", "person", "PERSON) DETACH DELETE (n", "P ERSON", "123"]
+    for t in ok:
+        check(f"label: '{t}' allowed", bool(KnowledgeGraph._LABEL_RE.match(t)))
+    for t in bad:
+        check(f"label: '{t!r}' rejected", not KnowledgeGraph._LABEL_RE.match(t or ""))
+
+
+def test_extractor_validates_cited_times_and_dates():
+    """
+    Per-utterance attribution is only trusted inside the window: a cited
+    time outside it is a hallucinated citation and falls back to window
+    start. deadline_date must be a well-formed ISO date or it is dropped.
+    """
+    from extractors.llm_extractor import parse_llm_response
+
+    win = _Win(0)
+    win.utterances = [Utterance("Jayashree", "budget approved", 10.0, 12.0),
+                      Utterance("Pavan", "deadline is the 25th", 40.0, 43.0)]
+
+    def resp(utt_time, ddate):
+        return json.dumps({"triples": [{
+            "subject": "Jayashree", "subject_type": "PERSON",
+            "relation": "approved", "object": "budget", "object_type": "TOPIC",
+            "confidence": 0.9, "utterance_time": utt_time,
+            "deadline_date": ddate,
+        }]})
+
+    t = parse_llm_response(resp(40.0, "2026-01-25"), win, constrained=True)[0]
+    check("cited time inside window kept", t.timestamp == 40.0)
+    check("well-formed deadline_date kept", t.deadline_date == "2026-01-25")
+
+    t = parse_llm_response(resp(999.0, "next Friday"), win, constrained=True)[0]
+    check("out-of-window citation falls back to window start", t.timestamp == 10.0)
+    check("non-ISO deadline_date dropped", t.deadline_date == "")
+
+
+def test_resolver_preserves_every_triple_field():
+    """
+    resolve_triples used to rebuild Triples by re-listing fields by hand,
+    silently dropping any it didn't know about. deadline_date survived
+    extraction and then vanished here — zero of 449 triples carried it after
+    a full pipeline run, while the extractor demonstrably produced it. The
+    resolver must round-trip every field, including ones added later.
+    """
+    import dataclasses
+    r = EntityResolver()
+    src = triple("Jayashree", "final syllabus", "deadline_for")
+    src.deadline_date = "2026-01-10"
+    src.window_text = "full window text"
+    src.source_utterance = "preview"
+    out = r.resolve_triples([src])[0]
+    for f in dataclasses.fields(src):
+        check(f"resolver keeps {f.name}",
+              getattr(out, f.name) == getattr(src, f.name),
+              f"{getattr(out, f.name)!r} != {getattr(src, f.name)!r}")
+
+
+def test_resolver_dedup_merges_deadline_dates():
+    """When dedup collapses two copies, a resolved date must not be the loser."""
+    r = EntityResolver()
+    a = triple("Jayashree", "final syllabus", "deadline_for")      # no date
+    b = triple("Jayashree", "final syllabus", "deadline_for")
+    b.deadline_date = "2026-01-10"
+    out = r.resolve_triples([a, b])
+    check("dedup: one triple survives", len(out) == 1)
+    check("dedup: the surviving copy carries the date",
+          out[0].deadline_date == "2026-01-10")
+
+
+def test_meeting_dates_file_loads():
+    p = Path("data/meeting_dates.json")
+    check("dates: file exists", p.exists())
+    if p.exists():
+        d = json.loads(p.read_text(encoding="utf-8"))
+        dates = {k: v["date"] for k, v in d.items() if isinstance(v, dict) and "date" in v}
+        check("dates: all five meetings dated", len(dates) == 5, str(sorted(dates)))
+        check("dates: chronological with meeting order",
+              list(sorted(dates)) == sorted(dates, key=lambda k: dates[k]))
 
 
 def test_truncation_is_disclosed_to_the_answer_step():

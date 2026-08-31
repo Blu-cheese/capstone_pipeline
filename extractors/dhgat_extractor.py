@@ -216,7 +216,8 @@ class DHGATExtractor:
 
         return type_pair_relations.get((t1, t2))
 
-    def extract_meeting(self, windows: List[ConversationWindow]) -> List[Triple]:
+    def extract_meeting(self, windows: List[ConversationWindow],
+                        meeting_date: str = "") -> List[Triple]:
         all_triples = []
         for i, window in enumerate(windows):
             print(f"  [DHGAT] Extracting window {i+1}/{len(windows)}...")

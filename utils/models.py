@@ -34,8 +34,12 @@ class Triple:
     object_type: str
     confidence: float = 1.0
     source_meeting: str = ""
-    timestamp: float = 0.0  # from utterance start_time
+    timestamp: float = 0.0  # start_time of the utterance that states the fact
     source_utterance: str = ""  # truncated preview (200 chars) for inspection
+    # ISO date (YYYY-MM-DD) when the object is a DEADLINE the extractor could
+    # resolve against the meeting date; "" otherwise. Deadlines without this
+    # exist only as strings ("next Friday") the graph cannot order.
+    deadline_date: str = ""
     # Full text of the window this triple came from. Kept separate because
     # source_utterance is a truncated preview, and Method A's feature
     # extraction needs the complete window to embed.

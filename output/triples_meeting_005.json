@@ -2,14 +2,15 @@
   {
     "subject": "Jayashree",
     "subject_type": "PERSON",
-    "relation": "discussed",
-    "object": "Deferred items",
+    "relation": "decided_on",
+    "object": "Deferred item",
     "object_type": "TOPIC",
-    "confidence": 0.8,
+    "confidence": 0.9,
     "source_meeting": "meeting_005",
-    "timestamp": 0.22,
+    "timestamp": 4.9,
     "source_utterance": "[Jayashree] (0.2s): Good morning.\n[Jayashree] (1.7s): This is the follow-up to our January meeting.\n[Jayashree] (4.9s): We deferred one item and approved three.\n[Jayashree] (8.0s): Let's start with th",
-    "window_text": ""
+    "deadline_date": "",
+    "window_text": "[Jayashree] (0.2s): Good morning.\n[Jayashree] (1.7s): This is the follow-up to our January meeting.\n[Jayashree] (4.9s): We deferred one item and approved three.\n[Jayashree] (8.0s): Let's start with the deferred item.\n[Jayashree] (10.4s): Kumar, you were preparing a justification for retaining data mining.\n[Kumar] (15.9s): I was, and I've circulated it.\n[Kumar] (18.6s): My position has changed somewhat.\n[Priya] (21.8s): Changed how?\n[Kumar] (24.2s): I pulled the enrollment data for the last five years, not two.\n[Kumar] (27.5s): 11 and 14 were the last two years, but before that it was 31, 28 and 26.\n[Kumar] (35.5s): The decline is recent and it correlates exactly with when we introduced the Advanced Machine Learning elective.\n[Keshavan] (42.2s): So students are substituting, not losing interest.\n[Kumar] (47.0s): That's my reading.\n[Kumar] (48.9s): Which means removing data mining entirely loses content that nothing else covers.\n[Kumar] (54.1s): Association rules, frequent pattern mining, anomaly detection on transactional data."
   },
   {
     "subject": "Jayashree",
@@ -17,23 +18,25 @@
     "relation": "approved",
     "object": "Three items",
     "object_type": "TOPIC",
-    "confidence": 0.8,
+    "confidence": 0.9,
     "source_meeting": "meeting_005",
-    "timestamp": 0.22,
+    "timestamp": 4.9,
     "source_utterance": "[Jayashree] (0.2s): Good morning.\n[Jayashree] (1.7s): This is the follow-up to our January meeting.\n[Jayashree] (4.9s): We deferred one item and approved three.\n[Jayashree] (8.0s): Let's start with th",
-    "window_text": ""
+    "deadline_date": "",
+    "window_text": "[Jayashree] (0.2s): Good morning.\n[Jayashree] (1.7s): This is the follow-up to our January meeting.\n[Jayashree] (4.9s): We deferred one item and approved three.\n[Jayashree] (8.0s): Let's start with the deferred item.\n[Jayashree] (10.4s): Kumar, you were preparing a justification for retaining data mining.\n[Kumar] (15.9s): I was, and I've circulated it.\n[Kumar] (18.6s): My position has changed somewhat.\n[Priya] (21.8s): Changed how?\n[Kumar] (24.2s): I pulled the enrollment data for the last five years, not two.\n[Kumar] (27.5s): 11 and 14 were the last two years, but before that it was 31, 28 and 26.\n[Kumar] (35.5s): The decline is recent and it correlates exactly with when we introduced the Advanced Machine Learning elective.\n[Keshavan] (42.2s): So students are substituting, not losing interest.\n[Kumar] (47.0s): That's my reading.\n[Kumar] (48.9s): Which means removing data mining entirely loses content that nothing else covers.\n[Kumar] (54.1s): Association rules, frequent pattern mining, anomaly detection on transactional data."
   },
   {
     "subject": "Kumar",
     "subject_type": "PERSON",
     "relation": "assigned_to",
-    "object": "Justification for keeping data mining",
+    "object": "Justification for retaining data mining",
     "object_type": "TOPIC",
     "confidence": 0.95,
     "source_meeting": "meeting_005",
-    "timestamp": 0.22,
+    "timestamp": 10.4,
     "source_utterance": "[Jayashree] (0.2s): Good morning.\n[Jayashree] (1.7s): This is the follow-up to our January meeting.\n[Jayashree] (4.9s): We deferred one item and approved three.\n[Jayashree] (8.0s): Let's start with th",
-    "window_text": ""
+    "deadline_date": "",
+    "window_text": "[Jayashree] (0.2s): Good morning.\n[Jayashree] (1.7s): This is the follow-up to our January meeting.\n[Jayashree] (4.9s): We deferred one item and approved three.\n[Jayashree] (8.0s): Let's start with the deferred item.\n[Jayashree] (10.4s): Kumar, you were preparing a justification for retaining data mining.\n[Kumar] (15.9s): I was, and I've circulated it.\n[Kumar] (18.6s): My position has changed somewhat.\n[Priya] (21.8s): Changed how?\n[Kumar] (24.2s): I pulled the enrollment data for the last five years, not two.\n[Kumar] (27.5s): 11 and 14 were the last two years, but before that it was 31, 28 and 26.\n[Kumar] (35.5s): The decline is recent and it correlates exactly with when we introduced the Advanced Machine Learning elective.\n[Keshavan] (42.2s): So students are substituting, not losing interest.\n[Kumar] (47.0s): That's my reading.\n[Kumar] (48.9s): Which means removing data mining entirely loses content that nothing else covers.\n[Kumar] (54.1s): Association rules, frequent pattern mining, anomaly detection on transactional data."
   },
   {
     "subject": "Kumar",
@@ -41,11 +44,12 @@
     "relation": "discussed",
     "object": "Data mining enrollment",
     "object_type": "TOPIC",
-    "confidence": 0.9,
+    "confidence": 0.8,
     "source_meeting": "meeting_005",
-    "timestamp": 0.22,
+    "timestamp": 24.2,
     "source_utterance": "[Jayashree] (0.2s): Good morning.\n[Jayashree] (1.7s): This is the follow-up to our January meeting.\n[Jayashree] (4.9s): We deferred one item and approved three.\n[Jayashree] (8.0s): Let's start with th",
-    "window_text": ""
+    "deadline_date": "",
+    "window_text": "[Jayashree] (0.2s): Good morning.\n[Jayashree] (1.7s): This is the follow-up to our January meeting.\n[Jayashree] (4.9s): We deferred one item and approved three.\n[Jayashree] (8.0s): Let's start with the deferred item.\n[Jayashree] (10.4s): Kumar, you were preparing a justification for retaining data mining.\n[Kumar] (15.9s): I was, and I've circulated it.\n[Kumar] (18.6s): My position has changed somewhat.\n[Priya] (21.8s): Changed how?\n[Kumar] (24.2s): I pulled the enrollment data for the last five years, not two.\n[Kumar] (27.5s): 11 and 14 were the last two years, but before that it was 31, 28 and 26.\n[Kumar] (35.5s): The decline is recent and it correlates exactly with when we introduced the Advanced Machine Learning elective.\n[Keshavan] (42.2s): So students are substituting, not losing interest.\n[Kumar] (47.0s): That's my reading.\n[Kumar] (48.9s): Which means removing data mining entirely loses content that nothing else covers.\n[Kumar] (54.1s): Association rules, frequent pattern mining, anomaly detection on transactional data."
   },
   {
     "subject": "Kumar",
@@ -53,35 +57,25 @@
     "relation": "discussed",
     "object": "Advanced Machine Learning elective",
     "object_type": "COURSE",
-    "confidence": 0.85,
+    "confidence": 0.8,
     "source_meeting": "meeting_005",
-    "timestamp": 0.22,
+    "timestamp": 35.5,
     "source_utterance": "[Jayashree] (0.2s): Good morning.\n[Jayashree] (1.7s): This is the follow-up to our January meeting.\n[Jayashree] (4.9s): We deferred one item and approved three.\n[Jayashree] (8.0s): Let's start with th",
-    "window_text": ""
-  },
-  {
-    "subject": "Keshavan",
-    "subject_type": "PERSON",
-    "relation": "discussed",
-    "object": "Student substitution in courses",
-    "object_type": "TOPIC",
-    "confidence": 0.85,
-    "source_meeting": "meeting_005",
-    "timestamp": 0.22,
-    "source_utterance": "[Jayashree] (0.2s): Good morning.\n[Jayashree] (1.7s): This is the follow-up to our January meeting.\n[Jayashree] (4.9s): We deferred one item and approved three.\n[Jayashree] (8.0s): Let's start with th",
-    "window_text": ""
+    "deadline_date": "",
+    "window_text": "[Jayashree] (0.2s): Good morning.\n[Jayashree] (1.7s): This is the follow-up to our January meeting.\n[Jayashree] (4.9s): We deferred one item and approved three.\n[Jayashree] (8.0s): Let's start with the deferred item.\n[Jayashree] (10.4s): Kumar, you were preparing a justification for retaining data mining.\n[Kumar] (15.9s): I was, and I've circulated it.\n[Kumar] (18.6s): My position has changed somewhat.\n[Priya] (21.8s): Changed how?\n[Kumar] (24.2s): I pulled the enrollment data for the last five years, not two.\n[Kumar] (27.5s): 11 and 14 were the last two years, but before that it was 31, 28 and 26.\n[Kumar] (35.5s): The decline is recent and it correlates exactly with when we introduced the Advanced Machine Learning elective.\n[Keshavan] (42.2s): So students are substituting, not losing interest.\n[Kumar] (47.0s): That's my reading.\n[Kumar] (48.9s): Which means removing data mining entirely loses content that nothing else covers.\n[Kumar] (54.1s): Association rules, frequent pattern mining, anomaly detection on transactional data."
   },
   {
     "subject": "Kumar",
     "subject_type": "PERSON",
     "relation": "discussed",
-    "object": "Content covered by data mining",
+    "object": "Data mining content",
     "object_type": "TOPIC",
     "confidence": 0.9,
     "source_meeting": "meeting_005",
-    "timestamp": 0.22,
+    "timestamp": 48.9,
     "source_utterance": "[Jayashree] (0.2s): Good morning.\n[Jayashree] (1.7s): This is the follow-up to our January meeting.\n[Jayashree] (4.9s): We deferred one item and approved three.\n[Jayashree] (8.0s): Let's start with th",
-    "window_text": ""
+    "deadline_date": "",
+    "window_text": "[Jayashree] (0.2s): Good morning.\n[Jayashree] (1.7s): This is the follow-up to our January meeting.\n[Jayashree] (4.9s): We deferred one item and approved three.\n[Jayashree] (8.0s): Let's start with the deferred item.\n[Jayashree] (10.4s): Kumar, you were preparing a justification for retaining data mining.\n[Kumar] (15.9s): I was, and I've circulated it.\n[Kumar] (18.6s): My position has changed somewhat.\n[Priya] (21.8s): Changed how?\n[Kumar] (24.2s): I pulled the enrollment data for the last five years, not two.\n[Kumar] (27.5s): 11 and 14 were the last two years, but before that it was 31, 28 and 26.\n[Kumar] (35.5s): The decline is recent and it correlates exactly with when we introduced the Advanced Machine Learning elective.\n[Keshavan] (42.2s): So students are substituting, not losing interest.\n[Kumar] (47.0s): That's my reading.\n[Kumar] (48.9s): Which means removing data mining entirely loses content that nothing else covers.\n[Kumar] (54.1s): Association rules, frequent pattern mining, anomaly detection on transactional data."
   },
   {
     "subject": "Advanced Machine Learning elective",
@@ -93,19 +87,21 @@
     "source_meeting": "meeting_005",
     "timestamp": 35.5,
     "source_utterance": "[Kumar] (35.5s): The decline is recent and it correlates exactly with when we introduced the Advanced Machine Learning elective.\n[Keshavan] (42.2s): So students are substituting, not losing interest.\n",
-    "window_text": ""
+    "deadline_date": "",
+    "window_text": "[Kumar] (35.5s): The decline is recent and it correlates exactly with when we introduced the Advanced Machine Learning elective.\n[Keshavan] (42.2s): So students are substituting, not losing interest.\n[Kumar] (47.0s): That's my reading.\n[Kumar] (48.9s): Which means removing data mining entirely loses content that nothing else covers.\n[Kumar] (54.1s): Association rules, frequent pattern mining, anomaly detection on transactional data.\n[Priya] (60.7s): This is what I suggested in January.\n[Priya] (63.8s): Merge rather than remove.\n[Kumar] (66.8s): Yes, and I now agree with Priya.\n[Kumar] (69.7s): I propose we merge data mining with statistical learning into a single for credit course.\n[Kumar] (75.1s): Call it data mining and statistical learning.\n[Keshavan] (79.1s): I can work with that.\n[Keshavan] (81.3s): It solves my redundancy concern and Kumar's coverage concern.\n[Jayashree] (86.7s): Who would teach it?\n[Keshavan] (89.1s): Mira has taught statistical learning for three years.\n[Keshavan] (93.2s): She would be the natural choice, but she's already taking the revised NLP course and two bridge sessions for the deep learning elective."
   },
   {
-    "subject": "data mining",
+    "subject": "Data mining",
     "subject_type": "COURSE",
     "relation": "discussed",
     "object": "content coverage",
     "object_type": "TOPIC",
     "confidence": 0.8,
     "source_meeting": "meeting_005",
-    "timestamp": 35.5,
+    "timestamp": 48.9,
     "source_utterance": "[Kumar] (35.5s): The decline is recent and it correlates exactly with when we introduced the Advanced Machine Learning elective.\n[Keshavan] (42.2s): So students are substituting, not losing interest.\n",
-    "window_text": ""
+    "deadline_date": "",
+    "window_text": "[Kumar] (35.5s): The decline is recent and it correlates exactly with when we introduced the Advanced Machine Learning elective.\n[Keshavan] (42.2s): So students are substituting, not losing interest.\n[Kumar] (47.0s): That's my reading.\n[Kumar] (48.9s): Which means removing data mining entirely loses content that nothing else covers.\n[Kumar] (54.1s): Association rules, frequent pattern mining, anomaly detection on transactional data.\n[Priya] (60.7s): This is what I suggested in January.\n[Priya] (63.8s): Merge rather than remove.\n[Kumar] (66.8s): Yes, and I now agree with Priya.\n[Kumar] (69.7s): I propose we merge data mining with statistical learning into a single for credit course.\n[Kumar] (75.1s): Call it data mining and statistical learning.\n[Keshavan] (79.1s): I can work with that.\n[Keshavan] (81.3s): It solves my redundancy concern and Kumar's coverage concern.\n[Jayashree] (86.7s): Who would teach it?\n[Keshavan] (89.1s): Mira has taught statistical learning for three years.\n[Keshavan] (93.2s): She would be the natural choice, but she's already taking the revised NLP course and two bridge sessions for the deep learning elective."
   },
   {
     "subject": "Priya",
@@ -115,9 +111,10 @@
     "object_type": "TOPIC",
     "confidence": 0.9,
     "source_meeting": "meeting_005",
-    "timestamp": 35.5,
+    "timestamp": 63.8,
     "source_utterance": "[Kumar] (35.5s): The decline is recent and it correlates exactly with when we introduced the Advanced Machine Learning elective.\n[Keshavan] (42.2s): So students are substituting, not losing interest.\n",
-    "window_text": ""
+    "deadline_date": "",
+    "window_text": "[Kumar] (35.5s): The decline is recent and it correlates exactly with when we introduced the Advanced Machine Learning elective.\n[Keshavan] (42.2s): So students are substituting, not losing interest.\n[Kumar] (47.0s): That's my reading.\n[Kumar] (48.9s): Which means removing data mining entirely loses content that nothing else covers.\n[Kumar] (54.1s): Association rules, frequent pattern mining, anomaly detection on transactional data.\n[Priya] (60.7s): This is what I suggested in January.\n[Priya] (63.8s): Merge rather than remove.\n[Kumar] (66.8s): Yes, and I now agree with Priya.\n[Kumar] (69.7s): I propose we merge data mining with statistical learning into a single for credit course.\n[Kumar] (75.1s): Call it data mining and statistical learning.\n[Keshavan] (79.1s): I can work with that.\n[Keshavan] (81.3s): It solves my redundancy concern and Kumar's coverage concern.\n[Jayashree] (86.7s): Who would teach it?\n[Keshavan] (89.1s): Mira has taught statistical learning for three years.\n[Keshavan] (93.2s): She would be the natural choice, but she's already taking the revised NLP course and two bridge sessions for the deep learning elective."
   },
   {
     "subject": "Kumar",
@@ -127,45 +124,36 @@
     "object_type": "TOPIC",
     "confidence": 0.9,
     "source_meeting": "meeting_005",
-    "timestamp": 35.5,
+    "timestamp": 66.8,
     "source_utterance": "[Kumar] (35.5s): The decline is recent and it correlates exactly with when we introduced the Advanced Machine Learning elective.\n[Keshavan] (42.2s): So students are substituting, not losing interest.\n",
-    "window_text": ""
+    "deadline_date": "",
+    "window_text": "[Kumar] (35.5s): The decline is recent and it correlates exactly with when we introduced the Advanced Machine Learning elective.\n[Keshavan] (42.2s): So students are substituting, not losing interest.\n[Kumar] (47.0s): That's my reading.\n[Kumar] (48.9s): Which means removing data mining entirely loses content that nothing else covers.\n[Kumar] (54.1s): Association rules, frequent pattern mining, anomaly detection on transactional data.\n[Priya] (60.7s): This is what I suggested in January.\n[Priya] (63.8s): Merge rather than remove.\n[Kumar] (66.8s): Yes, and I now agree with Priya.\n[Kumar] (69.7s): I propose we merge data mining with statistical learning into a single for credit course.\n[Kumar] (75.1s): Call it data mining and statistical learning.\n[Keshavan] (79.1s): I can work with that.\n[Keshavan] (81.3s): It solves my redundancy concern and Kumar's coverage concern.\n[Jayashree] (86.7s): Who would teach it?\n[Keshavan] (89.1s): Mira has taught statistical learning for three years.\n[Keshavan] (93.2s): She would be the natural choice, but she's already taking the revised NLP course and two bridge sessions for the deep learning elective."
   },
   {
     "subject": "Kumar",
     "subject_type": "PERSON",
     "relation": "proposed",
     "object": "merge data mining with statistical learning into a single for credit course",
+    "object_type": "COURSE",
+    "confidence": 1.0,
+    "source_meeting": "meeting_005",
+    "timestamp": 69.7,
+    "source_utterance": "[Kumar] (35.5s): The decline is recent and it correlates exactly with when we introduced the Advanced Machine Learning elective.\n[Keshavan] (42.2s): So students are substituting, not losing interest.\n",
+    "deadline_date": "",
+    "window_text": "[Kumar] (35.5s): The decline is recent and it correlates exactly with when we introduced the Advanced Machine Learning elective.\n[Keshavan] (42.2s): So students are substituting, not losing interest.\n[Kumar] (47.0s): That's my reading.\n[Kumar] (48.9s): Which means removing data mining entirely loses content that nothing else covers.\n[Kumar] (54.1s): Association rules, frequent pattern mining, anomaly detection on transactional data.\n[Priya] (60.7s): This is what I suggested in January.\n[Priya] (63.8s): Merge rather than remove.\n[Kumar] (66.8s): Yes, and I now agree with Priya.\n[Kumar] (69.7s): I propose we merge data mining with statistical learning into a single for credit course.\n[Kumar] (75.1s): Call it data mining and statistical learning.\n[Keshavan] (79.1s): I can work with that.\n[Keshavan] (81.3s): It solves my redundancy concern and Kumar's coverage concern.\n[Jayashree] (86.7s): Who would teach it?\n[Keshavan] (89.1s): Mira has taught statistical learning for three years.\n[Keshavan] (93.2s): She would be the natural choice, but she's already taking the revised NLP course and two bridge sessions for the deep learning elective."
+  },
+  {
+    "subject": "data mining and statistical learning",
+    "subject_type": "COURSE",
+    "relation": "proposed",
+    "object": "new course name",
     "object_type": "TOPIC",
-    "confidence": 0.95,
+    "confidence": 1.0,
     "source_meeting": "meeting_005",
-    "timestamp": 35.5,
+    "timestamp": 75.1,
     "source_utterance": "[Kumar] (35.5s): The decline is recent and it correlates exactly with when we introduced the Advanced Machine Learning elective.\n[Keshavan] (42.2s): So students are substituting, not losing interest.\n",
-    "window_text": ""
-  },
-  {
-    "subject": "data mining",
-    "subject_type": "COURSE",
-    "relation": "part_of",
-    "object": "data mining and statistical learning",
-    "object_type": "COURSE",
-    "confidence": 0.95,
-    "source_meeting": "meeting_005",
-    "timestamp": 35.5,
-    "source_utterance": "[Kumar] (35.5s): The decline is recent and it correlates exactly with when we introduced the Advanced Machine Learning elective.\n[Keshavan] (42.2s): So students are substituting, not losing interest.\n",
-    "window_text": ""
-  },
-  {
-    "subject": "statistical learning",
-    "subject_type": "COURSE",
-    "relation": "part_of",
-    "object": "data mining and statistical learning",
-    "object_type": "COURSE",
-    "confidence": 0.95,
-    "source_meeting": "meeting_005",
-    "timestamp": 35.5,
-    "source_utterance": "[Kumar] (35.5s): The decline is recent and it correlates exactly with when we introduced the Advanced Machine Learning elective.\n[Keshavan] (42.2s): So students are substituting, not losing interest.\n",
-    "window_text": ""
+    "deadline_date": "",
+    "window_text": "[Kumar] (35.5s): The decline is recent and it correlates exactly with when we introduced the Advanced Machine Learning elective.\n[Keshavan] (42.2s): So students are substituting, not losing interest.\n[Kumar] (47.0s): That's my reading.\n[Kumar] (48.9s): Which means removing data mining entirely loses content that nothing else covers.\n[Kumar] (54.1s): Association rules, frequent pattern mining, anomaly detection on transactional data.\n[Priya] (60.7s): This is what I suggested in January.\n[Priya] (63.8s): Merge rather than remove.\n[Kumar] (66.8s): Yes, and I now agree with Priya.\n[Kumar] (69.7s): I propose we merge data mining with statistical learning into a single for credit course.\n[Kumar] (75.1s): Call it data mining and statistical learning.\n[Keshavan] (79.1s): I can work with that.\n[Keshavan] (81.3s): It solves my redundancy concern and Kumar's coverage concern.\n[Jayashree] (86.7s): Who would teach it?\n[Keshavan] (89.1s): Mira has taught statistical learning for three years.\n[Keshavan] (93.2s): She would be the natural choice, but she's already taking the revised NLP course and two bridge sessions for the deep learning elective."
   },
   {
     "subject": "Keshavan",
@@ -175,9 +163,10 @@
     "object_type": "TOPIC",
     "confidence": 0.8,
     "source_meeting": "meeting_005",
-    "timestamp": 35.5,
+    "timestamp": 81.3,
     "source_utterance": "[Kumar] (35.5s): The decline is recent and it correlates exactly with when we introduced the Advanced Machine Learning elective.\n[Keshavan] (42.2s): So students are substituting, not losing interest.\n",
-    "window_text": ""
+    "deadline_date": "",
+    "window_text": "[Kumar] (35.5s): The decline is recent and it correlates exactly with when we introduced the Advanced Machine Learning elective.\n[Keshavan] (42.2s): So students are substituting, not losing interest.\n[Kumar] (47.0s): That's my reading.\n[Kumar] (48.9s): Which means removing data mining entirely loses content that nothing else covers.\n[Kumar] (54.1s): Association rules, frequent pattern mining, anomaly detection on transactional data.\n[Priya] (60.7s): This is what I suggested in January.\n[Priya] (63.8s): Merge rather than remove.\n[Kumar] (66.8s): Yes, and I now agree with Priya.\n[Kumar] (69.7s): I propose we merge data mining with statistical learning into a single for credit course.\n[Kumar] (75.1s): Call it data mining and statistical learning.\n[Keshavan] (79.1s): I can work with that.\n[Keshavan] (81.3s): It solves my redundancy concern and Kumar's coverage concern.\n[Jayashree] (86.7s): Who would teach it?\n[Keshavan] (89.1s): Mira has taught statistical learning for three years.\n[Keshavan] (93.2s): She would be the natural choice, but she's already taking the revised NLP course and two bridge sessions for the deep learning elective."
   },
   {
     "subject": "Keshavan",
@@ -187,9 +176,10 @@
     "object_type": "TOPIC",
     "confidence": 0.8,
     "source_meeting": "meeting_005",
-    "timestamp": 35.5,
+    "timestamp": 81.3,
     "source_utterance": "[Kumar] (35.5s): The decline is recent and it correlates exactly with when we introduced the Advanced Machine Learning elective.\n[Keshavan] (42.2s): So students are substituting, not losing interest.\n",
-    "window_text": ""
+    "deadline_date": "",
+    "window_text": "[Kumar] (35.5s): The decline is recent and it correlates exactly with when we introduced the Advanced Machine Learning elective.\n[Keshavan] (42.2s): So students are substituting, not losing interest.\n[Kumar] (47.0s): That's my reading.\n[Kumar] (48.9s): Which means removing data mining entirely loses content that nothing else covers.\n[Kumar] (54.1s): Association rules, frequent pattern mining, anomaly detection on transactional data.\n[Priya] (60.7s): This is what I suggested in January.\n[Priya] (63.8s): Merge rather than remove.\n[Kumar] (66.8s): Yes, and I now agree with Priya.\n[Kumar] (69.7s): I propose we merge data mining with statistical learning into a single for credit course.\n[Kumar] (75.1s): Call it data mining and statistical learning.\n[Keshavan] (79.1s): I can work with that.\n[Keshavan] (81.3s): It solves my redundancy concern and Kumar's coverage concern.\n[Jayashree] (86.7s): Who would teach it?\n[Keshavan] (89.1s): Mira has taught statistical learning for three years.\n[Keshavan] (93.2s): She would be the natural choice, but she's already taking the revised NLP course and two bridge sessions for the deep learning elective."
   },
   {
     "subject": "Meera",
@@ -199,9 +189,10 @@
     "object_type": "COURSE",
     "confidence": 0.9,
     "source_meeting": "meeting_005",
-    "timestamp": 35.5,
+    "timestamp": 89.1,
     "source_utterance": "[Kumar] (35.5s): The decline is recent and it correlates exactly with when we introduced the Advanced Machine Learning elective.\n[Keshavan] (42.2s): So students are substituting, not losing interest.\n",
-    "window_text": ""
+    "deadline_date": "",
+    "window_text": "[Kumar] (35.5s): The decline is recent and it correlates exactly with when we introduced the Advanced Machine Learning elective.\n[Keshavan] (42.2s): So students are substituting, not losing interest.\n[Kumar] (47.0s): That's my reading.\n[Kumar] (48.9s): Which means removing data mining entirely loses content that nothing else covers.\n[Kumar] (54.1s): Association rules, frequent pattern mining, anomaly detection on transactional data.\n[Priya] (60.7s): This is what I suggested in January.\n[Priya] (63.8s): Merge rather than remove.\n[Kumar] (66.8s): Yes, and I now agree with Priya.\n[Kumar] (69.7s): I propose we merge data mining with statistical learning into a single for credit course.\n[Kumar] (75.1s): Call it data mining and statistical learning.\n[Keshavan] (79.1s): I can work with that.\n[Keshavan] (81.3s): It solves my redundancy concern and Kumar's coverage concern.\n[Jayashree] (86.7s): Who would teach it?\n[Keshavan] (89.1s): Mira has taught statistical learning for three years.\n[Keshavan] (93.2s): She would be the natural choice, but she's already taking the revised NLP course and two bridge sessions for the deep learning elective."
   },
   {
     "subject": "Meera",
@@ -209,11 +200,12 @@
     "relation": "enrolled_in",
     "object": "revised NLP course",
     "object_type": "COURSE",
-    "confidence": 0.85,
+    "confidence": 0.9,
     "source_meeting": "meeting_005",
-    "timestamp": 35.5,
+    "timestamp": 93.2,
     "source_utterance": "[Kumar] (35.5s): The decline is recent and it correlates exactly with when we introduced the Advanced Machine Learning elective.\n[Keshavan] (42.2s): So students are substituting, not losing interest.\n",
-    "window_text": ""
+    "deadline_date": "",
+    "window_text": "[Kumar] (35.5s): The decline is recent and it correlates exactly with when we introduced the Advanced Machine Learning elective.\n[Keshavan] (42.2s): So students are substituting, not losing interest.\n[Kumar] (47.0s): That's my reading.\n[Kumar] (48.9s): Which means removing data mining entirely loses content that nothing else covers.\n[Kumar] (54.1s): Association rules, frequent pattern mining, anomaly detection on transactional data.\n[Priya] (60.7s): This is what I suggested in January.\n[Priya] (63.8s): Merge rather than remove.\n[Kumar] (66.8s): Yes, and I now agree with Priya.\n[Kumar] (69.7s): I propose we merge data mining with statistical learning into a single for credit course.\n[Kumar] (75.1s): Call it data mining and statistical learning.\n[Keshavan] (79.1s): I can work with that.\n[Keshavan] (81.3s): It solves my redundancy concern and Kumar's coverage concern.\n[Jayashree] (86.7s): Who would teach it?\n[Keshavan] (89.1s): Mira has taught statistical learning for three years.\n[Keshavan] (93.2s): She would be the natural choice, but she's already taking the revised NLP course and two bridge sessions for the deep learning elective."
   },
   {
     "subject": "Meera",
@@ -221,11 +213,12 @@
     "relation": "enrolled_in",
     "object": "deep learning elective",
     "object_type": "COURSE",
-    "confidence": 0.85,
+    "confidence": 0.9,
     "source_meeting": "meeting_005",
-    "timestamp": 35.5,
+    "timestamp": 93.2,
     "source_utterance": "[Kumar] (35.5s): The decline is recent and it correlates exactly with when we introduced the Advanced Machine Learning elective.\n[Keshavan] (42.2s): So students are substituting, not losing interest.\n",
-    "window_text": ""
+    "deadline_date": "",
+    "window_text": "[Kumar] (35.5s): The decline is recent and it correlates exactly with when we introduced the Advanced Machine Learning elective.\n[Keshavan] (42.2s): So students are substituting, not losing interest.\n[Kumar] (47.0s): That's my reading.\n[Kumar] (48.9s): Which means removing data mining entirely loses content that nothing else covers.\n[Kumar] (54.1s): Association rules, frequent pattern mining, anomaly detection on transactional data.\n[Priya] (60.7s): This is what I suggested in January.\n[Priya] (63.8s): Merge rather than remove.\n[Kumar] (66.8s): Yes, and I now agree with Priya.\n[Kumar] (69.7s): I propose we merge data mining with statistical learning into a single for credit course.\n[Kumar] (75.1s): Call it data mining and statistical learning.\n[Keshavan] (79.1s): I can work with that.\n[Keshavan] (81.3s): It solves my redundancy concern and Kumar's coverage concern.\n[Jayashree] (86.7s): Who would teach it?\n[Keshavan] (89.1s): Mira has taught statistical learning for three years.\n[Keshavan] (93.2s): She would be the natural choice, but she's already taking the revised NLP course and two bridge sessions for the deep learning elective."
   },
   {
     "subject": "Keshavan",
@@ -235,21 +228,23 @@
     "object_type": "TOPIC",
     "confidence": 0.8,
     "source_meeting": "meeting_005",
-    "timestamp": 79.1,
+    "timestamp": 81.3,
     "source_utterance": "[Keshavan] (79.1s): I can work with that.\n[Keshavan] (81.3s): It solves my redundancy concern and Kumar's coverage concern.\n[Jayashree] (86.7s): Who would teach it?\n[Keshavan] (89.1s): Mira has taught",
-    "window_text": ""
+    "deadline_date": "",
+    "window_text": "[Keshavan] (79.1s): I can work with that.\n[Keshavan] (81.3s): It solves my redundancy concern and Kumar's coverage concern.\n[Jayashree] (86.7s): Who would teach it?\n[Keshavan] (89.1s): Mira has taught statistical learning for three years.\n[Keshavan] (93.2s): She would be the natural choice, but she's already taking the revised NLP course and two bridge sessions for the deep learning elective.\n[Kumar] (102.5s): I can co-teach.\n[Kumar] (104.5s): I've taught data mining since it was introduced.\n[Jayashree] (108.2s): Then let's do that.\n[Jayashree] (110.2s): Meera and Kumar co-teach data mining and statistical learning, for credits, from the next academic year.\n[Jayashree] (117.0s): Kumar, that reverses our January decision to replace the course.\n[Jayashree] (121.8s): I want the minutes to show that explicitly.\n[Kumar] (125.4s): Agreed.\n[Priya] (127.7s): I support it.\n[Keshavan] (130.1s): In favor.\n[Jayashree] (132.3s): Approved."
   },
   {
     "subject": "Kumar",
     "subject_type": "PERSON",
     "relation": "teaches",
-    "object": "data mining",
+    "object": "Data mining",
     "object_type": "COURSE",
     "confidence": 1.0,
     "source_meeting": "meeting_005",
-    "timestamp": 79.1,
+    "timestamp": 104.5,
     "source_utterance": "[Keshavan] (79.1s): I can work with that.\n[Keshavan] (81.3s): It solves my redundancy concern and Kumar's coverage concern.\n[Jayashree] (86.7s): Who would teach it?\n[Keshavan] (89.1s): Mira has taught",
-    "window_text": ""
+    "deadline_date": "",
+    "window_text": "[Keshavan] (79.1s): I can work with that.\n[Keshavan] (81.3s): It solves my redundancy concern and Kumar's coverage concern.\n[Jayashree] (86.7s): Who would teach it?\n[Keshavan] (89.1s): Mira has taught statistical learning for three years.\n[Keshavan] (93.2s): She would be the natural choice, but she's already taking the revised NLP course and two bridge sessions for the deep learning elective.\n[Kumar] (102.5s): I can co-teach.\n[Kumar] (104.5s): I've taught data mining since it was introduced.\n[Jayashree] (108.2s): Then let's do that.\n[Jayashree] (110.2s): Meera and Kumar co-teach data mining and statistical learning, for credits, from the next academic year.\n[Jayashree] (117.0s): Kumar, that reverses our January decision to replace the course.\n[Jayashree] (121.8s): I want the minutes to show that explicitly.\n[Kumar] (125.4s): Agreed.\n[Priya] (127.7s): I support it.\n[Keshavan] (130.1s): In favor.\n[Jayashree] (132.3s): Approved."
   },
   {
     "subject": "Jayashree",
@@ -259,57 +254,36 @@
     "object_type": "TOPIC",
     "confidence": 1.0,
     "source_meeting": "meeting_005",
-    "timestamp": 79.1,
+    "timestamp": 110.2,
     "source_utterance": "[Keshavan] (79.1s): I can work with that.\n[Keshavan] (81.3s): It solves my redundancy concern and Kumar's coverage concern.\n[Jayashree] (86.7s): Who would teach it?\n[Keshavan] (89.1s): Mira has taught",
-    "window_text": ""
+    "deadline_date": "",
+    "window_text": "[Keshavan] (79.1s): I can work with that.\n[Keshavan] (81.3s): It solves my redundancy concern and Kumar's coverage concern.\n[Jayashree] (86.7s): Who would teach it?\n[Keshavan] (89.1s): Mira has taught statistical learning for three years.\n[Keshavan] (93.2s): She would be the natural choice, but she's already taking the revised NLP course and two bridge sessions for the deep learning elective.\n[Kumar] (102.5s): I can co-teach.\n[Kumar] (104.5s): I've taught data mining since it was introduced.\n[Jayashree] (108.2s): Then let's do that.\n[Jayashree] (110.2s): Meera and Kumar co-teach data mining and statistical learning, for credits, from the next academic year.\n[Jayashree] (117.0s): Kumar, that reverses our January decision to replace the course.\n[Jayashree] (121.8s): I want the minutes to show that explicitly.\n[Kumar] (125.4s): Agreed.\n[Priya] (127.7s): I support it.\n[Keshavan] (130.1s): In favor.\n[Jayashree] (132.3s): Approved."
   },
   {
     "subject": "Jayashree",
     "subject_type": "PERSON",
     "relation": "scheduled_for",
     "object": "Meera and Kumar co-teach data mining and statistical learning",
-    "object_type": "EVENT",
-    "confidence": 1.0,
-    "source_meeting": "meeting_005",
-    "timestamp": 79.1,
-    "source_utterance": "[Keshavan] (79.1s): I can work with that.\n[Keshavan] (81.3s): It solves my redundancy concern and Kumar's coverage concern.\n[Jayashree] (86.7s): Who would teach it?\n[Keshavan] (89.1s): Mira has taught",
-    "window_text": ""
-  },
-  {
-    "subject": "Meera and Kumar",
-    "subject_type": "PERSON",
-    "relation": "teaches",
-    "object": "data mining",
     "object_type": "COURSE",
     "confidence": 1.0,
     "source_meeting": "meeting_005",
-    "timestamp": 79.1,
+    "timestamp": 110.2,
     "source_utterance": "[Keshavan] (79.1s): I can work with that.\n[Keshavan] (81.3s): It solves my redundancy concern and Kumar's coverage concern.\n[Jayashree] (86.7s): Who would teach it?\n[Keshavan] (89.1s): Mira has taught",
-    "window_text": ""
-  },
-  {
-    "subject": "Meera and Kumar",
-    "subject_type": "PERSON",
-    "relation": "teaches",
-    "object": "statistical learning",
-    "object_type": "COURSE",
-    "confidence": 1.0,
-    "source_meeting": "meeting_005",
-    "timestamp": 79.1,
-    "source_utterance": "[Keshavan] (79.1s): I can work with that.\n[Keshavan] (81.3s): It solves my redundancy concern and Kumar's coverage concern.\n[Jayashree] (86.7s): Who would teach it?\n[Keshavan] (89.1s): Mira has taught",
-    "window_text": ""
+    "deadline_date": "2026-09-01",
+    "window_text": "[Keshavan] (79.1s): I can work with that.\n[Keshavan] (81.3s): It solves my redundancy concern and Kumar's coverage concern.\n[Jayashree] (86.7s): Who would teach it?\n[Keshavan] (89.1s): Mira has taught statistical learning for three years.\n[Keshavan] (93.2s): She would be the natural choice, but she's already taking the revised NLP course and two bridge sessions for the deep learning elective.\n[Kumar] (102.5s): I can co-teach.\n[Kumar] (104.5s): I've taught data mining since it was introduced.\n[Jayashree] (108.2s): Then let's do that.\n[Jayashree] (110.2s): Meera and Kumar co-teach data mining and statistical learning, for credits, from the next academic year.\n[Jayashree] (117.0s): Kumar, that reverses our January decision to replace the course.\n[Jayashree] (121.8s): I want the minutes to show that explicitly.\n[Kumar] (125.4s): Agreed.\n[Priya] (127.7s): I support it.\n[Keshavan] (130.1s): In favor.\n[Jayashree] (132.3s): Approved."
   },
   {
     "subject": "Jayashree",
     "subject_type": "PERSON",
-    "relation": "discussed",
+    "relation": "rejected",
     "object": "January decision to replace the course",
-    "object_type": "TOPIC",
-    "confidence": 0.9,
+    "object_type": "POLICY",
+    "confidence": 1.0,
     "source_meeting": "meeting_005",
-    "timestamp": 79.1,
+    "timestamp": 117.0,
     "source_utterance": "[Keshavan] (79.1s): I can work with that.\n[Keshavan] (81.3s): It solves my redundancy concern and Kumar's coverage concern.\n[Jayashree] (86.7s): Who would teach it?\n[Keshavan] (89.1s): Mira has taught",
-    "window_text": ""
+    "deadline_date": "",
+    "window_text": "[Keshavan] (79.1s): I can work with that.\n[Keshavan] (81.3s): It solves my redundancy concern and Kumar's coverage concern.\n[Jayashree] (86.7s): Who would teach it?\n[Keshavan] (89.1s): Mira has taught statistical learning for three years.\n[Keshavan] (93.2s): She would be the natural choice, but she's already taking the revised NLP course and two bridge sessions for the deep learning elective.\n[Kumar] (102.5s): I can co-teach.\n[Kumar] (104.5s): I've taught data mining since it was introduced.\n[Jayashree] (108.2s): Then let's do that.\n[Jayashree] (110.2s): Meera and Kumar co-teach data mining and statistical learning, for credits, from the next academic year.\n[Jayashree] (117.0s): Kumar, that reverses our January decision to replace the course.\n[Jayashree] (121.8s): I want the minutes to show that explicitly.\n[Kumar] (125.4s): Agreed.\n[Priya] (127.7s): I support it.\n[Keshavan] (130.1s): In favor.\n[Jayashree] (132.3s): Approved."
   },
   {
     "subject": "Jayashree",
@@ -319,9 +293,10 @@
     "object_type": "TOPIC",
     "confidence": 1.0,
     "source_meeting": "meeting_005",
-    "timestamp": 79.1,
+    "timestamp": 132.3,
     "source_utterance": "[Keshavan] (79.1s): I can work with that.\n[Keshavan] (81.3s): It solves my redundancy concern and Kumar's coverage concern.\n[Jayashree] (86.7s): Who would teach it?\n[Keshavan] (89.1s): Mira has taught",
-    "window_text": ""
+    "deadline_date": "",
+    "window_text": "[Keshavan] (79.1s): I can work with that.\n[Keshavan] (81.3s): It solves my redundancy concern and Kumar's coverage concern.\n[Jayashree] (86.7s): Who would teach it?\n[Keshavan] (89.1s): Mira has taught statistical learning for three years.\n[Keshavan] (93.2s): She would be the natural choice, but she's already taking the revised NLP course and two bridge sessions for the deep learning elective.\n[Kumar] (102.5s): I can co-teach.\n[Kumar] (104.5s): I've taught data mining since it was introduced.\n[Jayashree] (108.2s): Then let's do that.\n[Jayashree] (110.2s): Meera and Kumar co-teach data mining and statistical learning, for credits, from the next academic year.\n[Jayashree] (117.0s): Kumar, that reverses our January decision to replace the course.\n[Jayashree] (121.8s): I want the minutes to show that explicitly.\n[Kumar] (125.4s): Agreed.\n[Priya] (127.7s): I support it.\n[Keshavan] (130.1s): In favor.\n[Jayashree] (132.3s): Approved."
   },
   {
     "subject": "Jayashree",
@@ -329,11 +304,12 @@
     "relation": "approved",
     "object": "Item 2",
     "object_type": "TOPIC",
-    "confidence": 0.9,
+    "confidence": 1.0,
     "source_meeting": "meeting_005",
-    "timestamp": 121.76,
+    "timestamp": 132.3,
     "source_utterance": "[Jayashree] (121.8s): I want the minutes to show that explicitly.\n[Kumar] (125.4s): Agreed.\n[Priya] (127.7s): I support it.\n[Keshavan] (130.1s): In favor.\n[Jayashree] (132.3s): Approved.\n[Jayashree] (",
-    "window_text": ""
+    "deadline_date": "",
+    "window_text": "[Jayashree] (121.8s): I want the minutes to show that explicitly.\n[Kumar] (125.4s): Agreed.\n[Priya] (127.7s): I support it.\n[Keshavan] (130.1s): In favor.\n[Jayashree] (132.3s): Approved.\n[Jayashree] (134.0s): Item 2.\n[Jayashree] (135.6s): Industry Collaborations.\n[Jayashree] (138.1s): In January we prioritized Infosys 1st, NVIDIA 2nd, Bosch 3rd.\n[Jayashree] (143.9s): Jai Sri, Status.\n[Keshavan] (147.0s): Infosys.\n[Keshavan] (148.8s): The memorandum of understanding is drafted.\n[Keshavan] (152.1s): Legal has reviewed it.\n[Keshavan] (154.5s): It is not signed yet.\n[Jayashree] (157.3s): Why not?\n[Keshavan] (159.8s): One clause."
   },
   {
     "subject": "Jayashree",
@@ -343,9 +319,10 @@
     "object_type": "TOPIC",
     "confidence": 0.8,
     "source_meeting": "meeting_005",
-    "timestamp": 121.76,
+    "timestamp": 135.6,
     "source_utterance": "[Jayashree] (121.8s): I want the minutes to show that explicitly.\n[Kumar] (125.4s): Agreed.\n[Priya] (127.7s): I support it.\n[Keshavan] (130.1s): In favor.\n[Jayashree] (132.3s): Approved.\n[Jayashree] (",
-    "window_text": ""
+    "deadline_date": "",
+    "window_text": "[Jayashree] (121.8s): I want the minutes to show that explicitly.\n[Kumar] (125.4s): Agreed.\n[Priya] (127.7s): I support it.\n[Keshavan] (130.1s): In favor.\n[Jayashree] (132.3s): Approved.\n[Jayashree] (134.0s): Item 2.\n[Jayashree] (135.6s): Industry Collaborations.\n[Jayashree] (138.1s): In January we prioritized Infosys 1st, NVIDIA 2nd, Bosch 3rd.\n[Jayashree] (143.9s): Jai Sri, Status.\n[Keshavan] (147.0s): Infosys.\n[Keshavan] (148.8s): The memorandum of understanding is drafted.\n[Keshavan] (152.1s): Legal has reviewed it.\n[Keshavan] (154.5s): It is not signed yet.\n[Jayashree] (157.3s): Why not?\n[Keshavan] (159.8s): One clause."
   },
   {
     "subject": "Jayashree",
@@ -355,9 +332,10 @@
     "object_type": "PROJECT",
     "confidence": 0.8,
     "source_meeting": "meeting_005",
-    "timestamp": 121.76,
+    "timestamp": 138.1,
     "source_utterance": "[Jayashree] (121.8s): I want the minutes to show that explicitly.\n[Kumar] (125.4s): Agreed.\n[Priya] (127.7s): I support it.\n[Keshavan] (130.1s): In favor.\n[Jayashree] (132.3s): Approved.\n[Jayashree] (",
-    "window_text": ""
+    "deadline_date": "",
+    "window_text": "[Jayashree] (121.8s): I want the minutes to show that explicitly.\n[Kumar] (125.4s): Agreed.\n[Priya] (127.7s): I support it.\n[Keshavan] (130.1s): In favor.\n[Jayashree] (132.3s): Approved.\n[Jayashree] (134.0s): Item 2.\n[Jayashree] (135.6s): Industry Collaborations.\n[Jayashree] (138.1s): In January we prioritized Infosys 1st, NVIDIA 2nd, Bosch 3rd.\n[Jayashree] (143.9s): Jai Sri, Status.\n[Keshavan] (147.0s): Infosys.\n[Keshavan] (148.8s): The memorandum of understanding is drafted.\n[Keshavan] (152.1s): Legal has reviewed it.\n[Keshavan] (154.5s): It is not signed yet.\n[Jayashree] (157.3s): Why not?\n[Keshavan] (159.8s): One clause."
   },
   {
     "subject": "Jayashree",
@@ -367,9 +345,10 @@
     "object_type": "PROJECT",
     "confidence": 0.8,
     "source_meeting": "meeting_005",
-    "timestamp": 121.76,
+    "timestamp": 138.1,
     "source_utterance": "[Jayashree] (121.8s): I want the minutes to show that explicitly.\n[Kumar] (125.4s): Agreed.\n[Priya] (127.7s): I support it.\n[Keshavan] (130.1s): In favor.\n[Jayashree] (132.3s): Approved.\n[Jayashree] (",
-    "window_text": ""
+    "deadline_date": "",
+    "window_text": "[Jayashree] (121.8s): I want the minutes to show that explicitly.\n[Kumar] (125.4s): Agreed.\n[Priya] (127.7s): I support it.\n[Keshavan] (130.1s): In favor.\n[Jayashree] (132.3s): Approved.\n[Jayashree] (134.0s): Item 2.\n[Jayashree] (135.6s): Industry Collaborations.\n[Jayashree] (138.1s): In January we prioritized Infosys 1st, NVIDIA 2nd, Bosch 3rd.\n[Jayashree] (143.9s): Jai Sri, Status.\n[Keshavan] (147.0s): Infosys.\n[Keshavan] (148.8s): The memorandum of understanding is drafted.\n[Keshavan] (152.1s): Legal has reviewed it.\n[Keshavan] (154.5s): It is not signed yet.\n[Jayashree] (157.3s): Why not?\n[Keshavan] (159.8s): One clause."
   },
   {
     "subject": "Jayashree",
@@ -379,21 +358,23 @@
     "object_type": "PROJECT",
     "confidence": 0.8,
     "source_meeting": "meeting_005",
-    "timestamp": 121.76,
+    "timestamp": 138.1,
     "source_utterance": "[Jayashree] (121.8s): I want the minutes to show that explicitly.\n[Kumar] (125.4s): Agreed.\n[Priya] (127.7s): I support it.\n[Keshavan] (130.1s): In favor.\n[Jayashree] (132.3s): Approved.\n[Jayashree] (",
-    "window_text": ""
+    "deadline_date": "",
+    "window_text": "[Jayashree] (121.8s): I want the minutes to show that explicitly.\n[Kumar] (125.4s): Agreed.\n[Priya] (127.7s): I support it.\n[Keshavan] (130.1s): In favor.\n[Jayashree] (132.3s): Approved.\n[Jayashree] (134.0s): Item 2.\n[Jayashree] (135.6s): Industry Collaborations.\n[Jayashree] (138.1s): In January we prioritized Infosys 1st, NVIDIA 2nd, Bosch 3rd.\n[Jayashree] (143.9s): Jai Sri, Status.\n[Keshavan] (147.0s): Infosys.\n[Keshavan] (148.8s): The memorandum of understanding is drafted.\n[Keshavan] (152.1s): Legal has reviewed it.\n[Keshavan] (154.5s): It is not signed yet.\n[Jayashree] (157.3s): Why not?\n[Keshavan] (159.8s): One clause."
   },
   {
     "subject": "Keshavan",
     "subject_type": "PERSON",
-    "relation": "assigned_to",
+    "relation": "discussed",
     "object": "Infosys",
     "object_type": "PROJECT",
-    "confidence": 0.9,
+    "confidence": 0.8,
     "source_meeting": "meeting_005",
-    "timestamp": 121.76,
+    "timestamp": 147.0,
     "source_utterance": "[Jayashree] (121.8s): I want the minutes to show that explicitly.\n[Kumar] (125.4s): Agreed.\n[Priya] (127.7s): I support it.\n[Keshavan] (130.1s): In favor.\n[Jayashree] (132.3s): Approved.\n[Jayashree] (",
-    "window_text": ""
+    "deadline_date": "",
+    "window_text": "[Jayashree] (121.8s): I want the minutes to show that explicitly.\n[Kumar] (125.4s): Agreed.\n[Priya] (127.7s): I support it.\n[Keshavan] (130.1s): In favor.\n[Jayashree] (132.3s): Approved.\n[Jayashree] (134.0s): Item 2.\n[Jayashree] (135.6s): Industry Collaborations.\n[Jayashree] (138.1s): In January we prioritized Infosys 1st, NVIDIA 2nd, Bosch 3rd.\n[Jayashree] (143.9s): Jai Sri, Status.\n[Keshavan] (147.0s): Infosys.\n[Keshavan] (148.8s): The memorandum of understanding is drafted.\n[Keshavan] (152.1s): Legal has reviewed it.\n[Keshavan] (154.5s): It is not signed yet.\n[Jayashree] (157.3s): Why not?\n[Keshavan] (159.8s): One clause."
   },
   {
     "subject": "Keshavan",
@@ -401,11 +382,12 @@
     "relation": "discussed",
     "object": "memorandum of understanding",
     "object_type": "RESOURCE",
-    "confidence": 0.9,
+    "confidence": 0.8,
     "source_meeting": "meeting_005",
-    "timestamp": 121.76,
+    "timestamp": 148.8,
     "source_utterance": "[Jayashree] (121.8s): I want the minutes to show that explicitly.\n[Kumar] (125.4s): Agreed.\n[Priya] (127.7s): I support it.\n[Keshavan] (130.1s): In favor.\n[Jayashree] (132.3s): Approved.\n[Jayashree] (",
-    "window_text": ""
+    "deadline_date": "",
+    "window_text": "[Jayashree] (121.8s): I want the minutes to show that explicitly.\n[Kumar] (125.4s): Agreed.\n[Priya] (127.7s): I support it.\n[Keshavan] (130.1s): In favor.\n[Jayashree] (132.3s): Approved.\n[Jayashree] (134.0s): Item 2.\n[Jayashree] (135.6s): Industry Collaborations.\n[Jayashree] (138.1s): In January we prioritized Infosys 1st, NVIDIA 2nd, Bosch 3rd.\n[Jayashree] (143.9s): Jai Sri, Status.\n[Keshavan] (147.0s): Infosys.\n[Keshavan] (148.8s): The memorandum of understanding is drafted.\n[Keshavan] (152.1s): Legal has reviewed it.\n[Keshavan] (154.5s): It is not signed yet.\n[Jayashree] (157.3s): Why not?\n[Keshavan] (159.8s): One clause."
   },
   {
     "subject": "Keshavan",
@@ -413,35 +395,38 @@
     "relation": "discussed",
     "object": "Legal",
     "object_type": "DEPARTMENT",
-    "confidence": 0.9,
-    "source_meeting": "meeting_005",
-    "timestamp": 121.76,
-    "source_utterance": "[Jayashree] (121.8s): I want the minutes to show that explicitly.\n[Kumar] (125.4s): Agreed.\n[Priya] (127.7s): I support it.\n[Keshavan] (130.1s): In favor.\n[Jayashree] (132.3s): Approved.\n[Jayashree] (",
-    "window_text": ""
-  },
-  {
-    "subject": "memorandum of understanding",
-    "subject_type": "RESOURCE",
-    "relation": "assigned_to",
-    "object": "Legal",
-    "object_type": "DEPARTMENT",
-    "confidence": 0.9,
-    "source_meeting": "meeting_005",
-    "timestamp": 148.76,
-    "source_utterance": "[Keshavan] (148.8s): The memorandum of understanding is drafted.\n[Keshavan] (152.1s): Legal has reviewed it.\n[Keshavan] (154.5s): It is not signed yet.\n[Jayashree] (157.3s): Why not?\n[Keshavan] (159.8",
-    "window_text": ""
-  },
-  {
-    "subject": "memorandum of understanding",
-    "subject_type": "RESOURCE",
-    "relation": "discussed",
-    "object": "Student projects for recruitment",
-    "object_type": "TOPIC",
     "confidence": 0.8,
     "source_meeting": "meeting_005",
-    "timestamp": 148.76,
+    "timestamp": 152.1,
+    "source_utterance": "[Jayashree] (121.8s): I want the minutes to show that explicitly.\n[Kumar] (125.4s): Agreed.\n[Priya] (127.7s): I support it.\n[Keshavan] (130.1s): In favor.\n[Jayashree] (132.3s): Approved.\n[Jayashree] (",
+    "deadline_date": "",
+    "window_text": "[Jayashree] (121.8s): I want the minutes to show that explicitly.\n[Kumar] (125.4s): Agreed.\n[Priya] (127.7s): I support it.\n[Keshavan] (130.1s): In favor.\n[Jayashree] (132.3s): Approved.\n[Jayashree] (134.0s): Item 2.\n[Jayashree] (135.6s): Industry Collaborations.\n[Jayashree] (138.1s): In January we prioritized Infosys 1st, NVIDIA 2nd, Bosch 3rd.\n[Jayashree] (143.9s): Jai Sri, Status.\n[Keshavan] (147.0s): Infosys.\n[Keshavan] (148.8s): The memorandum of understanding is drafted.\n[Keshavan] (152.1s): Legal has reviewed it.\n[Keshavan] (154.5s): It is not signed yet.\n[Jayashree] (157.3s): Why not?\n[Keshavan] (159.8s): One clause."
+  },
+  {
+    "subject": "Keshavan",
+    "subject_type": "PERSON",
+    "relation": "assigned_to",
+    "object": "memorandum of understanding",
+    "object_type": "RESOURCE",
+    "confidence": 0.9,
+    "source_meeting": "meeting_005",
+    "timestamp": 148.8,
     "source_utterance": "[Keshavan] (148.8s): The memorandum of understanding is drafted.\n[Keshavan] (152.1s): Legal has reviewed it.\n[Keshavan] (154.5s): It is not signed yet.\n[Jayashree] (157.3s): Why not?\n[Keshavan] (159.8",
-    "window_text": ""
+    "deadline_date": "",
+    "window_text": "[Keshavan] (148.8s): The memorandum of understanding is drafted.\n[Keshavan] (152.1s): Legal has reviewed it.\n[Keshavan] (154.5s): It is not signed yet.\n[Jayashree] (157.3s): Why not?\n[Keshavan] (159.8s): One clause.\n[Keshavan] (161.5s): They want first look at student projects for recruitment.\n[Keshavan] (165.8s): Legal says that as written, it could be read as an exclusivity arrangement, which would conflict with our placement policy.\n[Kumar] (174.8s): That's a serious conflict.\n[Kumar] (177.2s): We cannot give one company exclusivity over student work.\n[Keshavan] (182.1s): Ramesh has gone back to them.\n[Keshavan] (184.9s): They've indicated they'll accept non-exclusive language.\n[Keshavan] (189.2s): We expect the revised draft in 10 days.\n[Jayashree] (193.4s): So we are not signing today.\n[Jayashree] (195.8s): Jaishree, present the signature at the April meeting.\n[Jayashree] (199.5s): Do not let the department sign anything before legal clears the revised clause."
+  },
+  {
+    "subject": "Legal",
+    "subject_type": "DEPARTMENT",
+    "relation": "assigned_to",
+    "object": "memorandum of understanding",
+    "object_type": "RESOURCE",
+    "confidence": 0.9,
+    "source_meeting": "meeting_005",
+    "timestamp": 152.1,
+    "source_utterance": "[Keshavan] (148.8s): The memorandum of understanding is drafted.\n[Keshavan] (152.1s): Legal has reviewed it.\n[Keshavan] (154.5s): It is not signed yet.\n[Jayashree] (157.3s): Why not?\n[Keshavan] (159.8",
+    "deadline_date": "",
+    "window_text": "[Keshavan] (148.8s): The memorandum of understanding is drafted.\n[Keshavan] (152.1s): Legal has reviewed it.\n[Keshavan] (154.5s): It is not signed yet.\n[Jayashree] (157.3s): Why not?\n[Keshavan] (159.8s): One clause.\n[Keshavan] (161.5s): They want first look at student projects for recruitment.\n[Keshavan] (165.8s): Legal says that as written, it could be read as an exclusivity arrangement, which would conflict with our placement policy.\n[Kumar] (174.8s): That's a serious conflict.\n[Kumar] (177.2s): We cannot give one company exclusivity over student work.\n[Keshavan] (182.1s): Ramesh has gone back to them.\n[Keshavan] (184.9s): They've indicated they'll accept non-exclusive language.\n[Keshavan] (189.2s): We expect the revised draft in 10 days.\n[Jayashree] (193.4s): So we are not signing today.\n[Jayashree] (195.8s): Jaishree, present the signature at the April meeting.\n[Jayashree] (199.5s): Do not let the department sign anything before legal clears the revised clause."
   },
   {
     "subject": "memorandum of understanding",
@@ -449,95 +434,103 @@
     "relation": "blocked_by",
     "object": "Placement policy",
     "object_type": "POLICY",
-    "confidence": 0.9,
+    "confidence": 0.8,
     "source_meeting": "meeting_005",
-    "timestamp": 148.76,
+    "timestamp": 165.8,
     "source_utterance": "[Keshavan] (148.8s): The memorandum of understanding is drafted.\n[Keshavan] (152.1s): Legal has reviewed it.\n[Keshavan] (154.5s): It is not signed yet.\n[Jayashree] (157.3s): Why not?\n[Keshavan] (159.8",
-    "window_text": ""
+    "deadline_date": "",
+    "window_text": "[Keshavan] (148.8s): The memorandum of understanding is drafted.\n[Keshavan] (152.1s): Legal has reviewed it.\n[Keshavan] (154.5s): It is not signed yet.\n[Jayashree] (157.3s): Why not?\n[Keshavan] (159.8s): One clause.\n[Keshavan] (161.5s): They want first look at student projects for recruitment.\n[Keshavan] (165.8s): Legal says that as written, it could be read as an exclusivity arrangement, which would conflict with our placement policy.\n[Kumar] (174.8s): That's a serious conflict.\n[Kumar] (177.2s): We cannot give one company exclusivity over student work.\n[Keshavan] (182.1s): Ramesh has gone back to them.\n[Keshavan] (184.9s): They've indicated they'll accept non-exclusive language.\n[Keshavan] (189.2s): We expect the revised draft in 10 days.\n[Jayashree] (193.4s): So we are not signing today.\n[Jayashree] (195.8s): Jaishree, present the signature at the April meeting.\n[Jayashree] (199.5s): Do not let the department sign anything before legal clears the revised clause."
   },
   {
-    "subject": "Ramesh",
+    "subject": "Keshavan",
     "subject_type": "PERSON",
     "relation": "assigned_to",
-    "object": "memorandum of understanding",
+    "object": "Ramesh",
+    "object_type": "PERSON",
+    "confidence": 0.9,
+    "source_meeting": "meeting_005",
+    "timestamp": 182.1,
+    "source_utterance": "[Keshavan] (148.8s): The memorandum of understanding is drafted.\n[Keshavan] (152.1s): Legal has reviewed it.\n[Keshavan] (154.5s): It is not signed yet.\n[Jayashree] (157.3s): Why not?\n[Keshavan] (159.8",
+    "deadline_date": "",
+    "window_text": "[Keshavan] (148.8s): The memorandum of understanding is drafted.\n[Keshavan] (152.1s): Legal has reviewed it.\n[Keshavan] (154.5s): It is not signed yet.\n[Jayashree] (157.3s): Why not?\n[Keshavan] (159.8s): One clause.\n[Keshavan] (161.5s): They want first look at student projects for recruitment.\n[Keshavan] (165.8s): Legal says that as written, it could be read as an exclusivity arrangement, which would conflict with our placement policy.\n[Kumar] (174.8s): That's a serious conflict.\n[Kumar] (177.2s): We cannot give one company exclusivity over student work.\n[Keshavan] (182.1s): Ramesh has gone back to them.\n[Keshavan] (184.9s): They've indicated they'll accept non-exclusive language.\n[Keshavan] (189.2s): We expect the revised draft in 10 days.\n[Jayashree] (193.4s): So we are not signing today.\n[Jayashree] (195.8s): Jaishree, present the signature at the April meeting.\n[Jayashree] (199.5s): Do not let the department sign anything before legal clears the revised clause."
+  },
+  {
+    "subject": "Keshavan",
+    "subject_type": "PERSON",
+    "relation": "proposed",
+    "object": "Revised draft of memorandum of understanding",
     "object_type": "RESOURCE",
     "confidence": 0.9,
     "source_meeting": "meeting_005",
-    "timestamp": 148.76,
+    "timestamp": 189.2,
     "source_utterance": "[Keshavan] (148.8s): The memorandum of understanding is drafted.\n[Keshavan] (152.1s): Legal has reviewed it.\n[Keshavan] (154.5s): It is not signed yet.\n[Jayashree] (157.3s): Why not?\n[Keshavan] (159.8",
-    "window_text": ""
-  },
-  {
-    "subject": "memorandum of understanding",
-    "subject_type": "RESOURCE",
-    "relation": "deadline_for",
-    "object": "Revised draft",
-    "object_type": "DEADLINE",
-    "confidence": 0.9,
-    "source_meeting": "meeting_005",
-    "timestamp": 148.76,
-    "source_utterance": "[Keshavan] (148.8s): The memorandum of understanding is drafted.\n[Keshavan] (152.1s): Legal has reviewed it.\n[Keshavan] (154.5s): It is not signed yet.\n[Jayashree] (157.3s): Why not?\n[Keshavan] (159.8",
-    "window_text": ""
+    "deadline_date": "2026-03-10",
+    "window_text": "[Keshavan] (148.8s): The memorandum of understanding is drafted.\n[Keshavan] (152.1s): Legal has reviewed it.\n[Keshavan] (154.5s): It is not signed yet.\n[Jayashree] (157.3s): Why not?\n[Keshavan] (159.8s): One clause.\n[Keshavan] (161.5s): They want first look at student projects for recruitment.\n[Keshavan] (165.8s): Legal says that as written, it could be read as an exclusivity arrangement, which would conflict with our placement policy.\n[Kumar] (174.8s): That's a serious conflict.\n[Kumar] (177.2s): We cannot give one company exclusivity over student work.\n[Keshavan] (182.1s): Ramesh has gone back to them.\n[Keshavan] (184.9s): They've indicated they'll accept non-exclusive language.\n[Keshavan] (189.2s): We expect the revised draft in 10 days.\n[Jayashree] (193.4s): So we are not signing today.\n[Jayashree] (195.8s): Jaishree, present the signature at the April meeting.\n[Jayashree] (199.5s): Do not let the department sign anything before legal clears the revised clause."
   },
   {
     "subject": "Jayashree",
     "subject_type": "PERSON",
     "relation": "scheduled_for",
-    "object": "Signature",
+    "object": "Signature of memorandum of understanding",
     "object_type": "EVENT",
     "confidence": 0.9,
     "source_meeting": "meeting_005",
-    "timestamp": 148.76,
+    "timestamp": 195.8,
     "source_utterance": "[Keshavan] (148.8s): The memorandum of understanding is drafted.\n[Keshavan] (152.1s): Legal has reviewed it.\n[Keshavan] (154.5s): It is not signed yet.\n[Jayashree] (157.3s): Why not?\n[Keshavan] (159.8",
-    "window_text": ""
+    "deadline_date": "",
+    "window_text": "[Keshavan] (148.8s): The memorandum of understanding is drafted.\n[Keshavan] (152.1s): Legal has reviewed it.\n[Keshavan] (154.5s): It is not signed yet.\n[Jayashree] (157.3s): Why not?\n[Keshavan] (159.8s): One clause.\n[Keshavan] (161.5s): They want first look at student projects for recruitment.\n[Keshavan] (165.8s): Legal says that as written, it could be read as an exclusivity arrangement, which would conflict with our placement policy.\n[Kumar] (174.8s): That's a serious conflict.\n[Kumar] (177.2s): We cannot give one company exclusivity over student work.\n[Keshavan] (182.1s): Ramesh has gone back to them.\n[Keshavan] (184.9s): They've indicated they'll accept non-exclusive language.\n[Keshavan] (189.2s): We expect the revised draft in 10 days.\n[Jayashree] (193.4s): So we are not signing today.\n[Jayashree] (195.8s): Jaishree, present the signature at the April meeting.\n[Jayashree] (199.5s): Do not let the department sign anything before legal clears the revised clause."
   },
   {
-    "subject": "department",
+    "subject": "DEPARTMENT",
     "subject_type": "DEPARTMENT",
     "relation": "blocked_by",
     "object": "Legal",
     "object_type": "DEPARTMENT",
     "confidence": 0.9,
     "source_meeting": "meeting_005",
-    "timestamp": 148.76,
+    "timestamp": 199.5,
     "source_utterance": "[Keshavan] (148.8s): The memorandum of understanding is drafted.\n[Keshavan] (152.1s): Legal has reviewed it.\n[Keshavan] (154.5s): It is not signed yet.\n[Jayashree] (157.3s): Why not?\n[Keshavan] (159.8",
-    "window_text": ""
+    "deadline_date": "",
+    "window_text": "[Keshavan] (148.8s): The memorandum of understanding is drafted.\n[Keshavan] (152.1s): Legal has reviewed it.\n[Keshavan] (154.5s): It is not signed yet.\n[Jayashree] (157.3s): Why not?\n[Keshavan] (159.8s): One clause.\n[Keshavan] (161.5s): They want first look at student projects for recruitment.\n[Keshavan] (165.8s): Legal says that as written, it could be read as an exclusivity arrangement, which would conflict with our placement policy.\n[Kumar] (174.8s): That's a serious conflict.\n[Kumar] (177.2s): We cannot give one company exclusivity over student work.\n[Keshavan] (182.1s): Ramesh has gone back to them.\n[Keshavan] (184.9s): They've indicated they'll accept non-exclusive language.\n[Keshavan] (189.2s): We expect the revised draft in 10 days.\n[Jayashree] (193.4s): So we are not signing today.\n[Jayashree] (195.8s): Jaishree, present the signature at the April meeting.\n[Jayashree] (199.5s): Do not let the department sign anything before legal clears the revised clause."
   },
   {
     "subject": "Keshavan",
     "subject_type": "PERSON",
-    "relation": "discussed",
+    "relation": "proposed",
     "object": "non-exclusive language",
     "object_type": "TOPIC",
     "confidence": 0.8,
     "source_meeting": "meeting_005",
-    "timestamp": 184.86,
+    "timestamp": 184.9,
     "source_utterance": "[Keshavan] (184.9s): They've indicated they'll accept non-exclusive language.\n[Keshavan] (189.2s): We expect the revised draft in 10 days.\n[Jayashree] (193.4s): So we are not signing today.\n[Jayashree",
-    "window_text": ""
+    "deadline_date": "",
+    "window_text": "[Keshavan] (184.9s): They've indicated they'll accept non-exclusive language.\n[Keshavan] (189.2s): We expect the revised draft in 10 days.\n[Jayashree] (193.4s): So we are not signing today.\n[Jayashree] (195.8s): Jaishree, present the signature at the April meeting.\n[Jayashree] (199.5s): Do not let the department sign anything before legal clears the revised clause.\n[Keshavan] (205.3s): Understood.\n[Jayashree] (207.6s): NVIDIA.\n[Keshavan] (209.9s): Simpler.\n[Keshavan] (211.5s): They've offered a three-day GPU computing workshop for final year and postgraduate students.\n[Keshavan] (218.3s): No cost to us.\n[Keshavan] (220.3s): They provide instructors and cloud credits.\n[Keshavan] (223.9s): We provide the room and the students.\n[Priya] (227.6s): What's the capacity?\n[Priya] (228.5s): 60.\n[Keshavan] (231.8s): They've asked for a date in April."
   },
   {
-    "subject": "Revised draft",
+    "subject": "revised draft",
     "subject_type": "RESOURCE",
     "relation": "deadline_for",
-    "object": "10 days",
-    "object_type": "DEADLINE",
-    "confidence": 0.9,
+    "object": "Keshavan",
+    "object_type": "PERSON",
+    "confidence": 0.8,
     "source_meeting": "meeting_005",
-    "timestamp": 184.86,
+    "timestamp": 189.2,
     "source_utterance": "[Keshavan] (184.9s): They've indicated they'll accept non-exclusive language.\n[Keshavan] (189.2s): We expect the revised draft in 10 days.\n[Jayashree] (193.4s): So we are not signing today.\n[Jayashree",
-    "window_text": ""
+    "deadline_date": "2026-03-10",
+    "window_text": "[Keshavan] (184.9s): They've indicated they'll accept non-exclusive language.\n[Keshavan] (189.2s): We expect the revised draft in 10 days.\n[Jayashree] (193.4s): So we are not signing today.\n[Jayashree] (195.8s): Jaishree, present the signature at the April meeting.\n[Jayashree] (199.5s): Do not let the department sign anything before legal clears the revised clause.\n[Keshavan] (205.3s): Understood.\n[Jayashree] (207.6s): NVIDIA.\n[Keshavan] (209.9s): Simpler.\n[Keshavan] (211.5s): They've offered a three-day GPU computing workshop for final year and postgraduate students.\n[Keshavan] (218.3s): No cost to us.\n[Keshavan] (220.3s): They provide instructors and cloud credits.\n[Keshavan] (223.9s): We provide the room and the students.\n[Priya] (227.6s): What's the capacity?\n[Priya] (228.5s): 60.\n[Keshavan] (231.8s): They've asked for a date in April."
   },
   {
     "subject": "Jayashree",
     "subject_type": "PERSON",
     "relation": "scheduled_for",
-    "object": "April meeting",
-    "object_type": "EVENT",
+    "object": "signature",
+    "object_type": "TOPIC",
     "confidence": 0.9,
     "source_meeting": "meeting_005",
-    "timestamp": 184.86,
+    "timestamp": 195.8,
     "source_utterance": "[Keshavan] (184.9s): They've indicated they'll accept non-exclusive language.\n[Keshavan] (189.2s): We expect the revised draft in 10 days.\n[Jayashree] (193.4s): So we are not signing today.\n[Jayashree",
-    "window_text": ""
+    "deadline_date": "2026-04-30",
+    "window_text": "[Keshavan] (184.9s): They've indicated they'll accept non-exclusive language.\n[Keshavan] (189.2s): We expect the revised draft in 10 days.\n[Jayashree] (193.4s): So we are not signing today.\n[Jayashree] (195.8s): Jaishree, present the signature at the April meeting.\n[Jayashree] (199.5s): Do not let the department sign anything before legal clears the revised clause.\n[Keshavan] (205.3s): Understood.\n[Jayashree] (207.6s): NVIDIA.\n[Keshavan] (209.9s): Simpler.\n[Keshavan] (211.5s): They've offered a three-day GPU computing workshop for final year and postgraduate students.\n[Keshavan] (218.3s): No cost to us.\n[Keshavan] (220.3s): They provide instructors and cloud credits.\n[Keshavan] (223.9s): We provide the room and the students.\n[Priya] (227.6s): What's the capacity?\n[Priya] (228.5s): 60.\n[Keshavan] (231.8s): They've asked for a date in April."
   },
   {
     "subject": "NVIDIA",
@@ -545,131 +538,155 @@
     "relation": "proposed",
     "object": "three-day GPU computing workshop",
     "object_type": "EVENT",
-    "confidence": 0.95,
-    "source_meeting": "meeting_005",
-    "timestamp": 184.86,
-    "source_utterance": "[Keshavan] (184.9s): They've indicated they'll accept non-exclusive language.\n[Keshavan] (189.2s): We expect the revised draft in 10 days.\n[Jayashree] (193.4s): So we are not signing today.\n[Jayashree",
-    "window_text": ""
-  },
-  {
-    "subject": "three-day GPU computing workshop",
-    "subject_type": "EVENT",
-    "relation": "enrolled_in",
-    "object": "final year and postgraduate students",
-    "object_type": "PERSON",
     "confidence": 0.9,
     "source_meeting": "meeting_005",
-    "timestamp": 184.86,
+    "timestamp": 211.5,
     "source_utterance": "[Keshavan] (184.9s): They've indicated they'll accept non-exclusive language.\n[Keshavan] (189.2s): We expect the revised draft in 10 days.\n[Jayashree] (193.4s): So we are not signing today.\n[Jayashree",
-    "window_text": ""
+    "deadline_date": "",
+    "window_text": "[Keshavan] (184.9s): They've indicated they'll accept non-exclusive language.\n[Keshavan] (189.2s): We expect the revised draft in 10 days.\n[Jayashree] (193.4s): So we are not signing today.\n[Jayashree] (195.8s): Jaishree, present the signature at the April meeting.\n[Jayashree] (199.5s): Do not let the department sign anything before legal clears the revised clause.\n[Keshavan] (205.3s): Understood.\n[Jayashree] (207.6s): NVIDIA.\n[Keshavan] (209.9s): Simpler.\n[Keshavan] (211.5s): They've offered a three-day GPU computing workshop for final year and postgraduate students.\n[Keshavan] (218.3s): No cost to us.\n[Keshavan] (220.3s): They provide instructors and cloud credits.\n[Keshavan] (223.9s): We provide the room and the students.\n[Priya] (227.6s): What's the capacity?\n[Priya] (228.5s): 60.\n[Keshavan] (231.8s): They've asked for a date in April."
   },
   {
     "subject": "three-day GPU computing workshop",
     "subject_type": "EVENT",
     "relation": "budget_for",
-    "object": "No cost",
-    "object_type": "TOPIC",
-    "confidence": 0.9,
+    "object": "final year and postgraduate students",
+    "object_type": "PERSON",
+    "confidence": 0.8,
     "source_meeting": "meeting_005",
-    "timestamp": 184.86,
+    "timestamp": 211.5,
     "source_utterance": "[Keshavan] (184.9s): They've indicated they'll accept non-exclusive language.\n[Keshavan] (189.2s): We expect the revised draft in 10 days.\n[Jayashree] (193.4s): So we are not signing today.\n[Jayashree",
-    "window_text": ""
+    "deadline_date": "",
+    "window_text": "[Keshavan] (184.9s): They've indicated they'll accept non-exclusive language.\n[Keshavan] (189.2s): We expect the revised draft in 10 days.\n[Jayashree] (193.4s): So we are not signing today.\n[Jayashree] (195.8s): Jaishree, present the signature at the April meeting.\n[Jayashree] (199.5s): Do not let the department sign anything before legal clears the revised clause.\n[Keshavan] (205.3s): Understood.\n[Jayashree] (207.6s): NVIDIA.\n[Keshavan] (209.9s): Simpler.\n[Keshavan] (211.5s): They've offered a three-day GPU computing workshop for final year and postgraduate students.\n[Keshavan] (218.3s): No cost to us.\n[Keshavan] (220.3s): They provide instructors and cloud credits.\n[Keshavan] (223.9s): We provide the room and the students.\n[Priya] (227.6s): What's the capacity?\n[Priya] (228.5s): 60.\n[Keshavan] (231.8s): They've asked for a date in April."
   },
   {
-    "subject": "three-day GPU computing workshop",
-    "subject_type": "EVENT",
-    "relation": "scheduled_for",
-    "object": "April",
-    "object_type": "EVENT",
-    "confidence": 0.9,
-    "source_meeting": "meeting_005",
-    "timestamp": 184.86,
-    "source_utterance": "[Keshavan] (184.9s): They've indicated they'll accept non-exclusive language.\n[Keshavan] (189.2s): We expect the revised draft in 10 days.\n[Jayashree] (193.4s): So we are not signing today.\n[Jayashree",
-    "window_text": ""
-  },
-  {
-    "subject": "Keshavan",
+    "subject": "NVIDIA",
     "subject_type": "PERSON",
-    "relation": "assigned_to",
+    "relation": "budget_for",
     "object": "instructors and cloud credits",
     "object_type": "RESOURCE",
     "confidence": 0.8,
     "source_meeting": "meeting_005",
-    "timestamp": 220.32,
-    "source_utterance": "[Keshavan] (220.3s): They provide instructors and cloud credits.\n[Keshavan] (223.9s): We provide the room and the students.\n[Priya] (227.6s): What's the capacity?\n[Priya] (228.5s): 60.\n[Keshavan] (231",
-    "window_text": ""
+    "timestamp": 220.3,
+    "source_utterance": "[Keshavan] (184.9s): They've indicated they'll accept non-exclusive language.\n[Keshavan] (189.2s): We expect the revised draft in 10 days.\n[Jayashree] (193.4s): So we are not signing today.\n[Jayashree",
+    "deadline_date": "",
+    "window_text": "[Keshavan] (184.9s): They've indicated they'll accept non-exclusive language.\n[Keshavan] (189.2s): We expect the revised draft in 10 days.\n[Jayashree] (193.4s): So we are not signing today.\n[Jayashree] (195.8s): Jaishree, present the signature at the April meeting.\n[Jayashree] (199.5s): Do not let the department sign anything before legal clears the revised clause.\n[Keshavan] (205.3s): Understood.\n[Jayashree] (207.6s): NVIDIA.\n[Keshavan] (209.9s): Simpler.\n[Keshavan] (211.5s): They've offered a three-day GPU computing workshop for final year and postgraduate students.\n[Keshavan] (218.3s): No cost to us.\n[Keshavan] (220.3s): They provide instructors and cloud credits.\n[Keshavan] (223.9s): We provide the room and the students.\n[Priya] (227.6s): What's the capacity?\n[Priya] (228.5s): 60.\n[Keshavan] (231.8s): They've asked for a date in April."
+  },
+  {
+    "subject": "Keshavan",
+    "subject_type": "PERSON",
+    "relation": "budget_for",
+    "object": "room and students",
+    "object_type": "RESOURCE",
+    "confidence": 0.8,
+    "source_meeting": "meeting_005",
+    "timestamp": 223.9,
+    "source_utterance": "[Keshavan] (184.9s): They've indicated they'll accept non-exclusive language.\n[Keshavan] (189.2s): We expect the revised draft in 10 days.\n[Jayashree] (193.4s): So we are not signing today.\n[Jayashree",
+    "deadline_date": "",
+    "window_text": "[Keshavan] (184.9s): They've indicated they'll accept non-exclusive language.\n[Keshavan] (189.2s): We expect the revised draft in 10 days.\n[Jayashree] (193.4s): So we are not signing today.\n[Jayashree] (195.8s): Jaishree, present the signature at the April meeting.\n[Jayashree] (199.5s): Do not let the department sign anything before legal clears the revised clause.\n[Keshavan] (205.3s): Understood.\n[Jayashree] (207.6s): NVIDIA.\n[Keshavan] (209.9s): Simpler.\n[Keshavan] (211.5s): They've offered a three-day GPU computing workshop for final year and postgraduate students.\n[Keshavan] (218.3s): No cost to us.\n[Keshavan] (220.3s): They provide instructors and cloud credits.\n[Keshavan] (223.9s): We provide the room and the students.\n[Priya] (227.6s): What's the capacity?\n[Priya] (228.5s): 60.\n[Keshavan] (231.8s): They've asked for a date in April."
+  },
+  {
+    "subject": "NVIDIA",
+    "subject_type": "PERSON",
+    "relation": "scheduled_for",
+    "object": "April",
+    "object_type": "EVENT",
+    "confidence": 0.8,
+    "source_meeting": "meeting_005",
+    "timestamp": 231.8,
+    "source_utterance": "[Keshavan] (184.9s): They've indicated they'll accept non-exclusive language.\n[Keshavan] (189.2s): We expect the revised draft in 10 days.\n[Jayashree] (193.4s): So we are not signing today.\n[Jayashree",
+    "deadline_date": "",
+    "window_text": "[Keshavan] (184.9s): They've indicated they'll accept non-exclusive language.\n[Keshavan] (189.2s): We expect the revised draft in 10 days.\n[Jayashree] (193.4s): So we are not signing today.\n[Jayashree] (195.8s): Jaishree, present the signature at the April meeting.\n[Jayashree] (199.5s): Do not let the department sign anything before legal clears the revised clause.\n[Keshavan] (205.3s): Understood.\n[Jayashree] (207.6s): NVIDIA.\n[Keshavan] (209.9s): Simpler.\n[Keshavan] (211.5s): They've offered a three-day GPU computing workshop for final year and postgraduate students.\n[Keshavan] (218.3s): No cost to us.\n[Keshavan] (220.3s): They provide instructors and cloud credits.\n[Keshavan] (223.9s): We provide the room and the students.\n[Priya] (227.6s): What's the capacity?\n[Priya] (228.5s): 60.\n[Keshavan] (231.8s): They've asked for a date in April."
   },
   {
     "subject": "Keshavan",
     "subject_type": "PERSON",
     "relation": "assigned_to",
-    "object": "room and students",
+    "object": "Cloud credits",
     "object_type": "RESOURCE",
     "confidence": 0.8,
     "source_meeting": "meeting_005",
     "timestamp": 220.32,
     "source_utterance": "[Keshavan] (220.3s): They provide instructors and cloud credits.\n[Keshavan] (223.9s): We provide the room and the students.\n[Priya] (227.6s): What's the capacity?\n[Priya] (228.5s): 60.\n[Keshavan] (231",
-    "window_text": ""
+    "deadline_date": "",
+    "window_text": "[Keshavan] (220.3s): They provide instructors and cloud credits.\n[Keshavan] (223.9s): We provide the room and the students.\n[Priya] (227.6s): What's the capacity?\n[Priya] (228.5s): 60.\n[Keshavan] (231.8s): They've asked for a date in April.\n[Jayashree] (235.3s): Fix it as April 12th to 14th.\n[Jayashree] (238.3s): That's after the semester examinations begin, so attendance may suffer.\n[Keshavan] (244.0s): Examinations start on the 18th.\n[Keshavan] (247.1s): The 12th to 14th is clear.\n[Jayashree] (250.6s): Then April 12th.\n[Jayashree] (252.7s): Approved.\n[Jayashree] (254.3s): Bosh.\n[Keshavan] (256.5s): No movement.\n[Keshavan] (258.3s): We deprioritized it in January and I have not contacted them since.\n[Kumar] (264.3s): We should at least respond."
+  },
+  {
+    "subject": "Keshavan",
+    "subject_type": "PERSON",
+    "relation": "assigned_to",
+    "object": "Room",
+    "object_type": "RESOURCE",
+    "confidence": 0.8,
+    "source_meeting": "meeting_005",
+    "timestamp": 223.9,
+    "source_utterance": "[Keshavan] (220.3s): They provide instructors and cloud credits.\n[Keshavan] (223.9s): We provide the room and the students.\n[Priya] (227.6s): What's the capacity?\n[Priya] (228.5s): 60.\n[Keshavan] (231",
+    "deadline_date": "",
+    "window_text": "[Keshavan] (220.3s): They provide instructors and cloud credits.\n[Keshavan] (223.9s): We provide the room and the students.\n[Priya] (227.6s): What's the capacity?\n[Priya] (228.5s): 60.\n[Keshavan] (231.8s): They've asked for a date in April.\n[Jayashree] (235.3s): Fix it as April 12th to 14th.\n[Jayashree] (238.3s): That's after the semester examinations begin, so attendance may suffer.\n[Keshavan] (244.0s): Examinations start on the 18th.\n[Keshavan] (247.1s): The 12th to 14th is clear.\n[Jayashree] (250.6s): Then April 12th.\n[Jayashree] (252.7s): Approved.\n[Jayashree] (254.3s): Bosh.\n[Keshavan] (256.5s): No movement.\n[Keshavan] (258.3s): We deprioritized it in January and I have not contacted them since.\n[Kumar] (264.3s): We should at least respond."
+  },
+  {
+    "subject": "Keshavan",
+    "subject_type": "PERSON",
+    "relation": "assigned_to",
+    "object": "Students",
+    "object_type": "PERSON",
+    "confidence": 0.8,
+    "source_meeting": "meeting_005",
+    "timestamp": 223.9,
+    "source_utterance": "[Keshavan] (220.3s): They provide instructors and cloud credits.\n[Keshavan] (223.9s): We provide the room and the students.\n[Priya] (227.6s): What's the capacity?\n[Priya] (228.5s): 60.\n[Keshavan] (231",
+    "deadline_date": "",
+    "window_text": "[Keshavan] (220.3s): They provide instructors and cloud credits.\n[Keshavan] (223.9s): We provide the room and the students.\n[Priya] (227.6s): What's the capacity?\n[Priya] (228.5s): 60.\n[Keshavan] (231.8s): They've asked for a date in April.\n[Jayashree] (235.3s): Fix it as April 12th to 14th.\n[Jayashree] (238.3s): That's after the semester examinations begin, so attendance may suffer.\n[Keshavan] (244.0s): Examinations start on the 18th.\n[Keshavan] (247.1s): The 12th to 14th is clear.\n[Jayashree] (250.6s): Then April 12th.\n[Jayashree] (252.7s): Approved.\n[Jayashree] (254.3s): Bosh.\n[Keshavan] (256.5s): No movement.\n[Keshavan] (258.3s): We deprioritized it in January and I have not contacted them since.\n[Kumar] (264.3s): We should at least respond."
   },
   {
     "subject": "Jayashree",
     "subject_type": "PERSON",
     "relation": "scheduled_for",
-    "object": "April 12th to 14th",
+    "object": "Event",
     "object_type": "EVENT",
-    "confidence": 0.95,
+    "confidence": 0.9,
     "source_meeting": "meeting_005",
-    "timestamp": 220.32,
+    "timestamp": 235.3,
     "source_utterance": "[Keshavan] (220.3s): They provide instructors and cloud credits.\n[Keshavan] (223.9s): We provide the room and the students.\n[Priya] (227.6s): What's the capacity?\n[Priya] (228.5s): 60.\n[Keshavan] (231",
-    "window_text": ""
+    "deadline_date": "2026-04-14",
+    "window_text": "[Keshavan] (220.3s): They provide instructors and cloud credits.\n[Keshavan] (223.9s): We provide the room and the students.\n[Priya] (227.6s): What's the capacity?\n[Priya] (228.5s): 60.\n[Keshavan] (231.8s): They've asked for a date in April.\n[Jayashree] (235.3s): Fix it as April 12th to 14th.\n[Jayashree] (238.3s): That's after the semester examinations begin, so attendance may suffer.\n[Keshavan] (244.0s): Examinations start on the 18th.\n[Keshavan] (247.1s): The 12th to 14th is clear.\n[Jayashree] (250.6s): Then April 12th.\n[Jayashree] (252.7s): Approved.\n[Jayashree] (254.3s): Bosh.\n[Keshavan] (256.5s): No movement.\n[Keshavan] (258.3s): We deprioritized it in January and I have not contacted them since.\n[Kumar] (264.3s): We should at least respond."
   },
   {
     "subject": "Jayashree",
     "subject_type": "PERSON",
     "relation": "approved",
-    "object": "April 12th",
+    "object": "Event",
     "object_type": "EVENT",
     "confidence": 0.95,
     "source_meeting": "meeting_005",
-    "timestamp": 220.32,
+    "timestamp": 252.7,
     "source_utterance": "[Keshavan] (220.3s): They provide instructors and cloud credits.\n[Keshavan] (223.9s): We provide the room and the students.\n[Priya] (227.6s): What's the capacity?\n[Priya] (228.5s): 60.\n[Keshavan] (231",
-    "window_text": ""
+    "deadline_date": "",
+    "window_text": "[Keshavan] (220.3s): They provide instructors and cloud credits.\n[Keshavan] (223.9s): We provide the room and the students.\n[Priya] (227.6s): What's the capacity?\n[Priya] (228.5s): 60.\n[Keshavan] (231.8s): They've asked for a date in April.\n[Jayashree] (235.3s): Fix it as April 12th to 14th.\n[Jayashree] (238.3s): That's after the semester examinations begin, so attendance may suffer.\n[Keshavan] (244.0s): Examinations start on the 18th.\n[Keshavan] (247.1s): The 12th to 14th is clear.\n[Jayashree] (250.6s): Then April 12th.\n[Jayashree] (252.7s): Approved.\n[Jayashree] (254.3s): Bosh.\n[Keshavan] (256.5s): No movement.\n[Keshavan] (258.3s): We deprioritized it in January and I have not contacted them since.\n[Kumar] (264.3s): We should at least respond."
   },
   {
     "subject": "Keshavan",
     "subject_type": "PERSON",
-    "relation": "discussed",
-    "object": "deprioritization in January",
-    "object_type": "TOPIC",
-    "confidence": 0.7,
+    "relation": "assigned_to",
+    "object": "Event",
+    "object_type": "EVENT",
+    "confidence": 0.8,
     "source_meeting": "meeting_005",
-    "timestamp": 220.32,
+    "timestamp": 258.3,
     "source_utterance": "[Keshavan] (220.3s): They provide instructors and cloud credits.\n[Keshavan] (223.9s): We provide the room and the students.\n[Priya] (227.6s): What's the capacity?\n[Priya] (228.5s): 60.\n[Keshavan] (231",
-    "window_text": ""
-  },
-  {
-    "subject": "Kumar",
-    "subject_type": "PERSON",
-    "relation": "discussed",
-    "object": "responding to the instructors",
-    "object_type": "TOPIC",
-    "confidence": 0.7,
-    "source_meeting": "meeting_005",
-    "timestamp": 220.32,
-    "source_utterance": "[Keshavan] (220.3s): They provide instructors and cloud credits.\n[Keshavan] (223.9s): We provide the room and the students.\n[Priya] (227.6s): What's the capacity?\n[Priya] (228.5s): 60.\n[Keshavan] (231",
-    "window_text": ""
+    "deadline_date": "",
+    "window_text": "[Keshavan] (220.3s): They provide instructors and cloud credits.\n[Keshavan] (223.9s): We provide the room and the students.\n[Priya] (227.6s): What's the capacity?\n[Priya] (228.5s): 60.\n[Keshavan] (231.8s): They've asked for a date in April.\n[Jayashree] (235.3s): Fix it as April 12th to 14th.\n[Jayashree] (238.3s): That's after the semester examinations begin, so attendance may suffer.\n[Keshavan] (244.0s): Examinations start on the 18th.\n[Keshavan] (247.1s): The 12th to 14th is clear.\n[Jayashree] (250.6s): Then April 12th.\n[Jayashree] (252.7s): Approved.\n[Jayashree] (254.3s): Bosh.\n[Keshavan] (256.5s): No movement.\n[Keshavan] (258.3s): We deprioritized it in January and I have not contacted them since.\n[Kumar] (264.3s): We should at least respond."
   },
   {
     "subject": "Jayashree",
     "subject_type": "PERSON",
     "relation": "approved",
-    "object": "proposal",
+    "object": "Bosh",
     "object_type": "TOPIC",
     "confidence": 0.9,
     "source_meeting": "meeting_005",
     "timestamp": 252.7,
     "source_utterance": "[Jayashree] (252.7s): Approved.\n[Jayashree] (254.3s): Bosh.\n[Keshavan] (256.5s): No movement.\n[Keshavan] (258.3s): We deprioritized it in January and I have not contacted them since.\n[Kumar] (264.3s):",
-    "window_text": ""
+    "deadline_date": "",
+    "window_text": "[Jayashree] (252.7s): Approved.\n[Jayashree] (254.3s): Bosh.\n[Keshavan] (256.5s): No movement.\n[Keshavan] (258.3s): We deprioritized it in January and I have not contacted them since.\n[Kumar] (264.3s): We should at least respond.\n[Kumar] (266.6s): Leaving a proposal unanswered for two months is poor practice.\n[Jayashree] (271.4s): Fair.\n[Jayashree] (272.7s): Jaishree, send a holding response this week.\n[Jayashree] (276.3s): Say we're interested but cannot commit resources this academic year.\n[Jayashree] (280.9s): Postpone it formally rather than let it lapse.\n[Keshavan] (284.9s): I'll send it.\n[Jayashree] (287.3s): Item 3.\n[Jayashree] (288.9s): The Capstone Framework.\n[Jayashree] (291.3s): We extended phase 1 to 14 weeks in January.\n[Jayashree] (295.4s): Any consequences?"
   },
   {
     "subject": "Keshavan",
@@ -677,11 +694,12 @@
     "relation": "assigned_to",
     "object": "send a holding response",
     "object_type": "TOPIC",
-    "confidence": 0.9,
+    "confidence": 0.8,
     "source_meeting": "meeting_005",
-    "timestamp": 252.7,
+    "timestamp": 284.9,
     "source_utterance": "[Jayashree] (252.7s): Approved.\n[Jayashree] (254.3s): Bosh.\n[Keshavan] (256.5s): No movement.\n[Keshavan] (258.3s): We deprioritized it in January and I have not contacted them since.\n[Kumar] (264.3s):",
-    "window_text": ""
+    "deadline_date": "",
+    "window_text": "[Jayashree] (252.7s): Approved.\n[Jayashree] (254.3s): Bosh.\n[Keshavan] (256.5s): No movement.\n[Keshavan] (258.3s): We deprioritized it in January and I have not contacted them since.\n[Kumar] (264.3s): We should at least respond.\n[Kumar] (266.6s): Leaving a proposal unanswered for two months is poor practice.\n[Jayashree] (271.4s): Fair.\n[Jayashree] (272.7s): Jaishree, send a holding response this week.\n[Jayashree] (276.3s): Say we're interested but cannot commit resources this academic year.\n[Jayashree] (280.9s): Postpone it formally rather than let it lapse.\n[Keshavan] (284.9s): I'll send it.\n[Jayashree] (287.3s): Item 3.\n[Jayashree] (288.9s): The Capstone Framework.\n[Jayashree] (291.3s): We extended phase 1 to 14 weeks in January.\n[Jayashree] (295.4s): Any consequences?"
   },
   {
     "subject": "Jayashree",
@@ -691,45 +709,49 @@
     "object_type": "TOPIC",
     "confidence": 0.9,
     "source_meeting": "meeting_005",
-    "timestamp": 252.7,
+    "timestamp": 272.7,
     "source_utterance": "[Jayashree] (252.7s): Approved.\n[Jayashree] (254.3s): Bosh.\n[Keshavan] (256.5s): No movement.\n[Keshavan] (258.3s): We deprioritized it in January and I have not contacted them since.\n[Kumar] (264.3s):",
-    "window_text": ""
+    "deadline_date": "",
+    "window_text": "[Jayashree] (252.7s): Approved.\n[Jayashree] (254.3s): Bosh.\n[Keshavan] (256.5s): No movement.\n[Keshavan] (258.3s): We deprioritized it in January and I have not contacted them since.\n[Kumar] (264.3s): We should at least respond.\n[Kumar] (266.6s): Leaving a proposal unanswered for two months is poor practice.\n[Jayashree] (271.4s): Fair.\n[Jayashree] (272.7s): Jaishree, send a holding response this week.\n[Jayashree] (276.3s): Say we're interested but cannot commit resources this academic year.\n[Jayashree] (280.9s): Postpone it formally rather than let it lapse.\n[Keshavan] (284.9s): I'll send it.\n[Jayashree] (287.3s): Item 3.\n[Jayashree] (288.9s): The Capstone Framework.\n[Jayashree] (291.3s): We extended phase 1 to 14 weeks in January.\n[Jayashree] (295.4s): Any consequences?"
   },
   {
     "subject": "Jayashree",
     "subject_type": "PERSON",
     "relation": "postponed",
-    "object": "proposal",
+    "object": "Bosh",
     "object_type": "TOPIC",
     "confidence": 0.9,
     "source_meeting": "meeting_005",
-    "timestamp": 252.7,
+    "timestamp": 280.9,
     "source_utterance": "[Jayashree] (252.7s): Approved.\n[Jayashree] (254.3s): Bosh.\n[Keshavan] (256.5s): No movement.\n[Keshavan] (258.3s): We deprioritized it in January and I have not contacted them since.\n[Kumar] (264.3s):",
-    "window_text": ""
+    "deadline_date": "",
+    "window_text": "[Jayashree] (252.7s): Approved.\n[Jayashree] (254.3s): Bosh.\n[Keshavan] (256.5s): No movement.\n[Keshavan] (258.3s): We deprioritized it in January and I have not contacted them since.\n[Kumar] (264.3s): We should at least respond.\n[Kumar] (266.6s): Leaving a proposal unanswered for two months is poor practice.\n[Jayashree] (271.4s): Fair.\n[Jayashree] (272.7s): Jaishree, send a holding response this week.\n[Jayashree] (276.3s): Say we're interested but cannot commit resources this academic year.\n[Jayashree] (280.9s): Postpone it formally rather than let it lapse.\n[Keshavan] (284.9s): I'll send it.\n[Jayashree] (287.3s): Item 3.\n[Jayashree] (288.9s): The Capstone Framework.\n[Jayashree] (291.3s): We extended phase 1 to 14 weeks in January.\n[Jayashree] (295.4s): Any consequences?"
   },
   {
-    "subject": "Capstone Framework",
-    "subject_type": "PROJECT",
-    "relation": "part_of",
-    "object": "Item 3",
-    "object_type": "TOPIC",
+    "subject": "Jayashree",
+    "subject_type": "PERSON",
+    "relation": "discussed",
+    "object": "The Capstone Framework",
+    "object_type": "PROJECT",
     "confidence": 0.9,
     "source_meeting": "meeting_005",
-    "timestamp": 252.7,
+    "timestamp": 288.9,
     "source_utterance": "[Jayashree] (252.7s): Approved.\n[Jayashree] (254.3s): Bosh.\n[Keshavan] (256.5s): No movement.\n[Keshavan] (258.3s): We deprioritized it in January and I have not contacted them since.\n[Kumar] (264.3s):",
-    "window_text": ""
+    "deadline_date": "",
+    "window_text": "[Jayashree] (252.7s): Approved.\n[Jayashree] (254.3s): Bosh.\n[Keshavan] (256.5s): No movement.\n[Keshavan] (258.3s): We deprioritized it in January and I have not contacted them since.\n[Kumar] (264.3s): We should at least respond.\n[Kumar] (266.6s): Leaving a proposal unanswered for two months is poor practice.\n[Jayashree] (271.4s): Fair.\n[Jayashree] (272.7s): Jaishree, send a holding response this week.\n[Jayashree] (276.3s): Say we're interested but cannot commit resources this academic year.\n[Jayashree] (280.9s): Postpone it formally rather than let it lapse.\n[Keshavan] (284.9s): I'll send it.\n[Jayashree] (287.3s): Item 3.\n[Jayashree] (288.9s): The Capstone Framework.\n[Jayashree] (291.3s): We extended phase 1 to 14 weeks in January.\n[Jayashree] (295.4s): Any consequences?"
   },
   {
-    "subject": "Capstone Framework",
-    "subject_type": "PROJECT",
-    "relation": "postponed",
+    "subject": "Jayashree",
+    "subject_type": "PERSON",
+    "relation": "discussed",
     "object": "Phase 1",
-    "object_type": "TOPIC",
+    "object_type": "PROJECT",
     "confidence": 0.9,
     "source_meeting": "meeting_005",
-    "timestamp": 252.7,
+    "timestamp": 291.3,
     "source_utterance": "[Jayashree] (252.7s): Approved.\n[Jayashree] (254.3s): Bosh.\n[Keshavan] (256.5s): No movement.\n[Keshavan] (258.3s): We deprioritized it in January and I have not contacted them since.\n[Kumar] (264.3s):",
-    "window_text": ""
+    "deadline_date": "",
+    "window_text": "[Jayashree] (252.7s): Approved.\n[Jayashree] (254.3s): Bosh.\n[Keshavan] (256.5s): No movement.\n[Keshavan] (258.3s): We deprioritized it in January and I have not contacted them since.\n[Kumar] (264.3s): We should at least respond.\n[Kumar] (266.6s): Leaving a proposal unanswered for two months is poor practice.\n[Jayashree] (271.4s): Fair.\n[Jayashree] (272.7s): Jaishree, send a holding response this week.\n[Jayashree] (276.3s): Say we're interested but cannot commit resources this academic year.\n[Jayashree] (280.9s): Postpone it formally rather than let it lapse.\n[Keshavan] (284.9s): I'll send it.\n[Jayashree] (287.3s): Item 3.\n[Jayashree] (288.9s): The Capstone Framework.\n[Jayashree] (291.3s): We extended phase 1 to 14 weeks in January.\n[Jayashree] (295.4s): Any consequences?"
   },
   {
     "subject": "Jayashree",
@@ -739,9 +761,23 @@
     "object_type": "TOPIC",
     "confidence": 0.8,
     "source_meeting": "meeting_005",
-    "timestamp": 284.9,
+    "timestamp": 288.9,
     "source_utterance": "[Keshavan] (284.9s): I'll send it.\n[Jayashree] (287.3s): Item 3.\n[Jayashree] (288.9s): The Capstone Framework.\n[Jayashree] (291.3s): We extended phase 1 to 14 weeks in January.\n[Jayashree] (295.4s): A",
-    "window_text": ""
+    "deadline_date": "",
+    "window_text": "[Keshavan] (284.9s): I'll send it.\n[Jayashree] (287.3s): Item 3.\n[Jayashree] (288.9s): The Capstone Framework.\n[Jayashree] (291.3s): We extended phase 1 to 14 weeks in January.\n[Jayashree] (295.4s): Any consequences?\n[Keshavan] (298.3s): One, raised by Meera.\n[Keshavan] (301.0s): The literature survey requirement was set for a 12-week phase.\n[Keshavan] (305.8s): With 14 weeks the requirement is now too light.\n[Keshavan] (309.8s): We propose adding a comparison matrix.\n[Keshavan] (313.5s): Same minimum of four papers, but students must compare methods across those papers on common criteria.\n[Priya] (321.8s): I've seen the draft rubric.\n[Priya] (324.1s): Mira sent it last week.\n[Priya] (326.6s): It's reasonable and it's gradable, which was my concern in January.\n[Kumar] (331.8s): How many marks?\n[Keshavan] (334.4s): The 15 points already allocated to critical analysis get redistributed."
+  },
+  {
+    "subject": "Capstone Framework",
+    "subject_type": "PROJECT",
+    "relation": "postponed",
+    "object": "Phase 1",
+    "object_type": "TOPIC",
+    "confidence": 0.9,
+    "source_meeting": "meeting_005",
+    "timestamp": 291.3,
+    "source_utterance": "[Keshavan] (284.9s): I'll send it.\n[Jayashree] (287.3s): Item 3.\n[Jayashree] (288.9s): The Capstone Framework.\n[Jayashree] (291.3s): We extended phase 1 to 14 weeks in January.\n[Jayashree] (295.4s): A",
+    "deadline_date": "",
+    "window_text": "[Keshavan] (284.9s): I'll send it.\n[Jayashree] (287.3s): Item 3.\n[Jayashree] (288.9s): The Capstone Framework.\n[Jayashree] (291.3s): We extended phase 1 to 14 weeks in January.\n[Jayashree] (295.4s): Any consequences?\n[Keshavan] (298.3s): One, raised by Meera.\n[Keshavan] (301.0s): The literature survey requirement was set for a 12-week phase.\n[Keshavan] (305.8s): With 14 weeks the requirement is now too light.\n[Keshavan] (309.8s): We propose adding a comparison matrix.\n[Keshavan] (313.5s): Same minimum of four papers, but students must compare methods across those papers on common criteria.\n[Priya] (321.8s): I've seen the draft rubric.\n[Priya] (324.1s): Mira sent it last week.\n[Priya] (326.6s): It's reasonable and it's gradable, which was my concern in January.\n[Kumar] (331.8s): How many marks?\n[Keshavan] (334.4s): The 15 points already allocated to critical analysis get redistributed."
   },
   {
     "subject": "Phase 1",
@@ -749,71 +785,64 @@
     "relation": "deadline_for",
     "object": "14 weeks",
     "object_type": "DEADLINE",
-    "confidence": 0.8,
+    "confidence": 0.9,
     "source_meeting": "meeting_005",
-    "timestamp": 284.9,
+    "timestamp": 291.3,
     "source_utterance": "[Keshavan] (284.9s): I'll send it.\n[Jayashree] (287.3s): Item 3.\n[Jayashree] (288.9s): The Capstone Framework.\n[Jayashree] (291.3s): We extended phase 1 to 14 weeks in January.\n[Jayashree] (295.4s): A",
-    "window_text": ""
+    "deadline_date": "",
+    "window_text": "[Keshavan] (284.9s): I'll send it.\n[Jayashree] (287.3s): Item 3.\n[Jayashree] (288.9s): The Capstone Framework.\n[Jayashree] (291.3s): We extended phase 1 to 14 weeks in January.\n[Jayashree] (295.4s): Any consequences?\n[Keshavan] (298.3s): One, raised by Meera.\n[Keshavan] (301.0s): The literature survey requirement was set for a 12-week phase.\n[Keshavan] (305.8s): With 14 weeks the requirement is now too light.\n[Keshavan] (309.8s): We propose adding a comparison matrix.\n[Keshavan] (313.5s): Same minimum of four papers, but students must compare methods across those papers on common criteria.\n[Priya] (321.8s): I've seen the draft rubric.\n[Priya] (324.1s): Mira sent it last week.\n[Priya] (326.6s): It's reasonable and it's gradable, which was my concern in January.\n[Kumar] (331.8s): How many marks?\n[Keshavan] (334.4s): The 15 points already allocated to critical analysis get redistributed."
   },
   {
-    "subject": "Meera",
-    "subject_type": "PERSON",
-    "relation": "discussed",
-    "object": "Literature survey requirement",
-    "object_type": "TOPIC",
-    "confidence": 0.8,
-    "source_meeting": "meeting_005",
-    "timestamp": 284.9,
-    "source_utterance": "[Keshavan] (284.9s): I'll send it.\n[Jayashree] (287.3s): Item 3.\n[Jayashree] (288.9s): The Capstone Framework.\n[Jayashree] (291.3s): We extended phase 1 to 14 weeks in January.\n[Jayashree] (295.4s): A",
-    "window_text": ""
-  },
-  {
-    "subject": "Literature survey requirement",
+    "subject": "literature survey requirement",
     "subject_type": "TOPIC",
     "relation": "deadline_for",
     "object": "12-week phase",
     "object_type": "DEADLINE",
-    "confidence": 0.8,
+    "confidence": 0.9,
     "source_meeting": "meeting_005",
-    "timestamp": 284.9,
+    "timestamp": 301.0,
     "source_utterance": "[Keshavan] (284.9s): I'll send it.\n[Jayashree] (287.3s): Item 3.\n[Jayashree] (288.9s): The Capstone Framework.\n[Jayashree] (291.3s): We extended phase 1 to 14 weeks in January.\n[Jayashree] (295.4s): A",
-    "window_text": ""
+    "deadline_date": "",
+    "window_text": "[Keshavan] (284.9s): I'll send it.\n[Jayashree] (287.3s): Item 3.\n[Jayashree] (288.9s): The Capstone Framework.\n[Jayashree] (291.3s): We extended phase 1 to 14 weeks in January.\n[Jayashree] (295.4s): Any consequences?\n[Keshavan] (298.3s): One, raised by Meera.\n[Keshavan] (301.0s): The literature survey requirement was set for a 12-week phase.\n[Keshavan] (305.8s): With 14 weeks the requirement is now too light.\n[Keshavan] (309.8s): We propose adding a comparison matrix.\n[Keshavan] (313.5s): Same minimum of four papers, but students must compare methods across those papers on common criteria.\n[Priya] (321.8s): I've seen the draft rubric.\n[Priya] (324.1s): Mira sent it last week.\n[Priya] (326.6s): It's reasonable and it's gradable, which was my concern in January.\n[Kumar] (331.8s): How many marks?\n[Keshavan] (334.4s): The 15 points already allocated to critical analysis get redistributed."
   },
   {
     "subject": "Keshavan",
     "subject_type": "PERSON",
     "relation": "proposed",
-    "object": "comparison matrix",
+    "object": "adding a comparison matrix",
     "object_type": "TOPIC",
     "confidence": 0.9,
     "source_meeting": "meeting_005",
-    "timestamp": 284.9,
+    "timestamp": 309.8,
     "source_utterance": "[Keshavan] (284.9s): I'll send it.\n[Jayashree] (287.3s): Item 3.\n[Jayashree] (288.9s): The Capstone Framework.\n[Jayashree] (291.3s): We extended phase 1 to 14 weeks in January.\n[Jayashree] (295.4s): A",
-    "window_text": ""
+    "deadline_date": "",
+    "window_text": "[Keshavan] (284.9s): I'll send it.\n[Jayashree] (287.3s): Item 3.\n[Jayashree] (288.9s): The Capstone Framework.\n[Jayashree] (291.3s): We extended phase 1 to 14 weeks in January.\n[Jayashree] (295.4s): Any consequences?\n[Keshavan] (298.3s): One, raised by Meera.\n[Keshavan] (301.0s): The literature survey requirement was set for a 12-week phase.\n[Keshavan] (305.8s): With 14 weeks the requirement is now too light.\n[Keshavan] (309.8s): We propose adding a comparison matrix.\n[Keshavan] (313.5s): Same minimum of four papers, but students must compare methods across those papers on common criteria.\n[Priya] (321.8s): I've seen the draft rubric.\n[Priya] (324.1s): Mira sent it last week.\n[Priya] (326.6s): It's reasonable and it's gradable, which was my concern in January.\n[Kumar] (331.8s): How many marks?\n[Keshavan] (334.4s): The 15 points already allocated to critical analysis get redistributed."
   },
   {
     "subject": "Priya",
     "subject_type": "PERSON",
     "relation": "discussed",
-    "object": "Draft rubric",
-    "object_type": "TOPIC",
-    "confidence": 0.8,
+    "object": "draft rubric",
+    "object_type": "RESOURCE",
+    "confidence": 0.9,
     "source_meeting": "meeting_005",
-    "timestamp": 284.9,
+    "timestamp": 321.8,
     "source_utterance": "[Keshavan] (284.9s): I'll send it.\n[Jayashree] (287.3s): Item 3.\n[Jayashree] (288.9s): The Capstone Framework.\n[Jayashree] (291.3s): We extended phase 1 to 14 weeks in January.\n[Jayashree] (295.4s): A",
-    "window_text": ""
+    "deadline_date": "",
+    "window_text": "[Keshavan] (284.9s): I'll send it.\n[Jayashree] (287.3s): Item 3.\n[Jayashree] (288.9s): The Capstone Framework.\n[Jayashree] (291.3s): We extended phase 1 to 14 weeks in January.\n[Jayashree] (295.4s): Any consequences?\n[Keshavan] (298.3s): One, raised by Meera.\n[Keshavan] (301.0s): The literature survey requirement was set for a 12-week phase.\n[Keshavan] (305.8s): With 14 weeks the requirement is now too light.\n[Keshavan] (309.8s): We propose adding a comparison matrix.\n[Keshavan] (313.5s): Same minimum of four papers, but students must compare methods across those papers on common criteria.\n[Priya] (321.8s): I've seen the draft rubric.\n[Priya] (324.1s): Mira sent it last week.\n[Priya] (326.6s): It's reasonable and it's gradable, which was my concern in January.\n[Kumar] (331.8s): How many marks?\n[Keshavan] (334.4s): The 15 points already allocated to critical analysis get redistributed."
   },
   {
     "subject": "Meera",
     "subject_type": "PERSON",
     "relation": "assigned_to",
-    "object": "Draft rubric",
-    "object_type": "TOPIC",
-    "confidence": 0.8,
+    "object": "draft rubric",
+    "object_type": "RESOURCE",
+    "confidence": 0.9,
     "source_meeting": "meeting_005",
-    "timestamp": 284.9,
+    "timestamp": 324.1,
     "source_utterance": "[Keshavan] (284.9s): I'll send it.\n[Jayashree] (287.3s): Item 3.\n[Jayashree] (288.9s): The Capstone Framework.\n[Jayashree] (291.3s): We extended phase 1 to 14 weeks in January.\n[Jayashree] (295.4s): A",
-    "window_text": ""
+    "deadline_date": "",
+    "window_text": "[Keshavan] (284.9s): I'll send it.\n[Jayashree] (287.3s): Item 3.\n[Jayashree] (288.9s): The Capstone Framework.\n[Jayashree] (291.3s): We extended phase 1 to 14 weeks in January.\n[Jayashree] (295.4s): Any consequences?\n[Keshavan] (298.3s): One, raised by Meera.\n[Keshavan] (301.0s): The literature survey requirement was set for a 12-week phase.\n[Keshavan] (305.8s): With 14 weeks the requirement is now too light.\n[Keshavan] (309.8s): We propose adding a comparison matrix.\n[Keshavan] (313.5s): Same minimum of four papers, but students must compare methods across those papers on common criteria.\n[Priya] (321.8s): I've seen the draft rubric.\n[Priya] (324.1s): Mira sent it last week.\n[Priya] (326.6s): It's reasonable and it's gradable, which was my concern in January.\n[Kumar] (331.8s): How many marks?\n[Keshavan] (334.4s): The 15 points already allocated to critical analysis get redistributed."
   },
   {
     "subject": "Keshavan",
@@ -821,71 +850,90 @@
     "relation": "discussed",
     "object": "15 points",
     "object_type": "TOPIC",
-    "confidence": 0.8,
-    "source_meeting": "meeting_005",
-    "timestamp": 284.9,
-    "source_utterance": "[Keshavan] (284.9s): I'll send it.\n[Jayashree] (287.3s): Item 3.\n[Jayashree] (288.9s): The Capstone Framework.\n[Jayashree] (291.3s): We extended phase 1 to 14 weeks in January.\n[Jayashree] (295.4s): A",
-    "window_text": ""
-  },
-  {
-    "subject": "Keshavan",
-    "subject_type": "PERSON",
-    "relation": "assigned_to",
-    "object": "Rubric redistribution",
-    "object_type": "TOPIC",
     "confidence": 0.9,
     "source_meeting": "meeting_005",
-    "timestamp": 321.82,
+    "timestamp": 334.4,
+    "source_utterance": "[Keshavan] (284.9s): I'll send it.\n[Jayashree] (287.3s): Item 3.\n[Jayashree] (288.9s): The Capstone Framework.\n[Jayashree] (291.3s): We extended phase 1 to 14 weeks in January.\n[Jayashree] (295.4s): A",
+    "deadline_date": "",
+    "window_text": "[Keshavan] (284.9s): I'll send it.\n[Jayashree] (287.3s): Item 3.\n[Jayashree] (288.9s): The Capstone Framework.\n[Jayashree] (291.3s): We extended phase 1 to 14 weeks in January.\n[Jayashree] (295.4s): Any consequences?\n[Keshavan] (298.3s): One, raised by Meera.\n[Keshavan] (301.0s): The literature survey requirement was set for a 12-week phase.\n[Keshavan] (305.8s): With 14 weeks the requirement is now too light.\n[Keshavan] (309.8s): We propose adding a comparison matrix.\n[Keshavan] (313.5s): Same minimum of four papers, but students must compare methods across those papers on common criteria.\n[Priya] (321.8s): I've seen the draft rubric.\n[Priya] (324.1s): Mira sent it last week.\n[Priya] (326.6s): It's reasonable and it's gradable, which was my concern in January.\n[Kumar] (331.8s): How many marks?\n[Keshavan] (334.4s): The 15 points already allocated to critical analysis get redistributed."
+  },
+  {
+    "subject": "draft rubric",
+    "subject_type": "RESOURCE",
+    "relation": "discussed",
+    "object": "critical analysis",
+    "object_type": "TOPIC",
+    "confidence": 0.7,
+    "source_meeting": "meeting_005",
+    "timestamp": 334.4,
     "source_utterance": "[Priya] (321.8s): I've seen the draft rubric.\n[Priya] (324.1s): Mira sent it last week.\n[Priya] (326.6s): It's reasonable and it's gradable, which was my concern in January.\n[Kumar] (331.8s): How many",
-    "window_text": ""
+    "deadline_date": "",
+    "window_text": "[Priya] (321.8s): I've seen the draft rubric.\n[Priya] (324.1s): Mira sent it last week.\n[Priya] (326.6s): It's reasonable and it's gradable, which was my concern in January.\n[Kumar] (331.8s): How many marks?\n[Keshavan] (334.4s): The 15 points already allocated to critical analysis get redistributed.\n[Keshavan] (339.3s): 8 for the matrix, 7 for written analysis.\n[Keshavan] (344.5s): No change to the total.\n[Jayashree] (347.4s): Approved.\n[Jayashree] (348.9s): Priya, are you satisfied?\n[Jayashree] (350.5s): the rubric is fair across graders?\n[Priya] (354.0s): Mostly.\n[Priya] (355.7s): I have one reservation.\n[Priya] (358.0s): The peer review component gives 5% for the quality of feedback a team gives to other teams.\n[Priya] (364.0s): Grading the quality of feedback is inherently subjective, and we have no calibration between graders.\n[Jayashree] (371.2s): What would fix it?"
   },
   {
     "subject": "Jayashree",
     "subject_type": "PERSON",
     "relation": "approved",
-    "object": "Draft rubric",
+    "object": "draft rubric",
     "object_type": "RESOURCE",
-    "confidence": 0.95,
+    "confidence": 1.0,
     "source_meeting": "meeting_005",
-    "timestamp": 321.82,
+    "timestamp": 347.4,
     "source_utterance": "[Priya] (321.8s): I've seen the draft rubric.\n[Priya] (324.1s): Mira sent it last week.\n[Priya] (326.6s): It's reasonable and it's gradable, which was my concern in January.\n[Kumar] (331.8s): How many",
-    "window_text": ""
+    "deadline_date": "",
+    "window_text": "[Priya] (321.8s): I've seen the draft rubric.\n[Priya] (324.1s): Mira sent it last week.\n[Priya] (326.6s): It's reasonable and it's gradable, which was my concern in January.\n[Kumar] (331.8s): How many marks?\n[Keshavan] (334.4s): The 15 points already allocated to critical analysis get redistributed.\n[Keshavan] (339.3s): 8 for the matrix, 7 for written analysis.\n[Keshavan] (344.5s): No change to the total.\n[Jayashree] (347.4s): Approved.\n[Jayashree] (348.9s): Priya, are you satisfied?\n[Jayashree] (350.5s): the rubric is fair across graders?\n[Priya] (354.0s): Mostly.\n[Priya] (355.7s): I have one reservation.\n[Priya] (358.0s): The peer review component gives 5% for the quality of feedback a team gives to other teams.\n[Priya] (364.0s): Grading the quality of feedback is inherently subjective, and we have no calibration between graders.\n[Jayashree] (371.2s): What would fix it?"
   },
   {
     "subject": "Priya",
     "subject_type": "PERSON",
     "relation": "discussed",
-    "object": "Fairness of rubric",
+    "object": "rubric fairness",
     "object_type": "TOPIC",
     "confidence": 0.8,
     "source_meeting": "meeting_005",
-    "timestamp": 321.82,
+    "timestamp": 350.5,
     "source_utterance": "[Priya] (321.8s): I've seen the draft rubric.\n[Priya] (324.1s): Mira sent it last week.\n[Priya] (326.6s): It's reasonable and it's gradable, which was my concern in January.\n[Kumar] (331.8s): How many",
-    "window_text": ""
+    "deadline_date": "",
+    "window_text": "[Priya] (321.8s): I've seen the draft rubric.\n[Priya] (324.1s): Mira sent it last week.\n[Priya] (326.6s): It's reasonable and it's gradable, which was my concern in January.\n[Kumar] (331.8s): How many marks?\n[Keshavan] (334.4s): The 15 points already allocated to critical analysis get redistributed.\n[Keshavan] (339.3s): 8 for the matrix, 7 for written analysis.\n[Keshavan] (344.5s): No change to the total.\n[Jayashree] (347.4s): Approved.\n[Jayashree] (348.9s): Priya, are you satisfied?\n[Jayashree] (350.5s): the rubric is fair across graders?\n[Priya] (354.0s): Mostly.\n[Priya] (355.7s): I have one reservation.\n[Priya] (358.0s): The peer review component gives 5% for the quality of feedback a team gives to other teams.\n[Priya] (364.0s): Grading the quality of feedback is inherently subjective, and we have no calibration between graders.\n[Jayashree] (371.2s): What would fix it?"
   },
   {
     "subject": "Priya",
     "subject_type": "PERSON",
     "relation": "discussed",
-    "object": "Subjectivity of peer review grading",
+    "object": "peer review component",
     "object_type": "TOPIC",
-    "confidence": 0.9,
+    "confidence": 0.8,
     "source_meeting": "meeting_005",
-    "timestamp": 321.82,
+    "timestamp": 358.0,
     "source_utterance": "[Priya] (321.8s): I've seen the draft rubric.\n[Priya] (324.1s): Mira sent it last week.\n[Priya] (326.6s): It's reasonable and it's gradable, which was my concern in January.\n[Kumar] (331.8s): How many",
-    "window_text": ""
+    "deadline_date": "",
+    "window_text": "[Priya] (321.8s): I've seen the draft rubric.\n[Priya] (324.1s): Mira sent it last week.\n[Priya] (326.6s): It's reasonable and it's gradable, which was my concern in January.\n[Kumar] (331.8s): How many marks?\n[Keshavan] (334.4s): The 15 points already allocated to critical analysis get redistributed.\n[Keshavan] (339.3s): 8 for the matrix, 7 for written analysis.\n[Keshavan] (344.5s): No change to the total.\n[Jayashree] (347.4s): Approved.\n[Jayashree] (348.9s): Priya, are you satisfied?\n[Jayashree] (350.5s): the rubric is fair across graders?\n[Priya] (354.0s): Mostly.\n[Priya] (355.7s): I have one reservation.\n[Priya] (358.0s): The peer review component gives 5% for the quality of feedback a team gives to other teams.\n[Priya] (364.0s): Grading the quality of feedback is inherently subjective, and we have no calibration between graders.\n[Jayashree] (371.2s): What would fix it?"
+  },
+  {
+    "subject": "Jayashree",
+    "subject_type": "PERSON",
+    "relation": "discussed",
+    "object": "grading quality of feedback",
+    "object_type": "TOPIC",
+    "confidence": 0.8,
+    "source_meeting": "meeting_005",
+    "timestamp": 364.0,
+    "source_utterance": "[Priya] (321.8s): I've seen the draft rubric.\n[Priya] (324.1s): Mira sent it last week.\n[Priya] (326.6s): It's reasonable and it's gradable, which was my concern in January.\n[Kumar] (331.8s): How many",
+    "deadline_date": "",
+    "window_text": "[Priya] (321.8s): I've seen the draft rubric.\n[Priya] (324.1s): Mira sent it last week.\n[Priya] (326.6s): It's reasonable and it's gradable, which was my concern in January.\n[Kumar] (331.8s): How many marks?\n[Keshavan] (334.4s): The 15 points already allocated to critical analysis get redistributed.\n[Keshavan] (339.3s): 8 for the matrix, 7 for written analysis.\n[Keshavan] (344.5s): No change to the total.\n[Jayashree] (347.4s): Approved.\n[Jayashree] (348.9s): Priya, are you satisfied?\n[Jayashree] (350.5s): the rubric is fair across graders?\n[Priya] (354.0s): Mostly.\n[Priya] (355.7s): I have one reservation.\n[Priya] (358.0s): The peer review component gives 5% for the quality of feedback a team gives to other teams.\n[Priya] (364.0s): Grading the quality of feedback is inherently subjective, and we have no calibration between graders.\n[Jayashree] (371.2s): What would fix it?"
   },
   {
     "subject": "Priya",
     "subject_type": "PERSON",
-    "relation": "proposed",
-    "object": "Peer review component",
+    "relation": "discussed",
+    "object": "Peer review component quality of feedback",
     "object_type": "TOPIC",
     "confidence": 0.8,
     "source_meeting": "meeting_005",
-    "timestamp": 354.04,
+    "timestamp": 358.0,
     "source_utterance": "[Priya] (354.0s): Mostly.\n[Priya] (355.7s): I have one reservation.\n[Priya] (358.0s): The peer review component gives 5% for the quality of feedback a team gives to other teams.\n[Priya] (364.0s): Grad",
-    "window_text": ""
+    "deadline_date": "",
+    "window_text": "[Priya] (354.0s): Mostly.\n[Priya] (355.7s): I have one reservation.\n[Priya] (358.0s): The peer review component gives 5% for the quality of feedback a team gives to other teams.\n[Priya] (364.0s): Grading the quality of feedback is inherently subjective, and we have no calibration between graders.\n[Jayashree] (371.2s): What would fix it?\n[Priya] (373.6s): Either drop it to 2%, or have the receiving team rate the usefulness of the feedback and use that as an input.\n[Priya] (380.7s): I'd prefer the second.\n[Keshavan] (383.4s): Teams rating each other creates its own problems.\n[Keshavan] (387.4s): Friendly teams rate each other well.\n[Priya] (391.2s): Then anonymize it.\n[Priya] (393.2s): Teams don't know who reviewed them.\n[Kumar] (396.5s): In a cohort of 47 students, anonymity is theoretical.\n[Jayashree] (401.7s): Let's not over-engineer this.\n[Jayashree] (404.2s): Reduce it to 2% for this year, collect data, and revisit in a year with actual numbers.\n[Jayashree] (410.6s): Priya, does that satisfy you?"
   },
   {
     "subject": "Priya",
@@ -893,23 +941,38 @@
     "relation": "proposed",
     "object": "Reduce peer review component to 2%",
     "object_type": "TOPIC",
-    "confidence": 0.8,
+    "confidence": 0.9,
     "source_meeting": "meeting_005",
-    "timestamp": 354.04,
+    "timestamp": 373.6,
     "source_utterance": "[Priya] (354.0s): Mostly.\n[Priya] (355.7s): I have one reservation.\n[Priya] (358.0s): The peer review component gives 5% for the quality of feedback a team gives to other teams.\n[Priya] (364.0s): Grad",
-    "window_text": ""
+    "deadline_date": "",
+    "window_text": "[Priya] (354.0s): Mostly.\n[Priya] (355.7s): I have one reservation.\n[Priya] (358.0s): The peer review component gives 5% for the quality of feedback a team gives to other teams.\n[Priya] (364.0s): Grading the quality of feedback is inherently subjective, and we have no calibration between graders.\n[Jayashree] (371.2s): What would fix it?\n[Priya] (373.6s): Either drop it to 2%, or have the receiving team rate the usefulness of the feedback and use that as an input.\n[Priya] (380.7s): I'd prefer the second.\n[Keshavan] (383.4s): Teams rating each other creates its own problems.\n[Keshavan] (387.4s): Friendly teams rate each other well.\n[Priya] (391.2s): Then anonymize it.\n[Priya] (393.2s): Teams don't know who reviewed them.\n[Kumar] (396.5s): In a cohort of 47 students, anonymity is theoretical.\n[Jayashree] (401.7s): Let's not over-engineer this.\n[Jayashree] (404.2s): Reduce it to 2% for this year, collect data, and revisit in a year with actual numbers.\n[Jayashree] (410.6s): Priya, does that satisfy you?"
   },
   {
     "subject": "Priya",
     "subject_type": "PERSON",
     "relation": "proposed",
-    "object": "Receiving team rates feedback usefulness",
+    "object": "Receiving team rate feedback usefulness",
+    "object_type": "TOPIC",
+    "confidence": 0.9,
+    "source_meeting": "meeting_005",
+    "timestamp": 373.6,
+    "source_utterance": "[Priya] (354.0s): Mostly.\n[Priya] (355.7s): I have one reservation.\n[Priya] (358.0s): The peer review component gives 5% for the quality of feedback a team gives to other teams.\n[Priya] (364.0s): Grad",
+    "deadline_date": "",
+    "window_text": "[Priya] (354.0s): Mostly.\n[Priya] (355.7s): I have one reservation.\n[Priya] (358.0s): The peer review component gives 5% for the quality of feedback a team gives to other teams.\n[Priya] (364.0s): Grading the quality of feedback is inherently subjective, and we have no calibration between graders.\n[Jayashree] (371.2s): What would fix it?\n[Priya] (373.6s): Either drop it to 2%, or have the receiving team rate the usefulness of the feedback and use that as an input.\n[Priya] (380.7s): I'd prefer the second.\n[Keshavan] (383.4s): Teams rating each other creates its own problems.\n[Keshavan] (387.4s): Friendly teams rate each other well.\n[Priya] (391.2s): Then anonymize it.\n[Priya] (393.2s): Teams don't know who reviewed them.\n[Kumar] (396.5s): In a cohort of 47 students, anonymity is theoretical.\n[Jayashree] (401.7s): Let's not over-engineer this.\n[Jayashree] (404.2s): Reduce it to 2% for this year, collect data, and revisit in a year with actual numbers.\n[Jayashree] (410.6s): Priya, does that satisfy you?"
+  },
+  {
+    "subject": "Priya",
+    "subject_type": "PERSON",
+    "relation": "proposed",
+    "object": "Anonymize peer review",
     "object_type": "TOPIC",
     "confidence": 0.8,
     "source_meeting": "meeting_005",
-    "timestamp": 354.04,
+    "timestamp": 391.2,
     "source_utterance": "[Priya] (354.0s): Mostly.\n[Priya] (355.7s): I have one reservation.\n[Priya] (358.0s): The peer review component gives 5% for the quality of feedback a team gives to other teams.\n[Priya] (364.0s): Grad",
-    "window_text": ""
+    "deadline_date": "",
+    "window_text": "[Priya] (354.0s): Mostly.\n[Priya] (355.7s): I have one reservation.\n[Priya] (358.0s): The peer review component gives 5% for the quality of feedback a team gives to other teams.\n[Priya] (364.0s): Grading the quality of feedback is inherently subjective, and we have no calibration between graders.\n[Jayashree] (371.2s): What would fix it?\n[Priya] (373.6s): Either drop it to 2%, or have the receiving team rate the usefulness of the feedback and use that as an input.\n[Priya] (380.7s): I'd prefer the second.\n[Keshavan] (383.4s): Teams rating each other creates its own problems.\n[Keshavan] (387.4s): Friendly teams rate each other well.\n[Priya] (391.2s): Then anonymize it.\n[Priya] (393.2s): Teams don't know who reviewed them.\n[Kumar] (396.5s): In a cohort of 47 students, anonymity is theoretical.\n[Jayashree] (401.7s): Let's not over-engineer this.\n[Jayashree] (404.2s): Reduce it to 2% for this year, collect data, and revisit in a year with actual numbers.\n[Jayashree] (410.6s): Priya, does that satisfy you?"
   },
   {
     "subject": "Jayashree",
@@ -919,9 +982,10 @@
     "object_type": "TOPIC",
     "confidence": 0.95,
     "source_meeting": "meeting_005",
-    "timestamp": 354.04,
+    "timestamp": 404.2,
     "source_utterance": "[Priya] (354.0s): Mostly.\n[Priya] (355.7s): I have one reservation.\n[Priya] (358.0s): The peer review component gives 5% for the quality of feedback a team gives to other teams.\n[Priya] (364.0s): Grad",
-    "window_text": ""
+    "deadline_date": "",
+    "window_text": "[Priya] (354.0s): Mostly.\n[Priya] (355.7s): I have one reservation.\n[Priya] (358.0s): The peer review component gives 5% for the quality of feedback a team gives to other teams.\n[Priya] (364.0s): Grading the quality of feedback is inherently subjective, and we have no calibration between graders.\n[Jayashree] (371.2s): What would fix it?\n[Priya] (373.6s): Either drop it to 2%, or have the receiving team rate the usefulness of the feedback and use that as an input.\n[Priya] (380.7s): I'd prefer the second.\n[Keshavan] (383.4s): Teams rating each other creates its own problems.\n[Keshavan] (387.4s): Friendly teams rate each other well.\n[Priya] (391.2s): Then anonymize it.\n[Priya] (393.2s): Teams don't know who reviewed them.\n[Kumar] (396.5s): In a cohort of 47 students, anonymity is theoretical.\n[Jayashree] (401.7s): Let's not over-engineer this.\n[Jayashree] (404.2s): Reduce it to 2% for this year, collect data, and revisit in a year with actual numbers.\n[Jayashree] (410.6s): Priya, does that satisfy you?"
   },
   {
     "subject": "Jayashree",
@@ -931,9 +995,10 @@
     "object_type": "TOPIC",
     "confidence": 0.95,
     "source_meeting": "meeting_005",
-    "timestamp": 354.04,
+    "timestamp": 404.2,
     "source_utterance": "[Priya] (354.0s): Mostly.\n[Priya] (355.7s): I have one reservation.\n[Priya] (358.0s): The peer review component gives 5% for the quality of feedback a team gives to other teams.\n[Priya] (364.0s): Grad",
-    "window_text": ""
+    "deadline_date": "",
+    "window_text": "[Priya] (354.0s): Mostly.\n[Priya] (355.7s): I have one reservation.\n[Priya] (358.0s): The peer review component gives 5% for the quality of feedback a team gives to other teams.\n[Priya] (364.0s): Grading the quality of feedback is inherently subjective, and we have no calibration between graders.\n[Jayashree] (371.2s): What would fix it?\n[Priya] (373.6s): Either drop it to 2%, or have the receiving team rate the usefulness of the feedback and use that as an input.\n[Priya] (380.7s): I'd prefer the second.\n[Keshavan] (383.4s): Teams rating each other creates its own problems.\n[Keshavan] (387.4s): Friendly teams rate each other well.\n[Priya] (391.2s): Then anonymize it.\n[Priya] (393.2s): Teams don't know who reviewed them.\n[Kumar] (396.5s): In a cohort of 47 students, anonymity is theoretical.\n[Jayashree] (401.7s): Let's not over-engineer this.\n[Jayashree] (404.2s): Reduce it to 2% for this year, collect data, and revisit in a year with actual numbers.\n[Jayashree] (410.6s): Priya, does that satisfy you?"
   },
   {
     "subject": "Jayashree",
@@ -941,47 +1006,25 @@
     "relation": "approved",
     "object": "2%",
     "object_type": "TOPIC",
-    "confidence": 1.0,
+    "confidence": 0.9,
     "source_meeting": "meeting_005",
-    "timestamp": 393.2,
+    "timestamp": 416.9,
     "source_utterance": "[Priya] (393.2s): Teams don't know who reviewed them.\n[Kumar] (396.5s): In a cohort of 47 students, anonymity is theoretical.\n[Jayashree] (401.7s): Let's not over-engineer this.\n[Jayashree] (404.2s): ",
-    "window_text": ""
-  },
-  {
-    "subject": "Jayashree",
-    "subject_type": "PERSON",
-    "relation": "proposed",
-    "object": "Reduce it to 2% for this year, collect data, and revisit in a year with actual numbers",
-    "object_type": "TOPIC",
-    "confidence": 0.8,
-    "source_meeting": "meeting_005",
-    "timestamp": 393.2,
-    "source_utterance": "[Priya] (393.2s): Teams don't know who reviewed them.\n[Kumar] (396.5s): In a cohort of 47 students, anonymity is theoretical.\n[Jayashree] (401.7s): Let's not over-engineer this.\n[Jayashree] (404.2s): ",
-    "window_text": ""
+    "deadline_date": "",
+    "window_text": "[Priya] (393.2s): Teams don't know who reviewed them.\n[Kumar] (396.5s): In a cohort of 47 students, anonymity is theoretical.\n[Jayashree] (401.7s): Let's not over-engineer this.\n[Jayashree] (404.2s): Reduce it to 2% for this year, collect data, and revisit in a year with actual numbers.\n[Jayashree] (410.6s): Priya, does that satisfy you?\n[Priya] (414.0s): For one year, yes.\n[Jayashree] (416.9s): Approved at 2%.\n[Jayashree] (421.8s): You had a note from the placement panel.\n[Keshavan] (425.2s): Yes.\n[Keshavan] (425.5s): 31 of 80 students placed in the TCS drive.\n[Keshavan] (430.9s): The panel's feedback was that students are strong on theory and weak on system design.\n[Keshavan] (437.2s): Ramesh has prepared a note proposing a system design component in the third year curriculum.\n[Kumar] (444.1s): That's a real gap.\n[Kumar] (446.0s): I've heard the same from two other companies.\n[Priya] (449.7s): It's a gap everywhere, not just here."
   },
   {
     "subject": "Keshavan",
     "subject_type": "PERSON",
-    "relation": "reports_to",
+    "relation": "assigned_to",
     "object": "placement panel",
     "object_type": "COMMITTEE",
-    "confidence": 0.7,
+    "confidence": 0.8,
     "source_meeting": "meeting_005",
-    "timestamp": 393.2,
+    "timestamp": 425.2,
     "source_utterance": "[Priya] (393.2s): Teams don't know who reviewed them.\n[Kumar] (396.5s): In a cohort of 47 students, anonymity is theoretical.\n[Jayashree] (401.7s): Let's not over-engineer this.\n[Jayashree] (404.2s): ",
-    "window_text": ""
-  },
-  {
-    "subject": "Keshavan",
-    "subject_type": "PERSON",
-    "relation": "discussed",
-    "object": "31 of 80 students placed in the TCS drive",
-    "object_type": "TOPIC",
-    "confidence": 0.7,
-    "source_meeting": "meeting_005",
-    "timestamp": 393.2,
-    "source_utterance": "[Priya] (393.2s): Teams don't know who reviewed them.\n[Kumar] (396.5s): In a cohort of 47 students, anonymity is theoretical.\n[Jayashree] (401.7s): Let's not over-engineer this.\n[Jayashree] (404.2s): ",
-    "window_text": ""
+    "deadline_date": "",
+    "window_text": "[Priya] (393.2s): Teams don't know who reviewed them.\n[Kumar] (396.5s): In a cohort of 47 students, anonymity is theoretical.\n[Jayashree] (401.7s): Let's not over-engineer this.\n[Jayashree] (404.2s): Reduce it to 2% for this year, collect data, and revisit in a year with actual numbers.\n[Jayashree] (410.6s): Priya, does that satisfy you?\n[Priya] (414.0s): For one year, yes.\n[Jayashree] (416.9s): Approved at 2%.\n[Jayashree] (421.8s): You had a note from the placement panel.\n[Keshavan] (425.2s): Yes.\n[Keshavan] (425.5s): 31 of 80 students placed in the TCS drive.\n[Keshavan] (430.9s): The panel's feedback was that students are strong on theory and weak on system design.\n[Keshavan] (437.2s): Ramesh has prepared a note proposing a system design component in the third year curriculum.\n[Kumar] (444.1s): That's a real gap.\n[Kumar] (446.0s): I've heard the same from two other companies.\n[Priya] (449.7s): It's a gap everywhere, not just here."
   },
   {
     "subject": "Keshavan",
@@ -991,116 +1034,139 @@
     "object_type": "TOPIC",
     "confidence": 0.9,
     "source_meeting": "meeting_005",
-    "timestamp": 393.2,
+    "timestamp": 430.9,
     "source_utterance": "[Priya] (393.2s): Teams don't know who reviewed them.\n[Kumar] (396.5s): In a cohort of 47 students, anonymity is theoretical.\n[Jayashree] (401.7s): Let's not over-engineer this.\n[Jayashree] (404.2s): ",
-    "window_text": ""
+    "deadline_date": "",
+    "window_text": "[Priya] (393.2s): Teams don't know who reviewed them.\n[Kumar] (396.5s): In a cohort of 47 students, anonymity is theoretical.\n[Jayashree] (401.7s): Let's not over-engineer this.\n[Jayashree] (404.2s): Reduce it to 2% for this year, collect data, and revisit in a year with actual numbers.\n[Jayashree] (410.6s): Priya, does that satisfy you?\n[Priya] (414.0s): For one year, yes.\n[Jayashree] (416.9s): Approved at 2%.\n[Jayashree] (421.8s): You had a note from the placement panel.\n[Keshavan] (425.2s): Yes.\n[Keshavan] (425.5s): 31 of 80 students placed in the TCS drive.\n[Keshavan] (430.9s): The panel's feedback was that students are strong on theory and weak on system design.\n[Keshavan] (437.2s): Ramesh has prepared a note proposing a system design component in the third year curriculum.\n[Kumar] (444.1s): That's a real gap.\n[Kumar] (446.0s): I've heard the same from two other companies.\n[Priya] (449.7s): It's a gap everywhere, not just here."
   },
   {
     "subject": "Ramesh",
     "subject_type": "PERSON",
     "relation": "proposed",
-    "object": "a system design component in the third year curriculum",
+    "object": "system design component in the third year curriculum",
     "object_type": "COURSE",
     "confidence": 0.9,
     "source_meeting": "meeting_005",
-    "timestamp": 393.2,
+    "timestamp": 437.2,
     "source_utterance": "[Priya] (393.2s): Teams don't know who reviewed them.\n[Kumar] (396.5s): In a cohort of 47 students, anonymity is theoretical.\n[Jayashree] (401.7s): Let's not over-engineer this.\n[Jayashree] (404.2s): ",
-    "window_text": ""
+    "deadline_date": "",
+    "window_text": "[Priya] (393.2s): Teams don't know who reviewed them.\n[Kumar] (396.5s): In a cohort of 47 students, anonymity is theoretical.\n[Jayashree] (401.7s): Let's not over-engineer this.\n[Jayashree] (404.2s): Reduce it to 2% for this year, collect data, and revisit in a year with actual numbers.\n[Jayashree] (410.6s): Priya, does that satisfy you?\n[Priya] (414.0s): For one year, yes.\n[Jayashree] (416.9s): Approved at 2%.\n[Jayashree] (421.8s): You had a note from the placement panel.\n[Keshavan] (425.2s): Yes.\n[Keshavan] (425.5s): 31 of 80 students placed in the TCS drive.\n[Keshavan] (430.9s): The panel's feedback was that students are strong on theory and weak on system design.\n[Keshavan] (437.2s): Ramesh has prepared a note proposing a system design component in the third year curriculum.\n[Kumar] (444.1s): That's a real gap.\n[Kumar] (446.0s): I've heard the same from two other companies.\n[Priya] (449.7s): It's a gap everywhere, not just here."
   },
   {
     "subject": "Kumar",
     "subject_type": "PERSON",
     "relation": "discussed",
-    "object": "gap in system design skills",
-    "object_type": "TOPIC",
+    "object": "system design component in the third year curriculum",
+    "object_type": "COURSE",
     "confidence": 0.8,
     "source_meeting": "meeting_005",
-    "timestamp": 393.2,
+    "timestamp": 444.1,
     "source_utterance": "[Priya] (393.2s): Teams don't know who reviewed them.\n[Kumar] (396.5s): In a cohort of 47 students, anonymity is theoretical.\n[Jayashree] (401.7s): Let's not over-engineer this.\n[Jayashree] (404.2s): ",
-    "window_text": ""
+    "deadline_date": "",
+    "window_text": "[Priya] (393.2s): Teams don't know who reviewed them.\n[Kumar] (396.5s): In a cohort of 47 students, anonymity is theoretical.\n[Jayashree] (401.7s): Let's not over-engineer this.\n[Jayashree] (404.2s): Reduce it to 2% for this year, collect data, and revisit in a year with actual numbers.\n[Jayashree] (410.6s): Priya, does that satisfy you?\n[Priya] (414.0s): For one year, yes.\n[Jayashree] (416.9s): Approved at 2%.\n[Jayashree] (421.8s): You had a note from the placement panel.\n[Keshavan] (425.2s): Yes.\n[Keshavan] (425.5s): 31 of 80 students placed in the TCS drive.\n[Keshavan] (430.9s): The panel's feedback was that students are strong on theory and weak on system design.\n[Keshavan] (437.2s): Ramesh has prepared a note proposing a system design component in the third year curriculum.\n[Kumar] (444.1s): That's a real gap.\n[Kumar] (446.0s): I've heard the same from two other companies.\n[Priya] (449.7s): It's a gap everywhere, not just here."
   },
   {
     "subject": "Priya",
     "subject_type": "PERSON",
     "relation": "discussed",
-    "object": "gap in system design skills",
-    "object_type": "TOPIC",
+    "object": "system design component in the third year curriculum",
+    "object_type": "COURSE",
     "confidence": 0.8,
     "source_meeting": "meeting_005",
-    "timestamp": 393.2,
+    "timestamp": 449.7,
     "source_utterance": "[Priya] (393.2s): Teams don't know who reviewed them.\n[Kumar] (396.5s): In a cohort of 47 students, anonymity is theoretical.\n[Jayashree] (401.7s): Let's not over-engineer this.\n[Jayashree] (404.2s): ",
-    "window_text": ""
+    "deadline_date": "",
+    "window_text": "[Priya] (393.2s): Teams don't know who reviewed them.\n[Kumar] (396.5s): In a cohort of 47 students, anonymity is theoretical.\n[Jayashree] (401.7s): Let's not over-engineer this.\n[Jayashree] (404.2s): Reduce it to 2% for this year, collect data, and revisit in a year with actual numbers.\n[Jayashree] (410.6s): Priya, does that satisfy you?\n[Priya] (414.0s): For one year, yes.\n[Jayashree] (416.9s): Approved at 2%.\n[Jayashree] (421.8s): You had a note from the placement panel.\n[Keshavan] (425.2s): Yes.\n[Keshavan] (425.5s): 31 of 80 students placed in the TCS drive.\n[Keshavan] (430.9s): The panel's feedback was that students are strong on theory and weak on system design.\n[Keshavan] (437.2s): Ramesh has prepared a note proposing a system design component in the third year curriculum.\n[Kumar] (444.1s): That's a real gap.\n[Kumar] (446.0s): I've heard the same from two other companies.\n[Priya] (449.7s): It's a gap everywhere, not just here."
   },
   {
-    "subject": "Students",
+    "subject": "Keshavan",
     "subject_type": "PERSON",
     "relation": "discussed",
-    "object": "System design skills",
+    "object": "student system design skills",
     "object_type": "TOPIC",
     "confidence": 0.8,
     "source_meeting": "meeting_005",
     "timestamp": 430.92,
     "source_utterance": "[Keshavan] (430.9s): The panel's feedback was that students are strong on theory and weak on system design.\n[Keshavan] (437.2s): Ramesh has prepared a note proposing a system design component in the t",
-    "window_text": ""
+    "deadline_date": "",
+    "window_text": "[Keshavan] (430.9s): The panel's feedback was that students are strong on theory and weak on system design.\n[Keshavan] (437.2s): Ramesh has prepared a note proposing a system design component in the third year curriculum.\n[Kumar] (444.1s): That's a real gap.\n[Kumar] (446.0s): I've heard the same from two other companies.\n[Priya] (449.7s): It's a gap everywhere, not just here.\n[Jayashree] (453.5s): Circulate Ramesh's note before the April meeting.\n[Jayashree] (456.9s): We'll take it as a full agenda item rather than squeeze it in now.\n[Jayashree] (461.1s): Anything else?\n[Keshavan] (463.6s): Nothing from the department.\n[Jayashree] (466.6s): Then we're done.\n[Jayashree] (468.3s): Next meeting April 18.\n[Jayashree] (470.8s): Jaishree, you owe us the Infosys signature and the Bosch response.\n[Jayashree] (475.7s): Kumar, the merged course syllabus.\n[Jayashree] (478.9s): Thank you all."
+  },
+  {
+    "subject": "Ramesh",
+    "subject_type": "PERSON",
+    "relation": "assigned_to",
+    "object": "note proposing system design component",
+    "object_type": "RESOURCE",
+    "confidence": 0.9,
+    "source_meeting": "meeting_005",
+    "timestamp": 437.2,
+    "source_utterance": "[Keshavan] (430.9s): The panel's feedback was that students are strong on theory and weak on system design.\n[Keshavan] (437.2s): Ramesh has prepared a note proposing a system design component in the t",
+    "deadline_date": "",
+    "window_text": "[Keshavan] (430.9s): The panel's feedback was that students are strong on theory and weak on system design.\n[Keshavan] (437.2s): Ramesh has prepared a note proposing a system design component in the third year curriculum.\n[Kumar] (444.1s): That's a real gap.\n[Kumar] (446.0s): I've heard the same from two other companies.\n[Priya] (449.7s): It's a gap everywhere, not just here.\n[Jayashree] (453.5s): Circulate Ramesh's note before the April meeting.\n[Jayashree] (456.9s): We'll take it as a full agenda item rather than squeeze it in now.\n[Jayashree] (461.1s): Anything else?\n[Keshavan] (463.6s): Nothing from the department.\n[Jayashree] (466.6s): Then we're done.\n[Jayashree] (468.3s): Next meeting April 18.\n[Jayashree] (470.8s): Jaishree, you owe us the Infosys signature and the Bosch response.\n[Jayashree] (475.7s): Kumar, the merged course syllabus.\n[Jayashree] (478.9s): Thank you all."
   },
   {
     "subject": "Ramesh's note",
-    "subject_type": "TOPIC",
+    "subject_type": "RESOURCE",
     "relation": "scheduled_for",
-    "object": "April meeting",
-    "object_type": "EVENT",
-    "confidence": 0.95,
-    "source_meeting": "meeting_005",
-    "timestamp": 430.92,
-    "source_utterance": "[Keshavan] (430.9s): The panel's feedback was that students are strong on theory and weak on system design.\n[Keshavan] (437.2s): Ramesh has prepared a note proposing a system design component in the t",
-    "window_text": ""
-  },
-  {
-    "subject": "a system design component in the third year curriculum",
-    "subject_type": "COURSE",
-    "relation": "discussed",
     "object": "April meeting",
     "object_type": "EVENT",
     "confidence": 0.9,
     "source_meeting": "meeting_005",
-    "timestamp": 430.92,
+    "timestamp": 453.5,
     "source_utterance": "[Keshavan] (430.9s): The panel's feedback was that students are strong on theory and weak on system design.\n[Keshavan] (437.2s): Ramesh has prepared a note proposing a system design component in the t",
-    "window_text": ""
+    "deadline_date": "",
+    "window_text": "[Keshavan] (430.9s): The panel's feedback was that students are strong on theory and weak on system design.\n[Keshavan] (437.2s): Ramesh has prepared a note proposing a system design component in the third year curriculum.\n[Kumar] (444.1s): That's a real gap.\n[Kumar] (446.0s): I've heard the same from two other companies.\n[Priya] (449.7s): It's a gap everywhere, not just here.\n[Jayashree] (453.5s): Circulate Ramesh's note before the April meeting.\n[Jayashree] (456.9s): We'll take it as a full agenda item rather than squeeze it in now.\n[Jayashree] (461.1s): Anything else?\n[Keshavan] (463.6s): Nothing from the department.\n[Jayashree] (466.6s): Then we're done.\n[Jayashree] (468.3s): Next meeting April 18.\n[Jayashree] (470.8s): Jaishree, you owe us the Infosys signature and the Bosch response.\n[Jayashree] (475.7s): Kumar, the merged course syllabus.\n[Jayashree] (478.9s): Thank you all."
   },
   {
-    "subject": "Infosys signature",
+    "subject": "Ramesh's note",
     "subject_type": "RESOURCE",
-    "relation": "assigned_to",
-    "object": "Jayashree",
-    "object_type": "PERSON",
-    "confidence": 0.95,
+    "relation": "discussed",
+    "object": "system design component in the third year curriculum",
+    "object_type": "COURSE",
+    "confidence": 0.8,
     "source_meeting": "meeting_005",
-    "timestamp": 430.92,
+    "timestamp": 456.9,
     "source_utterance": "[Keshavan] (430.9s): The panel's feedback was that students are strong on theory and weak on system design.\n[Keshavan] (437.2s): Ramesh has prepared a note proposing a system design component in the t",
-    "window_text": ""
+    "deadline_date": "",
+    "window_text": "[Keshavan] (430.9s): The panel's feedback was that students are strong on theory and weak on system design.\n[Keshavan] (437.2s): Ramesh has prepared a note proposing a system design component in the third year curriculum.\n[Kumar] (444.1s): That's a real gap.\n[Kumar] (446.0s): I've heard the same from two other companies.\n[Priya] (449.7s): It's a gap everywhere, not just here.\n[Jayashree] (453.5s): Circulate Ramesh's note before the April meeting.\n[Jayashree] (456.9s): We'll take it as a full agenda item rather than squeeze it in now.\n[Jayashree] (461.1s): Anything else?\n[Keshavan] (463.6s): Nothing from the department.\n[Jayashree] (466.6s): Then we're done.\n[Jayashree] (468.3s): Next meeting April 18.\n[Jayashree] (470.8s): Jaishree, you owe us the Infosys signature and the Bosch response.\n[Jayashree] (475.7s): Kumar, the merged course syllabus.\n[Jayashree] (478.9s): Thank you all."
   },
   {
-    "subject": "Bosch response",
-    "subject_type": "RESOURCE",
+    "subject": "Jayashree",
+    "subject_type": "PERSON",
     "relation": "assigned_to",
-    "object": "Jayashree",
-    "object_type": "PERSON",
-    "confidence": 0.95,
+    "object": "Infosys signature",
+    "object_type": "RESOURCE",
+    "confidence": 0.9,
     "source_meeting": "meeting_005",
-    "timestamp": 430.92,
+    "timestamp": 470.8,
     "source_utterance": "[Keshavan] (430.9s): The panel's feedback was that students are strong on theory and weak on system design.\n[Keshavan] (437.2s): Ramesh has prepared a note proposing a system design component in the t",
-    "window_text": ""
+    "deadline_date": "",
+    "window_text": "[Keshavan] (430.9s): The panel's feedback was that students are strong on theory and weak on system design.\n[Keshavan] (437.2s): Ramesh has prepared a note proposing a system design component in the third year curriculum.\n[Kumar] (444.1s): That's a real gap.\n[Kumar] (446.0s): I've heard the same from two other companies.\n[Priya] (449.7s): It's a gap everywhere, not just here.\n[Jayashree] (453.5s): Circulate Ramesh's note before the April meeting.\n[Jayashree] (456.9s): We'll take it as a full agenda item rather than squeeze it in now.\n[Jayashree] (461.1s): Anything else?\n[Keshavan] (463.6s): Nothing from the department.\n[Jayashree] (466.6s): Then we're done.\n[Jayashree] (468.3s): Next meeting April 18.\n[Jayashree] (470.8s): Jaishree, you owe us the Infosys signature and the Bosch response.\n[Jayashree] (475.7s): Kumar, the merged course syllabus.\n[Jayashree] (478.9s): Thank you all."
   },
   {
-    "subject": "Merged course syllabus",
-    "subject_type": "COURSE",
+    "subject": "Jayashree",
+    "subject_type": "PERSON",
     "relation": "assigned_to",
-    "object": "Kumar",
-    "object_type": "PERSON",
-    "confidence": 0.95,
+    "object": "Bosch response",
+    "object_type": "RESOURCE",
+    "confidence": 0.9,
     "source_meeting": "meeting_005",
-    "timestamp": 430.92,
+    "timestamp": 470.8,
     "source_utterance": "[Keshavan] (430.9s): The panel's feedback was that students are strong on theory and weak on system design.\n[Keshavan] (437.2s): Ramesh has prepared a note proposing a system design component in the t",
-    "window_text": ""
+    "deadline_date": "",
+    "window_text": "[Keshavan] (430.9s): The panel's feedback was that students are strong on theory and weak on system design.\n[Keshavan] (437.2s): Ramesh has prepared a note proposing a system design component in the third year curriculum.\n[Kumar] (444.1s): That's a real gap.\n[Kumar] (446.0s): I've heard the same from two other companies.\n[Priya] (449.7s): It's a gap everywhere, not just here.\n[Jayashree] (453.5s): Circulate Ramesh's note before the April meeting.\n[Jayashree] (456.9s): We'll take it as a full agenda item rather than squeeze it in now.\n[Jayashree] (461.1s): Anything else?\n[Keshavan] (463.6s): Nothing from the department.\n[Jayashree] (466.6s): Then we're done.\n[Jayashree] (468.3s): Next meeting April 18.\n[Jayashree] (470.8s): Jaishree, you owe us the Infosys signature and the Bosch response.\n[Jayashree] (475.7s): Kumar, the merged course syllabus.\n[Jayashree] (478.9s): Thank you all."
+  },
+  {
+    "subject": "Kumar",
+    "subject_type": "PERSON",
+    "relation": "assigned_to",
+    "object": "merged course syllabus",
+    "object_type": "RESOURCE",
+    "confidence": 0.9,
+    "source_meeting": "meeting_005",
+    "timestamp": 475.7,
+    "source_utterance": "[Keshavan] (430.9s): The panel's feedback was that students are strong on theory and weak on system design.\n[Keshavan] (437.2s): Ramesh has prepared a note proposing a system design component in the t",
+    "deadline_date": "",
+    "window_text": "[Keshavan] (430.9s): The panel's feedback was that students are strong on theory and weak on system design.\n[Keshavan] (437.2s): Ramesh has prepared a note proposing a system design component in the third year curriculum.\n[Kumar] (444.1s): That's a real gap.\n[Kumar] (446.0s): I've heard the same from two other companies.\n[Priya] (449.7s): It's a gap everywhere, not just here.\n[Jayashree] (453.5s): Circulate Ramesh's note before the April meeting.\n[Jayashree] (456.9s): We'll take it as a full agenda item rather than squeeze it in now.\n[Jayashree] (461.1s): Anything else?\n[Keshavan] (463.6s): Nothing from the department.\n[Jayashree] (466.6s): Then we're done.\n[Jayashree] (468.3s): Next meeting April 18.\n[Jayashree] (470.8s): Jaishree, you owe us the Infosys signature and the Bosch response.\n[Jayashree] (475.7s): Kumar, the merged course syllabus.\n[Jayashree] (478.9s): Thank you all."
   }
 ]

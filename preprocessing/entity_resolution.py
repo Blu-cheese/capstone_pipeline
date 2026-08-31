@@ -220,8 +220,14 @@ class EntityResolver:
         Resolve all entity mentions in a list of triples.
         Also deduplicates identical triples.
         """
+        # Rebuild with dataclasses.replace so every field survives. This
+        # method used to re-list fields by hand and silently dropped any it
+        # didn't know about — deadline_date vanished here on its first run,
+        # after the extractor had correctly produced it.
+        from dataclasses import replace
+
         resolved = []
-        seen = set()
+        by_key = {}
 
         for t in triples:
             new_subject = self.resolve(t.subject, t.subject_type)
@@ -229,21 +235,17 @@ class EntityResolver:
 
             # Deduplicate: same subject-relation-object
             dedup_key = (new_subject.lower(), t.relation.lower(), new_object.lower())
-            if dedup_key in seen:
+            if dedup_key in by_key:
+                # A duplicate can still carry information the kept copy
+                # lacks — most importantly a resolved deadline date.
+                kept = by_key[dedup_key]
+                if t.deadline_date and not kept.deadline_date:
+                    kept.deadline_date = t.deadline_date
                 continue
-            seen.add(dedup_key)
 
-            resolved.append(Triple(
-                subject=new_subject,
-                subject_type=t.subject_type,
-                relation=t.relation,
-                object=new_object,
-                object_type=t.object_type,
-                confidence=t.confidence,
-                source_meeting=t.source_meeting,
-                timestamp=t.timestamp,
-                source_utterance=t.source_utterance,
-            ))
+            nt = replace(t, subject=new_subject, object=new_object)
+            by_key[dedup_key] = nt
+            resolved.append(nt)
 
         return resolved
 
