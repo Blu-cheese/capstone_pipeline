@@ -173,6 +173,85 @@ def main():
     print(f"VERDICT: forgetting is visible in every run: {all_ok}")
     print("=" * 74)
 
+    # ---- BWT has degenerated: a result in its own right -----------------
+    print("\n" + "=" * 74)
+    print("BWT DEGENERACY — does BWT still measure forgetting?".center(74))
+    print("=" * 74)
+    print("""BWT = mean_j( R[K-1][j] - R[j][j] ). When every off-diagonal is 0,
+that reduces algebraically to -mean(diagonal): BWT stops measuring
+retention and becomes a negated measure of how well each task was
+learned while it was current.
+""")
+    print(f"  {'run':<28}{'BWT_f1':>9}{'-mean(diag)':>13}{'equal':>7}{'off-diag':>10}")
+    print("  " + "-" * 67)
+    degenerate = 0
+    for (track, seed), r in sorted(runs.items()):
+        R = r["R"]["R_f1"]
+        k = len(R)
+        diag = [R[j][j] for j in range(k - 1)]
+        if not diag:
+            continue
+        predicted = -sum(diag) / len(diag)
+        offdiag = sum(R[k - 1][j] for j in range(k - 1))
+        same = abs(r["R"]["BWT_f1"] - predicted) < 1e-3
+        degenerate += bool(same)
+        print(f"  {track + '/' + str(seed):<28}{r['R']['BWT_f1']:>9.4f}"
+              f"{predicted:>13.4f}{str(same):>7}{offdiag:>10.4f}")
+
+    print(f"""
+  {degenerate} of {len(runs)} runs are fully degenerate.
+
+  This is not a harness bug. It is what naive class-incremental learning
+  without rehearsal does on ~290 examples per task against a ~300K-parameter
+  head: the current task overwrites the output layer completely.
+
+  Note the superseded current-task-mask runs still on disk have NON-zero
+  off-diagonals (0.539, 0.224) and correspondingly milder BWT (-0.13, -0.16).
+  Those look healthier only because restricting the eval softmax to task j's
+  own labels guarantees a non-zero score by construction. Correcting the mask
+  to Zhao et al. Eq. 2 (softmax over all seen relations) did not break the
+  measurement — it removed an artefact that was inflating it.
+
+  Consequences:
+    - Do not quote BWT alone. Report off-diagonal retention beside it.
+    - BWT becomes informative again the moment a regime keeps off-diagonals
+      above zero, which is exactly what replay is for. Naive is the floor.
+""")
+
+    # ---- the track comparison: the paper's spine ------------------------
+    print("=" * 74)
+    print("TRACK COMPARISON — what teacher labels cost".center(74))
+    print("=" * 74)
+    jb_by_track = {}
+    for (track, seed), r in runs.items():
+        jb = r["R"].get("joint_baseline_ref") or {}
+        f1 = jb.get("test_macro_f1") or jb.get("macro_f1")
+        if f1:
+            jb_by_track.setdefault(track, {})[seed] = f1
+    for track in tracks:
+        vals = jb_by_track.get(track, {})
+        if vals:
+            for s, v in sorted(vals.items()):
+                print(f"  joint baseline  {track:<9} seed {s:<6} macro-F1 {v:.3f}")
+    g = jb_by_track.get("gold", {}).get(1234)
+    t = jb_by_track.get("teacher", {}).get(1234)
+    if g and t:
+        print(f"""
+  gold {g:.3f} vs teacher {t:.3f}  ->  a gap of {g - t:.3f} macro-F1.
+
+  One student, one architecture, one evaluation set. The tracks differ in
+  exactly one variable: whether the training labels came from human
+  annotation or from the schema-constrained teacher.
+
+  This is the number that converts "~37% teacher-gold agreement" from an
+  observation into a downstream consequence. The teacher's labels are 100%
+  valid and 0% invalid by construction — and still cost {g - t:.3f} macro-F1
+  against the same model trained on gold.
+
+  It is also the check CLAUDE.md required before Phase 5: gold must be
+  visibly better, or the teacher track is unlearnable. It is.
+""")
+
     # ---- the caveat that must travel with these numbers -----------------
     print("""
 READ THIS BEFORE QUOTING THE TABLE
