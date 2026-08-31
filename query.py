@@ -80,13 +80,19 @@ IMPORTANT QUERY PATTERNS:
 - The same real-world thing often appears under several names ("data mining
   decision", "data mining replacement"). Match on the distinctive word rather
   than a full title, and expect several rows back.
-- DIRECTION MATTERS. Decisions are stored with the PERSON as subject and the
-  item as object: (:Entity {{type:'PERSON'}})-[:RELATION {{type:'approved'}}]->(item).
-  So when asking "what happened to X", an outgoing match from X finds nothing.
-  Match UNDIRECTED instead:
-      MATCH (x:Entity)-[r:RELATION]-(other:Entity)
-      WHERE toLower(x.name) CONTAINS 'applied deep learning'
-  and return both endpoints so the answering step can see who did what.
+- DIRECTION MATTERS, but never match undirected. Decisions are stored with
+  the PERSON as subject and the item as object:
+  (:Entity {{type:'PERSON'}})-[:RELATION {{type:'approved'}}]->(item), so an
+  outgoing match from the item finds nothing. The fix is NOT `-[r]-`: an
+  undirected match returns every relationship TWICE, once per direction,
+  which halves how many distinct facts fit in the result and buries the
+  answer in mirror images.
+  Use a DIRECTED pattern and put the keyword on EITHER endpoint:
+      MATCH (a:Entity)-[r:RELATION]->(b:Entity)
+      WHERE toLower(a.name) CONTAINS 'applied deep learning'
+         OR toLower(b.name) CONTAINS 'applied deep learning'
+  Same coverage, each fact exactly once. Always return both endpoint names
+  so the answering step can see who did what to what.
 - Order by r.stated_at to see temporal evolution. For date arithmetic
   ("how many days between"), compare date(r.meeting_date) values or
   datetime(r.stated_at) values.
@@ -147,6 +153,17 @@ returns nothing. Entity names are short fragments produced by an extractor
 14. Return BOTH endpoint names and r.type on every query. The answering step
     needs to see who did what to what; a single column rarely answers a
     question.
+15. WHEN THE QUESTION IS ABOUT MONEY, ALSO SEARCH FOR MONEY. Amounts are
+    often stored attached to the person who approved them rather than to the
+    thing they fund — "Jayashree approved 2.2 lakhs for phase 1 procurement"
+    contains no word linking it to the lab or the GPUs. A subject keyword
+    alone will never reach those. So for any budget/cost/amount/price
+    question, OR in the money tokens as well:
+        WHERE toLower(a.name) CONTAINS 'gpu' OR toLower(b.name) CONTAINS 'gpu'
+           OR toLower(a.name) CONTAINS 'lakh' OR toLower(b.name) CONTAINS 'lakh'
+           OR toLower(a.name) CONTAINS 'rupee' OR toLower(b.name) CONTAINS 'rupee'
+    Apply the same idea for dates (search 'deadline', month names), and for
+    counts (search 'students', 'weeks').
 
 EXAMPLES:
 Question: What decisions were made?
@@ -156,19 +173,25 @@ Question: Who is assigned to what?
 Query: MATCH (p:Entity)-[r:RELATION]->(t:Entity) WHERE r.type = 'assigned_to' RETURN p.name AS person, t.name AS task, r.source_meeting AS meeting, r.confidence AS confidence ORDER BY r.stated_at LIMIT 200
 
 Question: How did the budget change?
-Query: MATCH (e:Entity)-[r:RELATION]-(other:Entity) WHERE toLower(e.name) CONTAINS 'budget' OR toLower(other.name) CONTAINS 'budget' OR r.type = 'budget_for' RETURN e.name AS entity, r.type AS relation, other.name AS related_to, r.source_meeting AS meeting ORDER BY r.stated_at LIMIT 200
+Query: MATCH (e:Entity)-[r:RELATION]->(other:Entity) WHERE toLower(e.name) CONTAINS 'budget' OR toLower(other.name) CONTAINS 'budget' OR r.type = 'budget_for' RETURN e.name AS entity, r.type AS relation, other.name AS related_to, r.source_meeting AS meeting ORDER BY r.stated_at LIMIT 200
 
 Question: What happened to the Data Mining course?
-Query: MATCH (x:Entity)-[r:RELATION]-(other:Entity) WHERE toLower(x.name) CONTAINS 'data mining' RETURN x.name AS entity, r.type AS relation, other.name AS related_to, r.source_meeting AS meeting ORDER BY r.stated_at LIMIT 200
+Query: MATCH (x:Entity)-[r:RELATION]->(other:Entity) WHERE toLower(x.name) CONTAINS 'data mining' RETURN x.name AS entity, r.type AS relation, other.name AS related_to, r.source_meeting AS meeting ORDER BY r.stated_at LIMIT 200
 
 Question: How much was approved for phase one of the GPU purchase?
 Note: 'gpu purchase' and 'phase one' are NOT one node. Match the single most
 distinctive token on either endpoint and let the answer step read the rows.
-Query: MATCH (a:Entity)-[r:RELATION]-(b:Entity) WHERE toLower(a.name) CONTAINS 'lakh' OR toLower(b.name) CONTAINS 'lakh' RETURN a.name AS entity, r.type AS relation, b.name AS related_to, r.source_meeting AS meeting ORDER BY r.stated_at LIMIT 200
+Query: MATCH (a:Entity)-[r:RELATION]->(b:Entity) WHERE toLower(a.name) CONTAINS 'lakh' OR toLower(b.name) CONTAINS 'lakh' RETURN a.name AS entity, r.type AS relation, b.name AS related_to, r.source_meeting AS meeting ORDER BY r.stated_at LIMIT 200
+
+Question: What was the GPU budget across all the meetings?
+Note: amounts are often attached to the approver, not the funded thing —
+"Jayashree approved 2.2 lakhs for phase 1 procurement" contains no GPU or lab
+token. Subject keywords AND money tokens, or the figures are unreachable.
+Query: MATCH (a:Entity)-[r:RELATION]->(b:Entity) WHERE toLower(a.name) CONTAINS 'gpu' OR toLower(b.name) CONTAINS 'gpu' OR toLower(a.name) CONTAINS 'lab' OR toLower(b.name) CONTAINS 'lab' OR toLower(a.name) CONTAINS 'lakh' OR toLower(b.name) CONTAINS 'lakh' OR toLower(a.name) CONTAINS 'rupee' OR toLower(b.name) CONTAINS 'rupee' OR toLower(a.name) CONTAINS 'budget' OR toLower(b.name) CONTAINS 'budget' RETURN a.name AS entity, r.type AS relation, b.name AS related_to, r.source_meeting AS meeting ORDER BY r.stated_at LIMIT 200
 
 Question: How long is phase one of the capstone project now?
 Note: do NOT pin r.type — the duration may be stored under any relation.
-Query: MATCH (a:Entity)-[r:RELATION]-(b:Entity) WHERE toLower(a.name) CONTAINS 'capstone' OR toLower(b.name) CONTAINS 'capstone' OR toLower(a.name) CONTAINS 'week' OR toLower(b.name) CONTAINS 'week' RETURN a.name AS entity, r.type AS relation, b.name AS related_to, r.source_meeting AS meeting ORDER BY r.stated_at LIMIT 200"""
+Query: MATCH (a:Entity)-[r:RELATION]->(b:Entity) WHERE toLower(a.name) CONTAINS 'capstone' OR toLower(b.name) CONTAINS 'capstone' OR toLower(a.name) CONTAINS 'week' OR toLower(b.name) CONTAINS 'week' RETURN a.name AS entity, r.type AS relation, b.name AS related_to, r.source_meeting AS meeting ORDER BY r.stated_at LIMIT 200"""
 
 
 ANSWER_SYSTEM_PROMPT = """You are a helpful assistant that answers questions about college staff meetings based on knowledge graph query results.
@@ -190,9 +213,17 @@ RULES:
    discussions on record concern the GPU lab upgrade." NEVER rewrite facts
    about one subject as though they were about another.
 4. If the results show changes across meetings, highlight the temporal evolution.
-5. Mention which meeting(s) the information comes from.
-6. Don't mention Cypher, Neo4j, or the graph — just answer naturally as if you know the information.
-7. If confidence scores are low (below 0.7), mention that the information is uncertain."""
+5. WHEN THE QUESTION ASKS ABOUT AMOUNTS, COSTS, BUDGETS, DATES OR COUNTS,
+   report EVERY specific figure in the rows that relates to the subject, in
+   meeting order, and say what each one refers to. Do not summarise a figure
+   away as "costs were discussed" — the number is the answer. If figures
+   change across meetings, state the progression explicitly.
+   Rows are noisy: `budget_for` is also used for scoring weights ("15 points
+   for critical analysis"), so pick the figures that match the subject asked
+   about and ignore the rest.
+6. Mention which meeting(s) the information comes from.
+7. Don't mention Cypher, Neo4j, or the graph — just answer naturally as if you know the information.
+8. If confidence scores are low (below 0.7), mention that the information is uncertain."""
 
 
 def call_llm(system_prompt: str, user_prompt: str, model: str = "", api_key: str = "",
