@@ -84,6 +84,10 @@ jump (10 -> 13) came mostly from that fitted example.
 
 ## 3. The CL deliverable (§9.2) — still 1 of 3 regimes
 
+> **Superseded (Oct 6) by `../PHASE6_7_SPEC.md`.** The majority-class question
+> below is closed: the split stays as is (see CLAUDE.md §5). The mean ± std
+> comparison table is replaced by per-seed table T1.
+
 - [ ] **`continual/regimes.py` does not exist.** Replay and FKD unbuilt.
 - [ ] **Replay first.** It also un-degenerates BWT: with off-diagonals
       pinned at exactly 0, `BWT = -mean(diagonal)` algebraically (verified to
