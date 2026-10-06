@@ -11,7 +11,7 @@ The loop, for t = 0..K-1:
   2. Train on regime.build_train_batchset(t) under the TRAIN mask
      = regime.train_class_set(t).
   3. Early-stop on the CURRENT task's gold dev slice only, same train mask,
-     patience 5, cap 60. [CORRECTNESS] Peeking at other tasks' dev sets
+     patience 5, cap 120. [CORRECTNESS] Peeking at other tasks' dev sets
      during training leaks the sequence.
   4. Restore best-dev weights before evaluation and before task t+1.
   5. Evaluate on gold test of every task j <= t under the EVAL mask

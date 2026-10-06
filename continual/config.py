@@ -87,6 +87,8 @@ SEEDS = [1234, 1, 2]        # each yields a different task sequence AND init
 FKD_TAU2 = 0.5      # temperature in the prototype-similarity softmax (Eq. 10)
 FKD_GAMMA = 2.0     # focal exponent (Eq. 11), TACRED value
 FKD_LAMBDA = 0.7    # weight on L_fkd in L_replay, TACRED lambda_2 (linear head)
+FKD_BETA = 0.2      # Eq. 4 prototype mix: (1-beta)*static + beta*memory mean.
+                    # Appendix B, TACRED column (FewRel uses 0.5)
 
 # Search ranges, should tuning ever be justified and declared:
 FKD_GAMMA_RANGE = (1.0, 2.0)
@@ -98,9 +100,13 @@ FKD_LAMBDA_RANGE = (0.5, 1.5)
 
 # ------------------------------------------------------------- replay
 
-REPLAY_MEMORY_PER_RELATION = 10   # Zhao et al. main-experiment memory size
-REPLAY_SELECTION = "kmeans"       # cre2.pdf Algorithm 1: samples nearest centroids
-REPLAY_NEW_TO_BUFFER_RATIO = 0.5  # 50/50 new:buffer in each batch
+#
+# Replay is a separate stage after new-task training (Zhao §4.1), not memory
+# mixed into new-task batches - V2's 50/50 mixing ratio is gone
+# (PHASE6_7_SPEC §1.3).
+
+REPLAY_MEMORY_PER_RELATION = 10   # m, Zhao et al. main experiment and Appendix B
+REPLAY_SELECTION = "kmeans"       # Zhao §4.3: per relation, nearest member of each cluster
 
 
 def summary() -> dict:
@@ -117,8 +123,8 @@ def summary() -> dict:
         "dropout": DROPOUT,
         "feature_dim": FEATURE_DIM,
         "fkd": {"tau2": FKD_TAU2, "gamma": FKD_GAMMA, "lambda": FKD_LAMBDA,
+                "beta": FKD_BETA,
                 "source": "Zhao et al. ACL 2023 Appendix B, TACRED row"},
         "replay": {"memory_per_relation": REPLAY_MEMORY_PER_RELATION,
-                   "selection": REPLAY_SELECTION,
-                   "new_to_buffer_ratio": REPLAY_NEW_TO_BUFFER_RATIO},
+                   "selection": REPLAY_SELECTION},
     }
