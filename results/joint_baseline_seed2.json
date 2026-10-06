@@ -1,0 +1,106 @@
+{
+  "seed": 2,
+  "n_classes": 17,
+  "relations": [
+    "org:employees_or_members",
+    "per:age",
+    "per:alternate_names",
+    "per:children",
+    "per:employee_or_member_of",
+    "per:friends",
+    "per:girl/boyfriend",
+    "per:negative_impression",
+    "per:other_family",
+    "per:parents",
+    "per:pet",
+    "per:positive_impression",
+    "per:roommate",
+    "per:spouse",
+    "per:title",
+    "per:visited_place",
+    "per:works"
+  ],
+  "config": {
+    "learning_rate": 0.001,
+    "weight_decay": 0.0,
+    "batch_size": 32,
+    "max_epochs_per_task": 120,
+    "early_stopping_patience": 5,
+    "early_stopping_metric": "macro_f1",
+    "fresh_optimizer_per_task": true,
+    "hidden_dim": 256,
+    "dropout": 0.2,
+    "feature_dim": 1152,
+    "fkd": {
+      "tau2": 0.5,
+      "gamma": 2.0,
+      "lambda": 0.7,
+      "beta": 0.2,
+      "source": "Zhao et al. ACL 2023 Appendix B, TACRED row"
+    },
+    "replay": {
+      "memory_per_relation": 10,
+      "selection": "kmeans"
+    }
+  },
+  "tracks": {
+    "teacher": {
+      "train_examples": 879,
+      "n_params": 299537,
+      "best_dev_macro_f1": 0.3400736196140273,
+      "best_epoch": 25,
+      "epochs_run": 31,
+      "test_macro_f1": 0.3444354939295269,
+      "test_accuracy": 0.43094405594405594,
+      "majority_class_accuracy": 0.35664335664335667,
+      "per_class_f1": {
+        "org:employees_or_members": 0.4167,
+        "per:age": 0.7778,
+        "per:alternate_names": 0.6952,
+        "per:children": 0.0,
+        "per:employee_or_member_of": 0.3704,
+        "per:friends": 0.2956,
+        "per:girl/boyfriend": 0.3472,
+        "per:negative_impression": 0.1026,
+        "per:other_family": 0.1758,
+        "per:parents": 0.1538,
+        "per:pet": 0.3333,
+        "per:positive_impression": 0.1842,
+        "per:roommate": 0.2,
+        "per:spouse": 0.0615,
+        "per:title": 0.6277,
+        "per:visited_place": 0.8636,
+        "per:works": 0.25
+      }
+    },
+    "gold": {
+      "train_examples": 1327,
+      "n_params": 299537,
+      "best_dev_macro_f1": 0.5130918208523216,
+      "best_epoch": 24,
+      "epochs_run": 30,
+      "test_macro_f1": 0.48430986595553305,
+      "test_accuracy": 0.5935314685314685,
+      "majority_class_accuracy": 0.35664335664335667,
+      "per_class_f1": {
+        "org:employees_or_members": 0.7692,
+        "per:age": 0.9,
+        "per:alternate_names": 0.8734,
+        "per:children": 0.1935,
+        "per:employee_or_member_of": 0.3846,
+        "per:friends": 0.3541,
+        "per:girl/boyfriend": 0.3636,
+        "per:negative_impression": 0.0882,
+        "per:other_family": 0.2286,
+        "per:parents": 0.3762,
+        "per:pet": 0.25,
+        "per:positive_impression": 0.3406,
+        "per:roommate": 0.4444,
+        "per:spouse": 0.3182,
+        "per:title": 0.8961,
+        "per:visited_place": 0.8095,
+        "per:works": 0.6429
+      }
+    }
+  }
+}
