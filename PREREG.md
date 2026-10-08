@@ -13,6 +13,8 @@ Threshold: a difference counts as real only if it exceeds 0.03 (Phase 5 noise fl
 on the final diagonal was ~0.03; joint baselines moved 0.034 across seeds from
 initialisation alone) on at least 2 of 3 seeds.
 
+Metric (clarified 2026-10-08, before any replay/FKD run): "final ACC" in predictions 1 to 3 means ACC_f1, and BWT means BWT_f1 (both from the macro-F1 R matrix); ACC_acc and BWT_acc are reported alongside as secondary.
+
 1. Replay beats naive on final ACC in all 6 track x seed runs. (True by construction,
    since naive old-task rows are at zero. Recorded for completeness, not a finding.)
 2. Gold track, FKD minus replay, final ACC: within ±0.03 on every seed (no real difference).
