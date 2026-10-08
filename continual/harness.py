@@ -13,7 +13,9 @@ The loop, for t = 0..K-1:
   3. Early-stop on the CURRENT task's gold dev slice only, same train mask,
      patience 5, cap 120. [CORRECTNESS] Peeking at other tasks' dev sets
      during training leaks the sequence.
-  4. Restore best-dev weights before evaluation and before task t+1.
+  4. Restore best-dev weights before evaluation and before task t+1, then
+     call regime.after_task(t) - where replay and FKD run their memory
+     selection and replay stage (continual/regimes.py).
   5. Evaluate on gold test of every task j <= t under the EVAL mask
      = union of classes seen through t. Write row t of both R matrices.
 
@@ -22,7 +24,8 @@ lives - is one function, `apply_mask`, used for train loss, dev early
 stopping, and test evaluation alike:
   * TRAIN mask comes from the regime (naive: all classes seen through t -
     see NaiveRegime's docstring for why this diverges from PHASE5_SPEC 2.4;
-    replay will return current + memory classes - the hook exists for this).
+    replay and FKD inherit it unchanged for new-task training, and their
+    replay stage uses the same seen-through-t mask).
   * EVAL mask is classes seen through t. Masking eval to only task j's
     classes would hide forgetting entirely; evaluating unmasked over all 17
     would let the head emit never-trained classes and deflate early rows.
@@ -30,9 +33,9 @@ stopping, and test evaluation alike:
     the softmax denominator at all SEEN relations for every loss - Eq. 3 vs
     Eq. 9 differ only in which dataset is summed (new train data vs memory),
     not in prediction space. Naive's seen-through-t mask matches that
-    convention. The replay reference (Efeoglu et al., PAPER_NOTES §2; PDF
-    not in repo) fine-tunes with memory in the batch, which this interface
-    expresses via build_train_batchset() rather than the mask.
+    convention. Replay follows Zhao §4.1: a separate stage on the memory of
+    all seen relations after new-task training, run inside after_task - not
+    memory mixed into new-task batches (PHASE6_7_SPEC §3.1).
 
 Eval labels are GOLD for both tracks, from the frozen eval sets. `track`
 selects TRAINING labels only. Task membership of a training example follows
