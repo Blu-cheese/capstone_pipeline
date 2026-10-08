@@ -1,0 +1,78 @@
+{
+  "ACC_acc": 0.31294,
+  "ACC_f1": 0.36864,
+  "BWT_acc": -0.039743,
+  "BWT_f1": 0.017841,
+  "R_acc": [
+    [
+      0.322314,
+      null,
+      null
+    ],
+    [
+      0.327824,
+      0.195991,
+      null
+    ],
+    [
+      0.151515,
+      0.287305,
+      0.5
+    ]
+  ],
+  "R_f1": [
+    [
+      0.417157,
+      null,
+      null
+    ],
+    [
+      0.413905,
+      0.124678,
+      null
+    ],
+    [
+      0.312746,
+      0.26477,
+      0.528405
+    ]
+  ],
+  "diagonal_warnings": [
+    "R_f1[1][1]=0.125 is more than 0.15 below the joint baseline (0.312) - a depressed diagonal makes BWT uninterpretable; check masking/output at task 1 before reading any BWT from this run"
+  ],
+  "joint_baseline_ref": {
+    "epoch_cap": 60,
+    "test_accuracy": 0.4222027972027972,
+    "test_macro_f1": 0.31187480000651846,
+    "track": "teacher"
+  },
+  "regime": "replay",
+  "run_id": "teacher_replay_1234_20261008-180244",
+  "seed": 1234,
+  "task_classes": [
+    [
+      0,
+      1,
+      3,
+      5,
+      8,
+      11,
+      13
+    ],
+    [
+      2,
+      4,
+      10,
+      16
+    ],
+    [
+      6,
+      7,
+      9,
+      12,
+      14,
+      15
+    ]
+  ],
+  "track": "teacher"
+}
