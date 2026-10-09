@@ -609,17 +609,30 @@ def figure_acc(P: Dict, infos: Dict[int, SplitInfo]) -> None:
             _style(ax)
             deg = infos[s].degenerate
             ax.axvspan(deg - 0.4, deg + 0.4, color=GRID, alpha=0.6, linewidth=0)
+            ends = []
             for rg in PRIMARY:
                 col, mk = REGIME_STYLE[rg]
                 ys = acc_after_each_task(P[(tr, rg, s)])
                 ax.plot(range(3), ys, color=col, linewidth=2, marker=mk, markersize=7,
                         markeredgecolor=SURFACE, markeredgewidth=1.5, label=rg, zorder=3)
-                ax.annotate(f"{rg} {ys[-1]:.2f}", (2, ys[-1]), xytext=(8, 0),
-                            textcoords="offset points", va="center", fontsize=8, color=INK2)
+                ends.append((ys[-1], rg))
+            # Direct end labels; regimes ending within 0.03 share one label so
+            # coinciding lines (replay and fkd often do) don't overprint.
+            groups: List[List] = []
+            for y_end, rg in sorted(ends):
+                if groups and y_end - groups[-1][-1][0] < 0.03:
+                    groups[-1].append((y_end, rg))
+                else:
+                    groups.append([(y_end, rg)])
+            for g in groups:
+                y_mid = float(np.mean([v for v, _ in g]))
+                label = " = ".join(rg for _, rg in g) + f" {y_mid:.2f}"
+                ax.annotate(label, (2, y_mid), xytext=(8, 0), textcoords="offset points",
+                            va="center", fontsize=8, color=INK2)
             ax.set_xticks(range(3))
             ax.set_xticklabels([f"task {t}" + ("\n(degenerate)" if t == deg else "")
                                 for t in range(3)])
-            ax.set_xlim(-0.4, 2.9)
+            ax.set_xlim(-0.4, 3.3)
             ax.set_ylim(0, 0.75)
             ax.set_title(f"{tr} · seed {s}", fontsize=10, color=INK, loc="left")
             if c == 0:
@@ -644,7 +657,8 @@ def figure_confusion(P: Dict, infos: Dict[int, SplitInfo]) -> None:
     s, info = 1234, infos[1234]
     short = lambda n: n.split(":", 1)[1]
     for tr in TRACKS:
-        fig, axes = plt.subplots(2, 2, figsize=(12, 11), facecolor=SURFACE,
+        fig, axes = plt.subplots(2, 2, figsize=(12, 13), facecolor=SURFACE,
+                                 layout="constrained",
                                  gridspec_kw={"width_ratios": [7, 17]})
         for r, rg in enumerate(("replay", "fkd")):
             run = P[(tr, rg, s)]
