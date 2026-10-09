@@ -1,0 +1,78 @@
+{
+  "ACC_acc": 0.213494,
+  "ACC_f1": 0.201889,
+  "BWT_acc": -0.718079,
+  "BWT_f1": -0.389316,
+  "R_acc": [
+    [
+      0.527473,
+      null,
+      null
+    ],
+    [
+      0.0,
+      0.908686,
+      null
+    ],
+    [
+      0.0,
+      0.0,
+      0.640483
+    ]
+  ],
+  "R_f1": [
+    [
+      0.540592,
+      null,
+      null
+    ],
+    [
+      0.0,
+      0.23804,
+      null
+    ],
+    [
+      0.0,
+      0.0,
+      0.605667
+    ]
+  ],
+  "diagonal_warnings": [
+    "R_f1[1][1]=0.238 is more than 0.15 below the joint baseline (0.485) - a depressed diagonal makes BWT uninterpretable; check masking/output at task 1 before reading any BWT from this run"
+  ],
+  "joint_baseline_ref": {
+    "epoch_cap": 120,
+    "test_accuracy": 0.576048951048951,
+    "test_macro_f1": 0.4850842395942396,
+    "track": "gold"
+  },
+  "regime": "naive",
+  "run_id": "gold_naive_1_20261009-130539",
+  "seed": 1,
+  "task_classes": [
+    [
+      0,
+      1,
+      3,
+      5,
+      8,
+      9,
+      11
+    ],
+    [
+      2,
+      4,
+      10,
+      16
+    ],
+    [
+      6,
+      7,
+      12,
+      13,
+      14,
+      15
+    ]
+  ],
+  "track": "gold"
+}

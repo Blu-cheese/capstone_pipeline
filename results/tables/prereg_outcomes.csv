@@ -1,0 +1,11 @@
+line,prediction,outcome,verdict
+0,teacher/gold joint ratio within 0.05 of seed 1234's on seeds 1 and 2,"seed 1: 0.675 (Δ 0.016), seed 2: 0.711 (Δ 0.020)",holds
+1,replay beats naive on final ACC_f1 in all 6 track × seed runs,6 of 6,holds
+2,gold: FKD − replay final ACC_f1 within ±0.03 on every seed,"1234: +0.037, 1: -0.002, 2: +0.001 — real difference by the threshold rule: no",fails (1 of 3 seeds outside)
+3,teacher: FKD − replay final ACC_f1 within ±0.03 on every seed,"1234: +0.000, 1: -0.035, 2: -0.000 — real difference by the threshold rule: no",fails (1 of 3 seeds outside)
+4,"FKD's cross-task pair drop smaller than replay's by > 0.10 on at most 1 of 3 seeds, both tracks","gold: 0 of 3 (1234: -0.009, 1: +0.004, 2: -0.003); teacher: 0 of 3 (1234: +0.011, 1: -0.003, 2: +0.002)",holds
+5,"FKD − replay gap the same in both tracks (both within threshold); if a gap appears, smaller in teacher","real gap — gold: False, teacher: False",holds (no real gap in either track)
+6,"teacher, replay: broad-class (per:other_family) share falls after the task where it is learned","1234: learned t0, 0.510 → 0.114; 1: learned t0, 0.467 → 0.094; 2: learned t1, 0.108 → 0.095",holds
+7,"fixed schedule: FKD − replay final ACC_f1 within ±0.03 on ≥ 2 of 3 seeds, both tracks","gold: 1234: -0.001, 1: +0.001, 2: -0.005; teacher: 1234: +0.007, 1: -0.000, 2: +0.008",holds
+8,"fixed schedule: KD forgets less than replay on non-degenerate tasks (> 0.03, ≥ 2 of 3 seeds), both tracks","gold: 1234: +0.047, 1: +0.006, 2: +0.006; teacher: 1234: -0.006, 1: +0.008, 2: -0.001 (kd − replay mean forgetting; positive = kd forgets less)",fails
+9,reporting rule: forgetting from non-degenerate tasks; BWT_f1 not read as forgetting when the degenerate task isn't last,"applied in T1/T6; degenerate task not last on seeds [1234, 1]",applied

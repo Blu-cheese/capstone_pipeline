@@ -1,0 +1,22 @@
+{"L_cls": 3.066509, "dev_macro_f1_seen": 0.118351, "epoch": 0, "focal_gt_0.5": 0.872727, "focal_mean": 0.784496, "lam_L_fkd": 0.084319, "loss": 3.150828, "task": 1}
+{"L_cls": 2.030141, "dev_macro_f1_seen": 0.183794, "epoch": 1, "focal_gt_0.5": 0.718182, "focal_mean": 0.641753, "lam_L_fkd": 0.064082, "loss": 2.094223, "task": 1}
+{"L_cls": 1.489254, "dev_macro_f1_seen": 0.276947, "epoch": 2, "focal_gt_0.5": 0.545455, "focal_mean": 0.506862, "lam_L_fkd": 0.049387, "loss": 1.538642, "task": 1}
+{"L_cls": 1.12411, "dev_macro_f1_seen": 0.351767, "epoch": 3, "focal_gt_0.5": 0.381818, "focal_mean": 0.401682, "lam_L_fkd": 0.038736, "loss": 1.162846, "task": 1}
+{"L_cls": 0.991135, "dev_macro_f1_seen": 0.35734, "epoch": 4, "focal_gt_0.5": 0.345455, "focal_mean": 0.354101, "lam_L_fkd": 0.033922, "loss": 1.025057, "task": 1}
+{"L_cls": 0.957365, "dev_macro_f1_seen": 0.358729, "epoch": 5, "focal_gt_0.5": 0.390909, "focal_mean": 0.343851, "lam_L_fkd": 0.033441, "loss": 0.990806, "task": 1}
+{"L_cls": 0.919489, "dev_macro_f1_seen": 0.373781, "epoch": 6, "focal_gt_0.5": 0.4, "focal_mean": 0.333169, "lam_L_fkd": 0.034731, "loss": 0.95422, "task": 1}
+{"L_cls": 0.911397, "dev_macro_f1_seen": 0.374595, "epoch": 7, "focal_gt_0.5": 0.4, "focal_mean": 0.330708, "lam_L_fkd": 0.03666, "loss": 0.948057, "task": 1}
+{"L_cls": 0.886089, "dev_macro_f1_seen": 0.359105, "epoch": 8, "focal_gt_0.5": 0.4, "focal_mean": 0.322719, "lam_L_fkd": 0.038316, "loss": 0.924405, "task": 1}
+{"L_cls": 0.823081, "dev_macro_f1_seen": 0.354257, "epoch": 9, "focal_gt_0.5": 0.390909, "focal_mean": 0.301974, "lam_L_fkd": 0.035276, "loss": 0.858357, "task": 1}
+{"kept_dev_macro_f1_seen": 0.354257, "kept_epoch": 9, "n_dev_seen": 863, "n_memory": 110, "stop_reason": "fixed_schedule(10)", "task": 1}
+{"L_cls": 3.527067, "dev_macro_f1_seen": 0.165444, "epoch": 0, "focal_gt_0.5": 0.641176, "focal_mean": 0.649055, "lam_L_fkd": 0.066459, "loss": 3.593526, "task": 2}
+{"L_cls": 2.334724, "dev_macro_f1_seen": 0.192024, "epoch": 1, "focal_gt_0.5": 0.611765, "focal_mean": 0.586334, "lam_L_fkd": 0.061741, "loss": 2.396465, "task": 2}
+{"L_cls": 1.573929, "dev_macro_f1_seen": 0.218046, "epoch": 2, "focal_gt_0.5": 0.5, "focal_mean": 0.482218, "lam_L_fkd": 0.054368, "loss": 1.628297, "task": 2}
+{"L_cls": 1.229597, "dev_macro_f1_seen": 0.27119, "epoch": 3, "focal_gt_0.5": 0.411765, "focal_mean": 0.417698, "lam_L_fkd": 0.049807, "loss": 1.279404, "task": 2}
+{"L_cls": 1.069544, "dev_macro_f1_seen": 0.359595, "epoch": 4, "focal_gt_0.5": 0.376471, "focal_mean": 0.374107, "lam_L_fkd": 0.046617, "loss": 1.116162, "task": 2}
+{"L_cls": 1.071369, "dev_macro_f1_seen": 0.404881, "epoch": 5, "focal_gt_0.5": 0.388235, "focal_mean": 0.382747, "lam_L_fkd": 0.047849, "loss": 1.119217, "task": 2}
+{"L_cls": 1.017086, "dev_macro_f1_seen": 0.403908, "epoch": 6, "focal_gt_0.5": 0.394118, "focal_mean": 0.371286, "lam_L_fkd": 0.046932, "loss": 1.064017, "task": 2}
+{"L_cls": 0.977382, "dev_macro_f1_seen": 0.415805, "epoch": 7, "focal_gt_0.5": 0.394118, "focal_mean": 0.35632, "lam_L_fkd": 0.044841, "loss": 1.022223, "task": 2}
+{"L_cls": 0.910359, "dev_macro_f1_seen": 0.422072, "epoch": 8, "focal_gt_0.5": 0.352941, "focal_mean": 0.336153, "lam_L_fkd": 0.042962, "loss": 0.953321, "task": 2}
+{"L_cls": 0.884746, "dev_macro_f1_seen": 0.416392, "epoch": 9, "focal_gt_0.5": 0.352941, "focal_mean": 0.325051, "lam_L_fkd": 0.0412, "loss": 0.925947, "task": 2}
+{"kept_dev_macro_f1_seen": 0.416392, "kept_epoch": 9, "n_dev_seen": 1231, "n_memory": 170, "stop_reason": "fixed_schedule(10)", "task": 2}

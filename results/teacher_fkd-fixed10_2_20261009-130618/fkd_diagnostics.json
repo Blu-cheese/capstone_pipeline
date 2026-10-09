@@ -1,0 +1,244 @@
+{
+  "beta": 0.2,
+  "gamma": 2.0,
+  "lambda": 0.7,
+  "tasks": [
+    {
+      "analogous_pairs_mean_s": [
+        {
+          "a": "per:positive_impression",
+          "a_to_b": 0.151049,
+          "b": "per:negative_impression",
+          "b_to_a": null
+        },
+        {
+          "a": "per:friends",
+          "a_to_b": 0.15599,
+          "b": "per:girl/boyfriend",
+          "b_to_a": null
+        },
+        {
+          "a": "per:friends",
+          "a_to_b": 0.149811,
+          "b": "per:roommate",
+          "b_to_a": null
+        },
+        {
+          "a": "per:girl/boyfriend",
+          "a_to_b": 0.154603,
+          "b": "per:negative_impression",
+          "b_to_a": 0.156018
+        }
+      ],
+      "epochs": [
+        {
+          "L_cls": 2.808819,
+          "epoch": 0,
+          "focal_gt_0.5": 0.538462,
+          "focal_mean": 0.533292,
+          "lam_L_fkd": 0.03229
+        },
+        {
+          "L_cls": 1.843522,
+          "epoch": 1,
+          "focal_gt_0.5": 0.5,
+          "focal_mean": 0.468328,
+          "lam_L_fkd": 0.030097
+        },
+        {
+          "L_cls": 1.270077,
+          "epoch": 2,
+          "focal_gt_0.5": 0.392308,
+          "focal_mean": 0.381367,
+          "lam_L_fkd": 0.027904
+        },
+        {
+          "L_cls": 0.872088,
+          "epoch": 3,
+          "focal_gt_0.5": 0.3,
+          "focal_mean": 0.296418,
+          "lam_L_fkd": 0.02417
+        },
+        {
+          "L_cls": 0.707139,
+          "epoch": 4,
+          "focal_gt_0.5": 0.207692,
+          "focal_mean": 0.24974,
+          "lam_L_fkd": 0.021034
+        },
+        {
+          "L_cls": 0.553991,
+          "epoch": 5,
+          "focal_gt_0.5": 0.107692,
+          "focal_mean": 0.188407,
+          "lam_L_fkd": 0.017402
+        },
+        {
+          "L_cls": 0.50298,
+          "epoch": 6,
+          "focal_gt_0.5": 0.076923,
+          "focal_mean": 0.167151,
+          "lam_L_fkd": 0.017164
+        },
+        {
+          "L_cls": 0.491424,
+          "epoch": 7,
+          "focal_gt_0.5": 0.046154,
+          "focal_mean": 0.162289,
+          "lam_L_fkd": 0.01663
+        },
+        {
+          "L_cls": 0.477074,
+          "epoch": 8,
+          "focal_gt_0.5": 0.061538,
+          "focal_mean": 0.157917,
+          "lam_L_fkd": 0.016917
+        },
+        {
+          "L_cls": 0.458233,
+          "epoch": 9,
+          "focal_gt_0.5": 0.046154,
+          "focal_mean": 0.149663,
+          "lam_L_fkd": 0.017039
+        }
+      ],
+      "n_memory": 130,
+      "n_old": 7,
+      "s": {
+        "mean_row_entropy": 1.934423,
+        "mean_row_max": 0.171721,
+        "uniform_entropy": 1.94591,
+        "uniform_max": 0.142857
+      },
+      "task": 1,
+      "teacher": {
+        "any_requires_grad": false,
+        "eval_mode": true,
+        "hash_after": "394a7c4cc651ac40",
+        "hash_before": "394a7c4cc651ac40",
+        "snapshot_hash_at_end_of_prev_task": "394a7c4cc651ac40",
+        "snapshot_of_task": 0
+      },
+      "weighting": "s * focal (Eqs. 10-11)"
+    },
+    {
+      "analogous_pairs_mean_s": [
+        {
+          "a": "per:positive_impression",
+          "a_to_b": 0.080113,
+          "b": "per:negative_impression",
+          "b_to_a": 0.076504
+        },
+        {
+          "a": "per:friends",
+          "a_to_b": 0.083237,
+          "b": "per:girl/boyfriend",
+          "b_to_a": 0.080281
+        },
+        {
+          "a": "per:friends",
+          "a_to_b": 0.079905,
+          "b": "per:roommate",
+          "b_to_a": 0.084519
+        },
+        {
+          "a": "per:girl/boyfriend",
+          "a_to_b": 0.082859,
+          "b": "per:negative_impression",
+          "b_to_a": 0.083824
+        }
+      ],
+      "epochs": [
+        {
+          "L_cls": 2.72798,
+          "epoch": 0,
+          "focal_gt_0.5": 0.817647,
+          "focal_mean": 0.756467,
+          "lam_L_fkd": 0.055019
+        },
+        {
+          "L_cls": 1.623216,
+          "epoch": 1,
+          "focal_gt_0.5": 0.623529,
+          "focal_mean": 0.553615,
+          "lam_L_fkd": 0.042344
+        },
+        {
+          "L_cls": 1.107046,
+          "epoch": 2,
+          "focal_gt_0.5": 0.405882,
+          "focal_mean": 0.398375,
+          "lam_L_fkd": 0.032157
+        },
+        {
+          "L_cls": 0.976539,
+          "epoch": 3,
+          "focal_gt_0.5": 0.329412,
+          "focal_mean": 0.346338,
+          "lam_L_fkd": 0.028601
+        },
+        {
+          "L_cls": 0.933708,
+          "epoch": 4,
+          "focal_gt_0.5": 0.329412,
+          "focal_mean": 0.325588,
+          "lam_L_fkd": 0.027261
+        },
+        {
+          "L_cls": 0.895375,
+          "epoch": 5,
+          "focal_gt_0.5": 0.294118,
+          "focal_mean": 0.307232,
+          "lam_L_fkd": 0.025796
+        },
+        {
+          "L_cls": 0.843121,
+          "epoch": 6,
+          "focal_gt_0.5": 0.276471,
+          "focal_mean": 0.293457,
+          "lam_L_fkd": 0.025074
+        },
+        {
+          "L_cls": 0.814864,
+          "epoch": 7,
+          "focal_gt_0.5": 0.282353,
+          "focal_mean": 0.285981,
+          "lam_L_fkd": 0.024432
+        },
+        {
+          "L_cls": 0.773601,
+          "epoch": 8,
+          "focal_gt_0.5": 0.276471,
+          "focal_mean": 0.270638,
+          "lam_L_fkd": 0.023202
+        },
+        {
+          "L_cls": 0.743305,
+          "epoch": 9,
+          "focal_gt_0.5": 0.258824,
+          "focal_mean": 0.261426,
+          "lam_L_fkd": 0.022315
+        }
+      ],
+      "n_memory": 170,
+      "n_old": 13,
+      "s": {
+        "mean_row_entropy": 2.554463,
+        "mean_row_max": 0.095274,
+        "uniform_entropy": 2.564949,
+        "uniform_max": 0.076923
+      },
+      "task": 2,
+      "teacher": {
+        "any_requires_grad": false,
+        "eval_mode": true,
+        "hash_after": "0f873ddabc4fc60e",
+        "hash_before": "0f873ddabc4fc60e",
+        "snapshot_hash_at_end_of_prev_task": "0f873ddabc4fc60e",
+        "snapshot_of_task": 1
+      },
+      "weighting": "s * focal (Eqs. 10-11)"
+    }
+  ],
+  "tau2": 0.5
+}

@@ -1,0 +1,321 @@
+{
+  "beta": 0.2,
+  "gamma": 2.0,
+  "lambda": 0.7,
+  "tasks": [
+    {
+      "analogous_pairs_mean_s": [
+        {
+          "a": "per:positive_impression",
+          "a_to_b": null,
+          "b": "per:negative_impression",
+          "b_to_a": null
+        },
+        {
+          "a": "per:friends",
+          "a_to_b": null,
+          "b": "per:girl/boyfriend",
+          "b_to_a": null
+        },
+        {
+          "a": "per:friends",
+          "a_to_b": null,
+          "b": "per:roommate",
+          "b_to_a": null
+        },
+        {
+          "a": "per:girl/boyfriend",
+          "a_to_b": null,
+          "b": "per:negative_impression",
+          "b_to_a": null
+        }
+      ],
+      "epochs": [
+        {
+          "L_cls": 3.194186,
+          "epoch": 0,
+          "focal_gt_0.5": 0.881818,
+          "focal_mean": 0.809579,
+          "lam_L_fkd": 0.095328
+        },
+        {
+          "L_cls": 2.339728,
+          "epoch": 1,
+          "focal_gt_0.5": 0.790909,
+          "focal_mean": 0.7076,
+          "lam_L_fkd": 0.080763
+        },
+        {
+          "L_cls": 1.672999,
+          "epoch": 2,
+          "focal_gt_0.5": 0.618182,
+          "focal_mean": 0.573987,
+          "lam_L_fkd": 0.063744
+        },
+        {
+          "L_cls": 1.331618,
+          "epoch": 3,
+          "focal_gt_0.5": 0.509091,
+          "focal_mean": 0.478784,
+          "lam_L_fkd": 0.054562
+        },
+        {
+          "L_cls": 1.187024,
+          "epoch": 4,
+          "focal_gt_0.5": 0.436364,
+          "focal_mean": 0.435245,
+          "lam_L_fkd": 0.049767
+        },
+        {
+          "L_cls": 1.10169,
+          "epoch": 5,
+          "focal_gt_0.5": 0.4,
+          "focal_mean": 0.406175,
+          "lam_L_fkd": 0.04703
+        },
+        {
+          "L_cls": 1.041389,
+          "epoch": 6,
+          "focal_gt_0.5": 0.409091,
+          "focal_mean": 0.387859,
+          "lam_L_fkd": 0.046622
+        },
+        {
+          "L_cls": 1.011584,
+          "epoch": 7,
+          "focal_gt_0.5": 0.418182,
+          "focal_mean": 0.375635,
+          "lam_L_fkd": 0.046294
+        },
+        {
+          "L_cls": 0.983987,
+          "epoch": 8,
+          "focal_gt_0.5": 0.409091,
+          "focal_mean": 0.364567,
+          "lam_L_fkd": 0.046158
+        },
+        {
+          "L_cls": 0.971182,
+          "epoch": 9,
+          "focal_gt_0.5": 0.409091,
+          "focal_mean": 0.3596,
+          "lam_L_fkd": 0.046155
+        },
+        {
+          "L_cls": 0.920347,
+          "epoch": 10,
+          "focal_gt_0.5": 0.4,
+          "focal_mean": 0.34223,
+          "lam_L_fkd": 0.043125
+        }
+      ],
+      "n_memory": 110,
+      "n_old": 7,
+      "s": {
+        "mean_row_entropy": 1.91976,
+        "mean_row_max": 0.184796,
+        "uniform_entropy": 1.94591,
+        "uniform_max": 0.142857
+      },
+      "task": 1,
+      "teacher": {
+        "any_requires_grad": false,
+        "eval_mode": true,
+        "hash_after": "27ef7a9c1581c886",
+        "hash_before": "27ef7a9c1581c886",
+        "snapshot_hash_at_end_of_prev_task": "27ef7a9c1581c886",
+        "snapshot_of_task": 0
+      },
+      "weighting": "s * focal (Eqs. 10-11)"
+    },
+    {
+      "analogous_pairs_mean_s": [
+        {
+          "a": "per:positive_impression",
+          "a_to_b": null,
+          "b": "per:negative_impression",
+          "b_to_a": 0.102863
+        },
+        {
+          "a": "per:friends",
+          "a_to_b": null,
+          "b": "per:girl/boyfriend",
+          "b_to_a": 0.106136
+        },
+        {
+          "a": "per:friends",
+          "a_to_b": null,
+          "b": "per:roommate",
+          "b_to_a": 0.106651
+        },
+        {
+          "a": "per:girl/boyfriend",
+          "a_to_b": null,
+          "b": "per:negative_impression",
+          "b_to_a": null
+        }
+      ],
+      "epochs": [
+        {
+          "L_cls": 3.835651,
+          "epoch": 0,
+          "focal_gt_0.5": 0.652941,
+          "focal_mean": 0.668163,
+          "lam_L_fkd": 0.076749
+        },
+        {
+          "L_cls": 2.52276,
+          "epoch": 1,
+          "focal_gt_0.5": 0.605882,
+          "focal_mean": 0.596702,
+          "lam_L_fkd": 0.07094
+        },
+        {
+          "L_cls": 1.769172,
+          "epoch": 2,
+          "focal_gt_0.5": 0.570588,
+          "focal_mean": 0.531631,
+          "lam_L_fkd": 0.064614
+        },
+        {
+          "L_cls": 1.419455,
+          "epoch": 3,
+          "focal_gt_0.5": 0.458824,
+          "focal_mean": 0.470124,
+          "lam_L_fkd": 0.059621
+        },
+        {
+          "L_cls": 1.284858,
+          "epoch": 4,
+          "focal_gt_0.5": 0.435294,
+          "focal_mean": 0.450466,
+          "lam_L_fkd": 0.057145
+        },
+        {
+          "L_cls": 1.206464,
+          "epoch": 5,
+          "focal_gt_0.5": 0.452941,
+          "focal_mean": 0.435599,
+          "lam_L_fkd": 0.055859
+        },
+        {
+          "L_cls": 1.154217,
+          "epoch": 6,
+          "focal_gt_0.5": 0.423529,
+          "focal_mean": 0.419481,
+          "lam_L_fkd": 0.05387
+        },
+        {
+          "L_cls": 1.109899,
+          "epoch": 7,
+          "focal_gt_0.5": 0.388235,
+          "focal_mean": 0.406868,
+          "lam_L_fkd": 0.052398
+        },
+        {
+          "L_cls": 1.037289,
+          "epoch": 8,
+          "focal_gt_0.5": 0.347059,
+          "focal_mean": 0.379705,
+          "lam_L_fkd": 0.049255
+        },
+        {
+          "L_cls": 0.972527,
+          "epoch": 9,
+          "focal_gt_0.5": 0.329412,
+          "focal_mean": 0.358744,
+          "lam_L_fkd": 0.046601
+        },
+        {
+          "L_cls": 0.942769,
+          "epoch": 10,
+          "focal_gt_0.5": 0.376471,
+          "focal_mean": 0.350536,
+          "lam_L_fkd": 0.045722
+        },
+        {
+          "L_cls": 0.882145,
+          "epoch": 11,
+          "focal_gt_0.5": 0.329412,
+          "focal_mean": 0.323604,
+          "lam_L_fkd": 0.04285
+        },
+        {
+          "L_cls": 0.853399,
+          "epoch": 12,
+          "focal_gt_0.5": 0.311765,
+          "focal_mean": 0.313466,
+          "lam_L_fkd": 0.041825
+        },
+        {
+          "L_cls": 0.81712,
+          "epoch": 13,
+          "focal_gt_0.5": 0.311765,
+          "focal_mean": 0.301305,
+          "lam_L_fkd": 0.040228
+        },
+        {
+          "L_cls": 0.773117,
+          "epoch": 14,
+          "focal_gt_0.5": 0.252941,
+          "focal_mean": 0.282919,
+          "lam_L_fkd": 0.038406
+        },
+        {
+          "L_cls": 0.725706,
+          "epoch": 15,
+          "focal_gt_0.5": 0.223529,
+          "focal_mean": 0.263969,
+          "lam_L_fkd": 0.036077
+        },
+        {
+          "L_cls": 0.723571,
+          "epoch": 16,
+          "focal_gt_0.5": 0.223529,
+          "focal_mean": 0.26447,
+          "lam_L_fkd": 0.036272
+        },
+        {
+          "L_cls": 0.67,
+          "epoch": 17,
+          "focal_gt_0.5": 0.164706,
+          "focal_mean": 0.243909,
+          "lam_L_fkd": 0.034266
+        },
+        {
+          "L_cls": 0.639687,
+          "epoch": 18,
+          "focal_gt_0.5": 0.135294,
+          "focal_mean": 0.23154,
+          "lam_L_fkd": 0.03241
+        },
+        {
+          "L_cls": 0.618987,
+          "epoch": 19,
+          "focal_gt_0.5": 0.152941,
+          "focal_mean": 0.222671,
+          "lam_L_fkd": 0.031356
+        }
+      ],
+      "n_memory": 170,
+      "n_old": 11,
+      "s": {
+        "mean_row_entropy": 2.37002,
+        "mean_row_max": 0.123089,
+        "uniform_entropy": 2.397895,
+        "uniform_max": 0.090909
+      },
+      "task": 2,
+      "teacher": {
+        "any_requires_grad": false,
+        "eval_mode": true,
+        "hash_after": "f3e7d306891e8ffe",
+        "hash_before": "f3e7d306891e8ffe",
+        "snapshot_hash_at_end_of_prev_task": "f3e7d306891e8ffe",
+        "snapshot_of_task": 1
+      },
+      "weighting": "s * focal (Eqs. 10-11)"
+    }
+  ],
+  "tau2": 0.5
+}

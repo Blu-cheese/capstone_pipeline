@@ -1,0 +1,204 @@
+{
+  "beta": 0.2,
+  "gamma": 2.0,
+  "lambda": 0.7,
+  "tasks": [
+    {
+      "analogous_pairs_mean_s": [
+        {
+          "a": "per:positive_impression",
+          "a_to_b": null,
+          "b": "per:negative_impression",
+          "b_to_a": null
+        },
+        {
+          "a": "per:friends",
+          "a_to_b": null,
+          "b": "per:girl/boyfriend",
+          "b_to_a": null
+        },
+        {
+          "a": "per:friends",
+          "a_to_b": null,
+          "b": "per:roommate",
+          "b_to_a": null
+        },
+        {
+          "a": "per:girl/boyfriend",
+          "a_to_b": null,
+          "b": "per:negative_impression",
+          "b_to_a": null
+        }
+      ],
+      "epochs": [
+        {
+          "L_cls": 3.196083,
+          "epoch": 0,
+          "lam_L_fkd": 0.712191
+        },
+        {
+          "L_cls": 2.360592,
+          "epoch": 1,
+          "lam_L_fkd": 0.666314
+        },
+        {
+          "L_cls": 1.697376,
+          "epoch": 2,
+          "lam_L_fkd": 0.623319
+        },
+        {
+          "L_cls": 1.357995,
+          "epoch": 3,
+          "lam_L_fkd": 0.616969
+        },
+        {
+          "L_cls": 1.20618,
+          "epoch": 4,
+          "lam_L_fkd": 0.615957
+        },
+        {
+          "L_cls": 1.113239,
+          "epoch": 5,
+          "lam_L_fkd": 0.621819
+        },
+        {
+          "L_cls": 1.050449,
+          "epoch": 6,
+          "lam_L_fkd": 0.633955
+        },
+        {
+          "L_cls": 1.025077,
+          "epoch": 7,
+          "lam_L_fkd": 0.634545
+        },
+        {
+          "L_cls": 1.000242,
+          "epoch": 8,
+          "lam_L_fkd": 0.635708
+        },
+        {
+          "L_cls": 0.98847,
+          "epoch": 9,
+          "lam_L_fkd": 0.637751
+        }
+      ],
+      "n_memory": 110,
+      "n_old": 7,
+      "s": {
+        "mean_row_entropy": 1.91976,
+        "mean_row_max": 0.184796,
+        "uniform_entropy": 1.94591,
+        "uniform_max": 0.142857
+      },
+      "task": 1,
+      "teacher": {
+        "any_requires_grad": false,
+        "eval_mode": true,
+        "hash_after": "27ef7a9c1581c886",
+        "hash_before": "27ef7a9c1581c886",
+        "snapshot_hash_at_end_of_prev_task": "27ef7a9c1581c886",
+        "snapshot_of_task": 0
+      },
+      "weighting": "none (w = 1)"
+    },
+    {
+      "analogous_pairs_mean_s": [
+        {
+          "a": "per:positive_impression",
+          "a_to_b": null,
+          "b": "per:negative_impression",
+          "b_to_a": 0.102863
+        },
+        {
+          "a": "per:friends",
+          "a_to_b": null,
+          "b": "per:girl/boyfriend",
+          "b_to_a": 0.106136
+        },
+        {
+          "a": "per:friends",
+          "a_to_b": null,
+          "b": "per:roommate",
+          "b_to_a": 0.106651
+        },
+        {
+          "a": "per:girl/boyfriend",
+          "a_to_b": null,
+          "b": "per:negative_impression",
+          "b_to_a": null
+        }
+      ],
+      "epochs": [
+        {
+          "L_cls": 3.731382,
+          "epoch": 0,
+          "lam_L_fkd": 1.181453
+        },
+        {
+          "L_cls": 2.489558,
+          "epoch": 1,
+          "lam_L_fkd": 1.160425
+        },
+        {
+          "L_cls": 1.715111,
+          "epoch": 2,
+          "lam_L_fkd": 1.14697
+        },
+        {
+          "L_cls": 1.362211,
+          "epoch": 3,
+          "lam_L_fkd": 1.136398
+        },
+        {
+          "L_cls": 1.241323,
+          "epoch": 4,
+          "lam_L_fkd": 1.131272
+        },
+        {
+          "L_cls": 1.207059,
+          "epoch": 5,
+          "lam_L_fkd": 1.129992
+        },
+        {
+          "L_cls": 1.150806,
+          "epoch": 6,
+          "lam_L_fkd": 1.136845
+        },
+        {
+          "L_cls": 1.105613,
+          "epoch": 7,
+          "lam_L_fkd": 1.137097
+        },
+        {
+          "L_cls": 1.040409,
+          "epoch": 8,
+          "lam_L_fkd": 1.139141
+        },
+        {
+          "L_cls": 0.994737,
+          "epoch": 9,
+          "lam_L_fkd": 1.141459
+        }
+      ],
+      "n_memory": 170,
+      "n_old": 11,
+      "s": {
+        "mean_row_entropy": 2.37002,
+        "mean_row_max": 0.123089,
+        "uniform_entropy": 2.397895,
+        "uniform_max": 0.090909
+      },
+      "task": 2,
+      "teacher": {
+        "any_requires_grad": false,
+        "eval_mode": true,
+        "hash_after": "2ab445b054488ff2",
+        "hash_before": "2ab445b054488ff2",
+        "snapshot_hash_at_end_of_prev_task": "2ab445b054488ff2",
+        "snapshot_of_task": 1
+      },
+      "weighting": "none (w = 1)"
+    }
+  ],
+  "tau2": 0.5
+}

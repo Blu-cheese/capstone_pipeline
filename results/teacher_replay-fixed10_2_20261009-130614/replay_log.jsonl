@@ -1,0 +1,22 @@
+{"L_cls": 2.810878, "dev_macro_f1_seen": 0.195462, "epoch": 0, "loss": 2.810878, "task": 1}
+{"L_cls": 1.844475, "dev_macro_f1_seen": 0.216791, "epoch": 1, "loss": 1.844475, "task": 1}
+{"L_cls": 1.270458, "dev_macro_f1_seen": 0.281571, "epoch": 2, "loss": 1.270458, "task": 1}
+{"L_cls": 0.873073, "dev_macro_f1_seen": 0.307534, "epoch": 3, "loss": 0.873073, "task": 1}
+{"L_cls": 0.708743, "dev_macro_f1_seen": 0.350242, "epoch": 4, "loss": 0.708743, "task": 1}
+{"L_cls": 0.555701, "dev_macro_f1_seen": 0.380312, "epoch": 5, "loss": 0.555701, "task": 1}
+{"L_cls": 0.50413, "dev_macro_f1_seen": 0.377855, "epoch": 6, "loss": 0.50413, "task": 1}
+{"L_cls": 0.49165, "dev_macro_f1_seen": 0.366003, "epoch": 7, "loss": 0.49165, "task": 1}
+{"L_cls": 0.477388, "dev_macro_f1_seen": 0.374295, "epoch": 8, "loss": 0.477388, "task": 1}
+{"L_cls": 0.459165, "dev_macro_f1_seen": 0.390822, "epoch": 9, "loss": 0.459165, "task": 1}
+{"kept_dev_macro_f1_seen": 0.390822, "kept_epoch": 9, "n_dev_seen": 788, "n_memory": 130, "stop_reason": "fixed_schedule(10)", "task": 1}
+{"L_cls": 2.730314, "dev_macro_f1_seen": 0.10252, "epoch": 0, "loss": 2.730314, "task": 2}
+{"L_cls": 1.625285, "dev_macro_f1_seen": 0.216113, "epoch": 1, "loss": 1.625285, "task": 2}
+{"L_cls": 1.108212, "dev_macro_f1_seen": 0.290702, "epoch": 2, "loss": 1.108212, "task": 2}
+{"L_cls": 0.977379, "dev_macro_f1_seen": 0.307585, "epoch": 3, "loss": 0.977379, "task": 2}
+{"L_cls": 0.933987, "dev_macro_f1_seen": 0.289978, "epoch": 4, "loss": 0.933987, "task": 2}
+{"L_cls": 0.895328, "dev_macro_f1_seen": 0.290057, "epoch": 5, "loss": 0.895328, "task": 2}
+{"L_cls": 0.842995, "dev_macro_f1_seen": 0.300439, "epoch": 6, "loss": 0.842995, "task": 2}
+{"L_cls": 0.814488, "dev_macro_f1_seen": 0.300114, "epoch": 7, "loss": 0.814488, "task": 2}
+{"L_cls": 0.773467, "dev_macro_f1_seen": 0.310184, "epoch": 8, "loss": 0.773467, "task": 2}
+{"L_cls": 0.74299, "dev_macro_f1_seen": 0.302474, "epoch": 9, "loss": 0.74299, "task": 2}
+{"kept_dev_macro_f1_seen": 0.302474, "kept_epoch": 9, "n_dev_seen": 1231, "n_memory": 170, "stop_reason": "fixed_schedule(10)", "task": 2}

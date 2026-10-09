@@ -1,0 +1,356 @@
+{
+  "beta": 0.2,
+  "gamma": 2.0,
+  "lambda": 0.7,
+  "tasks": [
+    {
+      "analogous_pairs_mean_s": [
+        {
+          "a": "per:positive_impression",
+          "a_to_b": 0.159768,
+          "b": "per:negative_impression",
+          "b_to_a": null
+        },
+        {
+          "a": "per:friends",
+          "a_to_b": 0.162031,
+          "b": "per:girl/boyfriend",
+          "b_to_a": null
+        },
+        {
+          "a": "per:friends",
+          "a_to_b": 0.163224,
+          "b": "per:roommate",
+          "b_to_a": null
+        },
+        {
+          "a": "per:girl/boyfriend",
+          "a_to_b": 0.154844,
+          "b": "per:negative_impression",
+          "b_to_a": 0.157952
+        }
+      ],
+      "epochs": [
+        {
+          "L_cls": 2.539259,
+          "epoch": 0,
+          "focal_gt_0.5": 0.546154,
+          "focal_mean": 0.531894,
+          "lam_L_fkd": 0.027829
+        },
+        {
+          "L_cls": 1.599552,
+          "epoch": 1,
+          "focal_gt_0.5": 0.438462,
+          "focal_mean": 0.434352,
+          "lam_L_fkd": 0.024954
+        },
+        {
+          "L_cls": 1.094864,
+          "epoch": 2,
+          "focal_gt_0.5": 0.307692,
+          "focal_mean": 0.333855,
+          "lam_L_fkd": 0.020986
+        },
+        {
+          "L_cls": 0.770198,
+          "epoch": 3,
+          "focal_gt_0.5": 0.2,
+          "focal_mean": 0.255307,
+          "lam_L_fkd": 0.019093
+        },
+        {
+          "L_cls": 0.6391,
+          "epoch": 4,
+          "focal_gt_0.5": 0.138462,
+          "focal_mean": 0.214865,
+          "lam_L_fkd": 0.018003
+        },
+        {
+          "L_cls": 0.568912,
+          "epoch": 5,
+          "focal_gt_0.5": 0.123077,
+          "focal_mean": 0.196091,
+          "lam_L_fkd": 0.017475
+        },
+        {
+          "L_cls": 0.549723,
+          "epoch": 6,
+          "focal_gt_0.5": 0.123077,
+          "focal_mean": 0.18788,
+          "lam_L_fkd": 0.01808
+        },
+        {
+          "L_cls": 0.547337,
+          "epoch": 7,
+          "focal_gt_0.5": 0.115385,
+          "focal_mean": 0.185896,
+          "lam_L_fkd": 0.018743
+        },
+        {
+          "L_cls": 0.486402,
+          "epoch": 8,
+          "focal_gt_0.5": 0.076923,
+          "focal_mean": 0.165329,
+          "lam_L_fkd": 0.016279
+        },
+        {
+          "L_cls": 0.495555,
+          "epoch": 9,
+          "focal_gt_0.5": 0.115385,
+          "focal_mean": 0.167524,
+          "lam_L_fkd": 0.016053
+        },
+        {
+          "L_cls": 0.480793,
+          "epoch": 10,
+          "focal_gt_0.5": 0.1,
+          "focal_mean": 0.161819,
+          "lam_L_fkd": 0.014454
+        },
+        {
+          "L_cls": 0.437786,
+          "epoch": 11,
+          "focal_gt_0.5": 0.061538,
+          "focal_mean": 0.146364,
+          "lam_L_fkd": 0.014166
+        },
+        {
+          "L_cls": 0.430099,
+          "epoch": 12,
+          "focal_gt_0.5": 0.061538,
+          "focal_mean": 0.144539,
+          "lam_L_fkd": 0.014689
+        }
+      ],
+      "n_memory": 130,
+      "n_old": 7,
+      "s": {
+        "mean_row_entropy": 1.917511,
+        "mean_row_max": 0.182672,
+        "uniform_entropy": 1.94591,
+        "uniform_max": 0.142857
+      },
+      "task": 1,
+      "teacher": {
+        "any_requires_grad": false,
+        "eval_mode": true,
+        "hash_after": "8343c72f2e9a6725",
+        "hash_before": "8343c72f2e9a6725",
+        "snapshot_hash_at_end_of_prev_task": "8343c72f2e9a6725",
+        "snapshot_of_task": 0
+      },
+      "weighting": "s * focal (Eqs. 10-11)"
+    },
+    {
+      "analogous_pairs_mean_s": [
+        {
+          "a": "per:positive_impression",
+          "a_to_b": 0.084411,
+          "b": "per:negative_impression",
+          "b_to_a": 0.0838
+        },
+        {
+          "a": "per:friends",
+          "a_to_b": 0.084388,
+          "b": "per:girl/boyfriend",
+          "b_to_a": 0.083013
+        },
+        {
+          "a": "per:friends",
+          "a_to_b": 0.084946,
+          "b": "per:roommate",
+          "b_to_a": 0.085367
+        },
+        {
+          "a": "per:girl/boyfriend",
+          "a_to_b": 0.08156,
+          "b": "per:negative_impression",
+          "b_to_a": 0.082741
+        }
+      ],
+      "epochs": [
+        {
+          "L_cls": 3.293864,
+          "epoch": 0,
+          "focal_gt_0.5": 0.870588,
+          "focal_mean": 0.80653,
+          "lam_L_fkd": 0.062267
+        },
+        {
+          "L_cls": 1.849793,
+          "epoch": 1,
+          "focal_gt_0.5": 0.588235,
+          "focal_mean": 0.581434,
+          "lam_L_fkd": 0.048084
+        },
+        {
+          "L_cls": 1.228971,
+          "epoch": 2,
+          "focal_gt_0.5": 0.441176,
+          "focal_mean": 0.437706,
+          "lam_L_fkd": 0.03849
+        },
+        {
+          "L_cls": 1.028275,
+          "epoch": 3,
+          "focal_gt_0.5": 0.382353,
+          "focal_mean": 0.373065,
+          "lam_L_fkd": 0.034321
+        },
+        {
+          "L_cls": 0.969424,
+          "epoch": 4,
+          "focal_gt_0.5": 0.358824,
+          "focal_mean": 0.349131,
+          "lam_L_fkd": 0.032779
+        },
+        {
+          "L_cls": 0.944413,
+          "epoch": 5,
+          "focal_gt_0.5": 0.341176,
+          "focal_mean": 0.335816,
+          "lam_L_fkd": 0.032194
+        },
+        {
+          "L_cls": 0.863991,
+          "epoch": 6,
+          "focal_gt_0.5": 0.317647,
+          "focal_mean": 0.307155,
+          "lam_L_fkd": 0.029974
+        },
+        {
+          "L_cls": 0.846502,
+          "epoch": 7,
+          "focal_gt_0.5": 0.3,
+          "focal_mean": 0.302408,
+          "lam_L_fkd": 0.029434
+        },
+        {
+          "L_cls": 0.797581,
+          "epoch": 8,
+          "focal_gt_0.5": 0.3,
+          "focal_mean": 0.285294,
+          "lam_L_fkd": 0.02812
+        },
+        {
+          "L_cls": 0.785338,
+          "epoch": 9,
+          "focal_gt_0.5": 0.282353,
+          "focal_mean": 0.282147,
+          "lam_L_fkd": 0.028167
+        },
+        {
+          "L_cls": 0.753665,
+          "epoch": 10,
+          "focal_gt_0.5": 0.305882,
+          "focal_mean": 0.272593,
+          "lam_L_fkd": 0.027552
+        },
+        {
+          "L_cls": 0.694696,
+          "epoch": 11,
+          "focal_gt_0.5": 0.294118,
+          "focal_mean": 0.254286,
+          "lam_L_fkd": 0.02564
+        },
+        {
+          "L_cls": 0.685936,
+          "epoch": 12,
+          "focal_gt_0.5": 0.241176,
+          "focal_mean": 0.249046,
+          "lam_L_fkd": 0.025219
+        },
+        {
+          "L_cls": 0.639663,
+          "epoch": 13,
+          "focal_gt_0.5": 0.217647,
+          "focal_mean": 0.232673,
+          "lam_L_fkd": 0.023606
+        },
+        {
+          "L_cls": 0.619883,
+          "epoch": 14,
+          "focal_gt_0.5": 0.164706,
+          "focal_mean": 0.22368,
+          "lam_L_fkd": 0.022973
+        },
+        {
+          "L_cls": 0.59157,
+          "epoch": 15,
+          "focal_gt_0.5": 0.164706,
+          "focal_mean": 0.215239,
+          "lam_L_fkd": 0.022062
+        },
+        {
+          "L_cls": 0.560937,
+          "epoch": 16,
+          "focal_gt_0.5": 0.141176,
+          "focal_mean": 0.202162,
+          "lam_L_fkd": 0.02085
+        },
+        {
+          "L_cls": 0.543878,
+          "epoch": 17,
+          "focal_gt_0.5": 0.135294,
+          "focal_mean": 0.193893,
+          "lam_L_fkd": 0.020108
+        },
+        {
+          "L_cls": 0.524578,
+          "epoch": 18,
+          "focal_gt_0.5": 0.105882,
+          "focal_mean": 0.187,
+          "lam_L_fkd": 0.019465
+        },
+        {
+          "L_cls": 0.490271,
+          "epoch": 19,
+          "focal_gt_0.5": 0.070588,
+          "focal_mean": 0.171292,
+          "lam_L_fkd": 0.017864
+        },
+        {
+          "L_cls": 0.483566,
+          "epoch": 20,
+          "focal_gt_0.5": 0.076471,
+          "focal_mean": 0.1689,
+          "lam_L_fkd": 0.017798
+        },
+        {
+          "L_cls": 0.454176,
+          "epoch": 21,
+          "focal_gt_0.5": 0.070588,
+          "focal_mean": 0.156423,
+          "lam_L_fkd": 0.017102
+        },
+        {
+          "L_cls": 0.441748,
+          "epoch": 22,
+          "focal_gt_0.5": 0.052941,
+          "focal_mean": 0.151605,
+          "lam_L_fkd": 0.016357
+        }
+      ],
+      "n_memory": 170,
+      "n_old": 13,
+      "s": {
+        "mean_row_entropy": 2.544713,
+        "mean_row_max": 0.10017,
+        "uniform_entropy": 2.564949,
+        "uniform_max": 0.076923
+      },
+      "task": 2,
+      "teacher": {
+        "any_requires_grad": false,
+        "eval_mode": true,
+        "hash_after": "d370d5f14b68b07f",
+        "hash_before": "d370d5f14b68b07f",
+        "snapshot_hash_at_end_of_prev_task": "d370d5f14b68b07f",
+        "snapshot_of_task": 1
+      },
+      "weighting": "s * focal (Eqs. 10-11)"
+    }
+  ],
+  "tau2": 0.5
+}
