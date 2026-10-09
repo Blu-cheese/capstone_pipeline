@@ -177,6 +177,20 @@ def _entropy_rows(p: np.ndarray) -> np.ndarray:
     return -(p * np.log(np.clip(p, 1e-300, None))).sum(axis=1)
 
 
+def resolve_feature_rows(track: str, class_names: Dict[int, str],
+                         X_task: np.ndarray) -> np.ndarray:
+    """
+    task_data row -> row of the full feature matrix. Mirrors
+    harness._track_train_data's row filter and checks the result.
+    """
+    feats = build_features(config.CORPUS)
+    kept = [DIALOGRE_RELATIONS.index(class_names[i]) for i in sorted(class_names)]
+    y_full = feats["y_teacher"] if track == "teacher" else feats["y_gold"]
+    rows = np.flatnonzero(np.isin(y_full, kept))
+    assert np.array_equal(feats["X"][rows], X_task), "feature row map is wrong"
+    return rows
+
+
 # -------------------------------------------------------------- regimes
 
 class ReplayRegime(NaiveRegime):
@@ -189,12 +203,23 @@ class ReplayRegime(NaiveRegime):
     with the last partial batch kept, patience 5, cap 120, early stopping on
     GOLD dev macro-F1 over all seen relations (dev under the seen mask). The
     pre-replay model is not a candidate, mirroring new-task training.
+
+    schedule="fixed" is the §4.4 ablation (v4): the replay stage runs exactly
+    config.REPLAY_FIXED_EPOCHS epochs (CEAR's 10) with no dev-based selection
+    and keeps the final weights. Dev F1 is still logged, never used. The
+    regime's name gains a "-fixed10" suffix so run metadata can't confuse it
+    with a primary run.
     """
     name = "replay"
 
     def __init__(self, seed: int, track: str, dev: Optional[Dict] = None,
-                 feature_rows: Optional[np.ndarray] = None):
+                 feature_rows: Optional[np.ndarray] = None,
+                 schedule: str = "early_stop"):
         assert track in ("teacher", "gold"), track
+        assert schedule in ("early_stop", "fixed"), schedule
+        self.schedule = schedule
+        if schedule == "fixed":
+            self.name = f"{type(self).name}-fixed{config.REPLAY_FIXED_EPOCHS}"
         self.seed, self.track = seed, track
         if dev is None:
             dev = build_eval_sets(seed)["dev"]
@@ -209,12 +234,15 @@ class ReplayRegime(NaiveRegime):
         self.replay_log: List[dict] = []
         self.pre_replay_hash: Dict[int, str] = {}   # lets tests prove the FKD
         self.stage = "new_task"                     # snapshot comes AFTER replay
+        self.last_epoch_hash: Dict[int, str] = {}   # model after the last replay epoch
+        self.post_replay_hash: Dict[int, str] = {}  # model the stage hands back
 
     # ---- harness hook ------------------------------------------------
 
     def after_task(self, t: int, model: Student, task_data: TaskData) -> None:
         if self.feature_rows is None:
-            self.feature_rows = self._resolve_feature_rows(task_data)
+            self.feature_rows = resolve_feature_rows(self.track, self.class_names,
+                                                     task_data.X)
         Z = task_data.X[:, ENTITY_COLS]
         new = task_data.task_classes[t]
         assert not set(new) & set(self.memory), "memory is selected once per relation"
@@ -266,12 +294,14 @@ class ReplayRegime(NaiveRegime):
         optimizer = torch.optim.Adam(model.parameters(),
                                      lr=config.LEARNING_RATE,
                                      weight_decay=config.WEIGHT_DECAY)
+        fixed = self.schedule == "fixed"
+        n_epochs = config.REPLAY_FIXED_EPOCHS if fixed else config.MAX_EPOCHS_PER_TASK
         best_f1, best_state, best_epoch, patience = -1.0, None, -1, 0
-        stop_reason = "epoch_cap"
+        stop_reason = f"fixed_schedule({n_epochs})" if fixed else "epoch_cap"
         epochs: List[dict] = []
 
         self.stage = "replay"
-        for epoch in range(config.MAX_EPOCHS_PER_TASK):
+        for epoch in range(n_epochs):
             model.train()
             perm = torch.randperm(len(Xm))
             sums: Counter = Counter()
@@ -296,11 +326,14 @@ class ReplayRegime(NaiveRegime):
                      "dev_macro_f1_seen": round(dev_f1, 6)}
             if "lam_L_fkd" in sums:
                 entry["lam_L_fkd"] = round(sums["lam_L_fkd"] / len(Xm), 6)
+            if "focal_sum" in sums:
                 entry["focal_mean"] = round(sums["focal_sum"] / len(Xm), 6)
                 entry["focal_gt_0.5"] = round(sums["focal_gt_half"] / len(Xm), 6)
             epochs.append(entry)
             self.replay_log.append(entry)
 
+            if fixed:
+                continue    # no dev-based selection: dev F1 above is logged only
             if dev_f1 > best_f1:
                 best_f1, best_epoch, patience = dev_f1, epoch, 0
                 best_state = {k: v.clone() for k, v in model.state_dict().items()}
@@ -310,27 +343,25 @@ class ReplayRegime(NaiveRegime):
                     stop_reason = f"early_stop(patience={config.EARLY_STOPPING_PATIENCE})"
                     break
         self.stage = "new_task"
+        self.last_epoch_hash[t] = param_hash(model)
 
-        if config.RESTORE_BEST_WEIGHTS and best_state is not None:
+        if not fixed and config.RESTORE_BEST_WEIGHTS and best_state is not None:
             model.load_state_dict(best_state)
-        self.replay_log.append({"task": t, "stop_reason": stop_reason,
-                                "best_epoch": best_epoch,
-                                "best_dev_macro_f1_seen": round(best_f1, 6),
-                                "n_memory": int(len(rows)),
-                                "n_dev_seen": int(len(dev_idx))})
+        self.post_replay_hash[t] = param_hash(model)
+        stop = {"task": t, "stop_reason": stop_reason,
+                "n_memory": int(len(rows)), "n_dev_seen": int(len(dev_idx))}
+        if fixed:
+            stop.update({"kept_epoch": n_epochs - 1,
+                         "kept_dev_macro_f1_seen": epochs[-1]["dev_macro_f1_seen"]})
+        else:
+            stop.update({"best_epoch": best_epoch,
+                         "best_dev_macro_f1_seen": round(best_f1, 6),
+                         "kept_epoch": best_epoch,
+                         "kept_dev_macro_f1_seen": round(best_f1, 6)})
+        self.replay_log.append(stop)
         self._finish_stage(t, ctx, epochs)
 
     # ---- bookkeeping ---------------------------------------------------
-
-    def _resolve_feature_rows(self, task_data: TaskData) -> np.ndarray:
-        """Mirror harness._track_train_data's row filter, and check it."""
-        feats = build_features(config.CORPUS)
-        kept = [DIALOGRE_RELATIONS.index(self.class_names[i])
-                for i in sorted(self.class_names)]
-        y_full = feats["y_teacher"] if self.track == "teacher" else feats["y_gold"]
-        rows = np.flatnonzero(np.isin(y_full, kept))
-        assert np.array_equal(feats["X"][rows], task_data.X), "feature row map is wrong"
-        return rows
 
     def memory_payload(self) -> Dict:
         return {
@@ -360,6 +391,7 @@ class FKDRegime(ReplayRegime):
     a task and s is precomputed once per replay stage.
     """
     name = "fkd"
+    weighting = "s * focal (Eqs. 10-11)"
 
     def __init__(self, seed: int, track: str, lam: float = config.FKD_LAMBDA,
                  **kw):
@@ -432,6 +464,7 @@ class FKDRegime(ReplayRegime):
 
         self.diagnostics.append({
             "task": t,
+            "weighting": self.weighting,
             "n_old": n_old,
             "n_memory": int(len(ctx["rows"])),
             "s": {"mean_row_entropy": round(float(_entropy_rows(s).mean()), 6),
@@ -440,7 +473,7 @@ class FKDRegime(ReplayRegime):
                   "uniform_max": round(1.0 / n_old, 6)},
             "analogous_pairs_mean_s": pairs,
             "epochs": [{k: e[k] for k in ("epoch", "L_cls", "lam_L_fkd",
-                                           "focal_mean", "focal_gt_0.5")}
+                                           "focal_mean", "focal_gt_0.5") if k in e}
                        for e in epochs],
             "teacher": {"snapshot_of_task": t - 1,
                         "hash_before": ctx["teacher_hash_before"],
@@ -460,7 +493,31 @@ class FKDRegime(ReplayRegime):
         self.snapshot_hash[t] = param_hash(model)
 
 
-REGIMES = {"replay": ReplayRegime, "fkd": FKDRegime}
+class KDRegime(FKDRegime):
+    """
+    Plain KD (PHASE6_7_SPEC §4.4): FKD with w ≡ 1. Same teacher snapshot,
+    same Eq. 13 soft-target cross entropy over OLD, same lambda, but every
+    sample-relation pair is weighted 1 instead of s * focal - which separates
+    "distillation helps" from "the weighting helps".
+
+    Routed through the verified fkd_loss with s = 1 and gamma = 0, so
+    (1 - P)^0 = 1 and w = 1 exactly. s is still computed for the diagnostics
+    file but never enters the loss ("weighting": "none (w = 1)").
+    """
+    name = "kd"
+    weighting = "none (w = 1)"
+
+    def _replay_loss(self, l_cls, logits, Xb, yb, idx, ctx):
+        with torch.no_grad():
+            teacher_logits = self.teacher(Xb)                    # theta_{k-1}, eval mode, frozen
+        ones = torch.ones_like(ctx["s"][idx])                    # w = 1: no s factor
+        l_kd, _ = fkd_loss(logits, teacher_logits, ones, yb,     # gamma = 0: no focal factor
+                           ctx["old_idx"], ctx["seen_mask"], gamma=0.0)
+        loss = l_cls + self.lam * l_kd
+        return loss, {"lam_L_fkd": (self.lam * l_kd).item() * len(idx)}
+
+
+REGIMES = {"replay": ReplayRegime, "fkd": FKDRegime, "kd": KDRegime}
 
 
 # -------------------------------------------------------------- outputs

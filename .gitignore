@@ -28,3 +28,6 @@ output/*/
 .vscode/
 .idea/
 *.swp
+
+# Phase 7 per-run predictions are results, not caches (PHASE6_7_SPEC §4.1)
+!results/*/predictions.npz

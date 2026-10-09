@@ -356,6 +356,104 @@ def test_replay_runs_on_full_seen_memory():
           f"{[e['n_memory'] for e in stops]} vs {[10 * n for n in seen_counts]}")
 
 
+def test_kd_hand_calculation():
+    """
+    Plain KD (§4.4) = FKD with w = 1, through KDRegime's real _replay_loss.
+    Same toy as test 1, every weight 1:
+      L = -(1/2) sum_i sum_{j in OLD} softmax(t_i[OLD])_j * log softmax(z_i[OLD])_j
+    Evaluated with Python's math module: 0.9582440804506892.
+    """
+    expected = 0.9582440804506892
+    d = torch.float64
+    z = torch.tensor([[2.0, -2.0, 1.0, 0.0], [0.0, 1.0, -1.0, 2.0]], dtype=d)
+    t = torch.tensor([[1.0, 5.0, 0.0, -1.0], [-1.0, 5.0, 0.0, 1.0]], dtype=d)
+    kd = object.__new__(RG.KDRegime)          # no data loading; just the loss path
+    kd.lam, kd.teacher = 1.0, (lambda X: t)
+    ctx = {"s": torch.rand(2, 3, dtype=d),    # must be ignored by KD
+           "old_idx": torch.tensor([0, 2, 3]),
+           "seen_mask": torch.ones(4, dtype=torch.bool)}
+    loss, _ = kd._replay_loss(torch.tensor(0.0, dtype=d), z, None,
+                              torch.tensor([0, 1]), torch.tensor([0, 1]), ctx)
+    check("kd: L_kd through KDRegime matches the hand literal (w = 1)",
+          abs(loss.item() - expected) < 1e-12, f"got {loss.item()!r}")
+
+
+_FIXED = {}
+
+
+def fixed_runs():
+    """Fixed-schedule replay, FKD(lambda=0) and KD on the synthetic data."""
+    if _FIXED:
+        return _FIXED
+    feats, ev = _synthetic_data()
+    rows = np.arange(len(feats["X"]))
+    root = Path(tempfile.mkdtemp(prefix="test_fkd_fixed_"))
+    with synthetic_harness(feats, ev):
+        for key, make in (
+                ("replay", lambda: ReplayRegime(1234, "gold", dev=ev["dev"], feature_rows=rows, schedule="fixed")),
+                ("fkd0", lambda: FKDRegime(1234, "gold", lam=0.0, dev=ev["dev"], feature_rows=rows, schedule="fixed")),
+                ("kd", lambda: RG.KDRegime(1234, "gold", dev=ev["dev"], feature_rows=rows, schedule="fixed"))):
+            reg = make()
+            out = run_sequential("gold", 1234, reg, results_root=root, verbose=False)
+            _FIXED[key] = (reg, json.loads((out / "R_matrix.json").read_text(encoding="utf-8")))
+    return _FIXED
+
+
+def test_fixed_schedule():
+    fx = fixed_runs()
+    rep = fx["replay"][0]
+    check("fixed: run name carries the schedule", rep.name == "replay-fixed10", rep.name)
+    for t in (1, 2):
+        n = sum(1 for e in rep.replay_log if e.get("task") == t and "epoch" in e)
+        check(f"fixed: task {t} replay stage ran exactly 10 epochs", n == 10, str(n))
+        check(f"fixed: task {t} keeps the final weights (no dev-based restore)",
+              rep.post_replay_hash[t] == rep.last_epoch_hash[t])
+    stops = [e for e in rep.replay_log if "stop_reason" in e]
+    check("fixed: stop reason says fixed_schedule(10)",
+          all(e["stop_reason"] == "fixed_schedule(10)" for e in stops))
+    check("fixed: FKD lambda=0 R matrix bit-identical to fixed replay",
+          all(fx["replay"][1][k] == fx["fkd0"][1][k] for k in R_KEYS))
+    check("fixed: KD diagnostics say w = 1",
+          all(d["weighting"] == "none (w = 1)" for d in fx["kd"][0].diagnostics))
+    # The primary schedule must still restore the best epoch somewhere.
+    prim = synthetic_runs()["replay"][0]
+    check("primary: early-stop path still restores best weights",
+          any(prim.post_replay_hash[t] != prim.last_epoch_hash[t] for t in (1, 2)))
+
+
+def test_recorder():
+    """run_all's Recorder must not perturb training, and must reproduce R."""
+    from continual.run_all import Recorder, run_metrics
+    feats, ev = _synthetic_data()
+    rows = np.arange(len(feats["X"]))
+    names = {i: r for r, i in class_index(load_split(1234)).items()}
+    root = Path(tempfile.mkdtemp(prefix="test_fkd_rec_"))
+    with synthetic_harness(feats, ev):
+        out_plain = run_sequential("gold", 1234, NaiveRegime(), results_root=root, verbose=False)
+        rec = Recorder(NaiveRegime(), "gold", 1234, ev["test"], names,
+                       feature_rows=rows, feats=feats)
+        out_rec = run_sequential("gold", 1234, rec, results_root=root, verbose=False)
+    a = json.loads((out_plain / "R_matrix.json").read_text(encoding="utf-8"))
+    b = json.loads((out_rec / "R_matrix.json").read_text(encoding="utf-8"))
+    check("recorder: wrapped naive R matrix bit-identical to unwrapped",
+          all(a[k] == b[k] for k in R_KEYS))
+    try:
+        m = run_metrics(b, rec, b["task_classes"], degenerate=1, n_classes=len(names))
+        ok = m["R_rederived_from_predictions"] == "match"
+    except RuntimeError as e:
+        ok, m = False, str(e)
+    check("recorder: R re-derived from recorded predictions matches the harness", ok)
+    check("recorder: one prediction set per task",
+          len(rec.test_pred) == 3 and len(rec.train_pred) == 3)
+    rec.save(root)
+    z = np.load(root / "predictions.npz")
+    check("recorder: probability rows sum to 1 and unseen classes get 0 after task 0",
+          np.allclose(z["test_prob"].sum(axis=2), 1, atol=1e-5)
+          and float(z["test_prob"][0][:, [c for c in range(17)
+                    if c not in H.task_of_class(load_split(1234)) or
+                    H.task_of_class(load_split(1234))[c] != 0]].max()) == 0.0)
+
+
 def test_7_naive_untouched():
     root = Path(tempfile.mkdtemp(prefix="test_fkd_naive_"))
     for (track, seed), ref_dir in NAIVE_REFERENCE.items():

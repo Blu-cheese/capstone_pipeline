@@ -108,6 +108,12 @@ FKD_LAMBDA_RANGE = (0.5, 1.5)
 REPLAY_MEMORY_PER_RELATION = 10   # m, Zhao et al. main experiment and Appendix B
 REPLAY_SELECTION = "kmeans"       # Zhao §4.3: per relation, nearest member of each cluster
 
+# Fixed-schedule ablation only (PHASE6_7_SPEC §4.4, v4): the replay stage runs
+# exactly this many epochs with no dev-based selection, keeping the final
+# weights - CEAR's schedule (main.py --epoch_num_memory default 10). The
+# primary runs early-stop instead. Don't try other values.
+REPLAY_FIXED_EPOCHS = 10
+
 
 def summary() -> dict:
     """Everything a run should record in its config.json."""
