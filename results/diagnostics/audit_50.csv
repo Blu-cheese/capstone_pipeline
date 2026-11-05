@@ -1,0 +1,730 @@
+row_id,dialogue_id,pair_index,dialogue_text,subject,subject_type,object,object_type,gold_label,teacher_label,gold_relations_original,reverse_pair_gold,stratum,teacher_defensible,note
+11,train_0001,6,"Speaker 1: So, eh... it's probably gonna be hard for you to leave Boston, huh?
+Speaker 2: Actually, I'm kinda happy to be leaving... I just broke up with someone.
+Speaker 1: Ooh... so sad... Still, it can't be easy for you to leave Harvard? Especially after working alongside a Nobel Prize winner like Albert Wintermeyer?
+Speaker 2: Actually, Alby is the guy I broke up with.
+Speaker 1: You... you dated Albert Wintermeyer?
+Speaker 2: Yeah...
+Speaker 1: ... And you called him Alby!? I mean that's like... like calling Albert Einstein... er... Alby...
+Speaker 2: Yeah, well, he is a brilliant man.
+Speaker 1: Eh, you think? I mean, you went out with a guy who improved the accuracy of radiocarbon dating by a factor of 10!
+Speaker 2: Yes! And while that is everything one looks for in a boyfriend, he had a lot of issues...
+Speaker 1: Oh! like what?! Oh I'm sorry, I don't mean to pry... it's just that this must be what regular people experience when they watch ""Access Hollywood"".
+Speaker 2: Ok, you want the dirt? Alby was seriously insecure. I mean, he was really intimidated by the guy I dated before him.
+Speaker 1: Who is intimidating to a guy who won the Nobel Prize?
+Speaker 2: A guy who won two.
+Speaker 1: Two? Wha...? Don't tell me you dated Benjamin Hobart
+Speaker 2: Yeah... for three years.
+Speaker 1: Oh my God! Have you ever been in a relationship with someone who hasn't won the Nobel Prize?
+Speaker 2: ... no... bu but there was my first boyfriend Billy.
+Speaker 1: Oh yeah? no, no Nobel Prizes for him?
+Speaker 2: No, but he did just win the McArthur genius grant.
+Speaker 1: Huh... huh... what a loser! Some more wine?",Albert Wintermeyer,PER,Nobel Prize winner,STRING,per:title,per:works,per:title,,per:works,,
+85,train_0012,5,"Speaker 1: I don't know what else to say.
+Speaker 2: Well that works out good, because I'm not listening.
+Speaker 1: I feel terrible, I really do.
+Speaker 2: Oh, I'm sorry, did my back hurt your knife?
+Speaker 1: Rachel, say that I'm friends with her, we spend some time together. Is that so terrible?
+Speaker 2: Yes.
+Speaker 1: It's that terrible?
+Speaker 2: Yes. Monica, you don't get it. It's bad enough that she's stolen the guy who might actually be the person that I am supposed to be with, but now, she's actually, but now she's actually stealing you.
+Speaker 1: Me? What are you talking about? Nobody could steal me from you. I mean, just because I'm friends with her doesn't make me any less friends with you. I mean, you're my...We're, we're...Oh, I love you.
+Speaker 2: I love you too.
+Speaker 3: You guys, um I know that this really doesn't have anything to do with me, but um I love you guys too. Oh, I really needed that.
+Speaker 1: Look, I know that you're in a place right now where you really need to hate Julie's guts, but she didn't do anything wrong. I mean, she was just a girl who met a guy, and now they go out. I really think that if you gave her a chance, you'd like her. Would you just give that a chance, for me?
+Speaker 2: I'd do anything for you, you know that.
+Speaker 1: I'd do anything for you.
+Speaker 3: Wait, wait, wait, wait!",Speaker 3,PER,Speaker 2,PER,per:positive_impression,per:friends,per:positive_impression,,other,,
+192,train_0038,0,"Speaker 1: Hey hey hey! She's on!
+Speaker 2: Ah! Nora Bing!
+Speaker 3: ...Now what is this about you-you being arrested i-in London? What is that all about?
+Speaker 1: Your mom was arrested?
+Speaker 4: Shhh, busy beaming with pride.
+Speaker 5: ...This is kind of embarrassing, but occasionally after I've been intimate with a man...
+Speaker 4: Now why would she say that's embarrassing?
+Speaker 6: Shhh.
+Speaker 5: ...I just get this craving for Kung Pow Chicken.
+Speaker 4: THAT'S TOO MUCH INFORMATION!!
+Speaker 3: Alright, so now you're doing this whole book tour thing, how is that going?
+Speaker 5: Oh, fine. I'm leaving for New York tomorrow, which I hate- but I get to see my son, who I love...
+Speaker 6: Awww!
+Speaker 4: This is the way that I find out. Most moms use the phone.",Speaker 5,PER,Nora Bing,PER,per:alternate_names,per:other_family,per:alternate_names,,per:other_family,,
+199,train_0039,2,"Speaker 1: You’ve never asked a guy out?!!
+Speaker 2: No. Have you?
+Speaker 1: Thousands of times!! That doesn’t make me sound too good does it?
+Speaker 2: I don’t even know how I would go about it.
+Speaker 3: Oh-oh-oh-oh, how I do it is, I look a woman up and down and say, ""Hey, how you doin’?""
+Speaker 1: Oh, please!
+Speaker 3: Hey, how you doin’?
+Speaker 2: You know what, I’m gonna do that, I’m gonna call him up, and I’m gonna ask him out. I can do that. Ask him out. How you doin’? Hi! Joshua? It’s Rachel Green from Bloomingdale’s. Yeah, umm, I was wondering if you umm, if you umm, left your wallet at the store today? Well, we found a wallet, and we—the license? Well, that is a good idea! Uh, well, let’s see here this says this license belongs to a uh, uh, belongs to a mister uh, Pheebs, and umm, yeah, so sorry to bother you at home. I’ll see you tomorrow. Bye. You’ve done that a thousand times?
+Speaker 1: I’ve never done that.
+Speaker 2: Ohh, God, I just got so nervous that he would say no.
+Speaker 3: Well, you gotta give him something that he can’t say no too. Like uh, Knicks tickets! Invite the guy to a Knicks game, you’re guaranteed he’ll say yes!
+Speaker 2: Really?! You think that will work?
+Speaker 3: Absolutely! And if it doesn’t, can I get the extra ticket?
+Speaker 4: Rachel, one of your customers seems to have left his billfold. A Joshua Bergen.
+Speaker 2: Really?
+Speaker 4: Will you call him?
+Speaker 2: Yes! I will! Absolutely! Hello, Rachel. Hi, Joshua. I left my wallet here on purpose. Really? Yes, I just wanted to see you again. Oh, I’m glad. Rachel, I’d like to say something to you. Yes? How you doin’?",Speaker 2,PER,Joshua,PER,per:positive_impression,per:girl/boyfriend,per:positive_impression,,other,,
+233,train_0044,5,"Speaker 1: Guess whose middle name is Muriel.
+Speaker 2: Chandler M. Bing?
+Speaker 1: Yeah-ha!
+Speaker 2: Oh my God.
+Speaker 1: I’m sorry about your date.
+Speaker 2: Oh it’s all right. I’m guess I’m just done with the whole dating thing. It’s one more thing in my life that’s suddenly completely different. This is hard.
+Speaker 1: Yeah I know. On the other hand in um, in about seven months you’re gonna have something that you’re gonna love more than any guy you’ve ever gone out with. Just wait. Wait until uh, wait until the first time your baby grabs your finger. You have no idea.
+Speaker 2: Thanks sweetie.
+Speaker 1: You wanna, you wanna grab some coffee?
+Speaker 2: Oh no, I think I’m gonna go home and eat ten candy bars.
+Speaker 1: Hey, I thought I cheered you up.
+Speaker 2: Oh you did, there are twenty in here.
+Speaker 1: Right. Good night.
+Speaker 2: Good night.",Speaker 1,PER,sweetie,STRING,per:alternate_names,per:positive_impression,per:alternate_names,,other,,
+270,train_0051,0,"Speaker 1: Happy Thanksgiving!
+Speaker 2: You too!
+Speaker 1: Anything I can do to help?
+Speaker 2: Actually there is. Chandler usually helps me with this, but he’s really into the game so I don’t want to bother him. Could you help me fold these napkins?
+Speaker 1: Sure!
+Speaker 2: I’m gonna go across the hall to check on the yams.
+Speaker 1: Okay.
+Speaker 2: No! No! No! No sweetie! No! Not like that! We’re not at a barn dance. You’ve gotta—you wanna fold them like swans. Like I showed you at Christmas time, remember?
+Speaker 1: Yeah, it all just came screaming back to me. So how’s the game?
+Speaker 3: I have no idea.
+Speaker 1: What?
+Speaker 3: Yeah! I’m just pretending to watch the game so I don’t have to help out with stuff.
+Speaker 1: I don’t believe you! That is…brilliant! And Monica has no idea?
+Speaker 3: Nope! Every once and a while I just scream stuff at the TV.
+Speaker 2: Is your team winning hon?
+Speaker 3: Yeah! Anderson just scored again! There’s no Anderson.
+Speaker 1: Well I want to get in on this. Hey Mon? I don’t think I can help you after all, I didn’t realize this game was on.
+Speaker 2: Oh, I didn’t know you liked football.
+Speaker 1: Well normally I don’t, but y’know……Green Bay is playing.
+Speaker 2: You like Green Bay?
+Speaker 1: Well it’s only like my favorite bay!",Speaker 2,PER,Mon,PER,per:alternate_names,per:other_family,per:alternate_names,,per:other_family,,
+368,train_0070,0,"Speaker 1: Wow! I have never had such a healthy break-up! She was such a grown-up about it! She didn’t seem too immature for me! Did I just make a huge mistake?
+Speaker 2: Ross! Wait!
+Speaker 1: Elizabeth, thank God! I was just thinking about…
+Speaker 2: You suck!!
+Speaker 1: What?!
+Speaker 1: Okay, break-up’s still on!",Speaker 2,PER,Speaker 1,PER,per:girl/boyfriend,per:negative_impression,per:girl/boyfriend,per:girl/boyfriend,per:negative_impression,,
+383,train_0072,2,"Speaker 1: Morning, roomy!
+Speaker 2: Hey! You remembered to put clothes on this morning.
+Speaker 1: Fifth day's a charm.
+Speaker 2: Oh, Joey, it's so great to be back here. I gotta tell you, you're making it so easy on me and Emma.
+Speaker 1: Hey, it's great having you back. You know, stay as long as you want, and when does she stop crying all night?
+Speaker 3: Hey, you're not naked! So hey, Raych, when will we expect to see you tonight?
+Speaker 2: Well, I'll probably be back to pick her up around six, but she's in the bedroom all ready to go. But she did actually fall back to sleep, so...
+Speaker 1: She's probably exhausted from all that adorable screaming she did last night.
+Speaker 2: Bye!",Speaker 2,PER,roomy,STRING,per:alternate_names,per:roommate,per:alternate_names,,other,,
+416,train_0078,4,"Speaker 1: Yeah I just... wanted to call and say hey.
+Speaker 2: Well OK then. Was that the oven timer?
+Speaker 1: That's right my friend. It's time for...
+Speaker 3: Baywatch!!
+Speaker 2: Oh, can you believe they gave Stephanie skin cancer?
+Speaker 1: I still can't believe they promoted her to lieutenant.
+Speaker 2: Naa, you're just sayin' that 'cause you're in love with Yasmine Blepe.
+Speaker 1: Well, how could anyone not be in love with Yasmine Blepe?
+Speaker 2: Hey, hey, they're runnin'
+Speaker 1: See, this is the brilliance of the show. I say always keep them running. All the time, running. Run. Run Yasmine, run like the wind.",Speaker 1,PER,Yasmine Blepe,PER,per:positive_impression,per:girl/boyfriend,per:positive_impression,,other,,
+431,train_0082,3,"Speaker 1: Oh, isn't that adorable? Joey is afraid of the tarantula.
+Speaker 2: Ah, yeah, he's so adorable, God, he's just so much fun, Joey is the best, I'm glad you're having so much fun here.
+Speaker 1: What? Wait-wait a minute, what? Phoebe, what's the matter?
+Speaker 2: Our apartment is ready.
+Speaker 1: And that makes you angry because…
+Speaker 2: Because you would rather live here with Joey.
+Speaker 1: Where did you get that?
+Speaker 2: Monica and Chandler said that you were having so much fun here. And apparently no amount of drums or tarantulas is gonna change that.
+Speaker 1: Phoebe?
+Speaker 2: Hm?
+Speaker 1: Did you get all this stuff for Joey to try and drive me out of the apartment? Honey, if you wanted to do that, you might as well just gotten him a fish, you know how fish freaked me out!
+Speaker 2: Fish!
+Speaker 1: It wouldn't have mattered anyway, Phoebe, you and I are, are gonna live together, we're roommates; that's the deal.
+Speaker 2: Yes, but I wanted you to want to live with me, but okay, if you're having so much fun over here…
+Speaker 1: Oh, it's so much more fun with you.
+Speaker 2: We did have fun, didn't we?
+Speaker 1: We did!
+Speaker 2: Oh, anyway, they say, if we want, we can see it tonight.
+Speaker 1: Oh, I would love to!
+Speaker 2: Yay, okay!",Speaker 1,PER,Speaker 2,PER,per:roommate,per:friends,per:roommate,per:roommate,other,,
+440,train_0083,3,"Speaker 1: What that Rachel did to her life.... We ran into her parents at the club, they were not playing very well.
+Speaker 2: I'm not gonna tell you what they spent on that wedding... but forty thousand dollars is a lot of money!
+Speaker 1: Well, at least she had the chance to leave a man at the altar...
+Speaker 3: What's that supposed to mean?
+Speaker 1: Nothing! It's an expression.
+Speaker 3: No it's not.
+Speaker 2: Don't listen to your mother. You're independent, and you always have been! Even when you were a kid... and you were chubby, and you had no friends, you were just fine! And you would read alone in your room, and your puzzles...
+Speaker 2: Look, there are people like Ross who need to shoot for the stars, with his museum, and his papers getting published. Other people are satisfied with staying where they are- I'm telling you, these are the people who never get cancer.
+Speaker 2: ...And I read about these women trying to have it all, and I thank God 'Our Little Harmonica' doesn't seem to have that problem.",Speaker 3,PER,Speaker 2,PER,per:parents,per:other_family,per:parents,per:children,per:other_family,,
+517,train_0096,0,"Speaker 1: You think you can knock up my daughter and then not marry her?! I’m gonna kill you!!
+Speaker 2: Y’know this is actually not a great time for me.
+Speaker 1: So? Come on! Explain yourself Geller! First you get my Rachel pregnant!
+Speaker 3: You got Rachel pregnant?!
+Speaker 2: Who did?!
+Speaker 1: You did!
+Speaker 2: Yes. Yes, yes I did. But-but it was, it was just a one night thing. It meant nothing.
+Speaker 1: Oh? Really? That’s what my daughter means to you? Nothing?
+Speaker 2: No! No sir umm, she means a lot to me. I mean, I care—I-I love Rachel.
+Speaker 3: What?!
+Speaker 2: Oh but not that way. I mean…I mean I’m not in love with her. I love her like a, like a friend.
+Speaker 1: Oh really? That’s how treat a friend? You get her in trouble and then refuse to marry her?
+Speaker 2: Hey! I offered to marry her!
+Speaker 3: Wh…
+Speaker 2: But I didn’t want to.
+Speaker 1: Well why not? So you can spend your time with this tramp?!
+Speaker 3: Tramp?!
+Speaker 2: I’m sorry. Dr. Green, Mona. Mona, Dr. Green.",Speaker 3,PER,tramp,STRING,per:alternate_names,per:negative_impression,per:alternate_names,,per:negative_impression,,
+524,train_0097,1,"Speaker 1: Excuse me, I-I couldn’t help overhearing, you’re marrying Chandler Bing?
+Speaker 2: Yeah that’s right.
+Speaker 1: Huh, good luck!
+Speaker 3: Aww, and good luck to you too! What a nice lady!",Speaker 2,PER,Chandler Bing,PER,per:girl/boyfriend,per:spouse,per:girl/boyfriend,per:girl/boyfriend,other,,
+545,train_0102,5,"Speaker 1: Hey, you guys are still gonna come visit me, right?
+Speaker 2: Oh yeah, you got the big TV. We'll be over there all the time. . . except when we are here.
+Speaker 3: I know you're just moving uptown but I'm really gonna miss you.
+Speaker 4: I know, how can you not be across the hall anymore.
+Speaker 5: Yeah, who's gonna eat all our food, and tie up our phone lines, and - is that my bra? What the hell you doin' with my bra?
+Speaker 1: Oh no-no, it's uh, it's not what you think. We uh, we used it to, you know, fling water balloons off the roof. Remember that, those junior high kids couldn't even get theirs across the street.
+Speaker 2: Yeah, I remember.
+Speaker 6: Hey, let's bring the rest of these down to the truck.
+Speaker 2: So, uhh, em, you want me to uh, give you a hand with the foosball table?
+Speaker 1: Naa, you keep it, you need the practice.
+Speaker 2: Thanks.
+Speaker 1: So, I guess this is it.
+Speaker 2: Yeah, right, yeah, I guess so.",Speaker 1,PER,Speaker 2,PER,per:roommate,per:friends,per:roommate,per:roommate,other,,
+553,train_0106,1,"Speaker 1: Would you look at them. Am I ever gonna find a boyfriend again? I gonna die an old maid.
+Speaker 2: You’re not gonna die an old maid, maybe an old spinster cook.
+Speaker 1: Thanks!
+Speaker 2: Hey now besides, if worst comes to worst, I’ll be your boyfriend.
+Speaker 1: Yeah right.
+Speaker 2: Why is that so funny?
+Speaker 1: You made a joke right? So I laughed.
+Speaker 2: Ha-ha-ha. A little to hard. What am I not ah, boyfriend material?
+Speaker 1: Well, no. You’re Chandler. Y'know, Chandler!
+Speaker 2: Okay, so we’ve established my name, and hit me. But theoretically y'know, I mean say we weren’t friends, say it’s a blind date. I show up at your door, and I’m like “Hey, nice to meet, ya. Hey, oh-hey.”
+Speaker 1: Well I’d probably be scared of a guy using a fake voice.",Speaker 2,PER,Speaker 1,PER,per:friends,per:girl/boyfriend,per:friends,per:friends,other,,
+645,train_0124,0,"Speaker 1: I can't imagine what he sees in her.
+Speaker 2: She actually makes me miss that pill-popping ex-wife of his. Oh, hello dear...
+Speaker 3: Hey, what's going on?
+Speaker 2: We were just chit-chatting. How's your friend?
+Speaker 3: A little better.
+Speaker 2: By the way, do you know who's moving back into town? Tom and Sue's daughter Jen.
+Speaker 1: You remember her Michael, she's lovely and... well-behaved and... single.
+Speaker 3: I'm not interested.
+Speaker 2: Oh, please darling, let's be honest. You can have all the... sailor fun you want with that one, but... let's be real...
+Speaker 3: All right, stop! You know, all Phoebe has done tonight is trying to get you to like her. And maybe that hasn't been clear all the time, but she did her best. And yeah... She's a little different than you are...
+Speaker 2: Michael, a pimp spit in her mouth!
+Speaker 3: So what? I mean if even I can get past that, it shouldn't bother you. And you don't have to like her. You just have to accept the fact that I do. I mean, if you even can't be civil to the woman I love...
+Speaker 2: The woman you what?
+Speaker 4: Yeah... The woman you what?
+Speaker 3: The woman I love...  I love you... Which is probably something I shouldn't say for the first time in front of my parents... and Tom and Sue...Who are by the way the most sinfully boring I've ever met in my life...
+Speaker 4: I love you too...
+Speaker 3: You do?
+Speaker 4: YEAH...! How great is this...?
+Speaker 3: Wanna get out of here?
+Speaker 4: Okay.
+Speaker 3: Mom, dad, thanks for dinner.
+Speaker 4: I had a great time. It was really top drawer. And here's something rich: thirteen bathrooms in this place... I threw up in the coat closet... Ta taaa...",Speaker 3,PER,Sue,PER,per:negative_impression,per:other_family,per:negative_impression,,per:other_family,,
+660,train_0124,17,"Speaker 1: I can't imagine what he sees in her.
+Speaker 2: She actually makes me miss that pill-popping ex-wife of his. Oh, hello dear...
+Speaker 3: Hey, what's going on?
+Speaker 2: We were just chit-chatting. How's your friend?
+Speaker 3: A little better.
+Speaker 2: By the way, do you know who's moving back into town? Tom and Sue's daughter Jen.
+Speaker 1: You remember her Michael, she's lovely and... well-behaved and... single.
+Speaker 3: I'm not interested.
+Speaker 2: Oh, please darling, let's be honest. You can have all the... sailor fun you want with that one, but... let's be real...
+Speaker 3: All right, stop! You know, all Phoebe has done tonight is trying to get you to like her. And maybe that hasn't been clear all the time, but she did her best. And yeah... She's a little different than you are...
+Speaker 2: Michael, a pimp spit in her mouth!
+Speaker 3: So what? I mean if even I can get past that, it shouldn't bother you. And you don't have to like her. You just have to accept the fact that I do. I mean, if you even can't be civil to the woman I love...
+Speaker 2: The woman you what?
+Speaker 4: Yeah... The woman you what?
+Speaker 3: The woman I love...  I love you... Which is probably something I shouldn't say for the first time in front of my parents... and Tom and Sue...Who are by the way the most sinfully boring I've ever met in my life...
+Speaker 4: I love you too...
+Speaker 3: You do?
+Speaker 4: YEAH...! How great is this...?
+Speaker 3: Wanna get out of here?
+Speaker 4: Okay.
+Speaker 3: Mom, dad, thanks for dinner.
+Speaker 4: I had a great time. It was really top drawer. And here's something rich: thirteen bathrooms in this place... I threw up in the coat closet... Ta taaa...",Jen,PER,Sue,PER,per:parents,per:other_family,per:parents,per:children,per:other_family,,
+780,train_0151,0,"Speaker 1: Oh, no-
+Speaker 2: Sorry- Hi, I'm Dorothy's daughter.
+Speaker 1: Hi, I'm Chandler, and I have no idea who Dorothy is",Dorothy,PER,Speaker 2,PER,per:children,per:parents,per:children,per:parents,other,,
+781,train_0151,1,"Speaker 1: Oh, no-
+Speaker 2: Sorry- Hi, I'm Dorothy's daughter.
+Speaker 1: Hi, I'm Chandler, and I have no idea who Dorothy is",Speaker 2,PER,Dorothy,PER,per:parents,per:children,per:parents,per:children,other,,
+810,train_0155,2,"Speaker 1: I'm really gonna miss this apartment. Y'know, Ben-Ben took his first steps right over there.
+Speaker 2: Ohh. Hey, remember when I ran into this thing and it kinda knocked me out a little?
+Speaker 1: I loved this place! To tell you the truth, I wish I didn't have to move.
+Speaker 2: Uhh, are you saying that you're not entirely happy about this?
+Speaker 1: Well, I mean if uh, if Emily gave me a choice…
+Speaker 2: You do have a choice!! Ross, why are you listening to her?! Are you, are you crazy?!
+Speaker 1: Why?
+Speaker 2: It's not right what Emily wants you to do! She is totally-Owww!! Stop pinching me! Look, now you guys said I only had to keep my mouth shut as long as Ross was happy, right? Well he just told me that he's not entirely happy.
+Speaker 1: What's going on?
+Speaker 2: We all hate Emily!
+Speaker 3: Nooo!!
+Speaker 4: No, Ross, we do not hate Emily. We-we just, we just think that you're having to sacrifice a whole lot to make her happy.
+Speaker 2: Yeah!
+Speaker 5: Look, we just think that maybe she's being a little unreasonable.
+Speaker 2: Yes! Yes! Unreasonable!
+Speaker 1: Unreasonable? How about we have this conversation when one of you guys gets married! You have no idea what it takes to make a marriage work! All right, it's about compromise! Do you always like it? No! Do you do it? Yes! Because it's not all laughing, happy, candy in the sky, drinking coffee at Central Perk all the time! It's real life, okay? It's what grown-ups do!
+Speaker 3: I think he's right. You guys hang out at the coffeehouse way too much.",Emily,PER,Speaker 1,PER,per:spouse,per:negative_impression,per:spouse,per:spouse,per:negative_impression,,
+906,train_0174,0,"Speaker 1: Hey!
+Speaker 2: Hi!
+Speaker 1: Oh you know uh Kash, really liked you the other day. He said he thought you were charming.
+Speaker 2: I thought I was a complete idiot.
+Speaker 1: Hey, I’m with you. He even asked me if I thought you’d go out with him.
+Speaker 2: Oh! Oh, I think I’m gonna throw up a little bit. What did you say?
+Speaker 1: I said no.
+Speaker 2: What?!
+Speaker 1: What? I…I just figured since you’re pregnant you’re not gonna be seeing people.
+Speaker 2: Okay Joey, first of all Kash Ford is not people. Second of all, what did he say when you told him I was pregnant?
+Speaker 1: I didn’t tell him. I didn’t know if you were telling people. This is back when I thought Kash was still people.
+Speaker 2: Good-good, don’t tell him. Don’t tell him. Just have him call me okay?
+Speaker 1: Rach look, I really don’t think that’s such a great…
+Speaker 2: Okay, you go do it! I’ll come back to that set! I’ll meet more actors! I’ll meet ‘em all!",Speaker 2,PER,Kash,PER,per:positive_impression,per:girl/boyfriend,per:positive_impression,per:positive_impression,other,,
+920,train_0176,4,"Speaker 1: ...And so then I realized. All this stuff I had been doing. proposing to Joshua, lying to Ross about why I couldn’t come to the wedding. Was all just a way of...
+Speaker 2: Oh, oh oh!! I’m sorry, can I interrupt? You know I just want to say..That you are a horrible, horrible person.
+Speaker 1: Ehh, pardon me?
+Speaker 2: You say you love this man, yet you’re about to ruin the happiest day of his life. I’m afraid I have to agree with you friend Pheebs.. This is a..this is a...terrible, terrible plan.
+Speaker 1: But he has to know how I feel!
+Speaker 2: But why? He loves this...this Emily person. No good can come of this.
+Speaker 1: Well I-I think your wrong.
+Speaker 2: Oh-no. And by the way, it seems to be perfectly clear that you were on a break.",Pheebs,PER,Speaker 1,PER,per:friends,per:alternate_names,per:friends,per:friends,other,,
+948,train_0183,1,"Speaker 1: Sure, oh, is, is Frank home.
+Speaker 2: How do you know Frank?
+Speaker 1: Just from a, from a long time ago. Is he here?
+Speaker 2: Yeah. Frank.
+Speaker 3: Yeah. What?
+Speaker 1: Oh, ok, um, I mean Frank senior.
+Speaker 2: He went out for groceries.
+Speaker 1: Ok so will he be back soon?
+Speaker 2: Well he left four years ago so we're expecting him back any minute now.
+Speaker 1: Alright, I'm, I'm gonna go. I'm sorry about the dog, everything. I'm sorry.
+Speaker 3: Hey lady. Hey wait up. How do you know my dad?
+Speaker 1: Um well I don't really. Just genetically. He's kinda my dad too.
+Speaker 3: Heavy.
+Speaker 1: Yeah. So um, did he ever talk about me, Phoebe?
+Speaker 3: No but he didn't really talk about anything.
+Speaker 1: Oh.
+Speaker 3: Except stilts.
+Speaker 1: Stilts?
+Speaker 3: Yeah, he loved stilts. One time I was upstairs, I was stealing cigarettes out of my mom's purse, and uh, all of a sudden I look over and there's my dad's head bobbing past the window. He just had this big smile on his face and he was waving 'cause he was always happiest when he was on his stilts.
+Speaker 1: Wow.
+Speaker 3: Yeah.
+Speaker 1: I don't know what to do with that.
+Speaker 3: Me neither. So you're like my big sister.
+Speaker 1: Yeah.
+Speaker 3: This is huge, you can buy me beer.
+Speaker 1: I'm not gonna. But you know what's cool though? Ok, if you had a friend named Pete, then I could say, 'Oh yeah, I know Pete, he's friends with my brother.'
+Speaker 3: I gotta friend named Mark.
+Speaker 1: That'll work too.",Speaker 3,PER,Frank senior,PER,per:alternate_names,per:parents,per:alternate_names,,other,,
+1055,train_0208,6,"Speaker 1, Speaker 2: Hey!
+Speaker 3: Listen! You have to help me pick a dress 'cause I'm meeting Mike's parents tonight!
+Speaker 2: Wow, the boyfriend's parents! That's a big step.
+Speaker 3: Really? That hadn't occurred to me.
+Speaker 2: They just gonna love you, just be yourself.
+Speaker 3: They live on the upper east side on Park Avenue!
+Speaker 1: Oh yeah, she can't be herself.
+Speaker 3: Okay, so... all right... Which dress? You can say ""neither"".
+Speaker 1, Speaker 2: Oh God, neither!
+Speaker 2: I'm sorry honey, but we're gonna take you shopping. It's gonna be fine.
+Speaker 1: Yeah, totally! You are in such good hands. And I'm so good with meeting parents. With the father, you know, you want to flirt a little bit, but not in a gross way. Just kind of like: ""Oh Mr. Pincer, I can see where Wallis gets his good looks...""
+Speaker 2: You went out with Wallis Pincer?
+Speaker 1: Uh, he took the SAT's for me.
+Speaker 2: I knew you didn't get a 1400!
+Speaker 1: Sssh yeah, well, duh! I mean...
+Speaker 3: So... now... What about with Mike's mom?
+Speaker 1: Oh, with the mother, just... just constantly tell her how amazing her son is. Take it from me, moms love me. Ross's mom one time actually said I'm like the daughter that she never had.
+Speaker 2:She said WHAT?
+Speaker 3:That's she's like the daughter she never had. Listen!",Wallis,PER,Mr. Pincer,PER,per:parents,per:alternate_names,per:parents,per:children,other,,
+1113,train_0220,0,"Speaker 1: Oh hey you guys!
+Speaker 2: Oh hey!
+Speaker 3: Hi!
+Speaker 1: Hey listen let me ask you, do you believe in soul mates?
+Speaker 3: Oh yes I do. I do. I believe that there is one perfect person out there for everyone. And do you know how you find him? You stop looking for him. That’s why I stopped looking for Russell Crowe. He’ll find me.",Speaker 3,PER,Russell Crowe,PER,per:positive_impression,per:girl/boyfriend,per:positive_impression,,other,,
+1257,train_0252,4,"Speaker 1: Okay, well, this is crazy. Can't seriously be talking about me taking one of your kids, can we?
+Speaker 2: No, of course we're not.
+Speaker 1: Insane.
+Speaker 2: I know.
+Speaker 1: Alice would never go for it, right?
+Speaker 2: Oh, I don't know, she's pretty tired, too, I think we've got her onboard.
+Speaker 1: Well, just you know, for argument's sake, you know, hypothetically. Which one would you be willing to give up?
+Speaker 2: Huh.
+Speaker 1: Frank Jr.Jr.?
+Speaker 2: Oh, you'd be getting a really good one. I mean, you know, he's really funny. Like, the other day he made up this joke.
+Speaker 1: Uh-huh.
+Speaker 2: What's green and says ""hey, I'm a frog""? A talking frog! Oh, no, you can't have him, he's too funny.
+Speaker 1: Well, alright, that's fine. What about Leslie?
+Speaker 2: Oh, no, no. Not Leslie. No, she's, she's the only one that knows how to burp the alphabet.
+Speaker 1: Alright, so that leaves Chandler.
+Speaker 2: Oh, no, no, you can't have Chandler, no. No, no. She's my little genius. I got big hopes for her. She's gonna be a doctor or a realtor..
+Speaker 1: Wow, Frank. I think we just ran out of kids.
+Speaker 2: Oh, I think you're right. Oh, wow. Phoebe, I don't think I can give one of them up. I mean, you know, they drive me crazy, but they're my babies.
+Speaker 1: I'm sorry, Frank. I didn't realise things were so bad. You know, I'll help out more. I can - I can babysit any time you want. You name the day, and I'll be there.
+Speaker 2: How about tomorrow?
+Speaker 1: Well, that's not good. But you know, I can move some stuff around, and I'll be there. You and Alice just take the whole day together.
+Speaker 2: You'd do that for us?
+Speaker 1: Are you kidding? That's what sisters are for.
+Speaker 2: Look at them! Aw. I love you so much. Oh crap, don't wake up, don't wake up!",Alice,PER,Leslie,PER,per:children,per:other_family,per:children,per:parents,per:other_family,,
+1268,train_0252,15,"Speaker 1: Okay, well, this is crazy. Can't seriously be talking about me taking one of your kids, can we?
+Speaker 2: No, of course we're not.
+Speaker 1: Insane.
+Speaker 2: I know.
+Speaker 1: Alice would never go for it, right?
+Speaker 2: Oh, I don't know, she's pretty tired, too, I think we've got her onboard.
+Speaker 1: Well, just you know, for argument's sake, you know, hypothetically. Which one would you be willing to give up?
+Speaker 2: Huh.
+Speaker 1: Frank Jr.Jr.?
+Speaker 2: Oh, you'd be getting a really good one. I mean, you know, he's really funny. Like, the other day he made up this joke.
+Speaker 1: Uh-huh.
+Speaker 2: What's green and says ""hey, I'm a frog""? A talking frog! Oh, no, you can't have him, he's too funny.
+Speaker 1: Well, alright, that's fine. What about Leslie?
+Speaker 2: Oh, no, no. Not Leslie. No, she's, she's the only one that knows how to burp the alphabet.
+Speaker 1: Alright, so that leaves Chandler.
+Speaker 2: Oh, no, no, you can't have Chandler, no. No, no. She's my little genius. I got big hopes for her. She's gonna be a doctor or a realtor..
+Speaker 1: Wow, Frank. I think we just ran out of kids.
+Speaker 2: Oh, I think you're right. Oh, wow. Phoebe, I don't think I can give one of them up. I mean, you know, they drive me crazy, but they're my babies.
+Speaker 1: I'm sorry, Frank. I didn't realise things were so bad. You know, I'll help out more. I can - I can babysit any time you want. You name the day, and I'll be there.
+Speaker 2: How about tomorrow?
+Speaker 1: Well, that's not good. But you know, I can move some stuff around, and I'll be there. You and Alice just take the whole day together.
+Speaker 2: You'd do that for us?
+Speaker 1: Are you kidding? That's what sisters are for.
+Speaker 2: Look at them! Aw. I love you so much. Oh crap, don't wake up, don't wake up!",Frank Jr.Jr.,PER,Alice,PER,per:parents,per:other_family,per:parents,per:children,per:other_family,,
+1274,train_0253,1,"Speaker 1: Who da wenny-Benny boy? You the Wenny-wenny-Benny-Benny boy, yes. Don't cry. Don't cry. Why is he still crying?
+Speaker 2: Let me hold him for a sec. There. Huh? There we are.
+Speaker 1: Maye it's me.
+Speaker 2: Don't be silly. Ben loves you. He's just being Mr. Crankypants.
+Speaker 3: You know, I once dated a Miss Crankypants. Lovely girl, kinda moody.
+Speaker 2: There we go. All better.
+Speaker 1: There's my little boy.
+Speaker 3: Can I uh see something?
+Speaker 4: Cool.
+Speaker 1: He hates me. My nephew hates me.
+Speaker 2: Come on, don't do this.
+Speaker 1: What if my own baby hates me? Huh? What am I gonna do then?
+Speaker 3: Monica, will you stop? This is nuts. Do you know how long it's gonna be before you actually have to deal with this problem? I mean, you don't even have a boyfriend yet. Joey, she does not look fat.",Ben,PER,Speaker 1,PER,per:other_family,per:positive_impression,per:other_family,per:other_family,other,,
+1275,train_0253,2,"Speaker 1: Who da wenny-Benny boy? You the Wenny-wenny-Benny-Benny boy, yes. Don't cry. Don't cry. Why is he still crying?
+Speaker 2: Let me hold him for a sec. There. Huh? There we are.
+Speaker 1: Maye it's me.
+Speaker 2: Don't be silly. Ben loves you. He's just being Mr. Crankypants.
+Speaker 3: You know, I once dated a Miss Crankypants. Lovely girl, kinda moody.
+Speaker 2: There we go. All better.
+Speaker 1: There's my little boy.
+Speaker 3: Can I uh see something?
+Speaker 4: Cool.
+Speaker 1: He hates me. My nephew hates me.
+Speaker 2: Come on, don't do this.
+Speaker 1: What if my own baby hates me? Huh? What am I gonna do then?
+Speaker 3: Monica, will you stop? This is nuts. Do you know how long it's gonna be before you actually have to deal with this problem? I mean, you don't even have a boyfriend yet. Joey, she does not look fat.",Ben,PER,my little boy,STRING,per:alternate_names,per:other_family,per:alternate_names,,per:other_family,,
+1291,train_0254,8,"Speaker 1: Rachel?
+Speaker 2: Yeah.
+Speaker 1: I’m, uhh, making up flyers trying to get new massage clients. So, can I come to Bloomingdale’s and use the copy machine.
+Speaker 2: Well, sure, but they might think it’s kinda weird considering I don’t work there anymore.
+Speaker 1: Oh my God. What happened?
+Speaker 2: I-I, got a job at Ralph Lauren.
+Speaker 1: Well that’s great! Congratulations!!
+Speaker 2: Yeah. A year ago..
+Speaker 1: You’ve lasted a whole year. Good for you.
+Speaker 2: But, Pheebs, you can still use the copy machine where I actually work. But, just come by at lunch so my boss doesn’t see you. Cause Kim will just freak out and she already doesn’t like me very much.
+Speaker 3: That’s weird. I don’t think my boss likes me either.
+Speaker 4: I don’t think mine likes me either.
+Speaker 5: Maybe it’s a universal thing?
+Speaker 6: Or maybe, it’s because you’re hanging around here at 11:30 on a Wednesday.
+Speaker 3: Yeah let’s head off to work.
+Speaker 4: We should go.",Bloomingdale’s,ORG,Speaker 2,PER,org:employees_or_members,per:works,org:employees_or_members,per:employee_or_member_of,per:works,,
+1321,train_0260,11,"Speaker 1: Hello? Yeah, this is Joey Tribbiani... Oh, hi! Well, I'm glad you liked my letter... No my mommy and daddy aren't home right now... Okay, bye bye. She was nice!
+Speaker 2: Joey, get Amy's bags, she is moving out!
+Speaker 1: Whoo-hoo!
+Speaker 3: You're kicking me out?
+Speaker 2: You put holes in my baby's ears!
+Speaker 3: Yeah well, at least now people will know she is a girl!
+Speaker 2: I can't believe I ever even tried to help you. You are so beyond help.
+Speaker 3: You know what? Ever since I got here, you have been nothing but negative.
+Speaker 2: Excuse me?
+Speaker 3: You didn't want me to marry the old guy with the great apartment. Then, I tried to help your daughter to de-emphasize her flaws And suddenly I am the bad guy?
+Speaker 2: Joey, where are those bags?
+Speaker 1: She has a lot of crap!
+Speaker 3: You know what? When I moved in here I thought: This is gonna be so great. Just us sisters, back together again like when we were kids, except without that stupid Jill... Oh! Who has gotten fat by the way...
+Speaker 2: Seriously?
+Speaker 3: hm-mmm... Mom said she gained like fifteen pounds.
+Speaker 2: Hips or thighs?
+Speaker 3: Ass and face.
+Speaker 2: Oh! Oh my God! I thought she was on Atkins.
+Speaker 3: She was. Carbs found her... See, this is what I wanted. Two sisters, talking about real stuff.
+Speaker 2: Oh, I can give you that.
+Speaker 3: You can?
+Speaker 2: Yeah. I just, I kept trying to make you a better person, but you're... you're already a pretty perfect version of what you are.
+Speaker 3: Thank you. I've got to admit, Emma does look cute.
+Speaker 2: Did you just say Emma?
+Speaker 3: Ugh, I'm sorry... Ella.",Emma,PER,Speaker 2,PER,per:parents,per:children,per:parents,per:children,other,,
+1417,train_0278,3,"Speaker 1: There’s nothing to discuss. We’re not paying for your wine cellar.
+Speaker 2: You-you have to meet me in the middle here.
+Speaker 3: Hey, you keep pushing me on this, my foots going to meet the middle of your ass.
+Speaker 4: Dad!!
+Speaker 5: What-what’s going on?!
+Speaker 4: Nothing, nothing. Everything's under control.
+Speaker 2: You want a piece of me, sir? Is that what your saying? You want a piece of me?
+Speaker 4: Okay! Okay! That’s it!! Parents!! Parents!! Back away!! All right, this is our wedding day! From now on everyone gets along, and if I hear one more word. NO GRANDCHILDREN! That’s right!!
+Speaker 3: Okay, okay.
+Speaker 2: Sorry old boy, sorry. Sorry. Sorry. I could kill you with my thumb, you know.
+Speaker 5: What was all that about?
+Speaker 4: It was...This disagreement over...My god. You...you look beautiful.
+Speaker 5: Ohh...Oh! You were not meant to see me before the wedding. It’s bad luck.
+Speaker 4: You know what, I think we’ve had all the bad luck we’re going to have.",Speaker 3,PER,Speaker 4,PER,per:children,per:negative_impression,per:children,per:parents,per:negative_impression,,
+1423,train_0279,3,"Speaker 1: Hi! Oh, Alice, hi! Thanks. I'm so glad you could come, 'cause I've got a real umm, Home Ec emergency.
+Speaker 2: Oh my God, who died on this?!
+Speaker 1: Yeah, I know. It's a real mustard-tastrophe. Can you help me?
+Speaker 2: Absolutely. Okay, first we'll start with a little club soda and salt, and then if that doesn't work we can go back to...
+Speaker 1: Y'know what, forget it. It's ruined.
+Speaker 2: Oh no-no, never say that. If we can't get it out then we can cut around the stain, add a little lace, you make a stylish throw.
+Speaker 1: Or instead, maybe you could just not marry my brother Frank.",Speaker 2,PER,Frank,PER,per:girl/boyfriend,per:other_family,per:girl/boyfriend,per:girl/boyfriend,per:other_family,,
+1437,train_0285,1,"Speaker 1: What are you doing here?!
+Speaker 2: I-I, came to fill your ice cube trays.
+Speaker 1: What?!
+Speaker 2: Umm, okay, okay, look. I took this picture from your fridge. Okay, because I know that this is my Father. Yeah, this is Frank Buffay and you are standing right there next to him. Now, look I deserve to know where I came from. All right? So if you can help me find my Father then you should! Otherwise, you’re just mean! So, just tell me the truth!
+Speaker 1: All right, the man in the picture is Chuck Magioni.
+Speaker 2: My Father is Chuck Magioni?
+Speaker 1: No, no, that’s just Chuck Magioni, I-I sold him a house last year! And I’m very sorry, but I don’t know where your Father is, and that’s the truth.
+Speaker 2: Oh.
+Speaker 1: But umm, you’re right. I think that a person should know where they come from. Wh-which is why I ah, ahh, okay. I’m your mother.
+Speaker 2: Heh?
+Speaker 1: Y'know I wanted to tell you yesterday, but I just, I kinda felt all floopy, and…",Speaker 1,PER,Speaker 2,PER,per:children,per:other_family,per:children,per:parents,per:other_family,,
+1463,train_0293,0,"Speaker 1: Stop sending food to our apartment.
+Speaker 2: Well, why're you all dressed up?
+Speaker 3: You're not the only one who has a date tonight.
+Speaker 2: What? You have a date? Who with?
+Speaker 1: No one.
+Speaker 2: C'mon, what's his name?
+Speaker 1: Nothing.
+Speaker 2: Come on, tell me.
+Speaker 1: Alright, but I'm very excited about this OK, so you gotta promise you won't get all big-brothery and judgmental.
+Speaker 2: Oh, I promise, what.
+Speaker 1: It's Richard Burke.
+Speaker 2: Who's Richard Burke? Doc, Doctor Burke? You have a date with Doctor Burke? Why, why, why should that bother me? I, I love that man, he's like a uh, brother to dad.
+Speaker 1: Well for your information he happens to be one of the brightest, most sophisticated, sexiest men I've ever been with.
+Speaker 2: Doctor Burke is sexy?
+Speaker 4, Speaker 3: Oh God, absolutely.
+Speaker 4: Ya know, Dr. Burke kissed me once.
+Speaker 1: When?
+Speaker 4: When I was um, 7, I crashed my bike right out in front of his house and to stop me from crying he kissed me right here.
+Speaker 3: Oh you are so lucky.
+Speaker 4: I know.",Speaker 1,PER,Richard Burke,PER,per:positive_impression,per:girl/boyfriend,per:positive_impression,,other,,
+1553,train_0306,7,"Speaker 1: Oh my God! You are gonna love me so much! I felt really bad about the whole bachelorette party thing, so tonight you’re gonna have a bachelor party.
+Speaker 2: What?
+Speaker 1: Yeah, I got this number from this guy at work and I hired a stripper to come dance for you. Am I going in the wife hall of fame or what?!
+Speaker 2: Honey! That’s crazy! I don’t want you to get me a stripper…
+Speaker 3: Will you let the lady talk?!
+Speaker 1: Come on! Come on, it’ll be fun! It’ll make me feel so much better.
+Speaker 2: Look, I appreciate it, but uh, it’s a little creepy. Y’know? I’m not a bachelor anymore.
+Speaker 1: So don’t think of it as a bachelor party, think of it as a…a two month anniversary present.
+Speaker 4: Sure, one year is paper, but two months is lapdance!
+Speaker 1: Please! I feel so bad! Just watch the hot woman get naked!
+Speaker 2: All right fine! But I’m only doing this for you!
+Speaker 3: Yeah!
+Speaker 2: And Joey.
+Speaker 1: Thank you. All right, now who else do you want to invite?
+Speaker 2: Ah, no-no-no just Ross. Ross and Joey is embarrassing enough.
+Speaker 4: Uh actually, sorry I can’t even make it. I’m seeing Mona again tonight.
+Speaker 2: I understand: who would cancel an actual date to go to a fake bachelor party?
+Speaker 3: I’m sorry I gotta cancel tonight baby…",Speaker 2,PER,Speaker 1,PER,per:spouse,per:girl/boyfriend,per:spouse,per:spouse,other,,
+1573,train_0311,0,"Speaker 1: Nana is on the phone.
+Speaker 2: Oh! That's interesting, since she died seven years ago!!
+Speaker 1: She did? Who got her condo in Boca?
+Speaker 2: Hello? Oh, it's our nanny! Hi! Oh... God! I hope you feel better! Ok, bye! That's Molly, she's sick. Can you watch Emma today?
+Speaker 3: No, I can't. I have back-to-back classes. Did Molly say what she had? Because my throat's been hurting?
+Speaker 2: Menstrual cramps.
+Speaker 3: I don't think that's what this is.",Molly,PER,nanny,STRING,per:title,per:alternate_names,per:title,,other,,
+1582,train_0313,5,"Speaker 1: Hey, is Rachel here?
+Speaker 2: No.
+Speaker 1: She's still at dinner?
+Speaker 2: I guess. Why? Who's she with?
+Speaker 1: That guy Mark. From Bloomingdale's... She thinks he's just being nice to her. But I know he really wants to sleep with her.
+Speaker 3: It's seven years ago. My time machine works!
+Speaker 1: We ran into him on the street today and he said he might have a job for her. But I know he just wants to get into her pants.
+Speaker 2: So what if he wants to sleep with her? I mean, she's single and he's cute.
+Speaker 3: Excuse me?
+Speaker 2: Oh please! Yesterday on the subway? You couldn't stop staring at that woman with the big breasts the whole time.
+Speaker 3: For your information, I was staring at her baby. We're about to be parents.
+Speaker 2: Oh, sorry!",Mark,PER,Bloomingdale's,ORG,per:employee_or_member_of,org:employees_or_members,per:employee_or_member_of,org:employees_or_members,other,,
+1583,train_0314,0,"Speaker 1: Well, you kids take the train in?
+Speaker 2: No, Richard Burke gave them a ride.
+Speaker 1: Oh. Speaking of whom, I hear he's got some 20-year-old twinkie in the city.
+Speaker 3: Finger cramp. Oh God, sorry. Here, let me get that mom.
+Speaker 2: Sooo, Richard's shopping in the junior section.
+Speaker 3: Are we still on that?
+Speaker 2: We just know she's got the IQ of a napkin.
+Speaker 1: She's probably not even very pretty, just young enough so that everything is still pointing up.",Speaker 2,PER,Speaker 3,PER,per:children,per:other_family,per:children,per:parents,per:other_family,,
+1591,train_0315,5,"Speaker 1: So Joey umm, you look familiar. Are uh, are you on TV or something?
+Speaker 2: Well Joey doesn’t like to talk about it but, he’s one of the stars of Days Of Our Lives.
+Speaker 1: That’s right! That’s right, don’t you play a woman?
+Speaker 3: A woman in a man’s body.
+Speaker 1: Much better.
+Speaker 3: So y’know Ross it’s funny ‘cause, you look familiar to me too. Have you ever been married?
+Speaker 1: Well yes, yes I have. In fact umm, just the other day Kristen and I were talking about how I’ve been married and how I have a son.
+Speaker 2: Yeah, little Eric.
+Speaker 1: That’s right! Wait no, Ben.
+Speaker 3: So you’ve just married the one time then?
+Speaker 1: Well umm…
+Speaker 2: You’ve been married twice?
+Speaker 1: Yes. And another time after that. Boy I’m getting hungry! Hey Joey, have you ever been so hungry on a date that when a girl goes to the bathroom you eat some of her food?
+Speaker 2: You said the waiter ate my crab cake.
+Speaker 3: Yeah. So uh Ross, well now—why did that first marriage breakup? Was it because the woman was straight or she was a lesbian?
+Speaker 2: Do you two know each other?
+Speaker 3, Speaker 1: No. No.
+Speaker 3: No. It just seems like Ross is the kind of a guy that would marry a woman on the verge of being a lesbian and then push her over the edge.
+Speaker 1: Wait a minute! Were you on a poster for gonorrhea?
+Speaker 3: Have you ever slept in the same bed as a monkey?!
+Speaker 1: Hey you leave Marcel out of this!
+Speaker 3: Fine! Have you ever got stuck in a pair of your own leather pants?!
+Speaker 1: Hey-hey have you ever locked yourself in a TV cabinet VD boy?!
+Speaker 3: Monkey lover!",Ben,PER,Speaker 1,PER,per:parents,per:other_family,per:parents,per:children,per:other_family,,
+1598,train_0316,0,"Speaker 1: Okay look, Ross, just so you know that since Lizzie likes you so much, I’ve decided to accept the fact that you’re going out with her.
+Speaker 2: Really? That okay, that’s great.
+Speaker 1: Yeah. But then I changed my mind. I’m funny like that. So I told Lizzie, now I’m telling you, I don’t want you seeing my daughter anymore.
+Speaker 2: All right look, I-I realize it upsets you.
+Speaker 1: Yes it does.
+Speaker 2: But, Elizabeth and I are-are both adults and so I don’t think there’s really anything you can do about it.
+Speaker 1: I’ll call the university and tell them about your relationship and have you fired.
+Speaker 2: Ohh! A man with a plan!",Lizzie,PER,Speaker 1,PER,per:parents,per:other_family,per:parents,per:children,per:other_family,,
+1611,train_0319,3,"Speaker 1: Oh, hey, Monica, we've got a question.
+Speaker 2: Alright, for the bizillionth time, yes I see other women in shower at the gym, and no I don't look.
+Speaker 1: No, not that one. We're trying to figure out who to bring to the Knicks game tonight, we have an extra ticket.
+Speaker 3: Yeah, Ross can't go so it's between my friend Eric Prower who has breath issues and Dan with the poking.  'Did you see that play? Do you want some more beer? Is that Spike Lee?'
+Speaker 2: Ok. Hey, why don't you ask Richard?
+Speaker 1: Ok, uh, hey Richard, if you had an extra ticket to the Knicks game and you had to choose between a friend who smells and one who bruises you who would you pick?
+Speaker 4: Wow. Well being a huge Knicks fan myself, I think you should take someone who's a huge Knicks fan.
+Speaker 3: Ok, that's Eric.
+Speaker 4: Glad to be of help. Matches.
+Speaker 2: I meant, why don't you take Richard to the game? What?
+Speaker 1: I don't know.
+Speaker 2: C'mon. Keeps his fingers to himself and he's always minty fresh.
+Speaker 3: I don't know, Richard's really nice and everything, uh, it's just that we don't know him really well, ya know, and plus he's, ya know, old -er than some people, but, uh, younger than some buildings.
+Speaker 2: So what, he's a little older, big deal, I mean he's important to me. Ya know if you ask him, he might take you on his Jag.
+Speaker 1: How do we say yes now and make it seem like we're not doin' it just to ride in the cool car?
+Speaker 3: Ok, this could be tough.
+Speaker 1: Ok ok ok ok. Monica, we'll bring him, but only if he takes the Jaguar.
+Speaker 3: Ooh, you almost had it.",Speaker 4,PER,Knicks,ORG,per:positive_impression,org:employees_or_members,per:positive_impression,,other,,
+1629,train_0321,7,"Speaker 1: Hey guys!
+Speaker 2, Speaker 3, Speaker 4: Hey!
+Speaker 4: Honey, I got us that room at the Woodford Inn this weekend.
+Speaker 1: That place in Vermont? You can take a hint!
+Speaker 3: Wait, you can't go away this weekend! It's Emma's birthday!
+Speaker 2: Yeah!
+Speaker 3: We're having a party.
+Speaker 1: Well, can't you just have the party when we get back?
+Speaker 2: No.
+Speaker 3: No, that day... that won't be her real birthday!
+Speaker 4: Gee if only she were one and had no idea what the hell a birthday was!
+Speaker 2: C'mon you guys, this is really important to us.
+Speaker 1: Well, I'm sorry, but Chandler and I could really use a weekend away. You know, to reconnect... emotionally.
+Speaker 4: There's this thing I really want us to do. I read about it in Maxim...
+Speaker 3: Well, can't you just go to Vermont the next day?
+Speaker 2: Yeah, we want everyone to be there. As much as I hate to delay your doing weird sex stuff to my little sister.
+Speaker 3: And I mean, you know, you guys... This is a big deal. I mean, how can we have her first birthday party without her aunt and her uncle!
+Speaker 1: All right, we'll stay. We can just drive up after the party.
+Speaker 4: Fine, but if we end up not doing this Maxim thing because of this party...
+Speaker 1: Believe me, that is not why we won't be doing that!",Emma,PER,Speaker 2,PER,per:parents,per:other_family,per:parents,per:children,per:other_family,,
+1634,train_0321,12,"Speaker 1: Hey guys!
+Speaker 2, Speaker 3, Speaker 4: Hey!
+Speaker 4: Honey, I got us that room at the Woodford Inn this weekend.
+Speaker 1: That place in Vermont? You can take a hint!
+Speaker 3: Wait, you can't go away this weekend! It's Emma's birthday!
+Speaker 2: Yeah!
+Speaker 3: We're having a party.
+Speaker 1: Well, can't you just have the party when we get back?
+Speaker 2: No.
+Speaker 3: No, that day... that won't be her real birthday!
+Speaker 4: Gee if only she were one and had no idea what the hell a birthday was!
+Speaker 2: C'mon you guys, this is really important to us.
+Speaker 1: Well, I'm sorry, but Chandler and I could really use a weekend away. You know, to reconnect... emotionally.
+Speaker 4: There's this thing I really want us to do. I read about it in Maxim...
+Speaker 3: Well, can't you just go to Vermont the next day?
+Speaker 2: Yeah, we want everyone to be there. As much as I hate to delay your doing weird sex stuff to my little sister.
+Speaker 3: And I mean, you know, you guys... This is a big deal. I mean, how can we have her first birthday party without her aunt and her uncle!
+Speaker 1: All right, we'll stay. We can just drive up after the party.
+Speaker 4: Fine, but if we end up not doing this Maxim thing because of this party...
+Speaker 1: Believe me, that is not why we won't be doing that!",Speaker 2,PER,Emma,PER,per:children,per:other_family,per:children,per:parents,per:other_family,,
+1641,train_0323,3,"Speaker 1: Uh huh.. uh huh... oh my God! Okay! Okay, I'll be there! That was my agent. My agent has just gotten me a job...in the new Al Pacino movie!
+Speaker 2: Oh my God! Whoah!
+Speaker 3: Well, what's the part?
+Speaker 1: Can you believe this? Al Pacino! This guy's the reason I became an actor! ""I'm out of order? Pfeeeh. You're out of order! This whole courtroom's out of order!""
+Speaker 4: Seriously, what-what's the part?
+Speaker 1: ""Just when I thought I was out, they pull me back in!""
+Speaker 5: C'mon, seriously, Joey, what's the part?
+Speaker 1: ...I'm his
+Speaker 6: ..You're, you're 'mah mah mah' what?
+Speaker 1: ...I'm his butt double. 'Kay? I play Al Pacino's butt. Alright? He goes into the shower, and then- I'm his butt.
+Speaker 3: Oh my God.
+Speaker 1: C'mon, you guys. This is a real movie, and Al Pacino's in it, and that's big!
+Speaker 7: Oh no, it's terrific, it's... it's... y'know, you deserve this, after all your years of struggling, you've finally been able to crack your way into show business.
+Speaker 1: Okay, okay, fine! Make jokes, I don't care! This is a big break for me!
+Speaker 5: You're right, you're right, it is...So you gonna invite us all to the big opening?",Speaker 1,PER,actor,STRING,per:title,per:works,per:title,,per:works,,
+1795,train_0354,2,"Speaker 1: Hey.
+Speaker 2: Oh, hi.
+Speaker 1: Here. I thought you might be cold.
+Speaker 2: Thank you.
+Speaker 1: Whoa, look at you, you did pretty well.
+Speaker 2: Eight dollars and 27 cents. But not really, 'cause I put in the first two, just to, you know, get the ball rolling, and to make myself feel better.
+Speaker 1: Do you?
+Speaker 2: No. This whole like playing-for-money thing is so not good for me. You know, I don't know, when I sang ""Su-Su-Suicide"", I got a dollar seventy-five. But then, ""Smelly Cat"", I got 25 cents and a condom. So you know, now I just feel really bad for Smelly Cat.
+Speaker 1: Well, you know, honey, I don't think everybody gets Smelly Cat. You know, I mean, if all you've ever actually had are healthy pets, then, whoosh!
+Speaker 2: It's not even that. I used to do my songs because it made me happy, but now it's like, it's just all about the money.
+Speaker 1: Well, people missed you in there. And in fact, there was actually a request for ""Smelly Cat"".
+Speaker 2: Really? From who?
+Speaker 1: Well, from me. And I know it's not your big money song, but it's my favorite.
+Speaker 3: Hi. Uh, did I accidentally drop a condom in your case? It's kind of an emergency.
+Speaker 2: Yeah. Here you go.
+Speaker 3: Thanks a lot. Hey Christine, I got it!",Speaker 2,PER,honey,STRING,per:alternate_names,per:title,per:alternate_names,,other,,
+1826,train_0360,0,"Speaker 1: Ross?
+Speaker 2: Hey roomies!
+Speaker 3: Love what you've done with the place.
+Speaker 2: Oh, yeah I know, I know, it's a lot of boxes, but again I really appreciate you guys letting me stay here.
+Speaker 1: Not a problem. And listen, hey! Since you're gonna be here for a while, why don't—I was thinking we uh, put your name on the answering machine.
+Speaker 3: Oh yeah!
+Speaker 2: Oh, I uh, hope you don't mind, I kinda uh, jazzed it up a little. Check this out. We will, we will, call you back!
+Speaker 1: Hey, all right!
+Speaker 2: Pretty cool, huh?
+Speaker 1: You're fake laughing too, right?
+Speaker 3: Oh, the tears are real.",Speaker 1,PER,roomie,STRING,per:alternate_names,per:roommate,per:alternate_names,,other,,
+1962,train_0390,0,"Speaker 1: Hey!
+Speaker 2: How was the pediatrician?
+Speaker 3: Oh, I really liked him. Yeah, it was really, really, really good.
+Speaker 1: You promised you wouldn't say anything.
+Speaker 3: I know. Ross still sees his pediatrician!!! I don't care!
+Speaker 2: Are you serious? You still see Dr. Gettleman?
+Speaker 1: He's a brilliant diagnostician!
+Speaker 4: Diagnostician or boo-boo fixer?
+Speaker 3: Ross, seriously! You've gotta go to an appropriate doctor.
+Speaker 1: Why? Why? I know it's a little weird, but hey, he's a great doctor, okay? He knows my medical history, and every time I go in there, he makes a big deal. 'Ah look, it's my favorite patient!'
+Speaker 4: Does he say that before he sticks his thermometer in your touchy?
+Speaker 1: Hey, I seem to remember someone bringing his security blanket to college!
+Speaker 4: That was not a security blanket! That was a wall-hanging!
+Speaker 1: It didn't spend much time on the wall!!!",Speaker 3,PER,Dr. Gettleman,PER,per:positive_impression,per:employee_or_member_of,per:positive_impression,,other,,
+1966,train_0390,4,"Speaker 1: Hey!
+Speaker 2: How was the pediatrician?
+Speaker 3: Oh, I really liked him. Yeah, it was really, really, really good.
+Speaker 1: You promised you wouldn't say anything.
+Speaker 3: I know. Ross still sees his pediatrician!!! I don't care!
+Speaker 2: Are you serious? You still see Dr. Gettleman?
+Speaker 1: He's a brilliant diagnostician!
+Speaker 4: Diagnostician or boo-boo fixer?
+Speaker 3: Ross, seriously! You've gotta go to an appropriate doctor.
+Speaker 1: Why? Why? I know it's a little weird, but hey, he's a great doctor, okay? He knows my medical history, and every time I go in there, he makes a big deal. 'Ah look, it's my favorite patient!'
+Speaker 4: Does he say that before he sticks his thermometer in your touchy?
+Speaker 1: Hey, I seem to remember someone bringing his security blanket to college!
+Speaker 4: That was not a security blanket! That was a wall-hanging!
+Speaker 1: It didn't spend much time on the wall!!!",Dr. Gettleman,PER,doctor,STRING,per:title,per:employee_or_member_of,per:title,,other,,
+1967,train_0390,5,"Speaker 1: Hey!
+Speaker 2: How was the pediatrician?
+Speaker 3: Oh, I really liked him. Yeah, it was really, really, really good.
+Speaker 1: You promised you wouldn't say anything.
+Speaker 3: I know. Ross still sees his pediatrician!!! I don't care!
+Speaker 2: Are you serious? You still see Dr. Gettleman?
+Speaker 1: He's a brilliant diagnostician!
+Speaker 4: Diagnostician or boo-boo fixer?
+Speaker 3: Ross, seriously! You've gotta go to an appropriate doctor.
+Speaker 1: Why? Why? I know it's a little weird, but hey, he's a great doctor, okay? He knows my medical history, and every time I go in there, he makes a big deal. 'Ah look, it's my favorite patient!'
+Speaker 4: Does he say that before he sticks his thermometer in your touchy?
+Speaker 1: Hey, I seem to remember someone bringing his security blanket to college!
+Speaker 4: That was not a security blanket! That was a wall-hanging!
+Speaker 1: It didn't spend much time on the wall!!!",Speaker 1,PER,Dr. Gettleman,PER,per:positive_impression,per:employee_or_member_of,per:positive_impression,per:client,other,,

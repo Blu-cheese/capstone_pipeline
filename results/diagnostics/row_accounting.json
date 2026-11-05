@@ -1,0 +1,645 @@
+{
+  "dialogre_train": {
+    "dialogues": 1073,
+    "pairs": 5963
+  },
+  "teacher_labelled_dialogues": {
+    "dialogues": 400,
+    "pairs": 2144,
+    "selection": "first 400 dialogues of train.json in file order (label_corpus --limit 400)"
+  },
+  "other_dialogues": {
+    "dialogues": 673,
+    "pairs": 3819,
+    "used_by_any_track": false,
+    "note": "both tracks draw only on the 400 teacher-labelled dialogues; the gold track never used gold labels from other dialogues"
+  },
+  "dropped_before_rows": {
+    "multi_label": 103,
+    "teacher_returned_no_label": 23,
+    "teacher_no_label_all_last_pair": true,
+    "teacher_no_label_dialogues": 23,
+    "teacher_no_label_gold": {
+      "unanswerable": 8,
+      "per:alternate_names": 4,
+      "per:girl/boyfriend": 3,
+      "per:positive_impression": 2,
+      "per:children": 1,
+      "per:friends": 1,
+      "per:negative_impression": 1,
+      "per:spouse": 1,
+      "per:boss": 1,
+      "per:title": 1
+    },
+    "note": "multi-label pairs: 103, not 124 (124 = dev 75 + test 49). The 23 unlabelled pairs are each the LAST pair of its dialogue: 23 responses returned indices 0..n-2, the other 377 returned 0..n-1; no response was off by one, so no label is shifted"
+  },
+  "single_label_rows": 2018,
+  "dialogues_with_rows": 397,
+  "label_space": {
+    "gold_in_17": 1327,
+    "teacher_in_17": 879,
+    "both": 710,
+    "gold_only": 617,
+    "teacher_only": 169,
+    "neither": 522
+  },
+  "agreement": {
+    "on_both": {
+      "agree": 428,
+      "n": 710,
+      "rate": 0.602817
+    },
+    "all_2018_rows": 0.373637,
+    "teacher_track_879": {
+      "agree": 428,
+      "rate": 0.486917,
+      "note": "gold outside the 17 counts as disagreement"
+    },
+    "gold_track_1327": {
+      "agree": 428,
+      "rate": 0.322532
+    }
+  },
+  "tracks": {
+    "gold_track": {
+      "rows": 1327,
+      "= both": 710,
+      "+ gold_only": 617,
+      "gold_only_by_teacher_label": {
+        "per:acquaintance": 319,
+        "unanswerable": 274,
+        "per:dates": 7,
+        "per:origin": 4,
+        "gpe:residents_of_place": 3,
+        "gpe:visitors_of_place": 3,
+        "per:client": 2,
+        "per:place_of_work": 2,
+        "per:schools_attended": 1,
+        "org:students": 1,
+        "gpe:births_in_place": 1
+      }
+    },
+    "teacher_track": {
+      "rows": 879,
+      "= both": 710,
+      "+ teacher_only": 169
+    }
+  },
+  "I": {
+    "definition": "single-label pairs whose gold AND teacher labels are both in the 17 kept classes",
+    "size": 710,
+    "epsilon_I": 0.397183,
+    "n_disagree": 282,
+    "rand_I_flips_round_eps_times_n": 282,
+    "equals_teacher_track_879": false,
+    "subset_of_teacher_track": true,
+    "subset_of_gold_track": true,
+    "teacher_rows_outside_I": {
+      "n": 169,
+      "why": "gold label outside the 17 kept classes",
+      "by_gold_label": {
+        "unanswerable": {
+          "n": 125,
+          "reason": "null/reject class, excluded per V2 3.1 (Zhao et al. remove no_relation before splitting)"
+        },
+        "per:siblings": {
+          "n": 23,
+          "reason": "under 15 (teacher=10)"
+        },
+        "per:dates": {
+          "n": 4,
+          "reason": "under 15 (teacher=10, gold=7)"
+        },
+        "per:client": {
+          "n": 4,
+          "reason": "under 15 (teacher=2)"
+        },
+        "gpe:visitors_of_place": {
+          "n": 4,
+          "reason": "under 15 (teacher=14)"
+        },
+        "per:boss": {
+          "n": 3,
+          "reason": "under 15 (teacher=4, gold=10)"
+        },
+        "per:alumni": {
+          "n": 2,
+          "reason": "under 15 (teacher=0)"
+        },
+        "per:place_of_residence": {
+          "n": 1,
+          "reason": "under 15 (teacher=2, gold=14)"
+        },
+        "per:neighbor": {
+          "n": 1,
+          "reason": "under 15 (teacher=5, gold=14)"
+        },
+        "per:place_of_work": {
+          "n": 1,
+          "reason": "under 15 (teacher=5, gold=8)"
+        },
+        "per:subordinate": {
+          "n": 1,
+          "reason": "under 15 (teacher=1, gold=9)"
+        }
+      },
+      "by_teacher_label": {
+        "per:other_family": 47,
+        "per:alternate_names": 35,
+        "per:title": 18,
+        "per:positive_impression": 16,
+        "per:girl/boyfriend": 12,
+        "per:negative_impression": 10,
+        "per:children": 7,
+        "per:friends": 7,
+        "per:visited_place": 5,
+        "per:employee_or_member_of": 4,
+        "per:works": 3,
+        "per:spouse": 2,
+        "per:pet": 1,
+        "per:parents": 1,
+        "per:roommate": 1
+      }
+    },
+    "per_class": {
+      "org:employees_or_members": {
+        "gold_I": 14,
+        "teacher_I": 20,
+        "gold_track": 18,
+        "teacher_track": 20,
+        "diag_C": 12
+      },
+      "per:age": {
+        "gold_I": 15,
+        "teacher_I": 15,
+        "gold_track": 16,
+        "teacher_track": 15,
+        "diag_C": 15
+      },
+      "per:alternate_names": {
+        "gold_I": 221,
+        "teacher_I": 161,
+        "gold_track": 444,
+        "teacher_track": 196,
+        "diag_C": 152
+      },
+      "per:children": {
+        "gold_I": 42,
+        "teacher_I": 16,
+        "gold_track": 58,
+        "teacher_track": 23,
+        "diag_C": 5
+      },
+      "per:employee_or_member_of": {
+        "gold_I": 16,
+        "teacher_I": 19,
+        "gold_track": 18,
+        "teacher_track": 23,
+        "diag_C": 8
+      },
+      "per:friends": {
+        "gold_I": 34,
+        "teacher_I": 43,
+        "gold_track": 97,
+        "teacher_track": 50,
+        "diag_C": 22
+      },
+      "per:girl/boyfriend": {
+        "gold_I": 73,
+        "teacher_I": 91,
+        "gold_track": 156,
+        "teacher_track": 103,
+        "diag_C": 58
+      },
+      "per:negative_impression": {
+        "gold_I": 29,
+        "teacher_I": 46,
+        "gold_track": 55,
+        "teacher_track": 56,
+        "diag_C": 21
+      },
+      "per:other_family": {
+        "gold_I": 16,
+        "teacher_I": 97,
+        "gold_track": 26,
+        "teacher_track": 144,
+        "diag_C": 13
+      },
+      "per:parents": {
+        "gold_I": 42,
+        "teacher_I": 26,
+        "gold_track": 64,
+        "teacher_track": 27,
+        "diag_C": 9
+      },
+      "per:pet": {
+        "gold_I": 13,
+        "teacher_I": 15,
+        "gold_track": 15,
+        "teacher_track": 16,
+        "diag_C": 13
+      },
+      "per:positive_impression": {
+        "gold_I": 50,
+        "teacher_I": 29,
+        "gold_track": 123,
+        "teacher_track": 45,
+        "diag_C": 11
+      },
+      "per:roommate": {
+        "gold_I": 36,
+        "teacher_I": 20,
+        "gold_track": 50,
+        "teacher_track": 21,
+        "diag_C": 14
+      },
+      "per:spouse": {
+        "gold_I": 38,
+        "teacher_I": 24,
+        "gold_track": 67,
+        "teacher_track": 26,
+        "diag_C": 19
+      },
+      "per:title": {
+        "gold_I": 53,
+        "teacher_I": 55,
+        "gold_track": 81,
+        "teacher_track": 73,
+        "diag_C": 41
+      },
+      "per:visited_place": {
+        "gold_I": 9,
+        "teacher_I": 10,
+        "gold_track": 22,
+        "teacher_track": 15,
+        "diag_C": 9
+      },
+      "per:works": {
+        "gold_I": 9,
+        "teacher_I": 23,
+        "gold_track": 17,
+        "teacher_track": 26,
+        "diag_C": 6
+      }
+    },
+    "classes_under_15": {
+      "gold_I": [
+        "org:employees_or_members",
+        "per:pet",
+        "per:visited_place",
+        "per:works"
+      ],
+      "teacher_I": [
+        "per:visited_place"
+      ]
+    },
+    "confusion": {
+      "rows": "gold",
+      "cols": "teacher",
+      "order": [
+        "org:employees_or_members",
+        "per:age",
+        "per:alternate_names",
+        "per:children",
+        "per:employee_or_member_of",
+        "per:friends",
+        "per:girl/boyfriend",
+        "per:negative_impression",
+        "per:other_family",
+        "per:parents",
+        "per:pet",
+        "per:positive_impression",
+        "per:roommate",
+        "per:spouse",
+        "per:title",
+        "per:visited_place",
+        "per:works"
+      ],
+      "C": [
+        [
+          12,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          0,
+          15,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          152,
+          1,
+          1,
+          1,
+          3,
+          8,
+          23,
+          2,
+          1,
+          7,
+          5,
+          3,
+          14,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          2,
+          5,
+          0,
+          0,
+          0,
+          2,
+          16,
+          14,
+          1,
+          2,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          6,
+          0,
+          0,
+          0,
+          8,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          2
+        ],
+        [
+          0,
+          0,
+          2,
+          0,
+          0,
+          22,
+          5,
+          0,
+          2,
+          0,
+          0,
+          3,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          2,
+          2,
+          58,
+          4,
+          2,
+          0,
+          0,
+          2,
+          0,
+          2,
+          0,
+          0,
+          1
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          21,
+          5,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          2,
+          13,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          2,
+          9,
+          0,
+          0,
+          0,
+          0,
+          20,
+          9,
+          0,
+          2,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          13,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          2,
+          0,
+          0,
+          0,
+          3,
+          4,
+          20,
+          1,
+          4,
+          0,
+          0,
+          11,
+          0,
+          0,
+          0,
+          1,
+          4
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          11,
+          2,
+          5,
+          4,
+          0,
+          0,
+          0,
+          14,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          1,
+          0,
+          2,
+          3,
+          3,
+          8,
+          1,
+          0,
+          0,
+          1,
+          19,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          1,
+          0,
+          3,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          41,
+          0,
+          8
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          9,
+          0
+        ],
+        [
+          0,
+          0,
+          2,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          6
+        ]
+      ]
+    }
+  }
+}

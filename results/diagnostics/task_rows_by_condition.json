@@ -1,0 +1,357 @@
+{
+  "note": "rand_I and gold_sub are one provisional draw per seed (default_rng(seed)); final counts come from \u00a72's code (T7)",
+  "seeds": {
+    "1234": {
+      "degenerate_task": 1,
+      "gold": {
+        "rows": 1327,
+        "per_task": [
+          405,
+          494,
+          428
+        ],
+        "task_share": [
+          0.3052,
+          0.3723,
+          0.3225
+        ],
+        "classes_under_15": []
+      },
+      "teacher": {
+        "rows": 879,
+        "per_task": [
+          323,
+          261,
+          295
+        ],
+        "task_share": [
+          0.3675,
+          0.2969,
+          0.3356
+        ],
+        "classes_under_15": []
+      },
+      "gold_I": {
+        "rows": 710,
+        "per_task": [
+          209,
+          259,
+          242
+        ],
+        "task_share": [
+          0.2944,
+          0.3648,
+          0.3408
+        ],
+        "classes_under_15": [
+          "employees_or_members 14",
+          "pet 13",
+          "visited_place 9",
+          "works 9"
+        ]
+      },
+      "teacher_I": {
+        "rows": 710,
+        "per_task": [
+          244,
+          218,
+          248
+        ],
+        "task_share": [
+          0.3437,
+          0.307,
+          0.3493
+        ],
+        "classes_under_15": [
+          "visited_place 10"
+        ]
+      },
+      "perm_I": {
+        "rows": 710,
+        "per_task": [
+          244,
+          218,
+          248
+        ],
+        "task_share": [
+          0.3437,
+          0.307,
+          0.3493
+        ],
+        "classes_under_15": [
+          "visited_place 10"
+        ]
+      },
+      "rand_I": {
+        "rows": 710,
+        "per_task": [
+          253,
+          223,
+          234
+        ],
+        "task_share": [
+          0.3563,
+          0.3141,
+          0.3296
+        ],
+        "classes_under_15": []
+      },
+      "gold_sub": {
+        "rows": 710,
+        "per_task": [
+          211,
+          270,
+          229
+        ],
+        "task_share": [
+          0.2972,
+          0.3803,
+          0.3225
+        ],
+        "classes_under_15": [
+          "employees_or_members 8",
+          "age 8",
+          "employee_or_member_of 10",
+          "other_family 13",
+          "pet 10",
+          "visited_place 14",
+          "works 7"
+        ]
+      }
+    },
+    "1": {
+      "degenerate_task": 1,
+      "gold": {
+        "rows": 1327,
+        "per_task": [
+          402,
+          494,
+          431
+        ],
+        "task_share": [
+          0.3029,
+          0.3723,
+          0.3248
+        ],
+        "classes_under_15": []
+      },
+      "teacher": {
+        "rows": 879,
+        "per_task": [
+          324,
+          261,
+          294
+        ],
+        "task_share": [
+          0.3686,
+          0.2969,
+          0.3345
+        ],
+        "classes_under_15": []
+      },
+      "gold_I": {
+        "rows": 710,
+        "per_task": [
+          213,
+          259,
+          238
+        ],
+        "task_share": [
+          0.3,
+          0.3648,
+          0.3352
+        ],
+        "classes_under_15": [
+          "employees_or_members 14",
+          "pet 13",
+          "visited_place 9",
+          "works 9"
+        ]
+      },
+      "teacher_I": {
+        "rows": 710,
+        "per_task": [
+          246,
+          218,
+          246
+        ],
+        "task_share": [
+          0.3465,
+          0.307,
+          0.3465
+        ],
+        "classes_under_15": [
+          "visited_place 10"
+        ]
+      },
+      "perm_I": {
+        "rows": 710,
+        "per_task": [
+          246,
+          218,
+          246
+        ],
+        "task_share": [
+          0.3465,
+          0.307,
+          0.3465
+        ],
+        "classes_under_15": [
+          "visited_place 10"
+        ]
+      },
+      "rand_I": {
+        "rows": 710,
+        "per_task": [
+          246,
+          216,
+          248
+        ],
+        "task_share": [
+          0.3465,
+          0.3042,
+          0.3493
+        ],
+        "classes_under_15": []
+      },
+      "gold_sub": {
+        "rows": 710,
+        "per_task": [
+          227,
+          260,
+          223
+        ],
+        "task_share": [
+          0.3197,
+          0.3662,
+          0.3141
+        ],
+        "classes_under_15": [
+          "employees_or_members 9",
+          "age 6",
+          "employee_or_member_of 11",
+          "pet 9",
+          "visited_place 11",
+          "works 12"
+        ]
+      }
+    },
+    "2": {
+      "degenerate_task": 2,
+      "gold": {
+        "rows": 1327,
+        "per_task": [
+          440,
+          393,
+          494
+        ],
+        "task_share": [
+          0.3316,
+          0.2962,
+          0.3723
+        ],
+        "classes_under_15": []
+      },
+      "teacher": {
+        "rows": 879,
+        "per_task": [
+          311,
+          307,
+          261
+        ],
+        "task_share": [
+          0.3538,
+          0.3493,
+          0.2969
+        ],
+        "classes_under_15": []
+      },
+      "gold_I": {
+        "rows": 710,
+        "per_task": [
+          256,
+          195,
+          259
+        ],
+        "task_share": [
+          0.3606,
+          0.2746,
+          0.3648
+        ],
+        "classes_under_15": [
+          "employees_or_members 14",
+          "pet 13",
+          "visited_place 9",
+          "works 9"
+        ]
+      },
+      "teacher_I": {
+        "rows": 710,
+        "per_task": [
+          258,
+          234,
+          218
+        ],
+        "task_share": [
+          0.3634,
+          0.3296,
+          0.307
+        ],
+        "classes_under_15": [
+          "visited_place 10"
+        ]
+      },
+      "perm_I": {
+        "rows": 710,
+        "per_task": [
+          258,
+          234,
+          218
+        ],
+        "task_share": [
+          0.3634,
+          0.3296,
+          0.307
+        ],
+        "classes_under_15": [
+          "visited_place 10"
+        ]
+      },
+      "rand_I": {
+        "rows": 710,
+        "per_task": [
+          274,
+          222,
+          214
+        ],
+        "task_share": [
+          0.3859,
+          0.3127,
+          0.3014
+        ],
+        "classes_under_15": []
+      },
+      "gold_sub": {
+        "rows": 710,
+        "per_task": [
+          237,
+          213,
+          260
+        ],
+        "task_share": [
+          0.3338,
+          0.3,
+          0.3662
+        ],
+        "classes_under_15": [
+          "employees_or_members 11",
+          "age 11",
+          "employee_or_member_of 8",
+          "pet 5",
+          "visited_place 14",
+          "works 8"
+        ]
+      }
+    }
+  }
+}

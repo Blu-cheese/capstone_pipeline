@@ -1,0 +1,24 @@
+{
+  "n": 50,
+  "pool": 282,
+  "random_state": 1234,
+  "top3_over_predicted_on_I": {
+    "per:other_family": 6.062,
+    "per:works": 2.556,
+    "per:negative_impression": 1.586
+  },
+  "strata_sizes": {
+    "per:other_family": 84,
+    "per:works": 17,
+    "per:negative_impression": 25,
+    "other": 156
+  },
+  "allocation": {
+    "per:other_family": 15,
+    "per:works": 3,
+    "per:negative_impression": 4,
+    "other": 28
+  },
+  "gold_set_differs_from_single_label": 0,
+  "teacher_label_equals_reverse_pair_gold": 4
+}

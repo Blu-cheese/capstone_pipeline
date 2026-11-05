@@ -1,0 +1,73 @@
+{
+  "broad_class": "per:other_family",
+  "teacher_train_count": 144,
+  "gold_train_count": 26,
+  "same_on_all_seeds": true,
+  "primary_runs_hash": "c530981",
+  "joint_predictions": "recomputed with the unchanged train_joint(); used only after matching the saved joint_baseline_seed*.json exactly",
+  "seeds": [
+    {
+      "seed": 1234,
+      "most_over_predicted": "per:other_family",
+      "ratio": 5.5385,
+      "shares": {
+        "teacher_joint": 0.185315,
+        "teacher_naive_final": 0.0,
+        "teacher_replay_final": 0.113636,
+        "teacher_fkd_final": 0.087413,
+        "gold_joint": 0.006119,
+        "gold_replay_final": 0.012238,
+        "gold_test_share": 0.023601
+      },
+      "final_macro_f1_T3": {
+        "teacher_replay": 0.298301,
+        "teacher_joint": 0.31187480000651846,
+        "gold_replay": 0.406505,
+        "gold_joint": 0.4510093501703296
+      },
+      "teacher_replay_minus_joint": -0.013574
+    },
+    {
+      "seed": 1,
+      "most_over_predicted": "per:other_family",
+      "ratio": 5.5385,
+      "shares": {
+        "teacher_joint": 0.20542,
+        "teacher_naive_final": 0.0,
+        "teacher_replay_final": 0.094406,
+        "teacher_fkd_final": 0.128497,
+        "gold_joint": 0.006993,
+        "gold_replay_final": 0.013986,
+        "gold_test_share": 0.023601
+      },
+      "final_macro_f1_T3": {
+        "teacher_replay": 0.349583,
+        "teacher_joint": 0.3276334959024728,
+        "gold_replay": 0.414291,
+        "gold_joint": 0.4850842395942396
+      },
+      "teacher_replay_minus_joint": 0.02195
+    },
+    {
+      "seed": 2,
+      "most_over_predicted": "per:other_family",
+      "ratio": 5.5385,
+      "shares": {
+        "teacher_joint": 0.13549,
+        "teacher_naive_final": 0.001748,
+        "teacher_replay_final": 0.09528,
+        "teacher_fkd_final": 0.101399,
+        "gold_joint": 0.006993,
+        "gold_replay_final": 0.015734,
+        "gold_test_share": 0.023601
+      },
+      "final_macro_f1_T3": {
+        "teacher_replay": 0.26167,
+        "teacher_joint": 0.3444354939295269,
+        "gold_replay": 0.410744,
+        "gold_joint": 0.48430986595553305
+      },
+      "teacher_replay_minus_joint": -0.082765
+    }
+  ]
+}
