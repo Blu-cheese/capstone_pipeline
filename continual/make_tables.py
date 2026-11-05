@@ -731,11 +731,11 @@ def phase7(hash_primary: Optional[str] = None, hash_fixed: Optional[str] = None)
 
 # =================================================================== RQ3
 #
-# RQ3_SPEC §2.5 with the Gate 1 amendments: T7 to T11, figures F1 and F2, and
-# the PREREG 10-16 scorecard. Reads saved files only: results/conditions/*.json
+# RQ3_SPEC §2.5 with the Gate 1 and Gate 2 amendments: T7 to T11, figures F1
+# and F2, and the PREREG 10-17 scorecard. Reads saved files only: results/conditions/*.json
 # and the run dirs whose metrics.json meta.spec is "RQ3_SPEC".
 #
-# Definitions, fixed BEFORE the RQ3 sweep so that PREREG lines 10 to 16 are
+# Definitions, fixed BEFORE the RQ3 sweep so that PREREG lines 10 to 17 are
 # measured by rules chosen without seeing results:
 #
 #   runs        clean RQ3 runs at one git hash. Replicate 0 must be complete (54
@@ -756,21 +756,26 @@ def phase7(hash_primary: Optional[str] = None, hash_fixed: Optional[str] = None)
 #   direction   real-positive / real-negative when at least 2 of 3 seeds are real
 #               cells of that sign; otherwise "not real" (the 2-of-3 rule).
 #   line 10     (a) D = F(gold_I,joint) − F(gold ref): real iff direction is not
-#               "not real"; scored against line10_gold_I_real. (b) Point
-#               predictions for that D and for F(gold_sub,joint) − F(gold ref):
-#               each holds if |D(s,0) − predicted| <= 0.03 on >= 2 of 3 seeds.
-#               (c) ratio F(teacher_I,joint) / F(gold_I,joint), replicate 0: holds
-#               if within 0.05 of line10_ratio on >= 2 of 3 seeds (line 0's
-#               tolerance). The line holds if (a), both (b) and (c) hold.
+#               "not real" (replicate rule applies); scored against
+#               line10_gold_I_real. (b) Point predictions for that D and for
+#               F(gold_sub,joint) − F(gold ref): each holds if
+#               |D(s, r=0) − predicted| <= 0.03 on >= 2 of 3 seeds. (c) ratio
+#               F(teacher_I,joint,s,0) / F(gold_I,joint,s,0): holds if within 0.05
+#               of line10_ratio on >= 2 of 3 seeds (line 0's tolerance).
+#               (b) and (c) use replicate 0 only - the unchanged default path -
+#               because the full-gold reference is a single run with no
+#               replicates. The line holds if (a), both (b) and (c) hold.
 #   lines 11-12 D = F(teacher_I,joint) − F(rand_I or perm_I, joint), paired by
 #               replicate. Observed: lower = real-negative, higher =
 #               real-positive, same = not real. Holds if it equals the prediction.
-#   line 13     Δ_replay direction per condition. Clauses: teacher_I and perm_I
-#               real-positive; rand_I and gold_I "not real" (line13_controls =
-#               not_real) or "not real-positive" (= not_real_positive).
-#               Hypothesis outcome: holds (all four clauses), fails (none), or
-#               partly (the set of conditions whose clause holds). The prediction
-#               holds if it names the observed outcome, and for "partly" the same set.
+#   line 13     Δ_replay direction per condition. Four clauses: teacher_I
+#               real-positive; perm_I real-positive; rand_I and gold_I each "not
+#               real" (line13_controls = not_real) or "not real-positive" (=
+#               not_real_positive). Hypothesis outcome: "holds" if all four
+#               clauses hold, "fails" if none does, otherwise "partly: <the
+#               conditions whose clause holds, sorted alphabetically>", e.g.
+#               "partly: gold_I, rand_I". The prediction holds if it names the
+#               observed outcome, and for partly the same set.
 #   line 14     teacher_I. A seed counts if its Δ_replay cell is real and positive
 #               and Δ_bal / Δ_replay >= line14_pct / 100 in every replicate run
 #               (ratio compared at 6 decimals, the precision metrics are stored
@@ -783,6 +788,15 @@ def phase7(hash_primary: Optional[str] = None, hash_fixed: Optional[str] = None)
 #               line15_pp / 100 in every replicate, for teacher_I and perm_I, each
 #               on >= 2 of 3 seeds. The line holds if (a) and (b) hold.
 #   line 16     reporting rule: "applied", stating whether replicates ran.
+#   line 17     teacher_I, paired within each replicate: D_rep = S(joint) −
+#               S(replay), D_bal = S(joint) − S(joint_balanced). A seed counts if
+#               D_rep > 0.03 in every replicate and D_bal / D_rep >=
+#               line17_pct / 100 in every replicate (ratio compared at 6
+#               decimals). Holds if >= 2 of 3 seeds count. If D_rep clears 0.03
+#               in every replicate on fewer than 2 seeds, the line fails by rule.
+#   expectations line14_expect, line15_expect, line17_expect (holds | fails) are
+#               compared with the line's verdict; the scorecard reports the
+#               verdict and whether the expectation was correct.
 #   framing     every branch of the PREREG map whose condition is met:
 #               13 holds; 13 does not hold and rand_I's Δ_replay is real-positive;
 #               14 holds; line 12 observed "same" (class-conditional structure)
@@ -1245,6 +1259,34 @@ def prereg_rq3(R: RQ3) -> Dict:
         f"replicates ran (r = {', '.join(map(str, R.reps))})" if R.ran else "no replicates ran",
         "applied")
 
+    # line 17
+    pct17 = pred["line17_pct"] / 100.0
+    n_bar, counted17, detail17 = 0, 0, []
+    for s in SEEDS:
+        d_rep = [-x for x in R.d_share_replay("teacher_I", s)]     # joint − replay
+        d_bal = [-x for x in R.d_share_bal("teacher_I", s)]        # joint − joint_balanced
+        if not all(x > THRESH for x in d_rep):
+            detail17.append(f"{s}: D_rep {fv(d_rep, signed=True, pct=True)} pts, under 3")
+            continue
+        n_bar += 1
+        rec = [round(b / a, 6) for a, b in zip(d_rep, d_bal)]
+        counted17 += all(x >= round(pct17, 6) for x in rec)
+        detail17.append(f"{s}: D_rep {fv(d_rep, signed=True, pct=True)} pts, "
+                        f"D_bal / D_rep {fv(rec)}")
+    v17 = (f"fails: D_rep clears 3 points on {n_bar} of 3 seeds, no replay share reduction "
+           "to recover" if n_bar < 2 else ("holds" if counted17 >= 2 else "fails"))
+    add(17, f"teacher_I: joint_balanced removes ≥ {pred['line17_pct']:g}% of replay's "
+            "broad-class share reduction on ≥ 2 of 3 seeds", "; ".join(detail17), v17)
+
+    for o in out:
+        key = f"line{o['line']}_expect"
+        if key in pred:
+            actual = "holds" if o["verdict"] == "holds" else "fails"
+            o["expected"] = pred[key]
+            o["expectation_correct"] = "yes" if pred[key] == actual else "no"
+        else:
+            o["expected"] = o["expectation_correct"] = ""
+
     # framing map
     branches = []
     if outcome[0] == "holds":
@@ -1267,11 +1309,13 @@ def prereg_rq3(R: RQ3) -> Dict:
                         "becomes 'class balancing removes the collapse signature without improving "
                         "macro-F1; distillation is inert'.")
 
-    header = ["line", "prediction", "outcome", "verdict"]
-    write_table("prereg_outcomes_rq3", "PREREG lines 10–16 against outcomes", header,
+    header = ["line", "prediction", "outcome", "verdict", "expected", "expectation_correct"]
+    write_table("prereg_outcomes_rq3", "PREREG lines 10–17 against outcomes", header,
                 [[o[k] for k in header] for o in out],
                 ["Computed by make_tables.py with the RQ3 definitions in its source, fixed "
                  "before the sweep. Predictions read from PREREG.md at HEAD (rq3-scoring block).",
+                 "expected / expectation_correct: lines 14, 15 and 17 carry an expectation "
+                 "(line*_expect); for lines 10-13 the prediction itself is scored.",
                  "Values: replicate 0, replicate range in brackets." if R.ran else
                  "Values: replicate 0 (no replicates)."] +
                 ["Framing map, branches that apply: " + " | ".join(branches)], out)
@@ -1372,7 +1416,7 @@ def rq3(hash_: Optional[str] = None) -> None:
     print("rq3: T7, T7b (condition stats) written")
     runs, h, reps = select_rq3_runs(hash_)
     if runs is None:
-        print("rq3: no RQ3 runs yet; T8-T11, figures and PREREG 10-16 skipped")
+        print("rq3: no RQ3 runs yet; T8-T11, figures and PREREG 10-17 skipped")
         return
     R = RQ3(runs, reps, infos)
     print(f"rq3: {len(runs)} runs at {h}, replicates {reps}")

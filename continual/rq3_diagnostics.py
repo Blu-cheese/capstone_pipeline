@@ -159,6 +159,14 @@ def row_accounting(table: Dict, sp: Space) -> Dict:
     full_gold = {c: int((sp.gold == c).sum()) for c in sp.names}
     full_teach = {c: int((sp.teacher == c).sum()) for c in sp.names}
 
+    diag_rows = []        # Gate 2: is C's diagonal the row maximum, per gold class?
+    for i, c in enumerate(sp.names):
+        off = [(int(C[i, j]), sp.names[j]) for j in range(len(sp.names)) if j != i]
+        top_v, top_c = max(off)
+        diag_rows.append({"gold": c, "diag": int(C[i, i]), "max_off_diag": top_v,
+                          "max_off_diag_teacher_label": top_c,
+                          "diag_is_strict_row_max": bool(C[i, i] > top_v),
+                          "tie": bool(C[i, i] == top_v)})
     outside = Counter(sp.gold[sp.t_in & ~sp.g_in].tolist())
     outside_teacher = Counter(sp.teacher[sp.t_in & ~sp.g_in].tolist())
     gold_only = Counter(sp.teacher[sp.g_in & ~sp.t_in].tolist())
@@ -233,7 +241,8 @@ def row_accounting(table: Dict, sp: Space) -> Dict:
                 "gold_I": [c for c in sp.names if gold_counts[c] < MIN_EXAMPLES],
                 "teacher_I": [c for c in sp.names if teach_counts[c] < MIN_EXAMPLES]},
             "confusion": {"rows": "gold", "cols": "teacher", "order": sp.names,
-                          "C": C.tolist()}},
+                          "C": C.tolist()},
+            "diagonal_vs_row_max": diag_rows},
     }
 
     rowset = {"definition": payload["I"]["definition"],
@@ -314,6 +323,16 @@ def row_accounting(table: Dict, sp: Space) -> Dict:
         md.append(f"| {ab[i]} | " + " | ".join(str(v) if v else "·" for v in C[i]) +
                   f" | {C[i].sum()} |")
     md.append("| Σ | " + " | ".join(str(v) for v in C.sum(axis=0)) + f" | {C.sum()} |")
+    bad = [d for d in diag_rows if not d["diag_is_strict_row_max"]]
+    md += ["", "### Is the diagonal the row maximum? (Gate 2)", "",
+           f"For {len(diag_rows) - len(bad)} of {len(diag_rows)} gold classes the teacher's "
+           "most frequent label on I is the correct one. Where it isn't, the teacher's "
+           "class-conditional noise has a wrong dominant label, so perm_I keeps that "
+           "wrong majority too:", "",
+           "| gold class | C diagonal (teacher correct) | largest off-diagonal | teacher label there |",
+           "|---|---|---|---|"]
+    md += [f"| {d['gold']} | {d['diag']} | {d['max_off_diag']}{' (tie)' if d['tie'] else ''} "
+           f"| {d['max_off_diag_teacher_label']} |" for d in bad]
     md += ["", "Row ids of I: `rowset_I.json`."]
     _write("row_accounting", payload, md)
     return payload

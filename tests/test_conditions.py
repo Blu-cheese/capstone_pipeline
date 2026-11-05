@@ -21,7 +21,7 @@ written blind.
   8. init seed: explicit init = seed equals the default; an offset changes weights
   9. Phase 7 tables byte-identical with an RQ3 run at another hash present
  plus: saved draws match, the RQ3 run guard, memory consistency across
- replicates, joint run-dir contents, and the PREREG 10-16 scoring rules on
+ replicates, joint run-dir contents, and the PREREG 10-17 scoring rules on
  synthetic values.
 """
 
@@ -372,7 +372,11 @@ rq3-scoring:
   line13                     = partly: perm_I, teacher_I
   line13_controls            = not_real_positive
   line14_pct                 = 50
+  line14_expect              = fails
   line15_pp                  = 5
+  line15_expect              = holds
+  line17_pct                 = 50
+  line17_expect              = holds
 
 ## Something else
 """
@@ -389,6 +393,8 @@ def test_guard_and_parser():
     check("guard: the example passes prereg_rq3_ready", prereg_rq3_ready(EXAMPLE_PREREG)[0])
     bad = [EXAMPLE_PREREG.replace("= lower", "= smaller"),
            EXAMPLE_PREREG.replace("  line15_pp                  = 5\n", ""),
+           EXAMPLE_PREREG.replace("  line17_pct                 = 50\n", ""),
+           EXAMPLE_PREREG.replace("line17_expect              = holds", "line17_expect = maybe"),
            EXAMPLE_PREREG.replace("partly: perm_I, teacher_I", "partly: gold_sub"),
            EXAMPLE_PREREG.replace("2026-11-06", "YYYY-MM-DD"),
            EXAMPLE_PREREG.replace("-0.05", "____")]
@@ -558,6 +564,64 @@ def test_scoring_rules():
     check("score: line 16 reports when no replicates ran",
           next(o for o in res["outcomes"] if o["line"] == 16)["outcome"] == "no replicates ran")
 
+    F7 = dict(F6)                                                 # r0 matches; r1, r2 don't
+    F7[("gold_sub", "joint")] = [[0.44, 0.30, 0.30]] * 3
+    F7[("gold_I", "joint")] = [[0.43, 0.41, 0.42]] * 3          # still real-negative in every replicate
+    F7[("teacher_I", "joint")] = [[0.3225, 0.20, 0.20]] * 3
+    F7[("rand_I", "joint")] = [[0.45, 0.33, 0.33]] * 3            # keep line 11's pairing at −0.05..−0.13
+    F7[("perm_I", "joint")] = [[0.3225, 0.20, 0.20]] * 3
+    o10 = next(o for o in _score(F7, S6)["outcomes"] if o["line"] == 10)
+    check("score: line 10 point values and ratio are scored on replicate 0",
+          o10["verdict"] == "holds", o10["verdict"])
+
+
+def test_line13_expected_world():
+    """Adithya's expected world: no condition's Δ_replay is real-positive."""
+    F, S = _base()
+    F[("gold_I", "replay")] = _flat(0.34)        # gold_I real-negative (as the full gold track)
+    F[("teacher_I", "replay")] = _flat(0.35)     # teacher_I real-negative
+    # perm_I, rand_I: Δ_replay 0, not real
+    res = _score(F, S, {"partly: perm_I, teacher_I": "partly: rand_I, gold_I"})
+    o13 = next(o for o in res["outcomes"] if o["line"] == 13)
+    check("line 13: expected world scores as 'hypothesis partly: gold_I, rand_I'",
+          o13["outcome"].endswith("→ hypothesis partly: gold_I, rand_I"), o13["outcome"])
+    check("line 13: 'line13 = partly: rand_I, gold_I' (any order) names it, verdict holds",
+          o13["verdict"] == "holds" and "hypothesis partly: gold_I, rand_I" in o13["prediction"],
+          o13["prediction"])
+    res = _score(F, S, {"partly: perm_I, teacher_I": "fails"})
+    check("line 13: predicting 'fails' for that world is scored wrong",
+          next(o for o in res["outcomes"] if o["line"] == 13)["verdict"] == "fails")
+
+
+def test_line17_and_expectations():
+    F, S = _base()
+    S[("teacher_I", "joint")] = _flat(0.15)
+    S[("teacher_I", "replay")] = _flat(0.06)             # D_rep 9 points
+    S[("teacher_I", "joint_balanced")] = _flat(0.105)    # D_bal 4.5 points = 50%
+    res = _score(F, S)
+    o17 = next(o for o in res["outcomes"] if o["line"] == 17)
+    check("line 17: holds at exactly 50% with line17_pct = 50; expectation 'holds' correct",
+          o17["verdict"] == "holds" and o17["expected"] == "holds"
+          and o17["expectation_correct"] == "yes", str(o17))
+    res = _score(F, S, {"line17_pct                 = 50": "line17_pct = 60"})
+    check("line 17: fails at line17_pct = 60; expectation now wrong",
+          next(o for o in res["outcomes"] if o["line"] == 17)["expectation_correct"] == "no")
+    S2 = dict(S)
+    S2[("teacher_I", "replay")] = [[0.06, 0.13, 0.06]] * 2 + [[0.06, 0.06, 0.06]]   # r1 under 3 pts on 2 seeds
+    o17 = next(o for o in _score(F, S2)["outcomes"] if o["line"] == 17)
+    check("line 17: D_rep must clear 3 points in EVERY replicate; on 1 of 3 seeds it fails by rule",
+          o17["verdict"].startswith("fails: D_rep clears 3 points on 1 of 3 seeds"), o17["verdict"])
+    S3 = dict(S)
+    S3[("teacher_I", "joint_balanced")] = [[0.105, 0.105, 0.14]] * 3                # r2 recovers 11%
+    check("line 17: the recovery bar applies in every replicate",
+          next(o for o in _score(F, S3)["outcomes"] if o["line"] == 17)["verdict"] == "fails")
+    o14 = next(o for o in res["outcomes"] if o["line"] == 14)
+    o15 = next(o for o in res["outcomes"] if o["line"] == 15)
+    o13 = next(o for o in res["outcomes"] if o["line"] == 13)
+    check("expectations: lines 14 and 15 carry them, lines 10-13 don't",
+          o14["expected"] == "fails" and o14["expectation_correct"] == "yes"
+          and o15["expected"] == "holds" and o13["expected"] == "" and o13["expectation_correct"] == "")
+
 
 def test_rq3_tables_build_on_synthetic_grid():
     """T7-T11, F1, F2 and the scorecard from a full fake 162-run grid (random numbers only)."""
@@ -608,8 +672,9 @@ def test_rq3_tables_build_on_synthetic_grid():
           n == 162 and got == want and figs == {"rq3_delta_replay.png", "rq3_broad_share.png"},
           f"{sorted(want - got)} {sorted(figs)}")
     sc = (root / "tables" / "prereg_outcomes_rq3.md").read_text(encoding="utf-8")
-    check("tables: the scorecard has a verdict for every line 10-16 and a framing line",
-          all(f"| {k} |" in sc for k in range(10, 17)) and "Framing map, branches that apply" in sc)
+    check("tables: the scorecard has a verdict for every line 10-17 and a framing line",
+          all(f"| {k} |" in sc for k in range(10, 18)) and "Framing map, branches that apply" in sc
+          and "expectation_correct" in sc)
 
 
 if __name__ == "__main__":

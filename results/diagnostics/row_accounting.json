@@ -640,6 +640,144 @@
           6
         ]
       ]
-    }
+    },
+    "diagonal_vs_row_max": [
+      {
+        "gold": "org:employees_or_members",
+        "diag": 12,
+        "max_off_diag": 1,
+        "max_off_diag_teacher_label": "per:works",
+        "diag_is_strict_row_max": true,
+        "tie": false
+      },
+      {
+        "gold": "per:age",
+        "diag": 15,
+        "max_off_diag": 0,
+        "max_off_diag_teacher_label": "per:works",
+        "diag_is_strict_row_max": true,
+        "tie": false
+      },
+      {
+        "gold": "per:alternate_names",
+        "diag": 152,
+        "max_off_diag": 23,
+        "max_off_diag_teacher_label": "per:other_family",
+        "diag_is_strict_row_max": true,
+        "tie": false
+      },
+      {
+        "gold": "per:children",
+        "diag": 5,
+        "max_off_diag": 16,
+        "max_off_diag_teacher_label": "per:other_family",
+        "diag_is_strict_row_max": false,
+        "tie": false
+      },
+      {
+        "gold": "per:employee_or_member_of",
+        "diag": 8,
+        "max_off_diag": 6,
+        "max_off_diag_teacher_label": "org:employees_or_members",
+        "diag_is_strict_row_max": true,
+        "tie": false
+      },
+      {
+        "gold": "per:friends",
+        "diag": 22,
+        "max_off_diag": 5,
+        "max_off_diag_teacher_label": "per:girl/boyfriend",
+        "diag_is_strict_row_max": true,
+        "tie": false
+      },
+      {
+        "gold": "per:girl/boyfriend",
+        "diag": 58,
+        "max_off_diag": 4,
+        "max_off_diag_teacher_label": "per:negative_impression",
+        "diag_is_strict_row_max": true,
+        "tie": false
+      },
+      {
+        "gold": "per:negative_impression",
+        "diag": 21,
+        "max_off_diag": 5,
+        "max_off_diag_teacher_label": "per:other_family",
+        "diag_is_strict_row_max": true,
+        "tie": false
+      },
+      {
+        "gold": "per:other_family",
+        "diag": 13,
+        "max_off_diag": 2,
+        "max_off_diag_teacher_label": "per:negative_impression",
+        "diag_is_strict_row_max": true,
+        "tie": false
+      },
+      {
+        "gold": "per:parents",
+        "diag": 9,
+        "max_off_diag": 20,
+        "max_off_diag_teacher_label": "per:other_family",
+        "diag_is_strict_row_max": false,
+        "tie": false
+      },
+      {
+        "gold": "per:pet",
+        "diag": 13,
+        "max_off_diag": 0,
+        "max_off_diag_teacher_label": "per:works",
+        "diag_is_strict_row_max": true,
+        "tie": false
+      },
+      {
+        "gold": "per:positive_impression",
+        "diag": 11,
+        "max_off_diag": 20,
+        "max_off_diag_teacher_label": "per:girl/boyfriend",
+        "diag_is_strict_row_max": false,
+        "tie": false
+      },
+      {
+        "gold": "per:roommate",
+        "diag": 14,
+        "max_off_diag": 11,
+        "max_off_diag_teacher_label": "per:friends",
+        "diag_is_strict_row_max": true,
+        "tie": false
+      },
+      {
+        "gold": "per:spouse",
+        "diag": 19,
+        "max_off_diag": 8,
+        "max_off_diag_teacher_label": "per:other_family",
+        "diag_is_strict_row_max": true,
+        "tie": false
+      },
+      {
+        "gold": "per:title",
+        "diag": 41,
+        "max_off_diag": 8,
+        "max_off_diag_teacher_label": "per:works",
+        "diag_is_strict_row_max": true,
+        "tie": false
+      },
+      {
+        "gold": "per:visited_place",
+        "diag": 9,
+        "max_off_diag": 0,
+        "max_off_diag_teacher_label": "per:works",
+        "diag_is_strict_row_max": true,
+        "tie": false
+      },
+      {
+        "gold": "per:works",
+        "diag": 6,
+        "max_off_diag": 2,
+        "max_off_diag_teacher_label": "per:alternate_names",
+        "diag_is_strict_row_max": true,
+        "tie": false
+      }
+    ]
   }
 }

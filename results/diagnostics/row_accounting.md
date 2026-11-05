@@ -103,4 +103,14 @@ Bold = under the frozen threshold of 15. The threshold is not re-applied on I (t
 | works | · | · | 2 | · | 1 | · | · | · | · | · | · | · | · | · | · | · | 6 | 9 |
 | Σ | 20 | 15 | 161 | 16 | 19 | 43 | 91 | 46 | 97 | 26 | 15 | 29 | 20 | 24 | 55 | 10 | 23 | 710 |
 
+### Is the diagonal the row maximum? (Gate 2)
+
+For 14 of 17 gold classes the teacher's most frequent label on I is the correct one. Where it isn't, the teacher's class-conditional noise has a wrong dominant label, so perm_I keeps that wrong majority too:
+
+| gold class | C diagonal (teacher correct) | largest off-diagonal | teacher label there |
+|---|---|---|---|
+| per:children | 5 | 16 | per:other_family |
+| per:parents | 9 | 20 | per:other_family |
+| per:positive_impression | 11 | 20 | per:girl/boyfriend |
+
 Row ids of I: `rowset_I.json`.

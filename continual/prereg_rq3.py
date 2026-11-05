@@ -6,8 +6,8 @@ The guard. RQ3 runs refuse to start unless PREREG.md *at HEAD* (i.e.
 committed) has a "## RQ3 predictions" section, no "____" / "YYYY-MM-DD" left
 anywhere, and a parseable scoring block in that section.
 
-The scoring block. Lines 10, 14 and 15 contain numbers chosen by Adithya and
-lines 11 to 13 a choice of words, so make_tables can only score them
+The scoring block. Lines 10, 14, 15 and 17 contain numbers chosen by Adithya,
+lines 11 to 13 a choice of words, and lines 14, 15 and 17 an expectation, so make_tables can only score them
 mechanically if the choices are stated in a fixed form. The block sits inside
 the RQ3 section, exactly like this (values are examples):
 
@@ -21,10 +21,14 @@ the RQ3 section, exactly like this (values are examples):
       line13                     = partly: teacher_I, perm_I
       line13_controls            = not_real
       line14_pct                 = 50
+      line14_expect              = fails
       line15_pp                  = 5
+      line15_expect              = holds
+      line17_pct                 = 50
+      line17_expect              = holds
 
 Allowed values:
-  line10_*_minus_gold, line10_ratio, line14_pct, line15_pp   a number
+  line10_*_minus_gold, line10_ratio, line14_pct, line15_pp, line17_pct   a number
   line10_gold_I_real                yes | no
   line11, line12                    lower | higher | same
   line13                            holds | fails | partly: <conditions>
@@ -33,6 +37,13 @@ Allowed values:
       how "not real for rand_I and gold_I" is read: |delta| not real in
       either direction, or delta not real-positive (a real negative counts as
       consistent with the hypothesis)
+  line14_expect, line15_expect, line17_expect   holds | fails
+      whether the line is expected to hold; the scorecard reports the outcome
+      and whether this expectation was correct
+
+Line 17 (Gate 2) has no blank in prose; it is defined by its scoring rule in
+make_tables.py and exists in the PREREG only through line17_pct / line17_expect
+and Adithya's wording of it.
 
 How each line is then scored is fixed in make_tables.py's module docstring.
 """
@@ -47,8 +58,10 @@ HEADING = "## RQ3 predictions"
 CL_CONDITIONS = ("teacher_I", "perm_I", "rand_I", "gold_I")
 
 _NUMBER_KEYS = ("line10_gold_I_minus_gold", "line10_gold_sub_minus_gold", "line10_ratio",
-                "line14_pct", "line15_pp")
-KEYS = _NUMBER_KEYS + ("line10_gold_I_real", "line11", "line12", "line13", "line13_controls")
+                "line14_pct", "line15_pp", "line17_pct")
+EXPECT_KEYS = ("line14_expect", "line15_expect", "line17_expect")
+KEYS = _NUMBER_KEYS + ("line10_gold_I_real", "line11", "line12", "line13",
+                       "line13_controls") + EXPECT_KEYS
 
 
 def head_prereg() -> str:
@@ -109,6 +122,10 @@ def parse_scoring(section: str) -> Dict:
     if raw["line13_controls"] not in ("not_real", "not_real_positive"):
         raise ValueError("line13_controls must be not_real or not_real_positive")
     out["line13_controls"] = raw["line13_controls"]
+    for k in EXPECT_KEYS:
+        if raw[k] not in ("holds", "fails"):
+            raise ValueError(f"{k} must be holds or fails")
+        out[k] = raw[k]
     return out
 
 
