@@ -26,6 +26,7 @@ from typing import Dict, List, Optional, Tuple
 import numpy as np
 import torch
 import torch.nn as nn
+from torch.utils.data import WeightedRandomSampler
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
@@ -165,6 +166,90 @@ def train_joint(
 
     return model, {"best_dev_macro_f1": best_f1, "best_epoch": best_epoch,
                    "epochs_run": len(history), "history": history}
+
+
+def balanced_sampler(y: np.ndarray, num_samples: int) -> WeightedRandomSampler:
+    """
+    RQ3_SPEC §2.3: each row weighted 1 / (training count of its label), drawn
+    with replacement, so every present class is equally likely per draw.
+    Draws come from the global torch RNG, which the caller seeds.
+    """
+    counts = np.bincount(y)
+    weights = torch.as_tensor(1.0 / counts[y], dtype=torch.double)
+    return WeightedRandomSampler(weights, num_samples=num_samples, replacement=True)
+
+
+def train_joint_balanced(
+    X_train: np.ndarray,
+    y_train: np.ndarray,
+    X_dev: np.ndarray,
+    y_dev: np.ndarray,
+    n_classes: int,
+    seed: int = 1234,
+    verbose: bool = True,
+) -> Tuple[Student, Dict]:
+    """
+    joint_balanced (RQ3_SPEC §2.3, our addition, declared in PREREG): joint
+    training where each epoch's batch indices come from balanced_sampler -
+    len(y_train) draws with replacement - instead of a permutation.
+
+    Everything else is train_joint's: same seeding (so the same initial
+    weights for a given seed), optimiser, loss, batch size 32 with the last
+    partial batch kept, epoch cap, early stopping on dev macro-F1 with
+    patience 5, best weights restored. A separate function on purpose:
+    train_joint's code path never builds a sampler.
+    """
+    torch.manual_seed(seed)
+    np.random.seed(seed)
+
+    model = Student(n_classes)
+    optimizer = torch.optim.Adam(model.parameters(),
+                                 lr=config.LEARNING_RATE,
+                                 weight_decay=config.WEIGHT_DECAY)
+    criterion = nn.CrossEntropyLoss()
+    sampler = balanced_sampler(y_train, len(y_train))
+
+    Xtr = torch.from_numpy(X_train)
+    ytr = torch.from_numpy(y_train)
+    Xdv = torch.from_numpy(X_dev)
+
+    best_f1, best_state, best_epoch, patience = -1.0, None, -1, 0
+    history = []
+
+    for epoch in range(config.MAX_EPOCHS_PER_TASK):
+        model.train()
+        order = torch.tensor(list(iter(sampler)), dtype=torch.long)
+        total_loss = 0.0
+        for i in range(0, len(order), config.BATCH_SIZE):
+            idx = order[i:i + config.BATCH_SIZE]
+            optimizer.zero_grad()
+            loss = criterion(model(Xtr[idx]), ytr[idx])
+            loss.backward()
+            optimizer.step()
+            total_loss += loss.item() * len(idx)
+
+        dev_f1, _ = macro_f1(y_dev, _predict(model, Xdv), n_classes)
+        history.append({"epoch": epoch, "loss": total_loss / len(order),
+                        "dev_macro_f1": dev_f1})
+
+        if dev_f1 > best_f1:
+            best_f1, best_epoch, patience = dev_f1, epoch, 0
+            best_state = {k: v.clone() for k, v in model.state_dict().items()}
+        else:
+            patience += 1
+            if patience >= config.EARLY_STOPPING_PATIENCE:
+                if verbose:
+                    print(f"    early stop at epoch {epoch} "
+                          f"(best {best_f1:.4f} @ epoch {best_epoch})")
+                break
+
+    if config.RESTORE_BEST_WEIGHTS and best_state is not None:
+        model.load_state_dict(best_state)
+
+    return model, {"best_dev_macro_f1": best_f1, "best_epoch": best_epoch,
+                   "epochs_run": len(history), "history": history,
+                   "sampler": "WeightedRandomSampler, weight 1/count(label), "
+                              "replacement, num_samples=len(train)"}
 
 
 # ------------------------------------------------------------------- driver

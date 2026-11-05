@@ -54,6 +54,7 @@ from sklearn.cluster import KMeans
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
 from continual import config
+from continual.conditions import ALL_TRACKS, train_rows
 from continual.eval_sets import build_eval_sets
 from continual.features import EMBED_DIM, build_features
 from continual.harness import (
@@ -178,15 +179,13 @@ def _entropy_rows(p: np.ndarray) -> np.ndarray:
 
 
 def resolve_feature_rows(track: str, class_names: Dict[int, str],
-                         X_task: np.ndarray) -> np.ndarray:
+                         X_task: np.ndarray, draw_seed: Optional[int] = None) -> np.ndarray:
     """
-    task_data row -> row of the full feature matrix. Mirrors
-    harness._track_train_data's row filter and checks the result.
+    task_data row -> row of the full feature matrix. Same source as
+    harness._track_train_data (conditions.train_rows), and checks the result.
     """
     feats = build_features(config.CORPUS)
-    kept = [DIALOGRE_RELATIONS.index(class_names[i]) for i in sorted(class_names)]
-    y_full = feats["y_teacher"] if track == "teacher" else feats["y_gold"]
-    rows = np.flatnonzero(np.isin(y_full, kept))
+    rows, _ = train_rows(track, feats, {n: i for i, n in class_names.items()}, draw_seed)
     assert np.array_equal(feats["X"][rows], X_task), "feature row map is wrong"
     return rows
 
@@ -214,13 +213,16 @@ class ReplayRegime(NaiveRegime):
 
     def __init__(self, seed: int, track: str, dev: Optional[Dict] = None,
                  feature_rows: Optional[np.ndarray] = None,
-                 schedule: str = "early_stop"):
-        assert track in ("teacher", "gold"), track
+                 schedule: str = "early_stop", draw_seed: Optional[int] = None):
+        assert track in ALL_TRACKS, track
         assert schedule in ("early_stop", "fixed"), schedule
         self.schedule = schedule
         if schedule == "fixed":
             self.name = f"{type(self).name}-fixed{config.REPLAY_FIXED_EPOCHS}"
-        self.seed, self.track = seed, track
+        # seed = task-order seed: KMeans random_state stays on it for every
+        # replicate (RQ3_SPEC §2.4), so replicates share the memory selection
+        # whenever they share the training labels.
+        self.seed, self.track, self.draw_seed = seed, track, draw_seed
         if dev is None:
             dev = build_eval_sets(seed)["dev"]
         self.dev_X = torch.from_numpy(dev["X"])
@@ -242,7 +244,7 @@ class ReplayRegime(NaiveRegime):
     def after_task(self, t: int, model: Student, task_data: TaskData) -> None:
         if self.feature_rows is None:
             self.feature_rows = resolve_feature_rows(self.track, self.class_names,
-                                                     task_data.X)
+                                                     task_data.X, self.draw_seed)
         Z = task_data.X[:, ENTITY_COLS]
         new = task_data.task_classes[t]
         assert not set(new) & set(self.memory), "memory is selected once per relation"
@@ -364,7 +366,9 @@ class ReplayRegime(NaiveRegime):
     # ---- bookkeeping ---------------------------------------------------
 
     def memory_payload(self) -> Dict:
+        extra = {} if self.draw_seed is None else {"draw_seed": self.draw_seed}
         return {
+            **extra,
             "track": self.track, "seed": self.seed, "regime": self.name,
             "memory_size": config.REPLAY_MEMORY_PER_RELATION,
             "selection": "kmeans per relation, nearest member within each cluster, "
@@ -526,7 +530,9 @@ def write_artifacts(regime: ReplayRegime, out_dir: Path) -> None:
     """
     Write memory_indices.json, replay_log.jsonl and (FKD) fkd_diagnostics.json
     into the run directory, then assert the memory matches any other run of
-    the same track and seed in the same results root.
+    the same track, seed and label draw in the same results root (replicates
+    with a different init seed but the same labels must select the same
+    memory; a different draw of rand_I / perm_I / gold_sub may not).
     """
     payload = regime.memory_payload()
     (out_dir / "memory_indices.json").write_text(json.dumps(payload, indent=2, sort_keys=True))
@@ -543,7 +549,8 @@ def write_artifacts(regime: ReplayRegime, out_dir: Path) -> None:
         if other.parent == out_dir:
             continue
         theirs = json.loads(other.read_text(encoding="utf-8"))
-        if (theirs.get("track"), theirs.get("seed")) != (regime.track, regime.seed):
+        if (theirs.get("track"), theirs.get("seed"), theirs.get("draw_seed")) != \
+                (regime.track, regime.seed, regime.draw_seed):
             continue
         mine = {k: v["train_rows"] for k, v in payload["classes"].items()}
         if {k: v["train_rows"] for k, v in theirs["classes"].items()} != mine:

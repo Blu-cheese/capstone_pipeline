@@ -437,7 +437,7 @@ def broad_class_check(table: Dict, sp: Space) -> Dict:
     assert b == BROAD_CLASS_T5
     feats = table["feats"]
     t3 = {(r["track"], r["regime"], int(r["seed"])): float(r["final_macro_f1_all"])
-          for r in csv.DictReader(open(config.RESULTS_DIR / "tables" / "T3_final_macro_f1.csv"))}
+          for r in csv.DictReader(open(config.RESULTS_DIR / "tables" / "T3_final_macro_f1.csv", encoding="utf-8"))}
     per_seed, md_rows = [], []
     for s in SEEDS:
         ci = class_index(load_split(s))

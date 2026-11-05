@@ -1,0 +1,40 @@
+condition,seed,draw_seed,rows,noise_rate_vs_gold,broad_class_rows,task_0,task_1,task_2,degenerate_task,classes_under_15,C_equals_teacher_I
+"gold (full, reference)",1234,—,1327,0.0,26,405,494,428,1,,
+"teacher (full, reference)",1234,—,879,0.513083,144,323,261,295,1,,
+gold_I,1234,—,710,0.0,16,209,259,242,1,employees_or_members 14; pet 13; visited_place 9; works 9,
+teacher_I,1234,—,710,0.397183,97,244,218,248,1,visited_place 10,
+perm_I,1234,1234,710,0.397183,97,244,218,248,1,visited_place 10,yes (asserted)
+perm_I,1234,1334,710,0.397183,97,244,218,248,1,visited_place 10,yes (asserted)
+perm_I,1234,1434,710,0.397183,97,244,218,248,1,visited_place 10,yes (asserted)
+rand_I,1234,1234,710,0.397183,29,253,223,234,1,,
+rand_I,1234,1334,710,0.397183,21,230,217,263,1,,
+rand_I,1234,1434,710,0.397183,25,243,223,244,1,,
+gold_sub,1234,1234,710,0.0,13,211,270,229,1,employees_or_members 8; age 8; employee_or_member_of 10; other_family 13; pet 10; visited_place 14; works 7,
+gold_sub,1234,1334,710,0.0,10,211,275,224,1,employees_or_members 14; age 8; employee_or_member_of 12; other_family 10; pet 7; visited_place 12; works 11,
+gold_sub,1234,1434,710,0.0,15,230,251,229,1,employees_or_members 8; age 11; employee_or_member_of 8; pet 7; visited_place 13; works 10,
+"gold (full, reference)",1,—,1327,0.0,26,402,494,431,1,,
+"teacher (full, reference)",1,—,879,0.513083,144,324,261,294,1,,
+gold_I,1,—,710,0.0,16,213,259,238,1,employees_or_members 14; pet 13; visited_place 9; works 9,
+teacher_I,1,—,710,0.397183,97,246,218,246,1,visited_place 10,
+perm_I,1,1,710,0.397183,97,246,218,246,1,visited_place 10,yes (asserted)
+perm_I,1,101,710,0.397183,97,246,218,246,1,visited_place 10,yes (asserted)
+perm_I,1,201,710,0.397183,97,246,218,246,1,visited_place 10,yes (asserted)
+rand_I,1,1,710,0.397183,32,246,216,248,1,,
+rand_I,1,101,710,0.397183,35,265,207,238,1,,
+rand_I,1,201,710,0.397183,29,251,229,230,1,,
+gold_sub,1,1,710,0.0,15,227,260,223,1,employees_or_members 9; age 6; employee_or_member_of 11; pet 9; visited_place 11; works 12,
+gold_sub,1,101,710,0.0,14,220,266,224,1,employees_or_members 10; age 11; employee_or_member_of 13; other_family 14; pet 7; visited_place 9; works 9,
+gold_sub,1,201,710,0.0,13,203,270,237,1,employees_or_members 9; age 9; employee_or_member_of 8; other_family 13; pet 9; visited_place 12; works 14,
+"gold (full, reference)",2,—,1327,0.0,26,440,393,494,2,,
+"teacher (full, reference)",2,—,879,0.513083,144,311,307,261,2,,
+gold_I,2,—,710,0.0,16,256,195,259,2,employees_or_members 14; pet 13; visited_place 9; works 9,
+teacher_I,2,—,710,0.397183,97,258,234,218,2,visited_place 10,
+perm_I,2,2,710,0.397183,97,258,234,218,2,visited_place 10,yes (asserted)
+perm_I,2,102,710,0.397183,97,258,234,218,2,visited_place 10,yes (asserted)
+perm_I,2,202,710,0.397183,97,258,234,218,2,visited_place 10,yes (asserted)
+rand_I,2,2,710,0.397183,36,274,222,214,2,,
+rand_I,2,102,710,0.397183,24,280,201,229,2,,
+rand_I,2,202,710,0.397183,36,272,217,221,2,,
+gold_sub,2,2,710,0.0,17,237,213,260,2,employees_or_members 11; age 11; employee_or_member_of 8; pet 5; visited_place 14; works 8,
+gold_sub,2,102,710,0.0,15,225,218,267,2,employees_or_members 12; age 10; employee_or_member_of 9; pet 9; visited_place 12; works 11,
+gold_sub,2,202,710,0.0,17,244,212,254,2,employees_or_members 12; age 4; employee_or_member_of 10; pet 7; visited_place 12; works 12,

@@ -1,0 +1,7 @@
+component,rows,detail
+teacher label = gold,428,
+"in-space error (gold in the 17, teacher ≠ gold)",282,the confusion matrix C (results/diagnostics/row_accounting.md)
+gold = unanswerable,125,"teacher labels: alternate_names 35, other_family 28, title 18, positive_impression 12"
+gold = a sub-threshold class,44,"gold: siblings 23, dates 4, client 4, visitors_of_place 4, boss 3, alumni 2, place_of_residence 1, neighbor 1, place_of_work 1, subordinate 1"
+teacher track (sum),879,
+gold-track rows lost (teacher label outside the 17),617,"teacher labels: acquaintance 319, unanswerable 274, other 24"

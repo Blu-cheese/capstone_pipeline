@@ -64,6 +64,7 @@ import torch.nn.functional as F
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
 from continual import config
+from continual.conditions import ALL_TRACKS, train_rows
 from continual.eval_sets import build_eval_sets
 from continual.features import build_features
 from continual.metrics import (
@@ -192,15 +193,15 @@ def _git_hash() -> str:
         return "unknown"
 
 
-def _track_train_data(track: str, feats: Dict, split: Dict) -> Tuple[np.ndarray, np.ndarray]:
-    """Map the 37-way label space onto the head; keep rows surviving the split."""
-    ci = class_index(split)
-    full_to_head = {DIALOGRE_RELATIONS.index(r): h for r, h in ci.items()}
-    y_full = feats["y_teacher"] if track == "teacher" else feats["y_gold"]
-    keep = np.isin(y_full, list(full_to_head))
-    X = feats["X"][keep]
-    y = np.array([full_to_head[int(v)] for v in y_full[keep]], dtype=np.int64)
-    return X, y
+def _track_train_data(track: str, feats: Dict, split: Dict,
+                      draw_seed: Optional[int] = None) -> Tuple[np.ndarray, np.ndarray]:
+    """
+    Training rows and head labels for a track (continual/conditions.py, the
+    single source). For gold and teacher this is the original filter - keep
+    rows whose own label survives the split - computed the same way.
+    """
+    rows, y = train_rows(track, feats, class_index(split), draw_seed)
+    return feats["X"][rows], y
 
 
 def _eval_slices(y_eval: np.ndarray,
@@ -222,15 +223,25 @@ def run_sequential(
     task_classes_override: Optional[List[List[int]]] = None,
     results_root: Path = None,
     verbose: bool = True,
+    init_seed: Optional[int] = None,
+    draw_seed: Optional[int] = None,
 ) -> Path:
-    """Run the sequential CL loop. Returns the results directory."""
-    assert track in ("teacher", "gold"), track
+    """
+    Run the sequential CL loop. Returns the results directory.
+
+    `seed` picks the task order (split), eval sets and, through the regimes,
+    KMeans memory selection. `init_seed` (RQ3_SPEC §2.4) replaces it for RNG
+    seeding only - model init and batch order; None keeps `seed`, the
+    pre-RQ3 path. `draw_seed` is the label-condition draw (conditions.py).
+    """
+    assert track in ALL_TRACKS, track
     t_start = time.time()
 
     # Determinism: seed everything before ANY torch op, then flag it.
-    random.seed(seed)
-    np.random.seed(seed)
-    torch.manual_seed(seed)
+    rng_seed = seed if init_seed is None else init_seed
+    random.seed(rng_seed)
+    np.random.seed(rng_seed)
+    torch.manual_seed(rng_seed)
     torch.use_deterministic_algorithms(True)
 
     split = load_split(seed)
@@ -247,7 +258,7 @@ def run_sequential(
 
     feats = build_features(config.CORPUS)
     ev = build_eval_sets(seed)
-    X_train_all, y_train_all = _track_train_data(track, feats, split)
+    X_train_all, y_train_all = _track_train_data(track, feats, split, draw_seed)
     task_data = TaskData(X_train_all, y_train_all, task_classes)
 
     dev_slices = _eval_slices(ev["dev"]["y"], task_classes)
@@ -344,7 +355,8 @@ def run_sequential(
     # ------------------------------------------------------------- outputs
     elapsed = time.time() - t_start
     ts = time.strftime("%Y%m%d-%H%M%S")
-    run_id = f"{track}_{regime.name}_{seed}_{ts}"
+    init_tag = "" if init_seed is None else f"_i{init_seed}"   # replicates can't share a dir
+    run_id = f"{track}_{regime.name}_{seed}{init_tag}_{ts}"
     out_dir = (results_root or config.RESULTS_DIR) / run_id
     out_dir.mkdir(parents=True, exist_ok=True)
 
@@ -364,6 +376,7 @@ def run_sequential(
         "git_hash": _git_hash(), "n_classes": n_classes, "k": K,
         "task_classes_override": task_classes_override is not None,
         "train_examples": int(len(y_train_all)),
+        "init_seed": rng_seed, "draw_seed": draw_seed,
         "eval": {"dev": int(len(ev["dev"]["y"])), "test": int(len(ev["test"]["y"])),
                  "label_source": "gold (both tracks)"},
         "wall_seconds": round(elapsed, 1),

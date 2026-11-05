@@ -10,7 +10,9 @@ every (track, regime, seed) must have exactly one clean run at one git hash
 / --hash-fixed to choose when there are several).
 
 Writes results/tables/{T1..T6, D1, prereg_outcomes}.{md,csv} and
-results/figures/*.png.
+results/figures/*.png, then the RQ3 tables (T7 to T11, prereg_outcomes_rq3)
+and figures (rq3_*.png); the RQ3 definitions sit with the RQ3 code below.
+--only phase7 / --only rq3 builds one half.
 
 Definitions, fixed here BEFORE the sweep ran, so that the open wording in
 PREREG lines 4, 6 and 8 is measured by a rule chosen without seeing results:
@@ -53,6 +55,9 @@ sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
 from continual import config
 from continual.features import build_features
+from continual.conditions import (
+    DRAWN_TRACKS, REPLICATES, RQ3_REGIMES, RQ3_TRACKS, head_labels, load_condition, train_rows,
+)
 from continual.student import macro_f1
 from continual.task_split import load_split, class_index
 from preprocessing.dialogre_parser import DIALOGRE_RELATIONS
@@ -97,12 +102,19 @@ class Run:
         return json.loads((self.dir / name).read_text(encoding="utf-8"))
 
 
-def select_runs(schedule: str, regimes: List[str], hash_: Optional[str]) -> Tuple[Dict, str]:
+def select_runs(schedule: str, regimes: List[str], hash_: Optional[str],
+                tracks: List[str] = TRACKS) -> Tuple[Dict, str]:
+    """
+    Phase 7 run selection. Filters on schedule AND track set (RQ3 Gate 1
+    guard): RQ3 runs use the primary schedule too, at another hash, and would
+    otherwise make the one-hash rule below refuse to build the Phase 7 tables.
+    """
     clean = []
     for p in sorted(config.RESULTS_DIR.glob("*/metrics.json")):
         m = json.loads(p.read_text(encoding="utf-8"))
         meta = m.get("meta", {})
-        if meta.get("schedule") == schedule and meta.get("dirty") is False:
+        if (meta.get("schedule") == schedule and meta.get("dirty") is False
+                and meta.get("track") in tracks):
             clean.append(Run(p.parent, meta, m))
     hashes = sorted({r.meta["git_hash"] for r in clean})
     if hash_ is None:
@@ -696,14 +708,9 @@ def figure_confusion(P: Dict, infos: Dict[int, SplitInfo]) -> None:
 
 # ------------------------------------------------------------------ main
 
-def main():
-    ap = argparse.ArgumentParser(description="Phase 7 tables and figures")
-    ap.add_argument("--hash-primary", default=None)
-    ap.add_argument("--hash-fixed", default=None)
-    args = ap.parse_args()
-
+def phase7(hash_primary: Optional[str] = None, hash_fixed: Optional[str] = None) -> None:
     infos = {s: SplitInfo(s) for s in SEEDS}
-    P, hp = select_runs("primary", PRIMARY, args.hash_primary)
+    P, hp = select_runs("primary", PRIMARY, hash_primary)
     print(f"primary: {len(P)} runs at {hp}")
     table_T1(P, infos, "f1")
     table_T1(P, infos, "acc")
@@ -715,11 +722,680 @@ def main():
     figure_acc(P, infos)
     figure_confusion(P, infos)
 
-    Fx, hf = select_runs("fixed", FIXED, args.hash_fixed)
+    Fx, hf = select_runs("fixed", FIXED, hash_fixed)
     print(f"fixed:   {len(Fx)} runs at {hf}")
     table_T6(Fx, infos)
     prereg(P, Fx, pair_drops, t5, infos)
     print(f"tables -> {TABLE_DIR}   figures -> {FIG_DIR}")
+
+
+# =================================================================== RQ3
+#
+# RQ3_SPEC §2.5 with the Gate 1 amendments: T7 to T11, figures F1 and F2, and
+# the PREREG 10-16 scorecard. Reads saved files only: results/conditions/*.json
+# and the run dirs whose metrics.json meta.spec is "RQ3_SPEC".
+#
+# Definitions, fixed BEFORE the RQ3 sweep so that PREREG lines 10 to 16 are
+# measured by rules chosen without seeing results:
+#
+#   runs        clean RQ3 runs at one git hash. Replicate 0 must be complete (54
+#               runs); replicates 1 and 2 are either complete or absent.
+#   F(c,g,s,r)  final 17-class test macro-F1 (metrics.json final_macro_f1_all)
+#               for condition c, regime g, seed s, replicate r.
+#   S(c,g,s,r)  broad-class share: the fraction of the 1,144 test examples the
+#               final model predicts as per:other_family (the T5 broad class).
+#   gold share  the fraction of test examples whose gold label is that class.
+#   references  full gold / teacher joint = joint_baseline_seed{s}.json; they
+#               have no replicates.
+#   Δ_replay    F(c,replay) − F(c,joint). Δ_bal = F(c,joint_balanced) − F(c,joint).
+#   Δ_share     S(c,replay) − S(c,joint), and S(c,joint_balanced) − S(c,joint).
+#               Every Δ is paired within a replicate (same init seed and draw).
+#   real cell   |D(s, r=0)| > 0.03 and, if replicates ran, D(s, r) has a single
+#               sign over r = 0, 1, 2: the replicate spread doesn't cross zero
+#               (PREREG 16). Shares use the same 0.03, read as 3 points.
+#   direction   real-positive / real-negative when at least 2 of 3 seeds are real
+#               cells of that sign; otherwise "not real" (the 2-of-3 rule).
+#   line 10     (a) D = F(gold_I,joint) − F(gold ref): real iff direction is not
+#               "not real"; scored against line10_gold_I_real. (b) Point
+#               predictions for that D and for F(gold_sub,joint) − F(gold ref):
+#               each holds if |D(s,0) − predicted| <= 0.03 on >= 2 of 3 seeds.
+#               (c) ratio F(teacher_I,joint) / F(gold_I,joint), replicate 0: holds
+#               if within 0.05 of line10_ratio on >= 2 of 3 seeds (line 0's
+#               tolerance). The line holds if (a), both (b) and (c) hold.
+#   lines 11-12 D = F(teacher_I,joint) − F(rand_I or perm_I, joint), paired by
+#               replicate. Observed: lower = real-negative, higher =
+#               real-positive, same = not real. Holds if it equals the prediction.
+#   line 13     Δ_replay direction per condition. Clauses: teacher_I and perm_I
+#               real-positive; rand_I and gold_I "not real" (line13_controls =
+#               not_real) or "not real-positive" (= not_real_positive).
+#               Hypothesis outcome: holds (all four clauses), fails (none), or
+#               partly (the set of conditions whose clause holds). The prediction
+#               holds if it names the observed outcome, and for "partly" the same set.
+#   line 14     teacher_I. A seed counts if its Δ_replay cell is real and positive
+#               and Δ_bal / Δ_replay >= line14_pct / 100 in every replicate run
+#               (ratio compared at 6 decimals, the precision metrics are stored
+#               at). Holds if >= 2 of 3 seeds count. If Δ_replay is real-positive on
+#               fewer than 2 seeds, the line fails: there is no replay gain to
+#               recover.
+#   line 15     (a) S(c,joint) > 2 × gold share in every replicate, for teacher_I
+#               and perm_I, and <= 2 × gold share in every replicate for rand_I,
+#               each on >= 2 of 3 seeds. (b) S(c,joint) − S(c,replay) >
+#               line15_pp / 100 in every replicate, for teacher_I and perm_I, each
+#               on >= 2 of 3 seeds. The line holds if (a) and (b) hold.
+#   line 16     reporting rule: "applied", stating whether replicates ran.
+#   framing     every branch of the PREREG map whose condition is met:
+#               13 holds; 13 does not hold and rand_I's Δ_replay is real-positive;
+#               14 holds; line 12 observed "same" (class-conditional structure)
+#               or not (instance dependence matters too); Δ_share(replay) real
+#               for teacher_I and perm_I while Δ_replay is "not real" for both.
+
+RQ3_TAG = "RQ3_SPEC"
+FIG_ORDER = ["gold_I", "gold_sub", "rand_I", "perm_I", "teacher_I"]   # clean -> random -> structured
+CL_CONDS = ["teacher_I", "perm_I", "rand_I", "gold_I"]
+BROAD = "per:other_family"
+POINT_TOL, RATIO_TOL = 0.03, 0.05
+RQ3_JOINT = ("joint", "joint_balanced")
+RQ3_STYLE = {"joint": ("#6250d6", "D"), "joint_balanced": ("#1baf7a", "v"),
+             "replay": REGIME_STYLE["replay"]}
+SEED_MARKER = {1234: "o", 1: "s", 2: "^"}
+
+
+def real_sign(vals: List[float], reps_ran: bool) -> int:
+    """+1 / -1 for a real cell, 0 otherwise (PREREG 16 when replicates ran)."""
+    d0 = vals[0]
+    if abs(d0) <= THRESH:
+        return 0
+    if reps_ran and not (min(vals) > 0 or max(vals) < 0):
+        return 0
+    return 1 if d0 > 0 else -1
+
+
+def direction(signs: List[int]) -> str:
+    if sum(x > 0 for x in signs) >= 2:
+        return "real-positive"
+    if sum(x < 0 for x in signs) >= 2:
+        return "real-negative"
+    return "not real"
+
+
+def select_rq3_runs(hash_: Optional[str] = None):
+    clean = []
+    for p in sorted(config.RESULTS_DIR.glob("*/metrics.json")):
+        m = json.loads(p.read_text(encoding="utf-8"))
+        meta = m.get("meta", {})
+        if meta.get("spec") == RQ3_TAG and meta.get("dirty") is False:
+            clean.append(Run(p.parent, meta, m))
+    if not clean:
+        return None, None, []
+    hashes = sorted({r.meta["git_hash"] for r in clean})
+    if hash_ is None:
+        if len(hashes) != 1:
+            sys.exit(f"rq3: runs at {hashes}; choose one with --hash-rq3")
+        hash_ = hashes[0]
+    chosen: Dict[Tuple, Run] = {}
+    for r in clean:
+        if r.meta["git_hash"] != hash_:
+            continue
+        key = (r.meta["track"], r.meta["regime"], r.meta["seed"], r.meta["replicate"])
+        if key in chosen:
+            sys.exit(f"rq3: two runs for {key} at {hash_}")
+        chosen[key] = r
+    reps = sorted({k[3] for k in chosen})
+    if reps not in ([0], list(REPLICATES)):
+        sys.exit(f"rq3: replicates present {reps}; need [0] or {list(REPLICATES)}")
+    grid = [(t, g, s) for t in RQ3_TRACKS for g in RQ3_REGIMES[t] for s in SEEDS]
+    missing = [(t, g, s, r) for r in reps for (t, g, s) in grid if (t, g, s, r) not in chosen]
+    if missing:
+        sys.exit(f"rq3: missing runs at {hash_}: {missing[:6]}{' ...' if len(missing) > 6 else ''}")
+    return chosen, hash_, reps
+
+
+class RQ3:
+    """Accessors over the selected RQ3 runs, per (condition, regime, seed, replicate)."""
+
+    def __init__(self, runs: Dict, reps: List[int], infos: Dict[int, SplitInfo]):
+        self.runs, self.reps, self.infos = runs, reps, infos
+        self.ran = len(reps) > 1
+        self.ref = {s: json.loads((config.RESULTS_DIR / f"joint_baseline_seed{s}.json")
+                                  .read_text(encoding="utf-8"))["tracks"] for s in SEEDS}
+        any_run = runs[(RQ3_TRACKS[0], "joint", SEEDS[0], 0)]
+        y = any_run.P["test_gold"]
+        self.gold_share = {s: float(np.mean(y == infos[s].ci[BROAD])) for s in SEEDS}
+
+    def F(self, c, g, s, r):
+        return self.runs[(c, g, s, r)].m["final_macro_f1_all"]
+
+    def acc(self, c, g, s, r):
+        m = self.runs[(c, g, s, r)].m
+        return m["final_accuracy"] if g in RQ3_JOINT else m["observed_accuracy_after_task"][-1]
+
+    def S(self, c, g, s, r):
+        run = self.runs[(c, g, s, r)]
+        return float(np.mean(run.P["test_pred"][-1] == self.infos[s].ci[BROAD]))
+
+    def vals(self, fn, c, g, s):
+        return [fn(c, g, s, r) for r in self.reps]
+
+    def delta(self, fn, c, g_a, g_b, s):
+        """fn(c, g_a) − fn(c, g_b), paired by replicate."""
+        return [fn(c, g_a, s, r) - fn(c, g_b, s, r) for r in self.reps]
+
+    def d_replay(self, c, s):
+        return self.delta(self.F, c, "replay", "joint", s)
+
+    def d_bal(self, c, s):
+        return self.delta(self.F, c, "joint_balanced", "joint", s)
+
+    def d_share_replay(self, c, s):
+        return self.delta(self.S, c, "replay", "joint", s)
+
+    def d_share_bal(self, c, s):
+        return self.delta(self.S, c, "joint_balanced", "joint", s)
+
+    def sign(self, vals):
+        return real_sign(vals, self.ran)
+
+    def dirn(self, fn, c):
+        return direction([self.sign(fn(c, s)) for s in SEEDS])
+
+
+def fv(vals: List[float], signed: bool = False, pct: bool = False) -> str:
+    """Replicate-0 value, with the replicate range in brackets when replicates ran."""
+    k = 100.0 if pct else 1.0
+    one = (lambda v: f"{k * v:+.1f}" if signed else f"{k * v:.1f}") if pct else \
+          (lambda v: f(v, signed))
+    s = one(vals[0])
+    if len(vals) > 1:
+        s += f" [{one(min(vals))}, {one(max(vals))}]"
+    return s
+
+
+def _confusion(g: np.ndarray, t: np.ndarray, n: int) -> np.ndarray:
+    C = np.zeros((n, n), dtype=int)
+    np.add.at(C, (g, t), 1)
+    return C
+
+
+def table_T7(infos: Dict[int, SplitInfo]) -> None:
+    feats = build_features(config.CORPUS)
+    header = ["condition", "seed", "draw", "rows", "noise vs gold", f"{_short(BROAD)} rows",
+              "task 0", "task 1", "task 2", "classes < 15 rows", "C = teacher_I's"]
+    rows, csv_rows = [], []
+
+    def per_task(info, y):
+        return [int(np.isin(y, info.task_classes[k]).sum()) for k in range(info.K)]
+
+    def add(name, s, draw, y, gold, c_same=""):
+        info = infos[s]
+        pt = per_task(info, y)
+        cc = Counter(y.tolist())
+        under = [f"{_short(info.names[c])} {cc.get(c, 0)}" for c in sorted(info.names)
+                 if cc.get(c, 0) < 15]
+        noise = float(np.mean(y != gold))
+        nb = int((y == info.ci[BROAD]).sum())
+        rows.append([name, s, draw, len(y), f"{noise:.4f}", nb] +
+                    [f"{v}" + (" †" if k == info.degenerate else "") for k, v in enumerate(pt)] +
+                    [", ".join(under) or "—", c_same])
+        csv_rows.append({"condition": name, "seed": s, "draw_seed": draw, "rows": len(y),
+                         "noise_rate_vs_gold": round(noise, 6), "broad_class_rows": nb,
+                         **{f"task_{k}": v for k, v in enumerate(pt)},
+                         "degenerate_task": info.degenerate,
+                         "classes_under_15": "; ".join(under), "C_equals_teacher_I": c_same})
+
+    for s in SEEDS:
+        ci = infos[s].ci
+        for tr in ("gold", "teacher"):
+            ids, y = train_rows(tr, feats, ci)
+            add(f"{tr} (full, reference)", s, "—", y, head_labels(feats["y_gold"], ci)[ids])
+        for tr in RQ3_TRACKS:
+            for r in (REPLICATES if tr in DRAWN_TRACKS else (0,)):
+                p = load_condition(tr, s, r)
+                y, gold = np.array(p["labels"]), np.array(p["gold"])
+                c_same = ""
+                if tr == "perm_I":
+                    ref = load_condition("teacher_I", s, 0)
+                    assert p["row_ids"] == ref["row_ids"]
+                    same = np.array_equal(_confusion(gold, y, len(ci)),
+                                          _confusion(np.array(ref["gold"]),
+                                                     np.array(ref["labels"]), len(ci)))
+                    assert same, f"perm_I seed {s} r{r}: C differs from teacher_I's"
+                    c_same = "yes (asserted)"
+                if tr == "rand_I":
+                    assert int((y != gold).sum()) == p["n_differ_from_gold"]
+                add(tr, s, p["draw_seed"] if p["draw_seed"] is not None else "—", y, gold, c_same)
+
+    deg = ", ".join(f"seed {s}: task {infos[s].degenerate}" for s in SEEDS)
+    write_table("T7_condition_stats", "T7 — RQ3 label conditions (no training results)",
+                header, rows, [
+                    "Built from results/conditions/*.json (the committed draws the runs check "
+                    "against); reference rows from the frozen features.",
+                    "noise vs gold = fraction of rows whose training label differs from gold; for "
+                    "the full teacher track a gold label outside the 17 classes counts as a "
+                    "difference.",
+                    f"Rows per task follow each row's training label. † = degenerate task "
+                    f"(holds {DEGENERATE_CLASS}): {deg}.",
+                    "draw = numpy default_rng seed of the draw (seed + 100r for replicate r); "
+                    "gold_I and teacher_I have no draw.",
+                    "perm_I: its confusion matrix against gold equals teacher_I's exactly "
+                    "(asserted per draw)."], csv_rows)
+
+    # T7b: the full teacher track's noise, broken down (Gate 1 amendment).
+    tn = np.array([DIALOGRE_RELATIONS[i] for i in feats["y_teacher"]])
+    gn = np.array([DIALOGRE_RELATIONS[i] for i in feats["y_gold"]])
+    kept = list(infos[SEEDS[0]].ci)
+    t_in, g_in = np.isin(tn, kept), np.isin(gn, kept)
+    unans = t_in & (gn == "unanswerable")
+    sub = t_in & ~g_in & (gn != "unanswerable")
+    lost = g_in & ~t_in
+    top = lambda mask, arr, k: ", ".join(f"{_short(n) if ':' in n else n} {v}"
+                                         for n, v in Counter(arr[mask].tolist()).most_common(k))
+    lost_c = Counter(tn[lost].tolist())
+    lost_other = int(lost.sum()) - lost_c["per:acquaintance"] - lost_c["unanswerable"]
+    b_rows = [
+        ["teacher label = gold", int((t_in & (tn == gn)).sum()), ""],
+        ["in-space error (gold in the 17, teacher ≠ gold)", int((t_in & g_in & (tn != gn)).sum()),
+         "the confusion matrix C (results/diagnostics/row_accounting.md)"],
+        ["gold = unanswerable", int(unans.sum()), "teacher labels: " + top(unans, tn, 4)],
+        ["gold = a sub-threshold class", int(sub.sum()), "gold: " + top(sub, gn, 10)],
+        ["teacher track (sum)", int(t_in.sum()), ""],
+        ["gold-track rows lost (teacher label outside the 17)", int(lost.sum()),
+         f"teacher labels: acquaintance {lost_c['per:acquaintance']}, unanswerable "
+         f"{lost_c['unanswerable']}, other {lost_other}"]]
+    assert b_rows[0][1] + b_rows[1][1] + b_rows[2][1] + b_rows[3][1] == b_rows[4][1]
+    write_table("T7b_teacher_noise_breakdown", "T7b — full teacher track: where its noise comes "
+                "from", ["component", "rows", "detail"], b_rows, [
+                    "From the frozen features; the same for every seed.",
+                    "The first four rows sum to the 879 teacher-track rows. RQ3's conditions "
+                    "live on I (the first two rows, 710), so they test in-space noise only.",
+                    "The last row is not part of the 879: gold-track rows the teacher track "
+                    "never sees because the teacher's label is outside the 17 classes."])
+
+
+def _short(name: str) -> str:
+    return name.split(":", 1)[1] if ":" in name else name
+
+
+def table_T8(R: RQ3) -> None:
+    header = ["condition", "regime"] + [x for s in SEEDS for x in (f"{s} macro-F1", f"{s} acc")]
+    rows, csv_rows = [], []
+    for c in RQ3_TRACKS:
+        for g in [g for g in RQ3_JOINT if g in RQ3_REGIMES[c]]:
+            row = [c, g]
+            for s in SEEDS:
+                F_, A_ = R.vals(R.F, c, g, s), R.vals(R.acc, c, g, s)
+                row += [fv(F_), f(A_[0])]
+                for r, fv_, av in zip(R.reps, F_, A_):
+                    csv_rows.append({"condition": c, "regime": g, "seed": s, "replicate": r,
+                                     "final_macro_f1": fv_, "final_accuracy": av})
+            rows.append(row)
+    for tr, n in (("gold", "1,327"), ("teacher", "879")):
+        row = [f"{tr} (full {n} rows, reference)", "joint"]
+        for s in SEEDS:
+            row += [f(R.ref[s][tr]["test_macro_f1"]), f(R.ref[s][tr]["test_accuracy"])]
+            csv_rows.append({"condition": f"{tr} (reference)", "regime": "joint", "seed": s,
+                             "replicate": 0, "final_macro_f1": R.ref[s][tr]["test_macro_f1"],
+                             "final_accuracy": R.ref[s][tr]["test_accuracy"]})
+        rows.append(row)
+    write_table("T8_rq3_joint", "T8 — RQ3 joint and joint_balanced, final 17-class test scores",
+                header, rows, [
+                    "Replicate 0, with the range over replicates 0 to 2 in brackets "
+                    "(init seed seed + 100r; rand_I, perm_I and gold_sub also redraw)." if R.ran
+                    else "Replicate 0 only (no replicates ran).",
+                    "Reference rows: the Phase 4 joint baselines (joint_baseline_seed*.json), on "
+                    "the full tracks; no replicates.",
+                    "gold_sub runs joint only (RQ3_SPEC §2.4)."], csv_rows)
+
+
+def table_T9(R: RQ3) -> None:
+    header = ["condition", "regime"] + [x for s in SEEDS for x in
+                                        (f"{s} ACC_f1", f"{s} ACC_acc", f"{s} forget", f"{s} final F1")]
+    rows, csv_rows = [], []
+    for c in RQ3_TRACKS:
+        for g in [g for g in ("naive", "replay") if g in RQ3_REGIMES[c]]:
+            row = [c, g]
+            for s in SEEDS:
+                info = R.infos[s]
+                nondeg = [j for j in range(info.K - 1) if j != info.degenerate]
+                m0 = R.runs[(c, g, s, 0)].m
+                row += [fv(R.vals(lambda *k: R.runs[k].m["ACC_f1"], c, g, s)),
+                        f(m0["ACC_acc"]),
+                        ", ".join(f"t{j} {f(m0['forgetting_f1'][str(j)], True)}" for j in nondeg),
+                        fv(R.vals(R.F, c, g, s))]
+                for r in R.reps:
+                    m = R.runs[(c, g, s, r)].m
+                    csv_rows.append({"condition": c, "regime": g, "seed": s, "replicate": r,
+                                     "ACC_f1": m["ACC_f1"], "BWT_f1": m["BWT_f1"],
+                                     "ACC_acc": m["ACC_acc"], "degenerate_task": info.degenerate,
+                                     **{f"forgetting_t{j}_f1": m["forgetting_f1"][str(j)]
+                                        for j in range(info.K - 1)},
+                                     "mean_forgetting_nondegenerate_f1":
+                                         m["mean_forgetting_nondegenerate_f1"],
+                                     "final_macro_f1": m["final_macro_f1_all"],
+                                     "run_dir": R.runs[(c, g, s, r)].dir.name})
+            rows.append(row)
+    deg = ", ".join(f"seed {s}: task {R.infos[s].degenerate}" for s in SEEDS)
+    write_table("T9_rq3_cl", "T9 — RQ3 continual runs (naive, replay)", header, rows, [
+        "ACC_f1 and final F1: replicate 0, with the replicate range in brackets." if R.ran
+        else "Replicate 0 only (no replicates ran).",
+        f"forget = R[K−1][j] − R[j][j] on the non-degenerate old tasks only (PREREG 9). "
+        f"Degenerate task: {deg}. Every task's value is in the CSV.",
+        "final F1 = final model, all 17 classes, full test set (T3's measure)."], csv_rows)
+
+
+def table_T10(R: RQ3) -> None:
+    cols = [("Δ_replay", R.d_replay, False), ("Δ_bal", R.d_bal, False),
+            ("Δ_share replay", R.d_share_replay, True), ("Δ_share bal", R.d_share_bal, True)]
+    header = ["condition", "seed"] + [c[0] for c in cols]
+    rows, csv_rows = [], []
+    for c in RQ3_TRACKS:
+        for s in SEEDS:
+            row, rec = [c, s], {"condition": c, "seed": s}
+            for name, fn, pct in cols:
+                if "joint_balanced" not in RQ3_REGIMES[c] and "bal" in name:
+                    row.append("—")
+                    continue
+                v = fn(c, s)
+                sg = R.sign(v)
+                row.append(fv(v, signed=True, pct=pct) + (" real" if sg else ""))
+                rec.update({f"{name} r{r}": round(x, 6) for r, x in zip(R.reps, v)})
+                rec[f"{name} real"] = sg
+            rows.append(row)
+            csv_rows.append(rec)
+        summ = [c, "2 of 3"]
+        for name, fn, pct in cols:
+            summ.append("—" if ("joint_balanced" not in RQ3_REGIMES[c] and "bal" in name)
+                        else R.dirn(fn, c))
+        rows.append(summ)
+    write_table("T10_rq3_key_comparison", "T10 — the key comparison: replay and balancing "
+                "against joint", header, rows, [
+                    "Δ_replay = replay − joint, Δ_bal = joint_balanced − joint, final 17-class "
+                    "macro-F1. Δ_share = the same differences in broad-class share "
+                    f"({BROAD}), in percentage points.",
+                    "real = |Δ| > 0.03 (3 points for shares)" +
+                    (" and the replicate range doesn't cross zero (PREREG 16)." if R.ran else "."),
+                    "Each condition's last row applies the 2-of-3 rule across seeds.",
+                    "Differences are paired within a replicate (same init seed and draw)."],
+                csv_rows)
+
+
+def table_T11(R: RQ3) -> None:
+    header = ["condition", "regime"] + [str(s) for s in SEEDS] + ["gold test share"]
+    rows, csv_rows = [], []
+    for c in RQ3_TRACKS:
+        for g in RQ3_REGIMES[c]:
+            vs = {s: R.vals(R.S, c, g, s) for s in SEEDS}
+            rows.append([c, g] + [fv(vs[s], pct=True) for s in SEEDS] +
+                        [f"{100 * R.gold_share[SEEDS[0]]:.1f}"])
+            csv_rows += [{"condition": c, "regime": g, "seed": s, "replicate": r, "share": round(v, 6),
+                          "gold_test_share": round(R.gold_share[s], 6)}
+                         for s in SEEDS for r, v in zip(R.reps, vs[s])]
+    write_table("T11_rq3_broad_share", f"T11 — share of test predictions to the broad class "
+                f"({BROAD}), %", header, rows, [
+                    "Final model, full test set (1,144). Replicate range in brackets." if R.ran
+                    else "Final model, full test set (1,144). Replicate 0 only.",
+                    "gold test share = fraction of test examples whose gold label is the broad "
+                    "class (the same on every seed)."], csv_rows)
+
+
+def prereg_rq3(R: RQ3) -> Dict:
+    from continual.prereg_rq3 import head_prereg, rq3_section, parse_scoring
+    pred = parse_scoring(rq3_section(head_prereg()))
+    out = []
+
+    def add(line, prediction, outcome, verdict):
+        out.append({"line": line, "prediction": prediction, "outcome": outcome,
+                    "verdict": verdict})
+
+    seeds_ok = lambda xs: sum(bool(x) for x in xs) >= 2
+    per_seed = lambda d: ", ".join(f"{s}: {fv(d[s], signed=True)}" for s in SEEDS)
+
+    # line 10
+    d_a = {s: [R.F("gold_I", "joint", s, r) - R.ref[s]["gold"]["test_macro_f1"] for r in R.reps]
+           for s in SEEDS}
+    d_b = {s: [R.F("gold_sub", "joint", s, r) - R.ref[s]["gold"]["test_macro_f1"] for r in R.reps]
+           for s in SEEDS}
+    ratio = {s: R.F("teacher_I", "joint", s, 0) / R.F("gold_I", "joint", s, 0) for s in SEEDS}
+    dir_a = direction([R.sign(d_a[s]) for s in SEEDS])
+    a_ok = (dir_a != "not real") == pred["line10_gold_I_real"]
+    pa_ok = seeds_ok([abs(d_a[s][0] - pred["line10_gold_I_minus_gold"]) <= POINT_TOL for s in SEEDS])
+    pb_ok = seeds_ok([abs(d_b[s][0] - pred["line10_gold_sub_minus_gold"]) <= POINT_TOL for s in SEEDS])
+    c_ok = seeds_ok([abs(ratio[s] - pred["line10_ratio"]) <= RATIO_TOL for s in SEEDS])
+    parts = {"(a) real/not real": a_ok, "(b) gold_I value": pa_ok, "(b) gold_sub value": pb_ok,
+             "(c) ratio": c_ok}
+    add(10, f"gold_I − gold {pred['line10_gold_I_minus_gold']:+.3f} "
+            f"({'real' if pred['line10_gold_I_real'] else 'not real'}); gold_sub − gold "
+            f"{pred['line10_gold_sub_minus_gold']:+.3f}; teacher_I / gold_I {pred['line10_ratio']:.2f}",
+        f"gold_I − gold {per_seed(d_a)} ({dir_a}); gold_sub − gold {per_seed(d_b)}; ratio "
+        + ", ".join(f"{s}: {ratio[s]:.3f}" for s in SEEDS),
+        "holds" if all(parts.values()) else
+        "fails: " + ", ".join(k for k, v in parts.items() if not v))
+
+    # lines 11, 12
+    obs_word = {"real-negative": "lower", "real-positive": "higher", "not real": "same"}
+    observed12 = None
+    for line, other in ((11, "rand_I"), (12, "perm_I")):
+        d = {s: [R.F("teacher_I", "joint", s, r) - R.F(other, "joint", s, r) for r in R.reps]
+             for s in SEEDS}
+        obs = obs_word[direction([R.sign(d[s]) for s in SEEDS])]
+        if line == 12:
+            observed12 = obs
+        add(line, f"joint: teacher_I {pred[f'line{line}']} than {other}" if pred[f"line{line}"] != "same"
+            else f"joint: teacher_I the same as {other}",
+            f"teacher_I − {other}: {per_seed(d)} → {obs}",
+            "holds" if obs == pred[f"line{line}"] else "fails")
+
+    # line 13
+    dirs = {c: R.dirn(R.d_replay, c) for c in CL_CONDS}
+    ctrl = ((lambda d: d == "not real") if pred["line13_controls"] == "not_real"
+            else (lambda d: d != "real-positive"))
+    clause = {"teacher_I": dirs["teacher_I"] == "real-positive",
+              "perm_I": dirs["perm_I"] == "real-positive",
+              "rand_I": ctrl(dirs["rand_I"]), "gold_I": ctrl(dirs["gold_I"])}
+    held = tuple(sorted(c for c in CL_CONDS if clause[c]))
+    outcome = (("holds", ()) if len(held) == len(CL_CONDS) else
+               ("fails", ()) if not held else ("partly", held))
+    show = lambda o: o[0] + (f": {', '.join(o[1])}" if o[0] == "partly" else "")
+    add(13, f"hypothesis {show(pred['line13'])} (controls read as {pred['line13_controls']})",
+        "Δ_replay: " + "; ".join(f"{c} {dirs[c]}" for c in CL_CONDS) +
+        f" → hypothesis {show(outcome)}",
+        "holds" if pred["line13"] == outcome else "fails")
+
+    # line 14
+    pct = pred["line14_pct"] / 100.0
+    n_pos, counted, detail = 0, 0, []
+    for s in SEEDS:
+        vr, vb = R.d_replay("teacher_I", s), R.d_bal("teacher_I", s)
+        if R.sign(vr) != 1:
+            detail.append(f"{s}: Δ_replay not real-positive")
+            continue
+        n_pos += 1
+        rec = [round(b / a, 6) for a, b in zip(vr, vb)]
+        ok = all(x >= round(pct, 6) for x in rec)
+        counted += ok
+        detail.append(f"{s}: recovery {fv(rec)}")
+    v14 = (f"fails: Δ_replay real-positive on {n_pos} of 3 seeds, no replay gain to recover"
+           if n_pos < 2 else ("holds" if counted >= 2 else "fails"))
+    add(14, f"teacher_I: Δ_bal ≥ {pred['line14_pct']:g}% of Δ_replay on ≥ 2 of 3 seeds",
+        "; ".join(detail), v14)
+
+    # line 15
+    gs = R.gold_share
+    a_tp = {c: seeds_ok([all(R.S(c, "joint", s, r) > 2 * gs[s] for r in R.reps) for s in SEEDS])
+            for c in ("teacher_I", "perm_I")}
+    a_rand = seeds_ok([all(R.S("rand_I", "joint", s, r) <= 2 * gs[s] for r in R.reps) for s in SEEDS])
+    pp = pred["line15_pp"] / 100.0
+    b_tp = {c: seeds_ok([all(R.S(c, "joint", s, r) - R.S(c, "replay", s, r) > pp for r in R.reps)
+                         for s in SEEDS]) for c in ("teacher_I", "perm_I")}
+    shares = "; ".join(f"{c} joint " + ", ".join(f"{s}: {fv(R.vals(R.S, c, 'joint', s), pct=True)}"
+                                                 for s in SEEDS)
+                       for c in ("teacher_I", "perm_I", "rand_I"))
+    red = "; ".join(f"{c} joint − replay " + ", ".join(
+        f"{s}: {fv([-x for x in R.d_share_replay(c, s)], signed=True, pct=True)}" for s in SEEDS)
+        for c in ("teacher_I", "perm_I"))
+    p15 = {"(a) teacher_I > 2×": a_tp["teacher_I"], "(a) perm_I > 2×": a_tp["perm_I"],
+           "(a) rand_I ≤ 2×": a_rand, "(b) teacher_I reduction": b_tp["teacher_I"],
+           "(b) perm_I reduction": b_tp["perm_I"]}
+    add(15, f"joint share > 2× gold ({200 * gs[SEEDS[0]]:.1f}%) for teacher_I and perm_I, not "
+            f"rand_I; replay cuts it by > {pred['line15_pp']:g} points in teacher_I and perm_I",
+        f"{shares}. {red} (points)",
+        "holds" if all(p15.values()) else "fails: " + ", ".join(k for k, v in p15.items() if not v))
+
+    add(16, "reporting: a cell is real only if the threshold holds and the replicate range "
+            "doesn't cross zero; otherwise the 2-of-3 rule alone",
+        f"replicates ran (r = {', '.join(map(str, R.reps))})" if R.ran else "no replicates ran",
+        "applied")
+
+    # framing map
+    branches = []
+    if outcome[0] == "holds":
+        branches.append("13 holds: the thesis stands as drafted (structured noise; balanced replay "
+                        "counters it).")
+    if outcome[0] != "holds" and dirs["rand_I"] == "real-positive":
+        branches.append("13 fails because rand_I also shows Δ_replay > 0.03: reframe as 'replay is "
+                        "robust to LLM label noise and distillation is redundant'; drop "
+                        "'structured' from the title.")
+    if out[[o["line"] for o in out].index(14)]["verdict"] == "holds":
+        branches.append("14 holds (Δ_bal ≈ Δ_replay): the mechanism is class balancing, not "
+                        "continual learning.")
+    branches.append("perm_I ≈ teacher_I (line 12 observed 'same'): the structure that matters is "
+                    "class-conditional." if observed12 == "same" else
+                    "perm_I ≠ teacher_I (line 12 observed "
+                    f"'{observed12}'): instance dependence matters too.")
+    sh = {c: R.dirn(R.d_share_replay, c) for c in ("teacher_I", "perm_I")}
+    if all(sh[c] != "not real" for c in sh) and all(dirs[c] == "not real" for c in sh):
+        branches.append("Δ_share real on teacher_I and perm_I but Δ_replay not real: the thesis "
+                        "becomes 'class balancing removes the collapse signature without improving "
+                        "macro-F1; distillation is inert'.")
+
+    header = ["line", "prediction", "outcome", "verdict"]
+    write_table("prereg_outcomes_rq3", "PREREG lines 10–16 against outcomes", header,
+                [[o[k] for k in header] for o in out],
+                ["Computed by make_tables.py with the RQ3 definitions in its source, fixed "
+                 "before the sweep. Predictions read from PREREG.md at HEAD (rq3-scoring block).",
+                 "Values: replicate 0, replicate range in brackets." if R.ran else
+                 "Values: replicate 0 (no replicates)."] +
+                ["Framing map, branches that apply: " + " | ".join(branches)], out)
+    return {"outcomes": out, "branches": branches}
+
+
+def figure_rq3_delta(R: RQ3) -> None:
+    import matplotlib
+    matplotlib.use("Agg")
+    import matplotlib.pyplot as plt
+
+    fig, ax = plt.subplots(figsize=(8.5, 4.4), facecolor=SURFACE)
+    _style(ax)
+    ax.axhspan(-THRESH, THRESH, color=GRID, alpha=0.7, linewidth=0, zorder=0)
+    ax.axhline(0, color=BASE, linewidth=1, zorder=1)
+    off = {1234: -0.2, 1: 0.0, 2: 0.2}
+    for i, c in enumerate(FIG_ORDER):
+        for s in SEEDS:
+            v = R.d_replay(c, s)
+            x = i + off[s]
+            if R.ran:
+                ax.vlines(x, min(v), max(v), color=INK2, linewidth=2, zorder=2)
+            ax.plot(x, v[0], marker=SEED_MARKER[s], color=INK, markersize=8, linestyle="none",
+                    markeredgecolor=SURFACE, markeredgewidth=1.5, zorder=3,
+                    label=f"seed {s}" if i == 0 else None)
+    ax.set_xticks(range(len(FIG_ORDER)))
+    ax.set_xticklabels(FIG_ORDER, fontsize=9, color=INK2)
+    ax.set_xlim(-0.6, len(FIG_ORDER) - 0.4)
+    ax.set_ylabel("replay − joint, final macro-F1", fontsize=9, color=INK2)
+    handles, labels = ax.get_legend_handles_labels()
+    fig.legend(handles, labels, loc="upper right", frameon=False, fontsize=8, ncol=3)
+    ax.set_title("Δ_replay by label condition", fontsize=11, color=INK, loc="left")
+    note = "shaded: |Δ| ≤ 0.03, not a real difference"
+    if R.ran:
+        note += "   ·   vertical line: range over replicates r = 0, 1, 2"
+    fig.text(0.01, 0.01, note, fontsize=7.5, color=MUTED)
+    fig.tight_layout(rect=(0, 0.04, 1, 0.97))
+    FIG_DIR.mkdir(parents=True, exist_ok=True)
+    fig.savefig(FIG_DIR / "rq3_delta_replay.png", dpi=150, facecolor=SURFACE)
+    plt.close(fig)
+
+
+def figure_rq3_share(R: RQ3) -> None:
+    import matplotlib
+    matplotlib.use("Agg")
+    import matplotlib.pyplot as plt
+    from matplotlib.ticker import PercentFormatter
+
+    fig, ax = plt.subplots(figsize=(9, 4.6), facecolor=SURFACE)
+    _style(ax)
+    gs = R.gold_share[SEEDS[0]]
+    ax.axhline(gs, color=INK2, linewidth=1.2, linestyle="--", zorder=1)
+    ax.axhline(2 * gs, color=MUTED, linewidth=1, linestyle=":", zorder=1)
+    goff = {"joint": -0.26, "joint_balanced": 0.0, "replay": 0.26}
+    soff = {1234: -0.06, 1: 0.0, 2: 0.06}
+    top = 2 * gs
+    for i, c in enumerate(FIG_ORDER):
+        for g in ("joint", "joint_balanced", "replay"):
+            if g not in RQ3_REGIMES[c]:
+                continue
+            col, mk = RQ3_STYLE[g]
+            for s in SEEDS:
+                v = R.vals(R.S, c, g, s)
+                x = i + goff[g] + soff[s]
+                top = max(top, max(v))
+                if R.ran:
+                    ax.vlines(x, min(v), max(v), color=col, linewidth=1.5, alpha=0.8, zorder=2)
+                ax.plot(x, v[0], marker=mk, color=col, markersize=8, linestyle="none",
+                        markeredgecolor=SURFACE, markeredgewidth=1.5, zorder=3,
+                        label=g if (i == FIG_ORDER.index("teacher_I") and s == SEEDS[0]) else None)
+    ax.annotate(f"gold test share {100 * gs:.1f}%", (len(FIG_ORDER) - 0.45, gs),
+                xytext=(0, 3), textcoords="offset points", ha="right", va="bottom",
+                fontsize=7.5, color=INK2)
+    ax.annotate("2× gold (PREREG 15)", (len(FIG_ORDER) - 0.45, 2 * gs), xytext=(0, 3),
+                textcoords="offset points", ha="right", va="bottom", fontsize=7.5, color=MUTED)
+    ax.set_xticks(range(len(FIG_ORDER)))
+    ax.set_xticklabels(FIG_ORDER, fontsize=9, color=INK2)
+    ax.set_xlim(-0.6, len(FIG_ORDER) - 0.4)
+    ax.set_ylim(0, top * 1.12)
+    ax.yaxis.set_major_formatter(PercentFormatter(1.0, decimals=0))
+    ax.set_ylabel(f"test predictions as {_short(BROAD)}", fontsize=9, color=INK2)
+    handles, labels = ax.get_legend_handles_labels()
+    fig.legend(handles, labels, loc="upper right", frameon=False, fontsize=8, ncol=3)
+    ax.set_title(f"Broad-class share ({BROAD})", fontsize=11, color=INK, loc="left")
+    note = "three points per regime = seeds 1234, 1, 2"
+    if R.ran:
+        note += "   ·   vertical line: range over replicates"
+    fig.text(0.01, 0.01, note, fontsize=7.5, color=MUTED)
+    fig.tight_layout(rect=(0, 0.04, 1, 0.97))
+    FIG_DIR.mkdir(parents=True, exist_ok=True)
+    fig.savefig(FIG_DIR / "rq3_broad_share.png", dpi=150, facecolor=SURFACE)
+    plt.close(fig)
+
+
+def rq3(hash_: Optional[str] = None) -> None:
+    infos = {s: SplitInfo(s) for s in SEEDS}
+    table_T7(infos)
+    print("rq3: T7, T7b (condition stats) written")
+    runs, h, reps = select_rq3_runs(hash_)
+    if runs is None:
+        print("rq3: no RQ3 runs yet; T8-T11, figures and PREREG 10-16 skipped")
+        return
+    R = RQ3(runs, reps, infos)
+    print(f"rq3: {len(runs)} runs at {h}, replicates {reps}")
+    table_T8(R)
+    table_T9(R)
+    table_T10(R)
+    table_T11(R)
+    figure_rq3_delta(R)
+    figure_rq3_share(R)
+    prereg_rq3(R)
+    print(f"rq3 tables -> {TABLE_DIR}   figures -> {FIG_DIR}")
+
+def main():
+    ap = argparse.ArgumentParser(description="Phase 7 and RQ3 tables and figures")
+    ap.add_argument("--only", choices=["all", "phase7", "rq3"], default="all")
+    ap.add_argument("--hash-primary", default=None)
+    ap.add_argument("--hash-fixed", default=None)
+    ap.add_argument("--hash-rq3", default=None)
+    args = ap.parse_args()
+    if args.only in ("all", "phase7"):
+        phase7(args.hash_primary, args.hash_fixed)
+    if args.only in ("all", "rq3"):
+        rq3(args.hash_rq3)
 
 
 if __name__ == "__main__":
