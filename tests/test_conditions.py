@@ -26,7 +26,6 @@ written blind.
 """
 
 import json
-import subprocess
 import sys
 import tempfile
 from collections import Counter
@@ -47,7 +46,7 @@ from continual.conditions import (
 )
 from continual.features import build_features
 from continual.harness import NaiveRegime, run_sequential
-from continual.prereg_rq3 import parse_scoring, prereg_rq3_ready, rq3_section
+from continual.prereg_rq3 import head_prereg, parse_scoring, prereg_rq3_ready, rq3_section
 from continual.regimes import param_hash
 from continual.run_all import run_joint, run_one
 from continual.task_split import load_split, class_index
@@ -382,10 +381,24 @@ rq3-scoring:
 """
 
 
+COMMITTED_SCORING = {   # PREREG.md at 38ec218; a change here means the PREREG moved
+    "line10_gold_I_minus_gold": -0.06, "line10_gold_sub_minus_gold": -0.09,
+    "line10_ratio": 0.78, "line14_pct": 50.0, "line15_pp": 3.0, "line17_pct": 60.0,
+    "line10_gold_I_real": True, "line11": "lower", "line12": "same",
+    "line13": ("partly", ("gold_I", "rand_I")), "line13_controls": "not_real_positive",
+    "line14_expect": "fails", "line15_expect": "holds", "line17_expect": "holds"}
+
+
 def test_guard_and_parser():
     ok, why = prereg_rq3_ready()
-    check("guard: PREREG.md at HEAD has no RQ3 section yet, so RQ3 runs are refused",
-          not ok and "RQ3" in why, why)
+    check("guard: PREREG.md at HEAD has the committed RQ3 section, so RQ3 runs may start",
+          ok, why)
+    head = head_prereg()
+    check("guard: the committed scoring block parses to exactly the PREREG values",
+          parse_scoring(rq3_section(head)) == COMMITTED_SCORING)
+    i = head.find("## RQ3 predictions")
+    ok, why = prereg_rq3_ready(head[:i])
+    check("guard: HEAD's PREREG without the RQ3 section is refused", not ok and "RQ3" in why, why)
     p = parse_scoring(rq3_section(EXAMPLE_PREREG))
     check("guard: the example scoring block parses (unicode minus, sorted partly set)",
           p["line10_gold_sub_minus_gold"] == -0.04 and p["line13"] == ("partly", ("perm_I", "teacher_I"))
@@ -400,13 +413,9 @@ def test_guard_and_parser():
            EXAMPLE_PREREG.replace("-0.05", "____")]
     check("guard: malformed or blank blocks are refused",
           all(not prereg_rq3_ready(t)[0] for t in bad))
-    # The real CLI must refuse too. --seeds 999 has no split file, so even a
-    # broken guard could not produce a single run here.
-    res = subprocess.run([sys.executable, "-m", "continual.run_all", "--plan", "rq3",
-                          "--seeds", "999"], cwd=REPO, capture_output=True, text=True)
-    check("guard: `run_all --plan rq3` exits refusing to run",
-          res.returncode != 0 and "refusing to run" in (res.stdout + res.stderr),
-          (res.stdout + res.stderr)[-300:])
+    # The CLI refusal (`run_all --plan rq3` exiting with "refusing to run") was
+    # checked here until the PREREG was committed at 38ec218; with the guard now
+    # passing, that call would start real runs, so it is no longer made.
 
 
 def test_memory_across_replicates():
