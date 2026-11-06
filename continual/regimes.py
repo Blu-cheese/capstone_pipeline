@@ -93,6 +93,13 @@ def select_memory(Z: np.ndarray, y: np.ndarray, classes: Sequence[int],
     the paper's per-cluster wording. The official code searches all of r's
     samples for each centroid instead (duplicates possible) and fixes
     random_state=0; both are declared deviations (PHASE6_7_SPEC §3.2).
+
+    If r has more than m samples but fewer than m distinct points in Z (rows
+    sharing a subject and object have identical entity features), k-means
+    would have to leave clusters empty, so k drops to the number of distinct
+    points and r keeps that many samples (RQ3 sweep, Nov 6: gold_sub seed
+    1234 r2, per:age, 11 rows, 8 distinct, the only such cell in the grid).
+    Every other class takes the k = m path unchanged.
     """
     memory: Dict[int, List[int]] = {}
     for r in classes:
@@ -100,9 +107,10 @@ def select_memory(Z: np.ndarray, y: np.ndarray, classes: Sequence[int],
         if len(rows) <= m:
             memory[int(r)] = [int(i) for i in rows]
             continue
-        km = KMeans(n_clusters=m, random_state=seed, n_init=10).fit(Z[rows])
+        k = min(m, len(np.unique(Z[rows], axis=0)))
+        km = KMeans(n_clusters=k, random_state=seed, n_init=10).fit(Z[rows])
         picked = []
-        for c in range(m):
+        for c in range(k):
             members = rows[km.labels_ == c]
             if len(members) == 0:
                 raise RuntimeError(f"k-means left cluster {c} of class {r} empty")

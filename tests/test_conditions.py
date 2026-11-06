@@ -418,6 +418,29 @@ def test_guard_and_parser():
     # passing, that call would start real runs, so it is no longer made.
 
 
+def test_memory_duplicate_points():
+    from continual.regimes import ENTITY_COLS, select_memory
+    m = config.REPLAY_MEMORY_PER_RELATION
+    rng = np.random.default_rng(0)
+    base = rng.normal(size=(8, 6))
+    Z = np.vstack([base, base[:3], rng.normal(size=(15, 6))])   # class 0: 11 rows, 8 distinct
+    y = np.array([0] * 11 + [1] * 15)
+    mem = select_memory(Z, y, [0, 1], m, 1234)
+    check("memory: 11 rows with 8 distinct points give 8 samples, distinct points, no error",
+          len(mem[0]) == 8 and len(np.unique(Z[mem[0]], axis=0)) == 8, mem[0])
+    check("memory: a class with >= m distinct points still gets m samples",
+          len(mem[1]) == m and len(set(mem[1])) == m)
+    # The cell that stopped the sweep (Nov 6).
+    ci = CI[1234]
+    rows, y = train_rows("gold_sub", FEATS, ci, draw_seed_for("gold_sub", 1234, 2))
+    age = ci["per:age"]
+    Zc = FEATS["X"][rows][:, ENTITY_COLS]
+    n, d = int((y == age).sum()), len(np.unique(Zc[y == age], axis=0))
+    mem = select_memory(Zc, y, [age], m, 1234)
+    check("memory: gold_sub seed 1234 r2 per:age (11 rows, 8 distinct) now selects 8",
+          (n, d) == (11, 8) and len(mem[age]) == 8, (n, d, mem.get(age)))
+
+
 def test_memory_across_replicates():
     root = tmp("test_cond_mem_")
     errors = []
