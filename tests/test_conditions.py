@@ -321,7 +321,8 @@ def test_9_phase7_tables_unchanged():
         config.RESULTS_DIR, MT.TABLE_DIR, MT.FIG_DIR = saved
     new_tables = sorted((root / "tables").iterdir())
     phase7_names = {p.name for p in (real / "tables").iterdir()
-                    if not p.name.startswith(("T7", "T8", "T9", "T10", "T11", "prereg_outcomes_rq3"))}
+                    if not p.name.startswith(("T7", "T8", "T9", "T10", "T11", "T12", "E1", "E2",
+                                              "prereg_outcomes_rq3"))}
     diffs = [p.name for p in new_tables if p.read_bytes() != (real / "tables" / p.name).read_bytes()]
     check(f"9: all {len(new_tables)} Phase 7 table files rebuild byte-identical (the full set)",
           not diffs and {p.name for p in new_tables} == phase7_names and len(new_tables) == 22,
@@ -439,6 +440,34 @@ def test_memory_duplicate_points():
     mem = select_memory(Zc, y, [age], m, 1234)
     check("memory: gold_sub seed 1234 r2 per:age (11 rows, 8 distinct) now selects 8",
           (n, d) == (11, 8) and len(mem[age]) == 8, (n, d, mem.get(age)))
+
+
+def test_rq3_extra_on_the_sweep():
+    """Post-sweep tables (T12, E1, E2) build from the committed 504fb3e runs, and
+    their self-checks hold: gold_I memory pure, memory rows carry their class's
+    label, recomputed per-class F1 reproduces the stored macro-F1."""
+    import continual.rq3_extra as RX
+    runs, h, reps = MT.select_rq3_runs("504fb3e")
+    saved, out = RX.TABLE_DIR, tmp("test_rq3_extra_")
+    RX.TABLE_DIR = out
+    try:
+        RX.table_T12(runs, reps)
+        RX.table_E1(runs)
+        RX.table_E2(runs)
+        ok = True
+    except AssertionError as e:
+        ok = False
+        print("   ", e)
+    finally:
+        RX.TABLE_DIR = saved
+    names = {p.name for p in out.iterdir()}
+    want = {f"{t}.{x}" for t in ("T12_rq3_resolution", "E1_rq3_buffer_purity",
+                                 "E2_rq3_per_class_f1", "E2b_rq3_largest_drops") for x in ("md", "csv")}
+    check("rq3_extra: T12, E1, E2 build from the sweep with every self-check passing",
+          ok and names == want and len(runs) == 162 and reps == [0, 1, 2], sorted(names))
+    check("rq3_extra: exploratory tables say so",
+          all("EXPLORATORY, not preregistered" in (out / f"{t}.md").read_text(encoding="utf-8")
+              for t in ("E1_rq3_buffer_purity", "E2_rq3_per_class_f1", "E2b_rq3_largest_drops")))
 
 
 def test_memory_across_replicates():
