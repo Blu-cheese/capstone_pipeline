@@ -1,0 +1,21 @@
+{"L_cls": 2.697523, "dev_macro_f1_seen": 0.181187, "epoch": 0, "loss": 2.697523, "task": 1}
+{"L_cls": 1.765559, "dev_macro_f1_seen": 0.219907, "epoch": 1, "loss": 1.765559, "task": 1}
+{"L_cls": 1.160742, "dev_macro_f1_seen": 0.301969, "epoch": 2, "loss": 1.160742, "task": 1}
+{"L_cls": 0.842795, "dev_macro_f1_seen": 0.389068, "epoch": 3, "loss": 0.842795, "task": 1}
+{"L_cls": 0.669129, "dev_macro_f1_seen": 0.437927, "epoch": 4, "loss": 0.669129, "task": 1}
+{"L_cls": 0.585794, "dev_macro_f1_seen": 0.418215, "epoch": 5, "loss": 0.585794, "task": 1}
+{"L_cls": 0.590798, "dev_macro_f1_seen": 0.417237, "epoch": 6, "loss": 0.590798, "task": 1}
+{"L_cls": 0.572313, "dev_macro_f1_seen": 0.413076, "epoch": 7, "loss": 0.572313, "task": 1}
+{"L_cls": 0.54265, "dev_macro_f1_seen": 0.420132, "epoch": 8, "loss": 0.54265, "task": 1}
+{"L_cls": 0.519262, "dev_macro_f1_seen": 0.426925, "epoch": 9, "loss": 0.519262, "task": 1}
+{"best_dev_macro_f1_seen": 0.437927, "best_epoch": 4, "kept_dev_macro_f1_seen": 0.437927, "kept_epoch": 4, "n_dev_seen": 788, "n_memory": 124, "stop_reason": "early_stop(patience=5)", "task": 1}
+{"L_cls": 3.328659, "dev_macro_f1_seen": 0.038684, "epoch": 0, "loss": 3.328659, "task": 2}
+{"L_cls": 1.835376, "dev_macro_f1_seen": 0.154964, "epoch": 1, "loss": 1.835376, "task": 2}
+{"L_cls": 1.252479, "dev_macro_f1_seen": 0.300557, "epoch": 2, "loss": 1.252479, "task": 2}
+{"L_cls": 1.06964, "dev_macro_f1_seen": 0.323655, "epoch": 3, "loss": 1.06964, "task": 2}
+{"L_cls": 1.034359, "dev_macro_f1_seen": 0.303445, "epoch": 4, "loss": 1.034359, "task": 2}
+{"L_cls": 0.99526, "dev_macro_f1_seen": 0.285545, "epoch": 5, "loss": 0.99526, "task": 2}
+{"L_cls": 0.935734, "dev_macro_f1_seen": 0.282822, "epoch": 6, "loss": 0.935734, "task": 2}
+{"L_cls": 0.90862, "dev_macro_f1_seen": 0.286845, "epoch": 7, "loss": 0.90862, "task": 2}
+{"L_cls": 0.896814, "dev_macro_f1_seen": 0.295654, "epoch": 8, "loss": 0.896814, "task": 2}
+{"best_dev_macro_f1_seen": 0.323655, "best_epoch": 3, "kept_dev_macro_f1_seen": 0.323655, "kept_epoch": 3, "n_dev_seen": 1231, "n_memory": 161, "stop_reason": "early_stop(patience=5)", "task": 2}

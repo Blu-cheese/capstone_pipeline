@@ -1,0 +1,20 @@
+{"L_cls": 2.349023, "dev_macro_f1_seen": 0.118029, "epoch": 0, "loss": 2.349023, "task": 1}
+{"L_cls": 1.838811, "dev_macro_f1_seen": 0.211168, "epoch": 1, "loss": 1.838811, "task": 1}
+{"L_cls": 1.610992, "dev_macro_f1_seen": 0.245898, "epoch": 2, "loss": 1.610992, "task": 1}
+{"L_cls": 1.483698, "dev_macro_f1_seen": 0.204438, "epoch": 3, "loss": 1.483698, "task": 1}
+{"L_cls": 1.437283, "dev_macro_f1_seen": 0.157134, "epoch": 4, "loss": 1.437283, "task": 1}
+{"L_cls": 1.379326, "dev_macro_f1_seen": 0.143099, "epoch": 5, "loss": 1.379326, "task": 1}
+{"L_cls": 1.354402, "dev_macro_f1_seen": 0.141002, "epoch": 6, "loss": 1.354402, "task": 1}
+{"L_cls": 1.334441, "dev_macro_f1_seen": 0.14093, "epoch": 7, "loss": 1.334441, "task": 1}
+{"best_dev_macro_f1_seen": 0.245898, "best_epoch": 2, "kept_dev_macro_f1_seen": 0.245898, "kept_epoch": 2, "n_dev_seen": 863, "n_memory": 110, "stop_reason": "early_stop(patience=5)", "task": 1}
+{"L_cls": 4.392444, "dev_macro_f1_seen": 0.095308, "epoch": 0, "loss": 4.392444, "task": 2}
+{"L_cls": 3.134761, "dev_macro_f1_seen": 0.093781, "epoch": 1, "loss": 3.134761, "task": 2}
+{"L_cls": 2.337272, "dev_macro_f1_seen": 0.128371, "epoch": 2, "loss": 2.337272, "task": 2}
+{"L_cls": 1.959863, "dev_macro_f1_seen": 0.163538, "epoch": 3, "loss": 1.959863, "task": 2}
+{"L_cls": 1.830001, "dev_macro_f1_seen": 0.179368, "epoch": 4, "loss": 1.830001, "task": 2}
+{"L_cls": 1.770904, "dev_macro_f1_seen": 0.175166, "epoch": 5, "loss": 1.770904, "task": 2}
+{"L_cls": 1.721301, "dev_macro_f1_seen": 0.166946, "epoch": 6, "loss": 1.721301, "task": 2}
+{"L_cls": 1.656119, "dev_macro_f1_seen": 0.168047, "epoch": 7, "loss": 1.656119, "task": 2}
+{"L_cls": 1.596139, "dev_macro_f1_seen": 0.168967, "epoch": 8, "loss": 1.596139, "task": 2}
+{"L_cls": 1.523906, "dev_macro_f1_seen": 0.170971, "epoch": 9, "loss": 1.523906, "task": 2}
+{"best_dev_macro_f1_seen": 0.179368, "best_epoch": 4, "kept_dev_macro_f1_seen": 0.179368, "kept_epoch": 4, "n_dev_seen": 1231, "n_memory": 170, "stop_reason": "early_stop(patience=5)", "task": 2}

@@ -1,0 +1,41 @@
+{
+  "ACC_acc": 0.313974,
+  "ACC_f1": 0.415658,
+  "BWT_acc": -0.132775,
+  "BWT_f1": -0.054212,
+  "R_rederived_from_predictions": "match",
+  "average_observed_accuracy": 0.439766,
+  "degenerate_task": 2,
+  "final_macro_f1_all": 0.339623,
+  "forgetting_acc": {
+    "0": -0.225434,
+    "1": -0.040115
+  },
+  "forgetting_f1": {
+    "0": -0.085403,
+    "1": -0.023021
+  },
+  "mean_forgetting_nondegenerate_acc": -0.132774,
+  "mean_forgetting_nondegenerate_f1": -0.054212,
+  "meta": {
+    "dirty": false,
+    "draw_seed": null,
+    "git_hash": "504fb3e",
+    "hash_recorded_before_run": true,
+    "init_seed": 2,
+    "lambda": null,
+    "regime": "replay",
+    "replicate": 0,
+    "run_name": "replay",
+    "schedule": "primary",
+    "seed": 2,
+    "spec": "RQ3_SPEC",
+    "started": "2026-11-06T14:05:00",
+    "track": "teacher_I"
+  },
+  "observed_accuracy_after_task": [
+    0.676301,
+    0.330935,
+    0.312063
+  ]
+}

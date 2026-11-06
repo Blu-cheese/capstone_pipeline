@@ -1,0 +1,22 @@
+{"L_cls": 2.780358, "dev_macro_f1_seen": 0.184346, "epoch": 0, "loss": 2.780358, "task": 1}
+{"L_cls": 1.937826, "dev_macro_f1_seen": 0.215914, "epoch": 1, "loss": 1.937826, "task": 1}
+{"L_cls": 1.368318, "dev_macro_f1_seen": 0.300299, "epoch": 2, "loss": 1.368318, "task": 1}
+{"L_cls": 1.038563, "dev_macro_f1_seen": 0.372639, "epoch": 3, "loss": 1.038563, "task": 1}
+{"L_cls": 0.886883, "dev_macro_f1_seen": 0.404346, "epoch": 4, "loss": 0.886883, "task": 1}
+{"L_cls": 0.847796, "dev_macro_f1_seen": 0.441912, "epoch": 5, "loss": 0.847796, "task": 1}
+{"L_cls": 0.810084, "dev_macro_f1_seen": 0.439174, "epoch": 6, "loss": 0.810084, "task": 1}
+{"L_cls": 0.759809, "dev_macro_f1_seen": 0.442903, "epoch": 7, "loss": 0.759809, "task": 1}
+{"L_cls": 0.759501, "dev_macro_f1_seen": 0.440836, "epoch": 8, "loss": 0.759501, "task": 1}
+{"L_cls": 0.727472, "dev_macro_f1_seen": 0.4336, "epoch": 9, "loss": 0.727472, "task": 1}
+{"L_cls": 0.681076, "dev_macro_f1_seen": 0.428074, "epoch": 10, "loss": 0.681076, "task": 1}
+{"L_cls": 0.639155, "dev_macro_f1_seen": 0.429362, "epoch": 11, "loss": 0.639155, "task": 1}
+{"L_cls": 0.640809, "dev_macro_f1_seen": 0.426763, "epoch": 12, "loss": 0.640809, "task": 1}
+{"best_dev_macro_f1_seen": 0.442903, "best_epoch": 7, "kept_dev_macro_f1_seen": 0.442903, "kept_epoch": 7, "n_dev_seen": 788, "n_memory": 130, "stop_reason": "early_stop(patience=5)", "task": 1}
+{"L_cls": 1.622277, "dev_macro_f1_seen": 0.265924, "epoch": 0, "loss": 1.622277, "task": 2}
+{"L_cls": 1.272303, "dev_macro_f1_seen": 0.339899, "epoch": 1, "loss": 1.272303, "task": 2}
+{"L_cls": 1.146232, "dev_macro_f1_seen": 0.331189, "epoch": 2, "loss": 1.146232, "task": 2}
+{"L_cls": 1.115547, "dev_macro_f1_seen": 0.310373, "epoch": 3, "loss": 1.115547, "task": 2}
+{"L_cls": 1.066409, "dev_macro_f1_seen": 0.302048, "epoch": 4, "loss": 1.066409, "task": 2}
+{"L_cls": 1.041402, "dev_macro_f1_seen": 0.305403, "epoch": 5, "loss": 1.041402, "task": 2}
+{"L_cls": 1.007116, "dev_macro_f1_seen": 0.309838, "epoch": 6, "loss": 1.007116, "task": 2}
+{"best_dev_macro_f1_seen": 0.339899, "best_epoch": 1, "kept_dev_macro_f1_seen": 0.339899, "kept_epoch": 1, "n_dev_seen": 1231, "n_memory": 161, "stop_reason": "early_stop(patience=5)", "task": 2}

@@ -1,0 +1,41 @@
+{
+  "ACC_acc": 0.306352,
+  "ACC_f1": 0.283048,
+  "BWT_acc": -0.103772,
+  "BWT_f1": -0.048171,
+  "R_rederived_from_predictions": "match",
+  "average_observed_accuracy": 0.358206,
+  "degenerate_task": 2,
+  "final_macro_f1_all": 0.197694,
+  "forgetting_acc": {
+    "0": -0.144508,
+    "1": -0.063037
+  },
+  "forgetting_f1": {
+    "0": -0.02512,
+    "1": -0.071222
+  },
+  "mean_forgetting_nondegenerate_acc": -0.103772,
+  "mean_forgetting_nondegenerate_f1": -0.048171,
+  "meta": {
+    "dirty": false,
+    "draw_seed": 2,
+    "git_hash": "504fb3e",
+    "hash_recorded_before_run": true,
+    "init_seed": 2,
+    "lambda": null,
+    "regime": "replay",
+    "replicate": 0,
+    "run_name": "replay",
+    "schedule": "primary",
+    "seed": 2,
+    "spec": "RQ3_SPEC",
+    "started": "2026-11-06T14:05:15",
+    "track": "rand_I"
+  },
+  "observed_accuracy_after_task": [
+    0.50289,
+    0.251799,
+    0.31993
+  ]
+}

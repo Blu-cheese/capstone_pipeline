@@ -1,0 +1,30 @@
+{"L_cls": 2.85467, "dev_macro_f1_seen": 0.165934, "epoch": 0, "loss": 2.85467, "task": 1}
+{"L_cls": 1.85897, "dev_macro_f1_seen": 0.194045, "epoch": 1, "loss": 1.85897, "task": 1}
+{"L_cls": 1.254344, "dev_macro_f1_seen": 0.253119, "epoch": 2, "loss": 1.254344, "task": 1}
+{"L_cls": 0.936821, "dev_macro_f1_seen": 0.313938, "epoch": 3, "loss": 0.936821, "task": 1}
+{"L_cls": 0.776963, "dev_macro_f1_seen": 0.374332, "epoch": 4, "loss": 0.776963, "task": 1}
+{"L_cls": 0.712128, "dev_macro_f1_seen": 0.373576, "epoch": 5, "loss": 0.712128, "task": 1}
+{"L_cls": 0.682066, "dev_macro_f1_seen": 0.368849, "epoch": 6, "loss": 0.682066, "task": 1}
+{"L_cls": 0.666679, "dev_macro_f1_seen": 0.370413, "epoch": 7, "loss": 0.666679, "task": 1}
+{"L_cls": 0.616972, "dev_macro_f1_seen": 0.378658, "epoch": 8, "loss": 0.616972, "task": 1}
+{"L_cls": 0.590301, "dev_macro_f1_seen": 0.389289, "epoch": 9, "loss": 0.590301, "task": 1}
+{"L_cls": 0.569419, "dev_macro_f1_seen": 0.407361, "epoch": 10, "loss": 0.569419, "task": 1}
+{"L_cls": 0.535333, "dev_macro_f1_seen": 0.397538, "epoch": 11, "loss": 0.535333, "task": 1}
+{"L_cls": 0.529299, "dev_macro_f1_seen": 0.398442, "epoch": 12, "loss": 0.529299, "task": 1}
+{"L_cls": 0.502449, "dev_macro_f1_seen": 0.404164, "epoch": 13, "loss": 0.502449, "task": 1}
+{"L_cls": 0.500777, "dev_macro_f1_seen": 0.409022, "epoch": 14, "loss": 0.500777, "task": 1}
+{"L_cls": 0.488071, "dev_macro_f1_seen": 0.406982, "epoch": 15, "loss": 0.488071, "task": 1}
+{"L_cls": 0.475032, "dev_macro_f1_seen": 0.404238, "epoch": 16, "loss": 0.475032, "task": 1}
+{"L_cls": 0.426247, "dev_macro_f1_seen": 0.397293, "epoch": 17, "loss": 0.426247, "task": 1}
+{"L_cls": 0.417693, "dev_macro_f1_seen": 0.39655, "epoch": 18, "loss": 0.417693, "task": 1}
+{"L_cls": 0.405468, "dev_macro_f1_seen": 0.386264, "epoch": 19, "loss": 0.405468, "task": 1}
+{"best_dev_macro_f1_seen": 0.409022, "best_epoch": 14, "kept_dev_macro_f1_seen": 0.409022, "kept_epoch": 14, "n_dev_seen": 788, "n_memory": 130, "stop_reason": "early_stop(patience=5)", "task": 1}
+{"L_cls": 2.107705, "dev_macro_f1_seen": 0.144573, "epoch": 0, "loss": 2.107705, "task": 2}
+{"L_cls": 1.318159, "dev_macro_f1_seen": 0.274377, "epoch": 1, "loss": 1.318159, "task": 2}
+{"L_cls": 1.083577, "dev_macro_f1_seen": 0.299905, "epoch": 2, "loss": 1.083577, "task": 2}
+{"L_cls": 1.013614, "dev_macro_f1_seen": 0.286458, "epoch": 3, "loss": 1.013614, "task": 2}
+{"L_cls": 0.983969, "dev_macro_f1_seen": 0.285164, "epoch": 4, "loss": 0.983969, "task": 2}
+{"L_cls": 0.944314, "dev_macro_f1_seen": 0.287788, "epoch": 5, "loss": 0.944314, "task": 2}
+{"L_cls": 0.912199, "dev_macro_f1_seen": 0.293274, "epoch": 6, "loss": 0.912199, "task": 2}
+{"L_cls": 0.874437, "dev_macro_f1_seen": 0.288584, "epoch": 7, "loss": 0.874437, "task": 2}
+{"best_dev_macro_f1_seen": 0.299905, "best_epoch": 2, "kept_dev_macro_f1_seen": 0.299905, "kept_epoch": 2, "n_dev_seen": 1231, "n_memory": 170, "stop_reason": "early_stop(patience=5)", "task": 2}

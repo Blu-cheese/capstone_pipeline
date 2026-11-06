@@ -1,0 +1,32 @@
+{
+  "batch_size": 32,
+  "draw_seed": null,
+  "dropout": 0.2,
+  "early_stopping_metric": "macro_f1",
+  "early_stopping_patience": 5,
+  "feature_dim": 1152,
+  "fkd": {
+    "beta": 0.2,
+    "gamma": 2.0,
+    "lambda": 0.7,
+    "source": "Zhao et al. ACL 2023 Appendix B, TACRED row",
+    "tau2": 0.5
+  },
+  "fresh_optimizer_per_task": true,
+  "hidden_dim": 256,
+  "init_seed": 201,
+  "learning_rate": 0.001,
+  "max_epochs_per_task": 120,
+  "n_classes": 17,
+  "regime": "joint_balanced",
+  "replay": {
+    "memory_per_relation": 10,
+    "selection": "kmeans"
+  },
+  "sampler": "WeightedRandomSampler, weight 1/count(label), replacement, num_samples=len(train)",
+  "seed": 1,
+  "track": "gold_I",
+  "train_examples": 710,
+  "wall_seconds": 0.5,
+  "weight_decay": 0.0
+}
